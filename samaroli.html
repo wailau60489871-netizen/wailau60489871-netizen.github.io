@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +8,13 @@
 
 <style>
 
-/* ===== 全局顏色（同主頁一致） ===== */
-
 :root{
 --bg:#050505;
 --panel:rgba(40,38,5,0.82);
 --panel-border:rgba(142,135,53,0.35);
 --text:#f3f0e6;
 --muted:#c8c1a3;
+--line:rgba(255,255,255,0.18);
 --menu-bg:rgba(8,8,8,0.96);
 }
 
@@ -27,44 +25,70 @@ padding:0;
 }
 
 body{
-
 font-family:Arial,Helvetica,sans-serif;
 color:var(--text);
-
 background:
 linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.72)),
 url("assets/hero-studio.png") center/cover fixed;
+}
 
+a{
+color:inherit;
+text-decoration:none;
 }
 
 /* ===== 外框 ===== */
 
 .page{
-width:min(1200px,calc(100% - 60px));
+width:min(1220px,calc(100% - 48px));
 margin:auto;
-padding:40px 0 60px;
+padding:24px 0 40px;
 }
 
 .frame{
 background:var(--panel);
 border:1px solid var(--panel-border);
-padding:40px;
+padding:22px 22px 34px;
+position:relative;
+}
+
+/* ===== Title ===== */
+
+.site-title{
+position:absolute;
+top:40px;
+left:50%;
+transform:translateX(-50%);
+text-align:center;
+line-height:1;
+}
+
+.portfolio-word{
+font-size:22px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+.name-word{
+font-size:12px;
+color:var(--muted);
+margin-top:4px;
 }
 
 /* ===== Menu ===== */
 
 .topbar{
 display:flex;
-justify-content:flex-start;
 gap:40px;
-margin-bottom:40px;
+margin-bottom:80px;
+padding-top:60px;
 }
 
 .nav{
 display:flex;
-gap:30px;
-font-size:18px;
+gap:32px;
 font-weight:700;
+font-size:18px;
 color:var(--muted);
 }
 
@@ -81,17 +105,17 @@ position:relative;
 .dropdown-menu{
 
 display:none;
-
 position:absolute;
+
 top:100%;
 left:0;
 
 background:var(--menu-bg);
-
-padding:15px 20px;
-min-width:220px;
-
 border:1px solid rgba(255,255,255,.1);
+
+padding:14px 20px;
+
+min-width:220px;
 
 }
 
@@ -100,74 +124,52 @@ display:block;
 }
 
 .dropdown-menu a{
-
 display:block;
 padding:6px 0;
-color:var(--muted);
 font-weight:700;
-
+color:var(--muted);
 }
 
 .dropdown-menu a:hover{
 color:var(--text);
 }
 
-/* ===== Hero ===== */
+/* ===== Case Study ===== */
 
-.hero-title{
+.case-study{
+max-width:900px;
+margin:auto;
+}
 
-font-size:42px;
-font-weight:700;
+.case-study h1{
+font-size:46px;
 margin-bottom:20px;
-
 }
 
-.hero-text{
-
-font-size:20px;
+.case-study p{
+font-size:18px;
+line-height:1.7;
 color:var(--muted);
-max-width:700px;
-margin-bottom:60px;
-
+margin-bottom:40px;
 }
 
-/* ===== 圖片排版 ===== */
-
-.section{
-margin-bottom:120px;
-}
-
-.section img{
+.case-study img{
 width:100%;
-margin-top:30px;
-}
-
-.two-grid{
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-
+margin:60px 0;
 }
 
 /* ===== Footer ===== */
 
 .footer{
-
-margin-top:80px;
-padding-top:30px;
-
-border-top:1px solid rgba(255,255,255,.2);
-
+margin-top:60px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,.15);
 text-align:center;
-color:var(--muted);
-
 font-size:14px;
-
+color:var(--muted);
 }
 
 </style>
-
 </head>
 
 
@@ -177,7 +179,15 @@ font-size:14px;
 
 <div class="frame">
 
-<!-- ===== Menu Bar ===== -->
+<!-- ===== TITLE ===== -->
+
+<div class="site-title">
+<div class="portfolio-word">PORTFOLIO</div>
+<div class="name-word">Chi Wai Lau</div>
+</div>
+
+
+<!-- ===== MENU ===== -->
 
 <header class="topbar">
 
@@ -209,69 +219,52 @@ font-size:14px;
 </header>
 
 
-<!-- ===== Hero Section ===== -->
+<!-- ===== CONTENT ===== -->
 
-<section class="section">
+<section class="case-study">
 
-<h1 class="hero-title">
-Samaroli Whisky Label Design
-</h1>
+<h1>Samaroli</h1>
 
-<p class="hero-text">
+<p>
 
 Samaroli is one of the most respected independent whisky bottlers in the world.
-This project explores the visual identity and label system created for a range of
-limited edition whisky releases.
 
-The design focuses on typography hierarchy, structured label systems and premium
-printing production to create a distinctive and collectible packaging experience.
+This project explores the development of a refined packaging system that
+balances heritage aesthetics with modern typographic hierarchy.
 
-</p>
-
-<img src="assets/samaroli-hero.jpg">
-
-</section>
-
-
-<!-- ===== Label Section ===== -->
-
-<section class="section two-grid">
-
-<div>
-
-<h2>Label System</h2>
-
-<p class="hero-text">
-
-Each release follows a structured label framework that balances
-heritage aesthetics with modern clarity.
-
-Typography hierarchy, edition numbering and production information
-are carefully arranged to ensure both readability and premium presence.
+The work focuses on label structure, print detailing and visual storytelling
+to elevate the perception of each limited edition release.
 
 </p>
 
-</div>
+<img src="assets/samaroli-1.jpg">
 
-<img src="assets/samaroli-label.jpg">
+<p>
+
+The design approach began with exploring the visual balance between
+traditional whisky label aesthetics and contemporary layout clarity.
+
+Typography hierarchy and structured spacing were carefully developed
+to ensure both readability and strong shelf presence.
+
+</p>
+
+<img src="assets/samaroli-2.jpg">
+
+<p>
+
+Each edition required subtle variation while maintaining a consistent
+visual system across the range.
+
+This structure allows future releases to evolve while preserving the
+recognisable Samaroli identity.
+
+</p>
+
+<img src="assets/samaroli-3.jpg">
 
 </section>
 
-
-<!-- ===== Packaging ===== -->
-
-<section class="section">
-
-<h2 class="hero-title">
-Packaging Design
-</h2>
-
-<img src="assets/samaroli-packaging.jpg">
-
-</section>
-
-
-<!-- ===== Footer ===== -->
 
 <footer class="footer">
 
