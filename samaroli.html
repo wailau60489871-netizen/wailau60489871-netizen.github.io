@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=1280, initial-scale=1.0" />
   <title>Samaroli Section Preview</title>
 
   <style>
@@ -26,6 +26,7 @@
 
     html{
       scroll-behavior:smooth;
+      overflow-x:auto;
     }
 
     body{
@@ -34,6 +35,8 @@
       background:
         linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.76)),
         url("assets/hero-studio.png") center center / cover no-repeat fixed;
+      min-width:1280px;
+      overflow-x:auto;
     }
 
     a{
@@ -48,7 +51,7 @@
     }
 
     .page{
-      width:min(1280px,calc(100% - 40px));
+      width:1280px;
       margin:0 auto;
       padding:24px 0 40px;
     }
@@ -326,25 +329,29 @@
     }
 
     .challenge-text{
-      max-width:920px;
-      padding-left:32px;   /* 文字向右少少 */
-      padding-right:24px;
+      max-width:860px;
+      margin:0 auto;
+      padding-left:0;
+      padding-right:0;
+      text-align:left;
     }
 
     .challenge-image-wrap{
-      width:70%;           /* 圖縮細 30% */
+      width:70%;
       margin:0 auto;
     }
 
     .challenge-image{
-      border-radius:16px;  /* 圓角 */
+      border-radius:16px;
       overflow:hidden;
+      border:none;
     }
 
     .challenge-image img{
       width:100%;
       height:auto;
       display:block;
+      object-fit:cover;
     }
 
     /* =========================
@@ -352,6 +359,7 @@
     ========================== */
     .process-showcase-section{
       padding:18px 0 42px;
+      border-top:none;
     }
 
     .process-large-card{
@@ -373,6 +381,7 @@
     ========================== */
     .role-section-custom{
       padding:36px 0 30px;
+      border-top:none;
     }
 
     .role-layout-custom{
@@ -427,14 +436,15 @@
     ========================== */
     .label-section-custom{
       padding:52px 0 34px;
+      border-top:none;
     }
 
     .label-layout-custom{
       display:grid;
-      grid-template-columns:1fr 390px;
+      grid-template-columns:1fr 450px;
       gap:34px;
       align-items:start;
-      width:min(100%, 910px);
+      width:min(100%, 970px);
       margin:0 auto;
     }
 
@@ -485,6 +495,8 @@
       border-radius:18px;
       overflow:hidden;
       box-shadow:var(--shadow);
+      transform:scale(1.15);
+      transform-origin:center center;
     }
 
     .label-board-custom img{
@@ -494,85 +506,8 @@
     }
 
     /* =========================
-       Mobile
+       No responsive repositioning
     ========================== */
-    @media (max-width:1100px){
-      .topbar{
-        flex-wrap:wrap;
-        gap:16px;
-      }
-
-      .topbar-left,
-      .topbar-right{
-        width:100%;
-      }
-
-      .topbar-right{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:12px;
-      }
-
-      .quick-links-inline{
-        flex-wrap:wrap;
-        gap:10px 14px;
-      }
-
-      .hero-image{
-        min-height:300px;
-      }
-
-      .hero-overlay-copy{
-        left:24px;
-        right:24px;
-        bottom:24px;
-        max-width:340px;
-      }
-
-      .hero-title{
-        font-size:42px;
-      }
-
-      .hero-subtitle{
-        font-size:18px;
-      }
-
-      .challenge-text{
-        padding-left:18px;
-        padding-right:18px;
-      }
-
-      .challenge-image-wrap{
-        width:100%;
-      }
-
-      .role-layout-custom,
-      .label-layout-custom{
-        grid-template-columns:1fr;
-        width:100%;
-      }
-
-      .process-large-card,
-      .section-divider-line{
-        width:100%;
-      }
-
-      .role-title-large{
-        font-size:36px;
-      }
-
-      .label-main-title{
-        font-size:34px;
-      }
-
-      .label-subtitle{
-        font-size:20px;
-      }
-
-      .label-intro-copy{
-        font-size:16px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -620,7 +555,6 @@
         </div>
       </header>
 
-      <!-- Part 1 -->
       <section class="hero">
         <div class="hero-image">
           <div class="hero-overlay-copy">
@@ -648,14 +582,13 @@
           </div>
 
           <div class="challenge-image-wrap">
-            <div class="image-card challenge-image">
+            <div class="challenge-image">
               <img src="assets/samaroli_designprocess.png" alt="Samaroli design process">
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Part 2 -->
       <section id="process" class="section process-showcase-section">
         <div class="process-large-card">
           <img src="assets/samaroli_designprocess.png" alt="Design Process">
