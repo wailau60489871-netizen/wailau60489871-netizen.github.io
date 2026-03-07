@@ -592,16 +592,18 @@
       ====================================== -->
       <header class="topbar">
         <nav class="nav">
-          <a href="#">About Me</a>
+          <a href="about.html">About Me</a>
 
-<div class="dropdown-menu">
-  <a href="samaroli.html">Samaroli</a>
-  <a href="pizzaexpress.html">Pizzaexpress</a>
-  <a href="canon.html">Canon</a>
-  <a href="kmb.html">KMB</a>
-  <a href="illustration-book.html">Illustration Book</a>
-  <a href="youtube-channel.html">Youtube Channel</a>
-</div>
+          <div class="dropdown">
+            <a href="#">Selected Works</a>
+            <div class="dropdown-menu">
+              <a href="samaroli.html">Samaroli</a>
+              <a href="pizzaexpress.html">Pizzaexpress</a>
+              <a href="canon.html">Canon</a>
+              <a href="kmb.html">KMB</a>
+              <a href="illustration-book.html">Illustration Book</a>
+              <a href="youtube-channel.html">Youtube Channel</a>
+            </div>
           </div>
         </nav>
       </header>
@@ -636,24 +638,24 @@
           <!-- 左邊作品列表 -->
           <aside class="side-panel">
             <div class="side-title">Selected Works</div>
-<ul class="side-list" id="project-list">
-  <li class="active">
-    <a href="samaroli.html">Samaroli</a>
-  </li>
-<li>
-  <a href="pizzaexpress.html">Pizzaexpress</a>
-</li>
-<li>
-  <a href="canon.html">Canon</a>
-</li>
-<li>
-  <a href="kmb.html">KMB</a>
-</li>
-              <li>
-                <a href="Illustration.html">Illustration</a>
+            <ul class="side-list" id="project-list">
+              <li class="active">
+                <a href="samaroli.html" data-project="samaroli">Samaroli</a>
               </li>
               <li>
-                <a href="Youtube.html">Youtube Channel</a>
+                <a href="pizzaexpress.html" data-project="pizzaexpress">Pizzaexpress</a>
+              </li>
+              <li>
+                <a href="canon.html" data-project="canon">Canon</a>
+              </li>
+              <li>
+                <a href="kmb.html" data-project="kmb">KMB</a>
+              </li>
+              <li>
+                <a href="illustration-book.html" data-project="illustration">Illustration Book</a>
+              </li>
+              <li>
+                <a href="youtube-channel.html" data-project="youtube">Youtube Channel</a>
               </li>
             </ul>
           </aside>
@@ -668,7 +670,7 @@
                   <img id="projectImage" src="assets/samaroli.jpg" alt="Project preview">
                 </div>
                 <div class="project-button-wrap">
-               <a id="projectButton" class="project-button" href="samaroli.html">View Project</a>
+                  <a id="projectButton" class="project-button" href="samaroli.html">View Project</a>
                 </div>
               </div>
 
@@ -867,20 +869,16 @@
 
     /* =========================================
        左邊作品列表 hover 事件
+       有 href，但 hover 仍然先更新右邊 preview
+       click 時就正常進入內頁
     ========================================= */
     links.forEach(link => {
-      link.addEventListener("mouseenter", function(e) {
-        e.preventDefault();
-
+      link.addEventListener("mouseenter", function() {
         listItems.forEach(item => item.classList.remove("active"));
         this.parentElement.classList.add("active");
 
         const projectKey = this.getAttribute("data-project");
         renderProject(projectKey);
-      });
-
-      link.addEventListener("click", function(e) {
-        e.preventDefault();
       });
     });
 
