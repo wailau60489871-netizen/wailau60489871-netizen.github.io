@@ -66,46 +66,47 @@
     /* =========================
        頂部網站名稱
     ========================= */
-    .site-title{
-      position:absolute;
-      top:18px;
-      left:50%;
-      transform:translateX(-50%);
-      text-align:center;
-      line-height:1;
-      z-index:40;
-      pointer-events:none;
-    }
+.site-title{
+  position:static;
+  transform:none;
+  text-align:right;
+  line-height:1;
+  z-index:40;
+  margin-left:auto;
+}
 
-    .portfolio-word{
-      display:block;
-      font-size:clamp(16px,1.8vw,22px);
-      font-weight:800;
-      letter-spacing:1px;
-      color:var(--text);
-    }
+.portfolio-word{
+  display:block;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:1px;
+  color:var(--text);
+}
 
-    .name-word{
-      display:block;
-      margin-top:3px;
-      font-size:clamp(8px,.95vw,12px);
-      font-weight:600;
-      letter-spacing:.6px;
-      color:var(--muted);
-    }
+.name-word{
+  display:block;
+  margin-top:2px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.6px;
+  color:var(--muted);
+}
 
     /* =========================
        頂部 bar / menu
     ========================= */
-    .topbar{
-      display:flex;
-      justify-content:flex-start;
-      align-items:center;
-      gap:40px;
-      padding:40px 0 12px;
-      position:relative;
-      z-index:30;
-    }
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  padding:14px 18px;
+  margin:-20px -20px 28px -20px;
+  background:#000;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  position:relative;
+  z-index:30;
+}
 
     .brand-mark{
       width:28px;
@@ -697,22 +698,14 @@
       <!-- =========================
            頂部標題
       ========================== -->
-      <div class="site-title">
-        <span class="portfolio-word">PORTFOLIO</span>
-        <span class="name-word">Chi Wai Lau</span>
-      </div>
+<header class="topbar">
+  <div class="brand-mark">W</div>
 
-      <!-- =========================
-           頂部 Menu
-      ========================== -->
-      <header class="topbar">
-        <div class="brand-mark">W</div>
+  <nav class="nav">
+    <a href="index.html">About Me</a>
 
-        <nav class="nav">
-          <a href="index.html">About Me</a>
-
-          <div class="dropdown">
-            <a href="#">Selected Works</a>
+    <div class="dropdown">
+      <a href="#">Selected Works</a>
             <div class="dropdown-menu">
               <a href="samaroli.html">Samaroli</a>
               <a href="pizzaexpress.html">Pizzaexpress</a>
@@ -723,7 +716,11 @@
             </div>
           </div>
         </nav>
-      </header>
+  <div class="site-title">
+    <span class="portfolio-word">PORTFOLIO</span>
+    <span class="name-word">Chi Wai Lau</span>
+  </div>
+</header>
 
       <!-- =========================
            Hero
