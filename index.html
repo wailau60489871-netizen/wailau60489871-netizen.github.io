@@ -1,892 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chi Wai Lau Portfolio</title>
-
-  <style>
-    /* =========================================
-       網站全局顏色設定
-       想改整體顏色，主要改呢度
-    ========================================= */
-    :root {
-      --bg: #1c1a00;                             /* 網站最底背景色 */
-      --panel: rgba(40, 38, 5, 0.82);           /* 主框背景色 */
-      --panel-border: rgba(142, 135, 53, 0.35); /* 主框邊框色 */
-      --text: #f3f0e6;                           /* 主要文字色 */
-      --muted: #c8c1a3;                          /* 次要文字色 */
-      --line: rgba(255,255,255,0.35);           /* 分隔線顏色 */
-      --menu-bg: rgba(8, 8, 8, 0.96);           /* 下拉選單背景色 */
-      --button-bg: rgba(255,255,255,0.06);      /* 按鈕底色 */
-      --button-border: rgba(255,255,255,0.24);  /* 按鈕邊框色 */
-    }
-
-    /* =========================================
-       全局基礎設定
-    ========================================= */
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      min-width:1280px;
-    }
-
-    /* =========================================
-       網站大背景圖
-       如要改主背景圖，改 assets/hero-studio.png
-    ========================================= */
-    body {
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
-        url("assets/hero-studio.png") center center / cover no-repeat fixed;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================================
-       網站外框寬度
-    ========================================= */
-    .page {
-      width: min(1220px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 24px 0 40px;
-    }
-
-    /* =========================================
-       主內容面板
-    ========================================= */
-    .frame {
-      background: rgba(40, 38, 5, 0.82);
-      border: 1px solid rgba(142, 135, 53, 0.35);
-      padding: 22px 22px 34px;
-      position: relative;
-      overflow: visible;
-    }
-
-    /* =========================================
-       頂部網站名稱
-       PORTFOLIO / Chi Wai Lau
-       如要改位置大小，主要改呢區
-    ========================================= */
-    .site-title {
-      position: absolute;
-      top: 140px;                 /* 控制標題上下位置 */
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      line-height: 1;
-      z-index: 40;
-    }
-
-    .site-title .portfolio-word {
-      display: block;
-      font-size: clamp(16px, 1.8vw, 22px); /* PORTFOLIO 字體大小 */
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--text);
-    }
-
-    .site-title .name-word {
-      display: block;
-      margin-top: 3px;
-      font-size: clamp(8px, 0.95vw, 12px); /* Chi Wai Lau 字體大小 */
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      color: var(--muted);
-    }
-
-    /* =========================================
-       頂部 Menu Bar
-       About Me / Selected Works
-    ========================================= */
-    .topbar {
-      display: flex;
-      justify-content: flex-start; /* Menu 靠左 */
-      align-items: center;
-      gap: 40px;                   /* Menu 項目距離 */
-      margin-bottom: 0;
-      position: relative;
-      z-index: 30;
-      padding: 4px 0 8px 0;
-    }
-
-    .nav {
-      display: flex;
-      gap: 32px;                   /* About Me 同 Selected Works 之間距離 */
-      align-items: center;
-      padding-top: 0;
-      font-weight: 700;
-      color: var(--muted);
-      font-size: 18px;             /* 頂部 Menu 字體大小 */
-    }
-
-    .nav > a,
-    .dropdown > a {
-      display: inline-flex;
-      align-items: center;
-      height: 40px;
-      line-height: 1;
-    }
-
-    .nav a:hover {
-      color: var(--text);
-    }
-
-    /* =========================================
-       Selected Works 下拉選單
-    ========================================= */
-    .dropdown {
-      position: relative;
-    }
-
-    /* 防止移鼠標到 dropdown menu 時太快消失 */
-    .dropdown::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 100%;
-      width: 100%;
-      height: 18px;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 220px;
-      background: var(--menu-bg);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 14px 22px;
-      display: none;
-      margin-top: 0;
-      z-index: 50;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 7px 0;
-      color: var(--muted);
-      font-size: 17px;
-      font-weight: 700;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    /* Selected Works 入面箭嘴，hover 先出現 */
-    .dropdown-menu a::before {
-      content: "▶ ";
-      font-size: 14px;
-      vertical-align: middle;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .dropdown-menu a:hover {
-      color: var(--text);
-      transform: translateX(4px);
-    }
-
-    .dropdown-menu a:hover::before {
-      opacity: 1;
-    }
-
-    /* =========================================
-       Hero 區域
-    ========================================= */
-    .hero {
-      position: relative;
-      margin-top: 8px;
-    }
-
-    .hero-image-wrap {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-      background: #111;
-    }
-
-    .hero-image {
-      width: 100%;
-      display: block;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      filter: brightness(0.88);
-    }
-
-    /* =========================================
-       Hero 中間圓形 Logo
-       如想移除，刪 HTML 內 hero-center-logo 個 div
-    ========================================= */
-    .hero-center-logo {
-      position: absolute;
-      top: 14%;                    /* 控制圓形 logo 高度 */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 94px;
-      height: 94px;
-      border: 4px solid rgba(255,255,255,0.96);
-      border-radius: 50%;
-      overflow: hidden;
-      background: rgba(0,0,0,0.06);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    }
-
-    .hero-center-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* =========================================
-       Hero 中間主標題
-       想改位置：改 top
-       想改大小：改 font-size
-    ========================================= */
-    .hero-headline {
-      position: absolute;
-      top: 32%;                    /* Hero headline 高度 */
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(70%, 600px);
-      text-align: center;
-      font-size: clamp(14px, 2vw, 30px); /* Hero headline 字體大小 */
-      line-height: 1.2;
-      font-weight: 700;
-    }
-
-    /* =========================================
-       下方內容區：左邊作品列表 + 右邊作品詳情
-    ========================================= */
-    .bottom-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 52px;
-      margin-top: 28px;
-      align-items: start;
-      padding-left: 28px;
-      padding-right: 12px;
-    }
-
-    /* =========================================
-       左邊 Selected Works 區
-    ========================================= */
-    .side-panel {
-      padding-left: 8px;
-    }
-
-    .side-title {
-      display: inline-block;
-      border: 1px solid rgba(255,255,255,0.38);
-      padding: 13px 18px;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: var(--text);
-    }
-
-    .side-list {
-      list-style: none;
-      margin: 0;
-      padding: 0 0 0 6px;
-    }
-
-    .side-list li {
-      margin: 0 0 18px;
-    }
-
-    .side-list a {
-      font-size: 22px;             /* 左邊 project list 字體大小 */
-      font-weight: 700;
-      color: var(--muted);
-      line-height: 1.4;
-      transition: color 0.2s ease, transform 0.2s ease;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    /* 左邊 project list 箭嘴，hover 先出現 */
-    .side-list a::before {
-      content: "▶ ";
-      font-size: 14px;
-      vertical-align: middle;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .side-list li.active a,
-    .side-list a:hover {
-      color: var(--text);
-      transform: translateX(4px);
-    }
-
-    .side-list a:hover::before {
-      opacity: 1;
-    }
-
-    /* =========================================
-       右邊作品詳情區
-       想改高度：改 height
-       想長期見到 scrollbar：保留 overflow-y: scroll
-    ========================================= */
-    .project-detail {
-      border-left: 2px solid var(--line);
-      padding-left: 40px;
-      height: 520px;               /* 右邊詳情區高度 */
-      overflow-y: scroll;          /* 長期顯示 scrollbar */
-      padding-right: 18px;
-      scrollbar-width: auto;
-      scrollbar-color: rgba(255,255,255,0.45) rgba(255,255,255,0.08);
-    }
-
-    .project-detail::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    .project-detail::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .project-detail::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.45);
-      border-radius: 20px;
-    }
-
-    /* =========================================
-       右邊內部結構：左圖 + 右文字
-    ========================================= */
-    .project-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 34px;
-      align-items: start;
-    }
-
-    /* =========================================
-       左邊作品預覽圖 + Button
-    ========================================= */
-    .project-preview {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      position: sticky;
-      top: 0;
-      align-self: start;
-    }
-
-    .project-preview-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;         /* 正方形圖片 */
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.25);
-    }
-
-    .project-preview-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: opacity 0.25s ease;
-    }
-
-    .project-button-wrap {
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .project-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 160px;
-      padding: 14px 20px;
-      border: 1px solid var(--button-border);
-      background: var(--button-bg);
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .project-button:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.38);
-      transform: translateY(-1px);
-    }
-
-    /* =========================================
-       右邊文字區
-       想改字體大小可改呢度
-    ========================================= */
-    .project-copy h2 {
-      margin: 0 0 20px;
-      color: var(--text);
-      font-size: 28px;             /* 標題字體大小 */
-      line-height: 1.1;
-      min-height: 34px;
-      white-space: pre-wrap;
-    }
-
-    .project-copy p {
-      margin: 0 0 24px;
-      font-size: 18px;             /* 內文字體大小 */
-      line-height: 1.72;
-      min-height: 32px;
-      white-space: pre-wrap;
-      color: var(--muted);
-    }
-
-    /* =========================================
-       打字動畫游標
-    ========================================= */
-    .typing-cursor::after {
-      content: "|";
-      display: inline-block;
-      margin-left: 2px;
-      animation: blink 0.7s infinite;
-      color: var(--text);
-    }
-
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-
-    /* =========================================
-       底部 Footer
-    ========================================= */
-    .footer {
-      margin-top: 34px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.16);
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* =========================================
-       手機版 Responsive
-    ========================================= */
-    @media (max-width: 960px) {
-      .page {
-        width: min(100%, calc(100% - 24px));
-        padding: 14px 0 24px;
-      }
-
-      .frame {
-        padding: 14px 14px 24px;
-      }
-
-      .site-title {
-        margin-bottom: 8px;
-      }
-
-      .topbar {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .nav {
-        gap: 24px;
-        font-size: 15px;
-        flex-wrap: wrap;
-      }
-
-      .hero-center-logo {
-        width: 68px;
-        height: 68px;
-        border-width: 3px;
-      }
-
-      .hero-headline {
-        top: 36%;
-        width: 90%;
-      }
-
-      .bottom-grid {
-        grid-template-columns: 1fr;
-        gap: 26px;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      .side-panel {
-        padding-left: 0;
-      }
-
-      .side-list {
-        padding-left: 0;
-      }
-
-      .project-detail {
-        border-left: 0;
-        border-top: 2px solid var(--line);
-        padding-left: 0;
-        padding-top: 24px;
-        height: auto;
-        overflow: visible;
-      }
-
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-preview {
-        position: static;
-      }
-
-      .project-copy p {
-        font-size: 16px;
-      }
-
-      .side-list a {
-        font-size: 18px;
-      }
-
-      .dropdown-menu {
-        position: static;
-        display: block;
-        margin-top: 12px;
-        min-width: auto;
-        background: rgba(0,0,0,0.28);
-      }
-
-      .dropdown::after {
-        display: none;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Chi Wai Lau Portfolio</title>
+
+<style>
+
+/* =========================
+全局顏色
+========================= */
+
+:root{
+--bg:#1c1a00;
+--panel:rgba(40,38,5,0.82);
+--panel-border:rgba(142,135,53,0.35);
+--text:#f3f0e6;
+--muted:#c8c1a3;
+--line:rgba(255,255,255,0.35);
+--menu-bg:rgba(8,8,8,0.96);
+--button-bg:rgba(255,255,255,0.06);
+--button-border:rgba(255,255,255,0.24);
+}
+
+/* =========================
+基礎
+========================= */
+
+*{
+box-sizing:border-box;
+}
+
+html,body{
+margin:0;
+padding:0;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,Helvetica,sans-serif;
+
+/* 防止縮細時 layout 壓縮 */
+min-width:1280px;
+overflow-x:auto;
+}
+
+/* =========================
+背景
+========================= */
+
+body{
+min-height:100vh;
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.72)),
+url("assets/hero-studio.png") center center / cover no-repeat fixed;
+}
+
+a{
+color:inherit;
+text-decoration:none;
+}
+
+/* =========================
+頁面寬度（固定）
+========================= */
+
+.page{
+width:1220px;
+margin:0 auto;
+padding:24px 0 40px;
+}
+
+/* =========================
+主框
+========================= */
+
+.frame{
+background:rgba(40,38,5,0.82);
+border:1px solid rgba(142,135,53,0.35);
+padding:22px 22px 34px;
+position:relative;
+overflow:visible;
+}
+
+/* =========================
+網站標題
+========================= */
+
+.site-title{
+position:absolute;
+top:140px;
+left:50%;
+transform:translateX(-50%);
+text-align:center;
+line-height:1;
+z-index:40;
+}
+
+.portfolio-word{
+display:block;
+font-size:22px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+.name-word{
+display:block;
+margin-top:3px;
+font-size:12px;
+font-weight:600;
+letter-spacing:0.6px;
+color:var(--muted);
+}
+
+/* =========================
+Top menu
+========================= */
+
+.topbar{
+display:flex;
+justify-content:flex-start;
+align-items:center;
+gap:40px;
+margin-bottom:0;
+position:relative;
+z-index:30;
+padding:4px 0 8px;
+}
+
+.nav{
+display:flex;
+gap:32px;
+align-items:center;
+font-weight:700;
+color:var(--muted);
+font-size:18px;
+}
+
+.nav>a,
+.dropdown>a{
+display:inline-flex;
+align-items:center;
+height:40px;
+}
+
+.nav a:hover{
+color:var(--text);
+}
+
+/* dropdown */
+
+.dropdown{
+position:relative;
+}
+
+.dropdown::after{
+content:"";
+position:absolute;
+left:0;
+top:100%;
+width:100%;
+height:18px;
+}
+
+.dropdown-menu{
+position:absolute;
+top:100%;
+left:0;
+min-width:220px;
+background:var(--menu-bg);
+border:1px solid rgba(255,255,255,0.08);
+padding:14px 22px;
+display:none;
+z-index:50;
+}
+
+.dropdown:hover .dropdown-menu{
+display:block;
+}
+
+.dropdown-menu a{
+display:block;
+padding:7px 0;
+color:var(--muted);
+font-size:17px;
+font-weight:700;
+transition:0.2s;
+}
+
+.dropdown-menu a::before{
+content:"▶ ";
+opacity:0;
+transition:0.2s;
+}
+
+.dropdown-menu a:hover{
+color:var(--text);
+transform:translateX(4px);
+}
+
+.dropdown-menu a:hover::before{
+opacity:1;
+}
+
+/* =========================
+Hero
+========================= */
+
+.hero{
+position:relative;
+margin-top:8px;
+}
+
+.hero-image-wrap{
+position:relative;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.05);
+background:#111;
+}
+
+.hero-image{
+width:100%;
+display:block;
+aspect-ratio:16/10;
+object-fit:cover;
+filter:brightness(0.88);
+}
+
+/* logo */
+
+.hero-center-logo{
+position:absolute;
+top:14%;
+left:50%;
+transform:translateX(-50%);
+width:94px;
+height:94px;
+border:4px solid rgba(255,255,255,0.96);
+border-radius:50%;
+overflow:hidden;
+background:rgba(0,0,0,0.06);
+}
+
+.hero-center-logo img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* headline */
+
+.hero-headline{
+position:absolute;
+top:32%;
+left:50%;
+transform:translateX(-50%);
+width:600px;
+text-align:center;
+font-size:30px;
+line-height:1.2;
+font-weight:700;
+}
+
+/* =========================
+Layout
+========================= */
+
+.bottom-grid{
+display:grid;
+grid-template-columns:320px 1fr;
+gap:52px;
+margin-top:28px;
+align-items:start;
+padding-left:28px;
+padding-right:12px;
+}
+
+/* =========================
+side list
+========================= */
+
+.side-title{
+display:inline-block;
+border:1px solid rgba(255,255,255,0.38);
+padding:13px 18px;
+font-size:18px;
+font-weight:700;
+margin-bottom:24px;
+}
+
+.side-list{
+list-style:none;
+margin:0;
+padding:0 0 0 6px;
+}
+
+.side-list li{
+margin-bottom:18px;
+}
+
+.side-list a{
+font-size:22px;
+font-weight:700;
+color:var(--muted);
+line-height:1.4;
+transition:0.2s;
+display:inline-block;
+}
+
+.side-list a::before{
+content:"▶ ";
+opacity:0;
+transition:0.2s;
+}
+
+.side-list a:hover{
+color:var(--text);
+transform:translateX(4px);
+}
+
+.side-list a:hover::before{
+opacity:1;
+}
+
+/* =========================
+detail
+========================= */
+
+.project-detail{
+border-left:2px solid var(--line);
+padding-left:40px;
+height:520px;
+overflow-y:scroll;
+padding-right:18px;
+}
+
+/* =========================
+preview
+========================= */
+
+.project-grid{
+display:grid;
+grid-template-columns:320px 1fr;
+gap:34px;
+}
+
+.project-preview{
+display:flex;
+flex-direction:column;
+gap:18px;
+position:sticky;
+top:0;
+}
+
+.project-preview-image{
+width:100%;
+aspect-ratio:1/1;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.18);
+}
+
+.project-preview-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* =========================
+button
+========================= */
+
+.project-button{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:160px;
+padding:14px 20px;
+border:1px solid var(--button-border);
+background:var(--button-bg);
+font-size:15px;
+font-weight:700;
+}
+
+/* =========================
+text
+========================= */
+
+.project-copy h2{
+margin:0 0 20px;
+font-size:28px;
+line-height:1.1;
+}
+
+.project-copy p{
+margin:0 0 24px;
+font-size:18px;
+line-height:1.72;
+color:var(--muted);
+}
+
+/* =========================
+footer
+========================= */
+
+.footer{
+margin-top:34px;
+padding-top:18px;
+border-top:1px solid rgba(255,255,255,0.16);
+text-align:center;
+color:var(--muted);
+font-size:14px;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <div class="frame">
 
-      <!-- =====================================
-           網站頂部名稱
-           想改字就改呢兩行
-      ====================================== -->
-      <div class="site-title">
-        <span class="portfolio-word">PORTFOLIO</span>
-        <span class="name-word">Chi Wai Lau</span>
-      </div>
+<div class="page">
+<div class="frame">
 
-      <!-- =====================================
-           頂部 Menu
-      ====================================== -->
-      <header class="topbar">
-        <nav class="nav">
-          <a href="about.html">About Me</a>
+<div class="site-title">
+<span class="portfolio-word">PORTFOLIO</span>
+<span class="name-word">Chi Wai Lau</span>
+</div>
 
-          <div class="dropdown">
-            <a href="#">Selected Works</a>
-            <div class="dropdown-menu">
-              <a href="samaroli.html">Samaroli</a>
-              <a href="pizzaexpress.html">Pizzaexpress</a>
-              <a href="canon.html">Canon</a>
-              <a href="kmb.html">KMB</a>
-              <a href="illustration-book.html">Illustration Book</a>
-              <a href="youtube-channel.html">Youtube Channel</a>
-            </div>
-          </div>
-        </nav>
-      </header>
+<header class="topbar">
 
-      <!-- =====================================
-           Hero 主圖區
-      ====================================== -->
-      <main class="hero">
-        <div class="hero-image-wrap">
-          <img
-            class="hero-image"
-            src="assets/hero-studio.png"
-            alt="Creative studio workspace"
-          />
+<nav class="nav">
 
-          <!-- Hero 中間圓形 Logo -->
-          <div class="hero-center-logo">
-            <img src="assets/logo.png" alt="Chi Wai Lau logo">
-          </div>
+<a href="about.html">About Me</a>
 
-          <!-- Hero 標題 -->
-          <div class="hero-headline">
-            Where brand strategy meets craft and visual storytelling.
-          </div>
-        </div>
+<div class="dropdown">
 
-        <!-- =====================================
-             下方：左邊作品列表 + 右邊詳情
-        ====================================== -->
-        <section class="bottom-grid">
+<a href="#">Selected Works</a>
 
-          <!-- 左邊作品列表 -->
-          <aside class="side-panel">
-            <div class="side-title">Selected Works</div>
-            <ul class="side-list" id="project-list">
-              <li class="active">
-                <a href="samaroli.html" data-project="samaroli">Samaroli</a>
-              </li>
-              <li>
-                <a href="pizzaexpress.html" data-project="pizzaexpress">Pizzaexpress</a>
-              </li>
-              <li>
-                <a href="canon.html" data-project="canon">Canon</a>
-              </li>
-              <li>
-                <a href="kmb.html" data-project="kmb">KMB</a>
-              </li>
-              <li>
-                <a href="illustration-book.html" data-project="illustration">Illustration Book</a>
-              </li>
-              <li>
-                <a href="youtube-channel.html" data-project="youtube">Youtube Channel</a>
-              </li>
-            </ul>
-          </aside>
+<div class="dropdown-menu">
 
-          <!-- 右邊項目詳情 -->
-          <section class="project-detail" id="projectDetail">
-            <div class="project-grid">
+<a href="samaroli.html">Samaroli</a>
+<a href="pizzaexpress.html">Pizzaexpress</a>
+<a href="canon.html">Canon</a>
+<a href="kmb.html">KMB</a>
+<a href="illustration-book.html">Illustration Book</a>
+<a href="youtube-channel.html">Youtube Channel</a>
 
-              <!-- 左邊預覽圖 + 按鈕 -->
-              <div class="project-preview">
-                <div class="project-preview-image">
-                  <img id="projectImage" src="assets/samaroli.jpg" alt="Project preview">
-                </div>
-                <div class="project-button-wrap">
-                  <a id="projectButton" class="project-button" href="samaroli.html">View Project</a>
-                </div>
-              </div>
+</div>
+</div>
+</nav>
 
-              <!-- 右邊文字介紹 -->
-              <div class="project-copy">
-                <h2 id="introTitle"></h2>
-                <p id="introP1"></p>
-                <p id="introP2"></p>
-                <p id="introP3"></p>
-              </div>
-            </div>
-          </section>
-        </section>
-      </main>
+</header>
 
-      <!-- Footer -->
-      <footer class="footer">
-        © 2026 Chi Wai Lau. All Rights Reserved.
-      </footer>
-    </div>
-  </div>
+<main class="hero">
 
-  <script>
-    /* =========================================
-       Project 資料區
-       日後要改作品內容，主要改呢度：
-       - title = 項目名稱
-       - image = 圖片路徑
-       - link = 內頁連結
-       - paragraphs = 介紹文字
-    ========================================= */
-    const projectData = {
-      samaroli: {
-        title: "Samaroli",
-        image: "assets/samaroli.jpg",
-        link: "samaroli.html",
-        paragraphs: [
-          "A premium packaging system created for limited-edition whisky releases, focused on hierarchy, label structure and refined production detailing.",
-          "The project balances heritage aesthetics with a more structured visual system, allowing multiple editions to feel consistent while maintaining their own identity.",
-          "The work extends beyond the label into boxes, campaign visuals and supporting digital applications."
-        ]
-      },
-      pizzaexpress: {
-        title: "Pizzaexpress",
-        image: "assets/pizza.jpg",
-        link: "pizzaexpress.html",
-        paragraphs: [
-          "PizzaExpress is one of the most recognisable restaurant brands in the UK, known for its distinctive dining experience and strong visual identity.",
-          "This project explores the development of campaign visuals and branded content designed to enhance the in-restaurant experience while extending the brand narrative across digital and social platforms.",
-          "The work combines food photography, visual storytelling and graphic design to create engaging campaign materials that celebrate the atmosphere and personality of the brand."
-        ]
-      },
-      canon: {
-        title: "Canon",
-        image: "assets/canon.jpg",
-        link: "canon.html",
-        paragraphs: [
-          "Retail campaign and point-of-sale materials designed to improve product visibility and strengthen brand communication within store environments.",
-          "The work focuses on clear hierarchy, structured layouts and promotional graphics tailored to retail touchpoints and customer engagement.",
-          "It demonstrates the ability to translate product information into visually coherent campaigns with commercial clarity."
-        ]
-      },
-      kmb: {
-        title: "KMB",
-        image: "assets/kmb.jpg",
-        link: "kmb.html",
-        paragraphs: [
-          "A large-scale public-facing visual project designed for an urban transport environment, where clarity and strong communication were essential.",
-          "The work involved applying brand graphics across formats that needed to remain bold, recognisable and effective in motion.",
-          "It shows the ability to design for high-visibility spaces with practical, real-world constraints."
-        ]
-      },
-      illustration: {
-        title: "Illustration Book",
-        image: "assets/illustration.jpg",
-        link: "illustration-book.html",
-        paragraphs: [
-          "A collection of illustration-led work exploring storytelling, character and composition through print-based visual development.",
-          "The project highlights a more expressive side of the portfolio while maintaining strong layout awareness and visual rhythm.",
-          "It demonstrates versatility across concept, drawing and finished presentation."
-        ]
-      },
-      youtube: {
-        title: "Youtube Channel",
-        image: "assets/youtube.jpg",
-        link: "youtube-channel.html",
-        paragraphs: [
-          "A content-driven project focused on visual storytelling through video, brand presentation and audience engagement.",
-          "The work combines planning, editing, graphics and content structure to create a more dynamic digital presence.",
-          "It reflects a multidisciplinary approach that extends beyond static design into motion and communication."
-        ]
-      }
-    };
+<div class="hero-image-wrap">
 
-    /* =========================================
-       抓取頁面元素
-    ========================================= */
-    const links = document.querySelectorAll(".side-list a");
-    const listItems = document.querySelectorAll(".side-list li");
-    const introTitle = document.getElementById("introTitle");
-    const introP1 = document.getElementById("introP1");
-    const introP2 = document.getElementById("introP2");
-    const introP3 = document.getElementById("introP3");
-    const projectImage = document.getElementById("projectImage");
-    const projectButton = document.getElementById("projectButton");
-    const projectDetail = document.getElementById("projectDetail");
+<img class="hero-image"
+src="assets/hero-studio.png">
 
-    /* =========================================
-       打字動畫用變數
-    ========================================= */
-    let typingTimeouts = [];
-    let activeTypingToken = 0;
+<div class="hero-center-logo">
+<img src="assets/logo.png">
+</div>
 
-    /* =========================================
-       清除舊打字動畫
-    ========================================= */
-    function clearTyping() {
-      typingTimeouts.forEach(timeout => clearTimeout(timeout));
-      typingTimeouts = [];
-      introTitle.textContent = "";
-      introP1.textContent = "";
-      introP2.textContent = "";
-      introP3.textContent = "";
-      introTitle.classList.remove("typing-cursor");
-      introP1.classList.remove("typing-cursor");
-      introP2.classList.remove("typing-cursor");
-      introP3.classList.remove("typing-cursor");
-    }
+<div class="hero-headline">
+Where brand strategy meets craft and visual storytelling.
+</div>
 
-    /* =========================================
-       打字效果函數
-       speed 數字越細 = 越快
-    ========================================= */
-    function typeText(element, text, speed, startDelay, token) {
-      element.textContent = "";
-      element.classList.add("typing-cursor");
+</div>
 
-      for (let i = 0; i <= text.length; i++) {
-        const timeout = setTimeout(() => {
-          if (token !== activeTypingToken) return;
-          element.textContent = text.slice(0, i);
-          if (i === text.length) {
-            element.classList.remove("typing-cursor");
-          }
-        }, startDelay + i * speed);
-        typingTimeouts.push(timeout);
-      }
+</main>
 
-      return startDelay + text.length * speed;
-    }
+<footer class="footer">
+© 2026 Chi Wai Lau. All Rights Reserved.
+</footer>
 
-    /* =========================================
-       切換 Project 顯示內容
-       包括：
-       - 圖片
-       - 按鈕連結
-       - 打字文字
-    ========================================= */
-    function renderProject(projectKey) {
-      const project = projectData[projectKey];
-      if (!project) return;
+</div>
+</div>
 
-      activeTypingToken++;
-      const currentToken = activeTypingToken;
-
-      clearTyping();
-      projectDetail.scrollTop = 0;
-
-      /* 切換圖片 */
-      projectImage.style.opacity = 0;
-      setTimeout(() => {
-        if (currentToken !== activeTypingToken) return;
-        projectImage.src = project.image;
-        projectImage.alt = project.title + " preview";
-        projectImage.style.opacity = 1;
-      }, 120);
-
-      /* 切換按鈕連結 */
-      projectButton.href = project.link;
-
-      /* ===== 打字速度控制 =====
-         1 = 超快
-         3 = 非常快
-         5 = 中等
-         8 = 慢
-      */
-      let delay = 0;
-      const speed = 3;
-
-      /* ===== 每段之間停頓 ===== */
-      delay = typeText(introTitle, project.title, speed, delay, currentToken) + 100;
-      delay = typeText(introP1, project.paragraphs[0], speed, delay, currentToken) + 70;
-      delay = typeText(introP2, project.paragraphs[1], speed, delay, currentToken) + 70;
-      typeText(introP3, project.paragraphs[2], speed, delay, currentToken);
-    }
-
-    /* =========================================
-       左邊作品列表 hover 事件
-       有 href，但 hover 仍然先更新右邊 preview
-       click 時就正常進入內頁
-    ========================================= */
-    links.forEach(link => {
-      link.addEventListener("mouseenter", function() {
-        listItems.forEach(item => item.classList.remove("active"));
-        this.parentElement.classList.add("active");
-
-        const projectKey = this.getAttribute("data-project");
-        renderProject(projectKey);
-      });
-    });
-
-    /* =========================================
-       預設顯示第一個 Project
-    ========================================= */
-    renderProject("samaroli");
-  </script>
 </body>
 </html>
