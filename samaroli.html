@@ -63,9 +63,6 @@
       overflow:hidden;
     }
 
-    /* =========================
-       TOP BAR
-    ========================== */
     .topbar{
       display:flex;
       justify-content:space-between;
@@ -217,9 +214,6 @@
       color:var(--muted);
     }
 
-    /* =========================
-       HERO
-    ========================== */
     .hero{
       margin:0 -20px 0 -20px;
       border-bottom:1px solid rgba(255,255,255,.08);
@@ -258,9 +252,6 @@
       max-width:360px;
     }
 
-    /* =========================
-       GENERIC
-    ========================== */
     .section{
       width:910px;
       margin:0 auto;
@@ -310,9 +301,6 @@
       padding-left:18px;
     }
 
-    /* =========================
-       PART 1: CHALLENGE
-    ========================== */
     .challenge-section{
       padding:36px 0 28px;
     }
@@ -323,9 +311,6 @@
       text-align:left;
     }
 
-    /* =========================
-       PART 2: DESIGN PROCESS
-    ========================== */
     .process-showcase-section{
       padding:18px 0 42px;
     }
@@ -338,9 +323,6 @@
       box-shadow:var(--shadow);
     }
 
-    /* =========================
-       PART 2: MY ROLE
-    ========================== */
     .role-section-custom{
       padding:36px 0 30px;
     }
@@ -394,9 +376,6 @@
       padding:0;
     }
 
-    /* =========================
-       PART 2: LABEL
-    ========================== */
     .label-section-custom{
       padding:52px 0 40px;
     }
@@ -452,16 +431,13 @@
     }
 
     .label-board-custom{
-      width:86.25%; /* 原本 75% 再加大 15% */
+      width:86.25%;
       margin:20px auto 0;
       border-radius:18px;
       overflow:hidden;
       box-shadow:var(--shadow);
     }
 
-    /* =========================
-       PART 3: EDITIONS
-    ========================== */
     .editions-section{
       width:960px;
       margin:0 auto;
@@ -546,14 +522,14 @@
       z-index:1;
     }
 
-    /* =========================
-       PRODUCTION BANNER
-    ========================== */
     .production-section{
       padding:0 0 34px;
     }
 
+    /* 修改：兩條 banner 唔用 full width，固定跟內容闊度 */
     .production-banner{
+      width:910px;
+      margin:0 auto;
       position:relative;
       overflow:hidden;
       box-shadow:var(--shadow);
@@ -593,9 +569,6 @@
       max-width:300px;
     }
 
-    /* =========================
-       MATERIAL BLOCKS
-    ========================== */
     .materials-content{
       width:840px;
       margin:56px auto 0;
@@ -621,7 +594,7 @@
     }
 
     .materials-thumb.paper-thumb{
-      margin-left:-20px; /* 向左移，對齊上面文字 */
+      margin-left:-20px;
     }
 
     .materials-copy{
@@ -633,11 +606,7 @@
       line-height:1.1;
       margin-bottom:12px;
     }
-    
-.social-strip-full img{
-width:100%;
-display:block;
-}
+
     .materials-copy ul{
       padding-left:18px;
       font-size:14px;
@@ -645,9 +614,6 @@ display:block;
       color:var(--text);
     }
 
-    /* =========================
-       PART 4: DIGITAL
-    ========================== */
     .digital-section{
       width:980px;
       margin:0 auto;
@@ -727,17 +693,21 @@ display:block;
       box-shadow:var(--shadow);
     }
 
+    /* 修改：手機 mockup banner 唔用 full width，固定跟內容闊度 */
     .social-strip-section{
-      margin:54px 0 0;
+      width:910px;
+      margin:54px auto 0;
     }
 
     .social-strip-full{
       box-shadow:var(--shadow);
     }
 
-    /* =========================
-       PART 5: EDITORIAL + RETAIL + BEFORE AFTER
-    ========================== */
+    .social-strip-full img{
+      width:100%;
+      display:block;
+    }
+
     .part5-section{
       width:1040px;
       margin:58px auto 0;
@@ -775,11 +745,10 @@ display:block;
     .retail-banner{
       margin:0 0 24px;
     }
-.retail-banner img{
-width:100%;
-display:block;
-}
+
     .retail-banner img{
+      width:100%;
+      display:block;
       box-shadow:var(--shadow);
     }
 
@@ -823,9 +792,6 @@ display:block;
       color:var(--text);
     }
 
-    /* =========================
-       FOOTER BAR
-    ========================== */
     .bottom-bar{
       width:calc(100% + 40px);
       margin:18px -20px -34px;
@@ -908,7 +874,6 @@ display:block;
         </div>
       </header>
 
-      <!-- PART 1 -->
       <section class="hero">
         <div class="hero-image">
           <div class="hero-overlay-copy">
@@ -935,7 +900,6 @@ display:block;
         </div>
       </section>
 
-      <!-- PART 2 -->
       <section id="process" class="section process-showcase-section">
         <div class="process-large-card">
           <img src="assets/samaroli_designprocess.png" alt="Design Process">
@@ -1001,7 +965,6 @@ display:block;
         </div>
       </section>
 
-      <!-- PART 3 -->
       <section id="editions" class="editions-section">
         <div class="editions-top-line"></div>
 
@@ -1035,7 +998,7 @@ display:block;
 
       <div class="gradient-bar full-bleed"></div>
 
-      <section id="production" class="production-section full-bleed">
+      <section id="production" class="production-section">
         <div class="production-banner">
           <img src="assets/samaroli_-production-banner.png" alt="Production and Material Strategy">
           <div class="production-overlay">
@@ -1095,7 +1058,6 @@ display:block;
         </div>
       </section>
 
-      <!-- PART 4 -->
       <section id="digital" class="digital-section">
         <div class="digital-heading">
           <h2>Digital &amp; Campaign Rollout</h2>
@@ -1150,14 +1112,13 @@ display:block;
           </div>
         </div>
 
-        <div class="social-strip-section full-bleed">
+        <div class="social-strip-section">
           <div class="social-strip-full">
             <img src="assets/samaroli_-social-strip.png" alt="Social strip">
           </div>
         </div>
       </section>
 
-      <!-- PART 5 -->
       <section id="editorial" class="part5-section">
 
         <div class="catalogue-row">
