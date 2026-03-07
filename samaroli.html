@@ -13,6 +13,7 @@
       --line:rgba(255,255,255,.22);
       --menu-bg:rgba(8,8,8,.96);
       --shadow:0 16px 38px rgba(0,0,0,.35);
+      --box-line:rgba(255,255,255,.58);
     }
 
     *{
@@ -298,23 +299,11 @@
       text-align:left;
     }
 
-    .challenge-image-wrap{
-      width:70%;
-      margin:28px auto 0;
-    }
-
-    .challenge-image{
-      border-radius:16px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-
     /* =========================
        PART 2: DESIGN PROCESS
     ========================== */
     .process-showcase-section{
       padding:18px 0 42px;
-      border-top:none;
     }
 
     .process-large-card{
@@ -330,7 +319,6 @@
     ========================== */
     .role-section-custom{
       padding:36px 0 30px;
-      border-top:none;
     }
 
     .role-layout-custom{
@@ -348,11 +336,18 @@
       margin:0;
     }
 
+    .role-copy-col{
+      border:1.5px solid var(--box-line);
+      border-radius:12px;
+      padding:18px 24px 16px;
+    }
+
     .role-list-custom{
       list-style:none;
       color:var(--text);
       font-size:14px;
       line-height:1.9;
+      text-align:left;
     }
 
     .role-list-custom li{
@@ -380,7 +375,6 @@
     ========================== */
     .label-section-custom{
       padding:52px 0 40px;
-      border-top:none;
     }
 
     .label-layout-custom{
@@ -434,7 +428,7 @@
     }
 
     .label-board-custom{
-      width:75%;                     /* 縮小 25% */
+      width:75%;
       margin:20px auto 0;
       border-radius:18px;
       overflow:hidden;
@@ -482,10 +476,11 @@
       position:relative;
       width:370px;
       min-height:148px;
-      border:1.5px solid rgba(255,255,255,.5);
+      border:1.5px solid var(--box-line);
       border-radius:8px;
       padding:26px 24px 20px 88px;
       color:var(--text);
+      z-index:3;
     }
 
     .editions-info-card h4{
@@ -503,14 +498,14 @@
     .editions-small-bottle{
       position:absolute;
       left:-10px;
-      bottom:-86px;
+      bottom:-106px; /* 再壓低去墊住漸變 bar */
       width:92px;
       z-index:5;
     }
 
     .editions-right-circle{
-      width:360px;
-      margin:0 auto;
+      width:288px;   /* 縮細 20% */
+      margin:10px auto 0;
     }
 
     .gradient-bar{
@@ -545,6 +540,33 @@
       height:auto;
     }
 
+    .production-overlay{
+      position:absolute;
+      left:98px;
+      top:94px;
+      width:360px;
+      z-index:4;
+      color:var(--text);
+    }
+
+    .production-overlay h2{
+      font-size:34px;
+      line-height:1.02;
+      margin-bottom:18px;
+    }
+
+    .production-overlay h3{
+      font-size:22px;
+      line-height:1.12;
+      margin-bottom:14px;
+    }
+
+    .production-overlay p{
+      font-size:16px;
+      line-height:1.45;
+      max-width:300px;
+    }
+
     /* =========================
        MATERIAL BLOCKS
     ========================== */
@@ -569,6 +591,11 @@
 
     .materials-thumb{
       box-shadow:var(--shadow);
+      width:340px;
+    }
+
+    .materials-copy{
+      align-self:center;
     }
 
     .materials-copy h4{
@@ -582,6 +609,137 @@
       font-size:14px;
       line-height:1.62;
       color:var(--text);
+    }
+
+    /* =========================
+       PART 4: DIGITAL
+    ========================== */
+    .digital-section{
+      width:980px;
+      margin:0 auto;
+      padding:62px 0 34px;
+    }
+
+    .digital-heading{
+      text-align:center;
+      margin-bottom:46px;
+    }
+
+    .digital-heading h2{
+      font-size:34px;
+      line-height:1.02;
+      margin-bottom:10px;
+    }
+
+    .digital-heading h3{
+      font-size:20px;
+      line-height:1.15;
+      margin-bottom:24px;
+    }
+
+    .digital-heading p{
+      max-width:670px;
+      margin:0 auto;
+      font-size:16px;
+      line-height:1.45;
+      color:var(--text);
+    }
+
+    .digital-layout{
+      display:grid;
+      grid-template-columns:470px 370px;
+      gap:54px;
+      align-items:start;
+      justify-content:center;
+    }
+
+    .digital-left .digital-main-image{
+      box-shadow:var(--shadow);
+      margin-bottom:42px;
+    }
+
+    .digital-box{
+      border:1.5px solid var(--box-line);
+      border-radius:8px;
+      padding:16px 18px;
+      color:var(--text);
+    }
+
+    .digital-box h4{
+      font-size:19px;
+      line-height:1.15;
+      margin-bottom:10px;
+    }
+
+    .digital-box p,
+    .digital-box ul{
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .digital-box ul{
+      padding-left:18px;
+    }
+
+    .digital-right{
+      display:grid;
+      grid-template-columns:1fr;
+      row-gap:28px;
+    }
+
+    .campaign-still{
+      width:280px;
+      margin:0 auto;
+      box-shadow:var(--shadow);
+    }
+
+    .social-strip-section{
+      width:100%;
+      margin:54px 0 0;
+    }
+
+    .social-strip-full{
+      width:100%;
+      box-shadow:var(--shadow);
+    }
+
+    /* =========================
+       PART 4: EDITORIAL
+    ========================== */
+    .editorial-section{
+      width:920px;
+      margin:58px auto 0;
+      padding:0 0 24px;
+    }
+
+    .editorial-layout{
+      display:grid;
+      grid-template-columns:430px 1fr;
+      gap:42px;
+      align-items:start;
+    }
+
+    .editorial-image{
+      box-shadow:var(--shadow);
+    }
+
+    .editorial-copy h2{
+      font-size:34px;
+      line-height:1.05;
+      margin-bottom:18px;
+    }
+
+    .editorial-copy h3{
+      font-size:22px;
+      line-height:1.15;
+      margin-bottom:18px;
+    }
+
+    .editorial-copy p{
+      font-size:16px;
+      line-height:1.48;
+      color:var(--text);
+      max-width:400px;
     }
 
     /* =========================
@@ -632,6 +790,8 @@
             <a href="#label">System</a>
             <a href="#editions">Editions</a>
             <a href="#production">Materials</a>
+            <a href="#digital">Digital</a>
+            <a href="#editorial">Editorial</a>
           </nav>
 
           <div class="site-title">
@@ -771,6 +931,13 @@
       <section id="production" class="production-section">
         <div class="production-banner">
           <img src="assets/samaroli_-production-banner.png" alt="Production and Material Strategy">
+          <div class="production-overlay">
+            <h2>Production &amp;<br>Material Strategy</h2>
+            <h3>Production &amp; Material Strategy</h3>
+            <p>
+              A considered production approach reinforced the brand’s premium positioning through material and finish decisions.
+            </p>
+          </div>
         </div>
 
         <div class="materials-content">
@@ -818,6 +985,84 @@
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <!-- PART 4 -->
+      <section id="digital" class="digital-section">
+        <div class="digital-heading">
+          <h2>Digital &amp; Campaign Rollout</h2>
+          <h3>Brand Extension &amp; Digital Rollout</h3>
+          <p>
+            The packaging system was extended across digital and campaign touchpoints to maintain a unified brand presence.
+          </p>
+        </div>
+
+        <div class="digital-layout">
+          <div class="digital-left">
+            <div class="digital-main-image">
+              <img src="assets/samaroli_-website-application.png" alt="Website Application">
+            </div>
+
+            <div class="digital-box">
+              <h4>Social Media Assets</h4>
+              <ul>
+                <li>Developed launch visuals for limited-edition releases</li>
+                <li>Art-directed product photography for social platforms</li>
+                <li>Maintained a consistent brand tone across campaign touchpoints</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="digital-right">
+            <div class="digital-box">
+              <h4>Website Application</h4>
+              <ul>
+                <li>Adapted packaging hierarchy for product-led web layouts</li>
+                <li>Ensured consistency between physical packaging and online presentation</li>
+                <li>Maintained typographic and visual alignment across product pages</li>
+              </ul>
+            </div>
+
+            <div class="digital-box">
+              <h4>Campaign Film &amp; Social Rollout</h4>
+              <p style="margin-bottom:12px;">
+                Led the end-to-end production of a short-form launch film to support the limited-edition release.
+              </p>
+              <ul>
+                <li>Developed the initial creative concept and visual narrative</li>
+                <li>Directed product cinematography and lighting</li>
+                <li>Managed filming, editing and post-production</li>
+                <li>Optimised content for social-first distribution</li>
+              </ul>
+            </div>
+
+            <div class="campaign-still">
+              <img src="assets/samaroli_-campaign-film.png" alt="Campaign film stills">
+            </div>
+          </div>
+        </div>
+
+        <div class="social-strip-section">
+          <div class="social-strip-full">
+            <img src="assets/samaroli_-social-strip.png" alt="Social strip">
+          </div>
+        </div>
+      </section>
+
+      <section id="editorial" class="editorial-section">
+        <div class="editorial-layout">
+          <div class="editorial-image">
+            <img src="assets/samaroli_-editorial-main.png" alt="Editorial and Retail Application">
+          </div>
+
+          <div class="editorial-copy">
+            <h2>Editorial &amp;<br>Retail Application</h2>
+            <h3>Editorial &amp; Retail Application</h3>
+            <p>
+              The packaging system was further applied across printed and physical brand environments to ensure continuity beyond the label.
+            </p>
+          </div>
         </div>
       </section>
 
