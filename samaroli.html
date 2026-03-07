@@ -1,559 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samaroli – Chi Wai Lau</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root{
-      --bg:#050505;
-      --panel:rgba(40,38,5,0.82);
-      --panel-border:rgba(142,135,53,0.35);
-      --text:#f3f0e6;
-      --muted:#c8c1a3;
-      --line:rgba(255,255,255,0.18);
-      --menu-bg:rgba(8,8,8,0.96);
-    }
+<title>Samaroli – Chi Wai Lau</title>
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+<style>
 
-    html{
-      scroll-behavior:smooth;
-    }
+/* ===== 全局顏色（同主頁一致） ===== */
 
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      color:var(--text);
-      background:
-        linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.72)),
-        url("assets/hero-studio.png") center/cover fixed;
-    }
+:root{
+--bg:#050505;
+--panel:rgba(40,38,5,0.82);
+--panel-border:rgba(142,135,53,0.35);
+--text:#f3f0e6;
+--muted:#c8c1a3;
+--menu-bg:rgba(8,8,8,0.96);
+}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    .page{
-      width:min(1220px,calc(100% - 48px));
-      margin:auto;
-      padding:24px 0 40px;
-    }
+body{
 
-    .frame{
-      background:var(--panel);
-      border:1px solid var(--panel-border);
-      padding:22px 22px 34px;
-      position:relative;
-      overflow:visible;
-    }
+font-family:Arial,Helvetica,sans-serif;
+color:var(--text);
 
-    .site-title{
-      position:absolute;
-      top:140px;
-      left:50%;
-      transform:translateX(-50%);
-      text-align:center;
-      line-height:1;
-      z-index:40;
-    }
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.72)),
+url("assets/hero-studio.png") center/cover fixed;
 
-    .site-title .portfolio-word{
-      display:block;
-      font-size:clamp(16px,1.8vw,22px);
-      font-weight:800;
-      letter-spacing:1px;
-      color:var(--text);
-    }
+}
 
-    .site-title .name-word{
-      display:block;
-      margin-top:3px;
-      font-size:clamp(8px,0.95vw,12px);
-      font-weight:600;
-      letter-spacing:0.6px;
-      color:var(--muted);
-    }
+/* ===== 外框 ===== */
 
-    .topbar{
-      display:flex;
-      justify-content:flex-start;
-      align-items:center;
-      gap:40px;
-      margin-bottom:0;
-      position:relative;
-      z-index:30;
-      padding:4px 0 8px 0;
-    }
+.page{
+width:min(1200px,calc(100% - 60px));
+margin:auto;
+padding:40px 0 60px;
+}
 
-    .nav{
-      display:flex;
-      gap:32px;
-      align-items:center;
-      font-weight:700;
-      color:var(--muted);
-      font-size:18px;
-    }
+.frame{
+background:var(--panel);
+border:1px solid var(--panel-border);
+padding:40px;
+}
 
-    .nav > a,
-    .dropdown > a{
-      display:inline-flex;
-      align-items:center;
-      height:40px;
-      line-height:1;
-    }
+/* ===== Menu ===== */
 
-    .nav a:hover{
-      color:var(--text);
-    }
+.topbar{
+display:flex;
+justify-content:flex-start;
+gap:40px;
+margin-bottom:40px;
+}
 
-    .dropdown{
-      position:relative;
-    }
+.nav{
+display:flex;
+gap:30px;
+font-size:18px;
+font-weight:700;
+color:var(--muted);
+}
 
-    .dropdown::after{
-      content:"";
-      position:absolute;
-      left:0;
-      top:100%;
-      width:100%;
-      height:18px;
-    }
+.nav a:hover{
+color:var(--text);
+}
 
-    .dropdown-menu{
-      position:absolute;
-      top:100%;
-      left:0;
-      min-width:220px;
-      background:var(--menu-bg);
-      border:1px solid rgba(255,255,255,.08);
-      padding:14px 22px;
-      display:none;
-      z-index:50;
-    }
+/* ===== Dropdown ===== */
 
-    .dropdown:hover .dropdown-menu{
-      display:block;
-    }
+.dropdown{
+position:relative;
+}
 
-    .dropdown-menu a{
-      display:block;
-      padding:7px 0;
-      color:var(--muted);
-      font-size:17px;
-      font-weight:700;
-      transition:color .2s ease,transform .2s ease;
-    }
+.dropdown-menu{
 
-    .dropdown-menu a::before{
-      content:"▶ ";
-      font-size:14px;
-      opacity:0;
-      transition:opacity .2s ease;
-    }
+display:none;
 
-    .dropdown-menu a:hover{
-      color:var(--text);
-      transform:translateX(4px);
-    }
+position:absolute;
+top:100%;
+left:0;
 
-    .dropdown-menu a:hover::before{
-      opacity:1;
-    }
+background:var(--menu-bg);
 
-    .hero{
-      margin-top:8px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.05);
-      background:#111;
-    }
+padding:15px 20px;
+min-width:220px;
 
-    .hero img{
-      width:100%;
-      display:block;
-      aspect-ratio:16/10;
-      object-fit:cover;
-      filter:brightness(.9);
-    }
+border:1px solid rgba(255,255,255,.1);
 
-    .hero-copy{
-      padding:clamp(28px,5vw,70px) clamp(24px,5vw,70px);
-      max-width:900px;
-    }
+}
 
-    .eyebrow{
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin-bottom:18px;
-    }
+.dropdown:hover .dropdown-menu{
+display:block;
+}
 
-    h1{
-      font-size:clamp(38px,7vw,92px);
-      line-height:.95;
-      font-weight:700;
-      margin-bottom:20px;
-    }
+.dropdown-menu a{
 
-    .intro{
-      font-size:clamp(18px,2.2vw,28px);
-      line-height:1.45;
-      color:var(--muted);
-      max-width:880px;
-    }
+display:block;
+padding:6px 0;
+color:var(--muted);
+font-weight:700;
 
-    .section{
-      padding:90px 0;
-      border-top:1px solid var(--line);
-    }
+}
 
-    .section:first-of-type{
-      border-top:0;
-    }
+.dropdown-menu a:hover{
+color:var(--text);
+}
 
-    .section-inner{
-      width:min(1040px,100%);
-      margin:auto;
-    }
+/* ===== Hero ===== */
 
-    .section-title{
-      font-size:clamp(26px,4vw,54px);
-      line-height:1;
-      margin-bottom:22px;
-      font-weight:700;
-    }
+.hero-title{
 
-    .section-text{
-      font-size:clamp(16px,1.5vw,22px);
-      line-height:1.7;
-      color:var(--muted);
-      max-width:760px;
-    }
+font-size:42px;
+font-weight:700;
+margin-bottom:20px;
 
-    .split{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:42px;
-      align-items:center;
-    }
+}
 
-    .split.reverse .text-col{
-      order:2;
-    }
+.hero-text{
 
-    .split.reverse .image-col{
-      order:1;
-    }
+font-size:20px;
+color:var(--muted);
+max-width:700px;
+margin-bottom:60px;
 
-    .image-block{
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-    }
+}
 
-    .image-block img{
-      width:100%;
-      display:block;
-      object-fit:cover;
-    }
+/* ===== 圖片排版 ===== */
 
-    .full-image{
-      margin-top:32px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-    }
+.section{
+margin-bottom:120px;
+}
 
-    .full-image img{
-      width:100%;
-      display:block;
-    }
+.section img{
+width:100%;
+margin-top:30px;
+}
 
-    .three-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-      margin-top:32px;
-    }
+.two-grid{
 
-    .card{
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-      padding:22px;
-    }
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
 
-    .card h3{
-      font-size:20px;
-      margin-bottom:12px;
-    }
+}
 
-    .card p{
-      color:var(--muted);
-      line-height:1.65;
-      font-size:15px;
-    }
+/* ===== Footer ===== */
 
-    .quote-block{
-      padding:40px 0 0;
-      font-size:clamp(20px,2.2vw,32px);
-      line-height:1.4;
-      color:var(--text);
-      max-width:900px;
-    }
+.footer{
 
-    .footer{
-      margin-top:34px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.16);
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
-    }
+margin-top:80px;
+padding-top:30px;
 
-    @media (max-width: 900px){
-      .page{
-        width:min(100%,calc(100% - 24px));
-        padding:14px 0 24px;
-      }
+border-top:1px solid rgba(255,255,255,.2);
 
-      .frame{
-        padding:14px 14px 24px;
-      }
+text-align:center;
+color:var(--muted);
 
-      .site-title{
-        top:120px;
-      }
+font-size:14px;
 
-      .topbar{
-        gap:18px;
-        flex-wrap:wrap;
-      }
+}
 
-      .nav{
-        gap:24px;
-        font-size:15px;
-        flex-wrap:wrap;
-      }
+</style>
 
-      .split,
-      .three-grid{
-        grid-template-columns:1fr;
-      }
-
-      .split.reverse .text-col,
-      .split.reverse .image-col{
-        order:initial;
-      }
-
-      .section{
-        padding:54px 0;
-      }
-
-      .dropdown-menu{
-        position:static;
-        display:block;
-        margin-top:12px;
-        min-width:auto;
-        background:rgba(0,0,0,.28);
-      }
-
-      .dropdown::after{
-        display:none;
-      }
-    }
-  </style>
 </head>
+
+
 <body>
-  <div class="page">
-    <div class="frame">
 
-      <div class="site-title">
-        <span class="portfolio-word">PORTFOLIO</span>
-        <span class="name-word">Chi Wai Lau</span>
-      </div>
+<div class="page">
 
-      <header class="topbar">
-        <nav class="nav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Me</a>
+<div class="frame">
 
-          <div class="dropdown">
-            <a href="#">Selected Works</a>
-            <div class="dropdown-menu">
-              <a href="samaroli.html">Samaroli</a>
-              <a href="pizzaexpress.html">Pizzaexpress</a>
-              <a href="canon.html">Canon</a>
-              <a href="kmb.html">KMB</a>
-              <a href="illustration-book.html">Illustration Book</a>
-              <a href="youtube-channel.html">Youtube Channel</a>
-            </div>
-          </div>
-        </nav>
-      </header>
+<!-- ===== Menu Bar ===== -->
 
-      <section class="hero">
-        <img src="assets/samaroli-hero.jpg" alt="Samaroli hero image">
-      </section>
+<header class="topbar">
 
-      <section class="hero-copy">
-        <div class="eyebrow">Packaging System / Samaroli</div>
-        <h1>Samaroli</h1>
-        <p class="intro">
-          A premium packaging system developed for one of the world’s most respected
-          independent whisky bottlers. The project refines typographic hierarchy,
-          label architecture and production detailing to create a more structured,
-          scalable and collectible brand experience.
-        </p>
-      </section>
+<nav class="nav">
 
-      <section class="section">
-        <div class="section-inner split">
-          <div class="text-col">
-            <h2 class="section-title">The Challenge</h2>
-            <p class="section-text">
-              The task was to refine and systemise the label structure while preserving
-              Samaroli’s heritage aesthetic. The design needed to improve clarity,
-              hierarchy and scalability across multiple editions without losing the
-              brand’s long-standing character and collectable appeal.
-            </p>
-          </div>
-          <div class="image-col image-block">
-            <img src="assets/samaroli-detail.jpg" alt="Samaroli label detail">
-          </div>
-        </div>
-      </section>
+<a href="index.html">Home</a>
 
-      <section class="section">
-        <div class="section-inner">
-          <h2 class="section-title">Design Process</h2>
-          <p class="section-text">
-            The project moved from concept references and visual direction into label
-            system development, print refinement and final brand application across
-            physical and digital touchpoints.
-          </p>
+<a href="#">About Me</a>
 
-          <div class="three-grid">
-            <div class="card">
-              <h3>Moodboard & Concept</h3>
-              <p>
-                Visual references rooted in heritage illustration and traditional whisky
-                culture established the overall tone and narrative direction.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Label System</h3>
-              <p>
-                A structured framework was developed to create consistency across
-                multiple releases while allowing room for variation.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Production Testing</h3>
-              <p>
-                Print finishes, colour reproduction and alignment accuracy were refined
-                to ensure premium manufacturing quality.
-              </p>
-            </div>
-          </div>
+<div class="dropdown">
 
-          <div class="full-image">
-            <img src="assets/samaroli-process.jpg" alt="Samaroli process board">
-          </div>
-        </div>
-      </section>
+<a href="#">Selected Works</a>
 
-      <section class="section">
-        <div class="section-inner split reverse">
-          <div class="text-col">
-            <h2 class="section-title">Label System Development</h2>
-            <p class="section-text">
-              A scalable label framework was created to define the relationship between
-              brand, release and technical information. Typography, spacing and image
-              composition were refined to build a strong hierarchy while keeping the
-              distinctive Samaroli character intact.
-            </p>
-          </div>
-          <div class="image-col image-block">
-            <img src="assets/samaroli-label.jpg" alt="Samaroli label system">
-          </div>
-        </div>
-      </section>
+<div class="dropdown-menu">
 
-      <section class="section">
-        <div class="section-inner">
-          <h2 class="section-title">Application Across Editions</h2>
-          <p class="section-text">
-            The updated system was applied consistently across multiple releases,
-            ensuring stronger continuity, improved visual recognition and a clearer
-            structure for future editions.
-          </p>
+<a href="samaroli.html">Samaroli</a>
+<a href="pizzaexpress.html">Pizzaexpress</a>
+<a href="canon.html">Canon</a>
+<a href="kmb.html">KMB</a>
+<a href="illustration-book.html">Illustration Book</a>
+<a href="youtube-channel.html">Youtube Channel</a>
 
-          <div class="full-image">
-            <img src="assets/samaroli-lineup.jpg" alt="Samaroli lineup">
-          </div>
-        </div>
-      </section>
+</div>
 
-      <section class="section">
-        <div class="section-inner split">
-          <div class="text-col">
-            <h2 class="section-title">Production & Material Strategy</h2>
-            <p class="section-text">
-              Production detailing was used as part of the brand experience rather than
-              decoration alone. Finishes such as foil, embossing and stock texture were
-              considered carefully to reinforce Samaroli’s premium positioning.
-            </p>
-          </div>
-          <div class="image-col image-block">
-            <img src="assets/samaroli-packaging.jpg" alt="Samaroli packaging">
-          </div>
-        </div>
-      </section>
+</div>
 
-      <section class="section">
-        <div class="section-inner">
-          <h2 class="section-title">Digital & Brand Extension</h2>
-          <p class="section-text">
-            The packaging system extended beyond the bottle label into digital rollout,
-            presentation materials and campaign assets, allowing the brand to maintain
-            a unified identity across both physical and online touchpoints.
-          </p>
+</nav>
 
-          <div class="full-image">
-            <img src="assets/samaroli-digital.jpg" alt="Samaroli digital rollout">
-          </div>
-        </div>
-      </section>
+</header>
 
-      <section class="section">
-        <div class="section-inner">
-          <h2 class="section-title">Before / After Evolution</h2>
-          <p class="section-text">
-            The evolved system improved typographic hierarchy, spacing, alignment and
-            production clarity while preserving the brand’s heritage and collectable tone.
-          </p>
 
-          <div class="full-image">
-            <img src="assets/samaroli-before-after.jpg" alt="Samaroli before and after">
-          </div>
+<!-- ===== Hero Section ===== -->
 
-          <div class="quote-block">
-            At Samaroli, production detailing is not decorative — it is structural to the brand perception.
-          </div>
-        </div>
-      </section>
+<section class="section">
 
-      <footer class="footer">
-        © 2026 Chi Wai Lau. All Rights Reserved.
-      </footer>
-    </div>
-  </div>
+<h1 class="hero-title">
+Samaroli Whisky Label Design
+</h1>
+
+<p class="hero-text">
+
+Samaroli is one of the most respected independent whisky bottlers in the world.
+This project explores the visual identity and label system created for a range of
+limited edition whisky releases.
+
+The design focuses on typography hierarchy, structured label systems and premium
+printing production to create a distinctive and collectible packaging experience.
+
+</p>
+
+<img src="assets/samaroli-hero.jpg">
+
+</section>
+
+
+<!-- ===== Label Section ===== -->
+
+<section class="section two-grid">
+
+<div>
+
+<h2>Label System</h2>
+
+<p class="hero-text">
+
+Each release follows a structured label framework that balances
+heritage aesthetics with modern clarity.
+
+Typography hierarchy, edition numbering and production information
+are carefully arranged to ensure both readability and premium presence.
+
+</p>
+
+</div>
+
+<img src="assets/samaroli-label.jpg">
+
+</section>
+
+
+<!-- ===== Packaging ===== -->
+
+<section class="section">
+
+<h2 class="hero-title">
+Packaging Design
+</h2>
+
+<img src="assets/samaroli-packaging.jpg">
+
+</section>
+
+
+<!-- ===== Footer ===== -->
+
+<footer class="footer">
+
+© 2026 Chi Wai Lau. All Rights Reserved.
+
+</footer>
+
+
+</div>
+</div>
+
 </body>
 </html>
