@@ -11,7 +11,6 @@
       --panel-border: rgba(142, 135, 53, 0.35);
       --text: #f3f0e6;
       --muted: #c8c1a3;
-      --accent: #8b8440;
       --line: rgba(255,255,255,0.35);
       --menu-bg: rgba(8, 8, 8, 0.96);
     }
@@ -47,32 +46,44 @@
     }
 
     .frame {
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
+      background: rgba(40, 38, 5, 0.82);
+      border: 1px solid rgba(142, 135, 53, 0.35);
       padding: 22px 22px 34px;
+      position: relative;
+      overflow: visible;
     }
 
     .topbar {
       display: flex;
       align-items: flex-start;
       gap: 34px;
-      margin-bottom: 6px;
+      margin-bottom: -30px;
       position: relative;
-      z-index: 20;
+      z-index: 30;
     }
 
     .logo {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border: 3px solid #fff;
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
       flex: 0 0 auto;
-      background: rgba(0,0,0,0.15);
+      position: relative;
+      top: 34px;
+      z-index: 35;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.28);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .nav {
@@ -93,15 +104,11 @@
       position: relative;
     }
 
-    .dropdown-toggle::after {
-      content: "";
-    }
-
     .dropdown-menu {
       position: absolute;
       top: 100%;
       left: 0;
-      min-width: 205px;
+      min-width: 220px;
       background: var(--menu-bg);
       border: 1px solid rgba(255,255,255,0.08);
       padding: 14px 22px;
@@ -119,10 +126,10 @@
       color: var(--muted);
       font-size: 17px;
       font-weight: 700;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
 
-    .dropdown-menu a:first-child::before,
-    .side-list li.active a::before {
+    .dropdown-menu a::before {
       content: "▶ ";
       font-size: 14px;
       vertical-align: middle;
@@ -130,6 +137,7 @@
 
     .dropdown-menu a:hover {
       color: var(--text);
+      transform: translateX(4px);
     }
 
     .hero {
@@ -161,12 +169,16 @@
       height: 94px;
       border: 4px solid rgba(255,255,255,0.96);
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 58px;
-      font-weight: 700;
-      line-height: 1;
+      overflow: hidden;
       background: rgba(0,0,0,0.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .hero-center-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .hero-headline {
@@ -215,10 +227,28 @@
       font-weight: 700;
       color: var(--muted);
       line-height: 1.4;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+      cursor: pointer;
     }
 
+    .side-list a::before {
+      content: "▶ ";
+      font-size: 14px;
+      vertical-align: middle;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .side-list li.active a,
     .side-list a:hover {
       color: var(--text);
+      transform: translateX(4px);
+    }
+
+    .side-list li.active a::before,
+    .side-list a:hover::before {
+      opacity: 1;
     }
 
     .intro {
@@ -226,10 +256,29 @@
       padding-left: 36px;
       max-width: 760px;
       color: var(--muted);
+      min-height: 280px;
+    }
+
+    .intro-content {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .intro-content.fade-out {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .intro h2 {
+      margin: 0 0 20px;
+      color: var(--text);
+      font-size: 28px;
+      line-height: 1.1;
     }
 
     .intro p {
-      margin: 0 0 28px;
+      margin: 0 0 24px;
       font-size: 18px;
       line-height: 1.72;
     }
@@ -238,8 +287,14 @@
       margin-bottom: 0;
     }
 
-    .mobile-note {
-      display: none;
+    .footer {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.16);
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     @media (max-width: 960px) {
@@ -255,6 +310,13 @@
       .topbar {
         gap: 18px;
         flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+
+      .logo {
+        top: 0;
+        width: 58px;
+        height: 58px;
       }
 
       .nav {
@@ -263,16 +325,9 @@
         flex-wrap: wrap;
       }
 
-      .logo {
-        width: 54px;
-        height: 54px;
-        font-size: 32px;
-      }
-
       .hero-center-logo {
         width: 68px;
         height: 68px;
-        font-size: 40px;
         border-width: 3px;
       }
 
@@ -291,6 +346,7 @@
         border-top: 2px solid var(--line);
         padding-left: 0;
         padding-top: 24px;
+        min-height: auto;
       }
 
       .side-list a {
@@ -308,13 +364,6 @@
         min-width: auto;
         background: rgba(0,0,0,0.28);
       }
-
-      .mobile-note {
-        display: block;
-        color: var(--muted);
-        font-size: 13px;
-        margin-top: 4px;
-      }
     }
   </style>
 </head>
@@ -322,20 +371,22 @@
   <div class="page">
     <div class="frame">
       <header class="topbar">
-        <a href="index.html" class="logo">W</a>
+        <a href="index.html" class="logo">
+          <img src="assets/logo.png" alt="Chi Wai Lau logo">
+        </a>
 
         <nav class="nav">
-          <a href="about.html">About Me</a>
+          <a href="#">About Me</a>
 
           <div class="dropdown">
-            <a href="work.html" class="dropdown-toggle">Selected Works</a>
+            <a href="#">Selected Works</a>
             <div class="dropdown-menu">
-              <a href="samaroli.html">Samaroli</a>
-              <a href="pizzaexpress.html">Pizzaexpress</a>
-              <a href="canon.html">Canon</a>
-              <a href="kmb.html">KMB</a>
-              <a href="illustration-book.html">Illustration Book</a>
-              <a href="youtube-channel.html">Youtube Channel</a>
+              <a href="#">Samaroli</a>
+              <a href="#">Pizzaexpress</a>
+              <a href="#">Canon</a>
+              <a href="#">KMB</a>
+              <a href="#">Illustration Book</a>
+              <a href="#">Youtube Channel</a>
             </div>
           </div>
         </nav>
@@ -348,7 +399,11 @@
             src="assets/hero-studio.jpg"
             alt="Creative studio workspace"
           />
-          <div class="hero-center-logo">W</div>
+
+          <div class="hero-center-logo">
+            <img src="assets/logo.png" alt="Chi Wai Lau logo">
+          </div>
+
           <div class="hero-headline">
             Where brand strategy meets craft and visual storytelling.
           </div>
@@ -357,37 +412,143 @@
         <section class="bottom-grid">
           <aside>
             <div class="side-title">Selected Works</div>
-            <ul class="side-list">
-              <li class="active"><a href="samaroli.html">Samaroli</a></li>
-              <li><a href="pizzaexpress.html">Pizzaexpress</a></li>
-              <li><a href="canon.html">Canon</a></li>
-              <li><a href="kmb.html">KMB</a></li>
-              <li><a href="illustration-book.html">Illustration Book</a></li>
-              <li><a href="youtube-channel.html">Youtube Channel</a></li>
+            <ul class="side-list" id="project-list">
+              <li class="active">
+                <a href="#" data-project="samaroli">Samaroli</a>
+              </li>
+              <li>
+                <a href="#" data-project="pizzaexpress">Pizzaexpress</a>
+              </li>
+              <li>
+                <a href="#" data-project="canon">Canon</a>
+              </li>
+              <li>
+                <a href="#" data-project="kmb">KMB</a>
+              </li>
+              <li>
+                <a href="#" data-project="illustration">Illustration Book</a>
+              </li>
+              <li>
+                <a href="#" data-project="youtube">Youtube Channel</a>
+              </li>
             </ul>
           </aside>
 
           <section class="intro">
-            <p>
-              PizzaExpress is one of the most recognisable restaurant brands in the UK,
-              known for its distinctive dining experience and strong visual identity.
-            </p>
-
-            <p>
-              This project explores the development of campaign visuals and branded content
-              designed to enhance the in-restaurant experience while extending the brand
-              narrative across digital and social platforms.
-            </p>
-
-            <p>
-              The work combines food photography, visual storytelling and graphic design
-              to create engaging campaign materials that celebrate the atmosphere and
-              personality of the brand.
-            </p>
+            <div class="intro-content" id="intro-content">
+              <h2>Samaroli</h2>
+              <p>
+                A premium packaging system created for limited-edition whisky releases,
+                focused on hierarchy, label structure and refined production detailing.
+              </p>
+              <p>
+                The project balances heritage aesthetics with a more structured visual
+                system, allowing multiple editions to feel consistent while maintaining
+                their own identity.
+              </p>
+              <p>
+                The work extends beyond the label into boxes, campaign visuals and
+                supporting digital applications.
+              </p>
+            </div>
           </section>
         </section>
       </main>
+
+      <footer class="footer">
+        © 2026 Chi Wai Lau. All Rights Reserved.
+      </footer>
     </div>
   </div>
+
+  <script>
+    const projectData = {
+      samaroli: {
+        title: "Samaroli",
+        paragraphs: [
+          "A premium packaging system created for limited-edition whisky releases, focused on hierarchy, label structure and refined production detailing.",
+          "The project balances heritage aesthetics with a more structured visual system, allowing multiple editions to feel consistent while maintaining their own identity.",
+          "The work extends beyond the label into boxes, campaign visuals and supporting digital applications."
+        ]
+      },
+      pizzaexpress: {
+        title: "Pizzaexpress",
+        paragraphs: [
+          "PizzaExpress is one of the most recognisable restaurant brands in the UK, known for its distinctive dining experience and strong visual identity.",
+          "This project explores the development of campaign visuals and branded content designed to enhance the in-restaurant experience while extending the brand narrative across digital and social platforms.",
+          "The work combines food photography, visual storytelling and graphic design to create engaging campaign materials that celebrate the atmosphere and personality of the brand."
+        ]
+      },
+      canon: {
+        title: "Canon",
+        paragraphs: [
+          "Retail campaign and point-of-sale materials designed to improve product visibility and strengthen brand communication within store environments.",
+          "The work focuses on clear hierarchy, structured layouts and promotional graphics tailored to retail touchpoints and customer engagement.",
+          "It demonstrates the ability to translate product information into visually coherent campaigns with commercial clarity."
+        ]
+      },
+      kmb: {
+        title: "KMB",
+        paragraphs: [
+          "A large-scale public-facing visual project designed for an urban transport environment, where clarity and strong communication were essential.",
+          "The work involved applying brand graphics across formats that needed to remain bold, recognisable and effective in motion.",
+          "It shows the ability to design for high-visibility spaces with practical, real-world constraints."
+        ]
+      },
+      illustration: {
+        title: "Illustration Book",
+        paragraphs: [
+          "A collection of illustration-led work exploring storytelling, character and composition through print-based visual development.",
+          "The project highlights a more expressive side of the portfolio while maintaining strong layout awareness and visual rhythm.",
+          "It demonstrates versatility across concept, drawing and finished presentation."
+        ]
+      },
+      youtube: {
+        title: "Youtube Channel",
+        paragraphs: [
+          "A content-driven project focused on visual storytelling through video, brand presentation and audience engagement.",
+          "The work combines planning, editing, graphics and content structure to create a more dynamic digital presence.",
+          "It reflects a multidisciplinary approach that extends beyond static design into motion and communication."
+        ]
+      }
+    };
+
+    const links = document.querySelectorAll(".side-list a");
+    const listItems = document.querySelectorAll(".side-list li");
+    const introContent = document.getElementById("intro-content");
+
+    function renderProject(projectKey) {
+      const project = projectData[projectKey];
+      if (!project) return;
+
+      introContent.classList.add("fade-out");
+
+      setTimeout(() => {
+        introContent.innerHTML = `
+          <h2>${project.title}</h2>
+          <p>${project.paragraphs[0]}</p>
+          <p>${project.paragraphs[1]}</p>
+          <p>${project.paragraphs[2]}</p>
+        `;
+        introContent.classList.remove("fade-out");
+      }, 180);
+    }
+
+    links.forEach(link => {
+      link.addEventListener("mouseenter", function(e) {
+        e.preventDefault();
+
+        listItems.forEach(item => item.classList.remove("active"));
+        this.parentElement.classList.add("active");
+
+        const projectKey = this.getAttribute("data-project");
+        renderProject(projectKey);
+      });
+
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+      });
+    });
+  </script>
 </body>
 </html>
