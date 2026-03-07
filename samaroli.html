@@ -1,348 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samaroli – Chi Wai Lau Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samaroli Section Preview</title>
 
-<style>
+  <style>
+    :root{
+      --bg:#070704;
+      --panel:rgba(40,38,5,.86);
+      --panel-border:rgba(188,178,110,.28);
+      --text:#f3f0e6;
+      --muted:#c8c1a3;
+      --line:rgba(255,255,255,.16);
+      --menu-bg:rgba(8,8,8,.96);
+      --card:rgba(255,255,255,.03);
+    }
 
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#0b0b04;
-color:#f3f0e6;
-margin:0;
-}
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-.page{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
-}
+    html{
+      scroll-behavior:smooth;
+    }
 
-.section{
-margin:80px 0;
-}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.76)),
+        url("assets/hero-studio.png") center center / cover no-repeat fixed;
+    }
 
-h1{
-font-size:60px;
-margin-bottom:10px;
-}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-h2{
-font-size:36px;
-margin-bottom:20px;
-}
+    img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
 
-p{
-color:#c8c1a3;
-line-height:1.7;
-}
+    .page{
+      width:min(1280px,calc(100% - 40px));
+      margin:0 auto;
+      padding:24px 0 40px;
+    }
 
-img{
-width:100%;
-display:block;
-}
+    .frame{
+      position:relative;
+      background:rgba(40,38,5,.86);
+      border:1px solid var(--panel-border);
+      padding:20px 20px 34px;
+      overflow:hidden;
+    }
 
-.hero{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-align-items:center;
-}
+    /* =========================
+       Top bar
+    ========================== */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      padding:14px 18px;
+      margin:-20px -20px 0 -20px;
+      background:#000;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      position:relative;
+      z-index:60;
+    }
 
-.hero img{
-border-radius:4px;
-}
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      min-width:0;
+    }
 
-.grid-2{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-align-items:center;
-}
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      margin-left:auto;
+      min-width:0;
+    }
 
-.grid-3{
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-gap:30px;
-}
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border:2px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:24px;
+      color:var(--text);
+      flex:0 0 auto;
+    }
 
-.grid-4{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
+    .nav{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      font-weight:700;
+      color:var(--muted);
+      font-size:14px;
+      min-width:0;
+    }
 
-.center{
-text-align:center;
-}
+    .nav > a,
+    .dropdown > a{
+      display:inline-flex;
+      align-items:center;
+      height:32px;
+      line-height:1;
+      white-space:nowrap;
+    }
 
-.circle img{
-border-radius:50%;
-}
+    .nav a:hover{
+      color:var(--text);
+    }
 
-.banner img{
-width:100%;
-}
+    .dropdown{
+      position:relative;
+    }
 
-.footer{
-margin-top:80px;
-text-align:center;
-color:#aaa;
-font-size:14px;
-border-top:1px solid #333;
-padding-top:30px;
-}
+    .dropdown::after{
+      content:"";
+      position:absolute;
+      left:0;
+      top:100%;
+      width:100%;
+      height:14px;
+    }
 
-</style>
+    .dropdown-menu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:210px;
+      background:var(--menu-bg);
+      border:1px solid rgba(255,255,255,.08);
+      padding:12px 18px;
+      display:none;
+      z-index:50;
+    }
+
+    .dropdown:hover .dropdown-menu{
+      display:block;
+    }
+
+    .dropdown-menu a{
+      display:block;
+      padding:6px 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+      transition:color .2s ease, transform .2s ease;
+    }
+
+    .dropdown-menu a::before{
+      content:"▶ ";
+      opacity:0;
+      transition:opacity .2s ease;
+      font-size:12px;
+    }
+
+    .dropdown-menu a:hover{
+      color:var(--text);
+      transform:translateX(4px);
+    }
+
+    .dropdown-menu a:hover::before{
+      opacity:1;
+    }
+
+    .quick-links-inline{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .quick-links-inline a{
+      transition:color .2s ease, opacity .2s ease;
+      opacity:.95;
+    }
+
+    .quick-links-inline a:hover{
+      color:var(--text);
+      opacity:1;
+    }
+
+    .site-title{
+      position:static;
+      transform:none;
+      text-align:right;
+      line-height:1;
+      flex:0 0 auto;
+    }
+
+    .portfolio-word{
+      display:block;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1px;
+      color:var(--text);
+    }
+
+    .name-word{
+      display:block;
+      margin-top:2px;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.6px;
+      color:var(--muted);
+    }
+
+    /* =========================
+       Hero
+    ========================== */
+    .hero{
+      margin:0 -20px 0 -20px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-image{
+      position:relative;
+      min-height:360px;
+      background:url("assets/samaroli_-hero.png") center center / cover no-repeat;
+    }
+
+    .hero-overlay-copy{
+      position:absolute;
+      left:60px;
+      bottom:48px;
+      max-width:420px;
+      z-index:2;
+    }
+
+    .hero-title{
+      font-size:62px;
+      line-height:.95;
+      font-weight:700;
+      margin-bottom:8px;
+      color:var(--text);
+    }
+
+    .hero-subtitle{
+      font-size:22px;
+      line-height:1.1;
+      color:var(--text);
+      margin-bottom:18px;
+    }
+
+    .hero-meta{
+      color:var(--text);
+      font-size:13px;
+      line-height:1.7;
+      max-width:360px;
+    }
+
+    /* =========================
+       Section
+    ========================== */
+    .section{
+      padding:36px 0 42px;
+      border-top:1px solid var(--line);
+    }
+
+    .section:first-of-type{
+      border-top:0;
+    }
+
+    .section-title{
+      font-size:34px;
+      line-height:1.02;
+      font-weight:700;
+      margin-bottom:16px;
+      color:var(--text);
+    }
+
+    .body-copy{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.65;
+    }
+
+    .body-copy ul{
+      margin:14px 0 0 18px;
+    }
+
+    .body-copy li{
+      margin:6px 0;
+    }
+
+    /* =========================
+       Challenge
+    ========================== */
+    .challenge-wrap{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:34px;
+      align-items:start;
+    }
+
+    .challenge-text{
+      max-width:620px;
+    }
+
+    .image-card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .challenge-image{
+      aspect-ratio:16/10;
+      overflow:hidden;
+    }
+
+    .challenge-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* =========================
+       Mobile
+    ========================== */
+    @media (max-width:1100px){
+      .topbar{
+        flex-wrap:wrap;
+        gap:16px;
+      }
+
+      .topbar-left,
+      .topbar-right{
+        width:100%;
+      }
+
+      .topbar-right{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+
+      .quick-links-inline{
+        flex-wrap:wrap;
+        gap:10px 14px;
+      }
+
+      .hero-image{
+        min-height:300px;
+      }
+
+      .hero-overlay-copy{
+        left:24px;
+        right:24px;
+        bottom:24px;
+        max-width:340px;
+      }
+
+      .hero-title{
+        font-size:42px;
+      }
+
+      .hero-subtitle{
+        font-size:18px;
+      }
+
+      .challenge-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="page">
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div>
-
-<h1>Samaroli</h1>
-<p>Packaging System</p>
-
-<p>
-Premium Packaging System & Brand Execution<br>
-Role: Lead Designer — Packaging & Brand Rollout
-</p>
-
-</div>
-
-<div>
-
-<img src="assets/samaroli_-hero.png">
-
-</div>
-
-</section>
-
-<!-- CHALLENGE -->
-
-<section class="section grid-2">
-
-<div>
-
-<h2>The Challenge</h2>
-
-<p>
-Refined and systemised the label structure to improve hierarchy,
-scalability and production consistency.
-</p>
-
-</div>
-
-<div>
-
-<img src="assets/samaroli_designprocess.png">
-
-</div>
-
-</section>
-
-<!-- DESIGN PROCESS -->
-
-<section class="section">
-
-<h2 class="center">Design Process</h2>
-
-<div class="grid-4">
-
-<img src="assets/samaroli_designprocess.png">
-<img src="assets/samaroli_designprocess.png">
-<img src="assets/samaroli_designprocess.png">
-<img src="assets/samaroli_designprocess.png">
-
-</div>
-
-</section>
-
-<!-- MY ROLE -->
-
-<section class="section grid-2">
-
-<div>
-
-<h2>My Role</h2>
-
-<ul>
-<li>Led the refinement of Samaroli label system</li>
-<li>Developed scalable packaging framework</li>
-<li>Directed typography & layout hierarchy</li>
-</ul>
-
-</div>
-
-<div>
-
-<ul>
-<li>Managed print production specification</li>
-<li>Oversaw proofing & colour testing</li>
-<li>Defined packaging guidelines</li>
-</ul>
-
-</div>
-
-</section>
-
-<!-- LABEL SYSTEM -->
-
-<section class="section grid-2">
-
-<div>
-
-<h2>Label System Development</h2>
-
-<p>
-A structured label framework was developed
-to ensure consistency across Samaroli releases.
-</p>
-
-</div>
-
-<div>
-
-<img src="assets/samaroli_-system-board.png">
-
-</div>
-
-</section>
-
-<!-- EDITIONS -->
-
-<section class="section grid-2">
-
-<div>
-
-<h2>Application Across Editions</h2>
-
-<p>
-The label system was applied across
-multiple Samaroli releases.
-</p>
-
-</div>
-
-<div class="circle">
-
-<img src="assets/samaroli_-editions-circle.png">
-
-</div>
-
-</section>
-
-<!-- PRODUCTION -->
-
-<section class="section banner">
-
-<img src="assets/samaroli_-production-banner.png">
-
-</section>
-
-<!-- MATERIAL -->
-
-<section class="section grid-3">
-
-<div>
-<img src="assets/samaroli_-foil.png">
-</div>
-
-<div>
-<img src="assets/samaroli_-paper.png">
-</div>
-
-<div>
-<img src="assets/samaroli_-proof.png">
-</div>
-
-</section>
-
-<!-- DIGITAL -->
-
-<section class="section">
-
-<h2 class="center">Digital & Campaign Rollout</h2>
-
-<div class="grid-2">
-
-<img src="assets/samaroli_-website-application.png">
-
-<img src="assets/samaroli_-campaign-film.png">
-
-</div>
-
-<img src="assets/samaroli_-social-strip.png">
-
-</section>
-
-<!-- EDITORIAL -->
-
-<section class="section grid-2">
-
-<div>
-
-<img src="assets/samaroli_-editorial-main.png">
-
-<img src="assets/samaroli_-editorial-samll-1.png">
-
-</div>
-
-<div>
-
-<h2>Editorial & Retail Application</h2>
-
-<p>
-The label system was further applied across
-printed and physical brand environments.
-</p>
-
-</div>
-
-</section>
-
-<!-- RETAIL -->
-
-<section class="section">
-
-<img src="assets/samaroli_-retail-row.png">
-
-</section>
-
-<!-- BEFORE AFTER -->
-
-<section class="section grid-2">
-
-<img src="assets/samaroli_-before-after.png">
-
-<div>
-
-<h2>Before / After Evolution</h2>
-
-<p>
-The evolved label system strengthened typographic hierarchy
-while preserving brand heritage.
-</p>
-
-</div>
-
-</section>
-
-<div class="footer">
-
-© 2026 Chi Wai Lau. All Rights Reserved.
-
-</div>
-
-</div>
-
+  <div class="page">
+    <div class="frame">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <a href="index.html" class="brand-mark">W</a>
+
+          <nav class="nav">
+            <a href="index.html">About Me</a>
+
+            <div class="dropdown">
+              <a href="#">Selected Works</a>
+              <div class="dropdown-menu">
+                <a href="samaroli.html">Samaroli</a>
+                <a href="pizzaexpress.html">Pizzaexpress</a>
+                <a href="canon.html">Canon</a>
+                <a href="kmb.html">KMB</a>
+                <a href="illustration-book.html">Illustration Book</a>
+                <a href="youtube-channel.html">Youtube Channel</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="topbar-right">
+          <nav class="quick-links-inline">
+            <a href="#challenge">Challenge</a>
+            <a href="#process">Process</a>
+            <a href="#role">My Role</a>
+            <a href="#label">System</a>
+            <a href="#editions">Editions</a>
+            <a href="#production">Materials</a>
+            <a href="#digital">Digital</a>
+            <a href="#editorial">Editorial</a>
+            <a href="#evolution">Evolution</a>
+          </nav>
+
+          <div class="site-title">
+            <span class="portfolio-word">PORTFOLIO</span>
+            <span class="name-word">Chi Wai Lau</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-image">
+          <div class="hero-overlay-copy">
+            <h1 class="hero-title">Samaroli</h1>
+            <div class="hero-subtitle">Packaging System</div>
+
+            <div class="hero-meta">
+              <div>Premium Packaging System &amp; Brand Execution</div>
+              <div>Role: Lead Designer — Packaging &amp; Brand Rollout</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenge" class="section challenge-section">
+        <div class="challenge-wrap">
+          <div class="challenge-text">
+            <h2 class="section-title">The Challenge</h2>
+            <div class="body-copy">
+              Refined and systemised the label structure to improve hierarchy, scalability and production consistency, while preserving Samaroli’s heritage aesthetic.
+              <ul>
+                <li>Maintaining brand legacy while appealing to a modern audience.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="image-card challenge-image">
+            <img src="assets/samaroli_designprocess.png" alt="Samaroli design process">
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
 </body>
 </html>
