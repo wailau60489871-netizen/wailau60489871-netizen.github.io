@@ -4,19 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chi Wai Lau Portfolio</title>
+
   <style>
+    /* =========================================
+       網站全局顏色設定
+       想改整體顏色，主要改呢度
+    ========================================= */
     :root {
-      --bg: #050505;
-      --panel: rgba(40, 38, 5, 0.82);
-      --panel-border: rgba(142, 135, 53, 0.35);
-      --text: #f3f0e6;
-      --muted: #c8c1a3;
-      --line: rgba(255,255,255,0.35);
-      --menu-bg: rgba(8, 8, 8, 0.96);
-      --button-bg: rgba(255,255,255,0.06);
-      --button-border: rgba(255,255,255,0.24);
+      --bg: #050505;                             /* 網站最底背景色 */
+      --panel: rgba(40, 38, 5, 0.82);           /* 主框背景色 */
+      --panel-border: rgba(142, 135, 53, 0.35); /* 主框邊框色 */
+      --text: #f3f0e6;                           /* 主要文字色 */
+      --muted: #c8c1a3;                          /* 次要文字色 */
+      --line: rgba(255,255,255,0.35);           /* 分隔線顏色 */
+      --menu-bg: rgba(8, 8, 8, 0.96);           /* 下拉選單背景色 */
+      --button-bg: rgba(255,255,255,0.06);      /* 按鈕底色 */
+      --button-border: rgba(255,255,255,0.24);  /* 按鈕邊框色 */
     }
 
+    /* =========================================
+       全局基礎設定
+    ========================================= */
     * {
       box-sizing: border-box;
     }
@@ -29,6 +37,10 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    /* =========================================
+       網站大背景圖
+       如要改主背景圖，改 assets/hero-studio.png
+    ========================================= */
     body {
       min-height: 100vh;
       background:
@@ -41,12 +53,18 @@
       text-decoration: none;
     }
 
+    /* =========================================
+       網站外框寬度
+    ========================================= */
     .page {
       width: min(1220px, calc(100% - 48px));
       margin: 0 auto;
       padding: 24px 0 40px;
     }
 
+    /* =========================================
+       主內容面板
+    ========================================= */
     .frame {
       background: rgba(40, 38, 5, 0.82);
       border: 1px solid rgba(142, 135, 53, 0.35);
@@ -55,53 +73,62 @@
       overflow: visible;
     }
 
-.site-title {
-  position: absolute;
-  top: 140px;   /* 控制貼住logo底 */
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  line-height: 1;
-  z-index: 40;
-}
+    /* =========================================
+       頂部網站名稱
+       PORTFOLIO / Chi Wai Lau
+       如要改位置大小，主要改呢區
+    ========================================= */
+    .site-title {
+      position: absolute;
+      top: 140px;                 /* 控制標題上下位置 */
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      line-height: 1;
+      z-index: 40;
+    }
 
-.site-title .portfolio-word {
-  display: block;
-  font-size: clamp(16px, 1.8vw, 22px);
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: var(--text);
-}
+    .site-title .portfolio-word {
+      display: block;
+      font-size: clamp(16px, 1.8vw, 22px); /* PORTFOLIO 字體大小 */
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text);
+    }
 
-.site-title .name-word {
-  display: block;
-  margin-top: 3px;
-  font-size: clamp(8px, 0.95vw, 12px);
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  color: var(--muted);
-}
+    .site-title .name-word {
+      display: block;
+      margin-top: 3px;
+      font-size: clamp(8px, 0.95vw, 12px); /* Chi Wai Lau 字體大小 */
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+    }
 
-.topbar {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 30;
-  padding: 4px 0 8px 0;
-}
+    /* =========================================
+       頂部 Menu Bar
+       About Me / Selected Works
+    ========================================= */
+    .topbar {
+      display: flex;
+      justify-content: flex-start; /* Menu 靠左 */
+      align-items: center;
+      gap: 40px;                   /* Menu 項目距離 */
+      margin-bottom: 0;
+      position: relative;
+      z-index: 30;
+      padding: 4px 0 8px 0;
+    }
 
-.nav {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-  padding-top: 0;
-  font-weight: 700;
-  color: var(--muted);
-  font-size: 18px;
-}
+    .nav {
+      display: flex;
+      gap: 32px;                   /* About Me 同 Selected Works 之間距離 */
+      align-items: center;
+      padding-top: 0;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 18px;             /* 頂部 Menu 字體大小 */
+    }
 
     .nav > a,
     .dropdown > a {
@@ -115,10 +142,14 @@
       color: var(--text);
     }
 
+    /* =========================================
+       Selected Works 下拉選單
+    ========================================= */
     .dropdown {
       position: relative;
     }
 
+    /* 防止移鼠標到 dropdown menu 時太快消失 */
     .dropdown::after {
       content: "";
       position: absolute;
@@ -154,6 +185,7 @@
       transition: color 0.2s ease, transform 0.2s ease;
     }
 
+    /* Selected Works 入面箭嘴，hover 先出現 */
     .dropdown-menu a::before {
       content: "▶ ";
       font-size: 14px;
@@ -171,6 +203,9 @@
       opacity: 1;
     }
 
+    /* =========================================
+       Hero 區域
+    ========================================= */
     .hero {
       position: relative;
       margin-top: 8px;
@@ -191,9 +226,13 @@
       filter: brightness(0.88);
     }
 
+    /* =========================================
+       Hero 中間圓形 Logo
+       如想移除，刪 HTML 內 hero-center-logo 個 div
+    ========================================= */
     .hero-center-logo {
       position: absolute;
-      top: 14%;
+      top: 14%;                    /* 控制圓形 logo 高度 */
       left: 50%;
       transform: translateX(-50%);
       width: 94px;
@@ -212,18 +251,26 @@
       display: block;
     }
 
-.hero-headline {
-  position: absolute;
-  top: 32%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(70%, 600px);
-  text-align: center;
-  font-size: clamp(14px, 2vw, 30px);
-  line-height: 1.2;
-  font-weight: 700;
-}
+    /* =========================================
+       Hero 中間主標題
+       想改位置：改 top
+       想改大小：改 font-size
+    ========================================= */
+    .hero-headline {
+      position: absolute;
+      top: 32%;                    /* Hero headline 高度 */
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(70%, 600px);
+      text-align: center;
+      font-size: clamp(14px, 2vw, 30px); /* Hero headline 字體大小 */
+      line-height: 1.2;
+      font-weight: 700;
+    }
 
+    /* =========================================
+       下方內容區：左邊作品列表 + 右邊作品詳情
+    ========================================= */
     .bottom-grid {
       display: grid;
       grid-template-columns: 320px 1fr;
@@ -234,6 +281,9 @@
       padding-right: 12px;
     }
 
+    /* =========================================
+       左邊 Selected Works 區
+    ========================================= */
     .side-panel {
       padding-left: 8px;
     }
@@ -259,7 +309,7 @@
     }
 
     .side-list a {
-      font-size: 22px;
+      font-size: 22px;             /* 左邊 project list 字體大小 */
       font-weight: 700;
       color: var(--muted);
       line-height: 1.4;
@@ -268,6 +318,7 @@
       cursor: pointer;
     }
 
+    /* 左邊 project list 箭嘴，hover 先出現 */
     .side-list a::before {
       content: "▶ ";
       font-size: 14px;
@@ -286,11 +337,16 @@
       opacity: 1;
     }
 
+    /* =========================================
+       右邊作品詳情區
+       想改高度：改 height
+       想長期見到 scrollbar：保留 overflow-y: scroll
+    ========================================= */
     .project-detail {
       border-left: 2px solid var(--line);
       padding-left: 40px;
-      height: 520px;
-      overflow-y: scroll;
+      height: 520px;               /* 右邊詳情區高度 */
+      overflow-y: scroll;          /* 長期顯示 scrollbar */
       padding-right: 18px;
       scrollbar-width: auto;
       scrollbar-color: rgba(255,255,255,0.45) rgba(255,255,255,0.08);
@@ -309,6 +365,9 @@
       border-radius: 20px;
     }
 
+    /* =========================================
+       右邊內部結構：左圖 + 右文字
+    ========================================= */
     .project-grid {
       display: grid;
       grid-template-columns: 320px 1fr;
@@ -316,6 +375,9 @@
       align-items: start;
     }
 
+    /* =========================================
+       左邊作品預覽圖 + Button
+    ========================================= */
     .project-preview {
       display: flex;
       flex-direction: column;
@@ -327,7 +389,7 @@
 
     .project-preview-image {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1 / 1;         /* 正方形圖片 */
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(0,0,0,0.25);
@@ -367,10 +429,14 @@
       transform: translateY(-1px);
     }
 
+    /* =========================================
+       右邊文字區
+       想改字體大小可改呢度
+    ========================================= */
     .project-copy h2 {
       margin: 0 0 20px;
       color: var(--text);
-      font-size: 28px;
+      font-size: 28px;             /* 標題字體大小 */
       line-height: 1.1;
       min-height: 34px;
       white-space: pre-wrap;
@@ -378,13 +444,16 @@
 
     .project-copy p {
       margin: 0 0 24px;
-      font-size: 18px;
+      font-size: 18px;             /* 內文字體大小 */
       line-height: 1.72;
       min-height: 32px;
       white-space: pre-wrap;
       color: var(--muted);
     }
 
+    /* =========================================
+       打字動畫游標
+    ========================================= */
     .typing-cursor::after {
       content: "|";
       display: inline-block;
@@ -398,6 +467,9 @@
       50%, 100% { opacity: 0; }
     }
 
+    /* =========================================
+       底部 Footer
+    ========================================= */
     .footer {
       margin-top: 34px;
       padding-top: 18px;
@@ -408,6 +480,9 @@
       line-height: 1.6;
     }
 
+    /* =========================================
+       手機版 Responsive
+    ========================================= */
     @media (max-width: 960px) {
       .page {
         width: min(100%, calc(100% - 24px));
@@ -502,11 +577,19 @@
 <body>
   <div class="page">
     <div class="frame">
+
+      <!-- =====================================
+           網站頂部名稱
+           想改字就改呢兩行
+      ====================================== -->
       <div class="site-title">
         <span class="portfolio-word">PORTFOLIO</span>
         <span class="name-word">Chi Wai Lau</span>
       </div>
 
+      <!-- =====================================
+           頂部 Menu
+      ====================================== -->
       <header class="topbar">
         <nav class="nav">
           <a href="#">About Me</a>
@@ -525,6 +608,9 @@
         </nav>
       </header>
 
+      <!-- =====================================
+           Hero 主圖區
+      ====================================== -->
       <main class="hero">
         <div class="hero-image-wrap">
           <img
@@ -533,16 +619,23 @@
             alt="Creative studio workspace"
           />
 
+          <!-- Hero 中間圓形 Logo -->
           <div class="hero-center-logo">
             <img src="assets/logo.png" alt="Chi Wai Lau logo">
           </div>
 
+          <!-- Hero 標題 -->
           <div class="hero-headline">
             Where brand strategy meets craft and visual storytelling.
           </div>
         </div>
 
+        <!-- =====================================
+             下方：左邊作品列表 + 右邊詳情
+        ====================================== -->
         <section class="bottom-grid">
+
+          <!-- 左邊作品列表 -->
           <aside class="side-panel">
             <div class="side-title">Selected Works</div>
             <ul class="side-list" id="project-list">
@@ -567,8 +660,11 @@
             </ul>
           </aside>
 
+          <!-- 右邊項目詳情 -->
           <section class="project-detail" id="projectDetail">
             <div class="project-grid">
+
+              <!-- 左邊預覽圖 + 按鈕 -->
               <div class="project-preview">
                 <div class="project-preview-image">
                   <img id="projectImage" src="assets/samaroli.jpg" alt="Project preview">
@@ -578,6 +674,7 @@
                 </div>
               </div>
 
+              <!-- 右邊文字介紹 -->
               <div class="project-copy">
                 <h2 id="introTitle"></h2>
                 <p id="introP1"></p>
@@ -589,6 +686,7 @@
         </section>
       </main>
 
+      <!-- Footer -->
       <footer class="footer">
         © 2026 Chi Wai Lau. All Rights Reserved.
       </footer>
@@ -596,6 +694,14 @@
   </div>
 
   <script>
+    /* =========================================
+       Project 資料區
+       日後要改作品內容，主要改呢度：
+       - title = 項目名稱
+       - image = 圖片路徑
+       - link = 內頁連結
+       - paragraphs = 介紹文字
+    ========================================= */
     const projectData = {
       samaroli: {
         title: "Samaroli",
@@ -659,6 +765,9 @@
       }
     };
 
+    /* =========================================
+       抓取頁面元素
+    ========================================= */
     const links = document.querySelectorAll(".side-list a");
     const listItems = document.querySelectorAll(".side-list li");
     const introTitle = document.getElementById("introTitle");
@@ -669,9 +778,15 @@
     const projectButton = document.getElementById("projectButton");
     const projectDetail = document.getElementById("projectDetail");
 
+    /* =========================================
+       打字動畫用變數
+    ========================================= */
     let typingTimeouts = [];
     let activeTypingToken = 0;
 
+    /* =========================================
+       清除舊打字動畫
+    ========================================= */
     function clearTyping() {
       typingTimeouts.forEach(timeout => clearTimeout(timeout));
       typingTimeouts = [];
@@ -685,6 +800,10 @@
       introP3.classList.remove("typing-cursor");
     }
 
+    /* =========================================
+       打字效果函數
+       speed 數字越細 = 越快
+    ========================================= */
     function typeText(element, text, speed, startDelay, token) {
       element.textContent = "";
       element.classList.add("typing-cursor");
@@ -703,6 +822,13 @@
       return startDelay + text.length * speed;
     }
 
+    /* =========================================
+       切換 Project 顯示內容
+       包括：
+       - 圖片
+       - 按鈕連結
+       - 打字文字
+    ========================================= */
     function renderProject(projectKey) {
       const project = projectData[projectKey];
       if (!project) return;
@@ -713,6 +839,7 @@
       clearTyping();
       projectDetail.scrollTop = 0;
 
+      /* 切換圖片 */
       projectImage.style.opacity = 0;
       setTimeout(() => {
         if (currentToken !== activeTypingToken) return;
@@ -721,17 +848,28 @@
         projectImage.style.opacity = 1;
       }, 120);
 
+      /* 切換按鈕連結 */
       projectButton.href = project.link;
 
+      /* ===== 打字速度控制 =====
+         1 = 超快
+         3 = 非常快
+         5 = 中等
+         8 = 慢
+      */
       let delay = 0;
       const speed = 3;
 
+      /* ===== 每段之間停頓 ===== */
       delay = typeText(introTitle, project.title, speed, delay, currentToken) + 100;
       delay = typeText(introP1, project.paragraphs[0], speed, delay, currentToken) + 70;
       delay = typeText(introP2, project.paragraphs[1], speed, delay, currentToken) + 70;
       typeText(introP3, project.paragraphs[2], speed, delay, currentToken);
     }
 
+    /* =========================================
+       左邊作品列表 hover 事件
+    ========================================= */
     links.forEach(link => {
       link.addEventListener("mouseenter", function(e) {
         e.preventDefault();
@@ -748,6 +886,9 @@
       });
     });
 
+    /* =========================================
+       預設顯示第一個 Project
+    ========================================= */
     renderProject("samaroli");
   </script>
 </body>
