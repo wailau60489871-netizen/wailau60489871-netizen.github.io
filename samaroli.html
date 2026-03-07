@@ -15,6 +15,7 @@
       --line:rgba(255,255,255,.16);
       --menu-bg:rgba(8,8,8,.96);
       --card:rgba(255,255,255,.03);
+      --shadow:0 16px 38px rgba(0,0,0,.35);
     }
 
     *{
@@ -304,34 +305,192 @@
       margin:6px 0;
     }
 
+    .image-card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+    }
+
     /* =========================
-       Challenge
+       Part 1: The Challenge
     ========================== */
+    .challenge-section{
+      padding:36px 0 28px;
+    }
+
     .challenge-wrap{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:34px;
+      grid-template-columns:1fr;
+      gap:28px;
       align-items:start;
     }
 
     .challenge-text{
-      max-width:620px;
+      max-width:920px;
+      padding-left:32px;   /* 文字向右少少 */
+      padding-right:24px;
     }
 
-    .image-card{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.12);
+    .challenge-image-wrap{
+      width:70%;           /* 圖縮細 30% */
+      margin:0 auto;
     }
 
     .challenge-image{
-      aspect-ratio:16/10;
+      border-radius:16px;  /* 圓角 */
       overflow:hidden;
     }
 
     .challenge-image img{
       width:100%;
-      height:100%;
-      object-fit:cover;
+      height:auto;
+      display:block;
+    }
+
+    /* =========================
+       Part 2: Design Process
+    ========================== */
+    .process-showcase-section{
+      padding:18px 0 42px;
+    }
+
+    .process-large-card{
+      width:min(100%, 910px);
+      margin:0 auto;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .process-large-card img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    /* =========================
+       Part 2: My Role
+    ========================== */
+    .role-section-custom{
+      padding:36px 0 30px;
+    }
+
+    .role-layout-custom{
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:46px;
+      align-items:start;
+      width:min(100%, 910px);
+      margin:0 auto;
+    }
+
+    .role-title-large{
+      font-size:44px;
+      line-height:1;
+      margin:0;
+    }
+
+    .role-list-custom{
+      list-style:none;
+      color:var(--text);
+      font-size:14px;
+      line-height:1.9;
+      padding:0;
+      margin:0;
+    }
+
+    .role-list-custom li{
+      position:relative;
+      padding-left:14px;
+    }
+
+    .role-list-custom li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--text);
+    }
+
+    /* =========================
+       Divider
+    ========================== */
+    .section-divider-line{
+      width:min(100%, 910px);
+      margin:0 auto;
+      border-top:1px solid rgba(255,255,255,.5);
+      padding:0;
+    }
+
+    /* =========================
+       Part 2: Label System Development
+    ========================== */
+    .label-section-custom{
+      padding:52px 0 34px;
+    }
+
+    .label-layout-custom{
+      display:grid;
+      grid-template-columns:1fr 390px;
+      gap:34px;
+      align-items:start;
+      width:min(100%, 910px);
+      margin:0 auto;
+    }
+
+    .label-main-title{
+      font-size:42px;
+      line-height:1.02;
+      margin:0 0 28px 0;
+    }
+
+    .label-subtitle{
+      font-size:22px;
+      line-height:1.2;
+      margin:0 0 14px 0;
+      color:var(--text);
+    }
+
+    .label-intro-copy{
+      color:var(--text);
+      font-size:17px;
+      line-height:1.5;
+      max-width:520px;
+      margin:0 0 28px 0;
+    }
+
+    .label-info-box{
+      border:1.5px solid rgba(255,255,255,.55);
+      border-radius:12px;
+      padding:20px 20px 18px;
+      margin-bottom:16px;
+    }
+
+    .label-info-box h4{
+      font-size:19px;
+      line-height:1.2;
+      margin:0 0 14px 0;
+      color:var(--text);
+    }
+
+    .label-info-box ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--text);
+      font-size:14px;
+      line-height:1.65;
+    }
+
+    .label-board-custom{
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .label-board-custom img{
+      width:100%;
+      height:auto;
+      display:block;
     }
 
     /* =========================
@@ -378,8 +537,40 @@
         font-size:18px;
       }
 
-      .challenge-wrap{
+      .challenge-text{
+        padding-left:18px;
+        padding-right:18px;
+      }
+
+      .challenge-image-wrap{
+        width:100%;
+      }
+
+      .role-layout-custom,
+      .label-layout-custom{
         grid-template-columns:1fr;
+        width:100%;
+      }
+
+      .process-large-card,
+      .section-divider-line{
+        width:100%;
+      }
+
+      .role-title-large{
+        font-size:36px;
+      }
+
+      .label-main-title{
+        font-size:34px;
+      }
+
+      .label-subtitle{
+        font-size:20px;
+      }
+
+      .label-intro-copy{
+        font-size:16px;
       }
     }
   </style>
@@ -429,6 +620,7 @@
         </div>
       </header>
 
+      <!-- Part 1 -->
       <section class="hero">
         <div class="hero-image">
           <div class="hero-overlay-copy">
@@ -455,8 +647,76 @@
             </div>
           </div>
 
-          <div class="image-card challenge-image">
-            <img src="assets/samaroli_designprocess.png" alt="Samaroli design process">
+          <div class="challenge-image-wrap">
+            <div class="image-card challenge-image">
+              <img src="assets/samaroli_designprocess.png" alt="Samaroli design process">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Part 2 -->
+      <section id="process" class="section process-showcase-section">
+        <div class="process-large-card">
+          <img src="assets/samaroli_designprocess.png" alt="Design Process">
+        </div>
+      </section>
+
+      <section id="role" class="section role-section-custom">
+        <div class="role-layout-custom">
+          <div class="role-title-col">
+            <h2 class="section-title role-title-large">My Role</h2>
+          </div>
+
+          <div class="role-copy-col">
+            <ul class="role-list-custom">
+              <li>Led the refinement and development of Samaroli’s label system.</li>
+              <li>Developed a scalable packaging framework across multiple releases.</li>
+              <li>Directed typography, layout and visual hierarchy decisions.</li>
+              <li>Managed print production specifications and supplier communication.</li>
+              <li>Oversaw proofing, colour calibration and material testing.</li>
+              <li>Defined and maintained packaging guidelines for future editions.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider-line"></section>
+
+      <section id="label" class="section label-section-custom">
+        <div class="label-layout-custom">
+          <div class="label-copy-col">
+            <h2 class="section-title label-main-title">Label System Development</h2>
+
+            <h3 class="label-subtitle">Label System Development</h3>
+
+            <p class="label-intro-copy">
+              A structured and scalable label framework was developed to ensure consistency across multiple Samaroli releases while allowing illustration and narrative variation.
+            </p>
+
+            <div class="label-info-box">
+              <h4>Core Label Structure</h4>
+              <ul>
+                <li>Defined clear hierarchy between brand, release and technical information</li>
+                <li>Established a repeatable grid structure</li>
+                <li>Balanced illustration placement within a controlled frame</li>
+              </ul>
+            </div>
+
+            <div class="label-info-box">
+              <h4>Grid &amp; Typographic Refinement</h4>
+              <ul>
+                <li>Adjusted typographic weight and spacing</li>
+                <li>Tested illustration scale within fixed margins</li>
+                <li>Standardised information blocks for future releases</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="label-image-col">
+            <div class="label-board-custom">
+              <img src="assets/samaroli_-system-board.png" alt="Samaroli Roman Classic system board">
+            </div>
           </div>
         </div>
       </section>
