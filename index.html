@@ -56,9 +56,13 @@
     }
 
 .site-title {
+  position: absolute;
+  top: 140px;   /* 控制貼住logo底 */
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  margin-bottom: 8px;
   line-height: 1;
+  z-index: 40;
 }
 
 .site-title .portfolio-word {
@@ -208,18 +212,17 @@
       display: block;
     }
 
-    .hero-headline {
-      position: absolute;
-      top: 38%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(88%, 860px);
-      text-align: center;
-      font-size: clamp(24px, 4.1vw, 62px);
-      line-height: 1.05;
-      font-weight: 700;
-      text-shadow: 0 2px 18px rgba(0,0,0,0.48);
-    }
+.hero-headline {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(70%, 600px);
+  text-align: center;
+  font-size: clamp(14px, 2vw, 30px);
+  line-height: 1.2;
+  font-weight: 700;
+}
 
     .bottom-grid {
       display: grid;
