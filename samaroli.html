@@ -14,6 +14,7 @@
       --menu-bg:rgba(8,8,8,.96);
       --shadow:0 16px 38px rgba(0,0,0,.35);
       --box-line:rgba(255,255,255,.58);
+      --bg-olive:rgba(40,38,5,.88);
     }
 
     *{
@@ -56,7 +57,7 @@
 
     .frame{
       position:relative;
-      background:rgba(40,38,5,.88);
+      background:var(--bg-olive);
       border:1px solid var(--panel-border);
       padding:20px 20px 34px;
       overflow:hidden;
@@ -286,6 +287,29 @@
       margin:6px 0;
     }
 
+    .box{
+      border:1.5px solid var(--box-line);
+      border-radius:12px;
+      padding:20px 22px 18px;
+    }
+
+    .box h4{
+      font-size:19px;
+      line-height:1.15;
+      margin-bottom:10px;
+    }
+
+    .box p,
+    .box ul{
+      font-size:14px;
+      line-height:1.55;
+      color:var(--text);
+    }
+
+    .box ul{
+      padding-left:18px;
+    }
+
     /* =========================
        PART 1: CHALLENGE
     ========================== */
@@ -428,7 +452,7 @@
     }
 
     .label-board-custom{
-      width:75%;
+      width:86.25%; /* 原本 75% 再加大 15% */
       margin:20px auto 0;
       border-radius:18px;
       overflow:hidden;
@@ -498,18 +522,23 @@
     .editions-small-bottle{
       position:absolute;
       left:-10px;
-      bottom:-106px; /* 再壓低去墊住漸變 bar */
+      bottom:-106px;
       width:92px;
       z-index:5;
     }
 
     .editions-right-circle{
-      width:288px;   /* 縮細 20% */
+      width:288px;
       margin:10px auto 0;
     }
 
+    .full-bleed{
+      width:calc(100% + 40px);
+      margin-left:-20px;
+      margin-right:-20px;
+    }
+
     .gradient-bar{
-      width:100%;
       height:48px;
       margin-top:42px;
       background:linear-gradient(90deg, rgba(90,90,90,.55) 0%, rgba(24,24,24,.9) 50%, rgba(0,0,0,1) 100%);
@@ -521,13 +550,10 @@
        PRODUCTION BANNER
     ========================== */
     .production-section{
-      width:100%;
-      margin:0 auto;
       padding:0 0 34px;
     }
 
     .production-banner{
-      width:100%;
       position:relative;
       overflow:hidden;
       box-shadow:var(--shadow);
@@ -592,6 +618,10 @@
     .materials-thumb{
       box-shadow:var(--shadow);
       width:340px;
+    }
+
+    .materials-thumb.paper-thumb{
+      margin-left:-12px; /* 向左移，對齊上面文字 */
     }
 
     .materials-copy{
@@ -694,66 +724,135 @@
     }
 
     .social-strip-section{
-      width:100%;
       margin:54px 0 0;
     }
 
     .social-strip-full{
-      width:100%;
       box-shadow:var(--shadow);
     }
 
     /* =========================
-       PART 4: EDITORIAL
+       PART 5: EDITORIAL + RETAIL + BEFORE AFTER
     ========================== */
-    .editorial-section{
-      width:920px;
+    .part5-section{
+      width:1040px;
       margin:58px auto 0;
-      padding:0 0 24px;
     }
 
-    .editorial-layout{
+    .catalogue-row{
       display:grid;
-      grid-template-columns:430px 1fr;
-      gap:42px;
+      grid-template-columns:560px 340px;
+      gap:48px;
+      align-items:start;
+      margin-bottom:44px;
+    }
+
+    .catalogue-left{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:0;
       align-items:start;
     }
 
-    .editorial-image{
+    .catalog-cover{
+      width:240px;
+      box-shadow:var(--shadow);
+      position:relative;
+      z-index:2;
+    }
+
+    .catalog-inside{
+      width:320px;
+      margin-top:84px;
+      margin-left:-18px;
       box-shadow:var(--shadow);
     }
 
-    .editorial-copy h2{
+    .retail-banner{
+      margin:0 0 24px;
+    }
+
+    .retail-banner img{
+      box-shadow:var(--shadow);
+    }
+
+    .retail-box{
+      width:540px;
+      margin-left:48px;
+    }
+
+    .beforeafter-row{
+      display:grid;
+      grid-template-columns:460px 1fr;
+      gap:52px;
+      align-items:start;
+      margin-top:54px;
+    }
+
+    .beforeafter-image{
+      box-shadow:var(--shadow);
+    }
+
+    .beforeafter-copy h2{
       font-size:34px;
       line-height:1.05;
       margin-bottom:18px;
     }
 
-    .editorial-copy h3{
-      font-size:22px;
-      line-height:1.15;
-      margin-bottom:18px;
-    }
-
-    .editorial-copy p{
+    .beforeafter-copy p{
       font-size:16px;
       line-height:1.48;
       color:var(--text);
-      max-width:400px;
+      margin-bottom:28px;
+      max-width:430px;
+    }
+
+    .quote-line{
+      width:100%;
+      text-align:center;
+      margin:66px 0 20px;
+      font-size:16px;
+      line-height:1.5;
+      color:var(--text);
     }
 
     /* =========================
-       FOOTER
+       FOOTER BAR
     ========================== */
-    .footer{
-      width:910px;
-      margin:56px auto 0;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.16);
-      text-align:center;
+    .bottom-bar{
+      width:calc(100% + 40px);
+      margin:18px -20px -34px;
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.14);
+      padding:16px 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .copyright{
       color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .back-to-top{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:124px;
+      height:40px;
+      border:1px solid rgba(255,255,255,.28);
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      transition:background .2s ease, transform .2s ease;
+    }
+
+    .back-to-top:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
     }
   </style>
 </head>
@@ -792,6 +891,7 @@
             <a href="#production">Materials</a>
             <a href="#digital">Digital</a>
             <a href="#editorial">Editorial</a>
+            <a href="#evolution">Evolution</a>
           </nav>
 
           <div class="site-title">
@@ -924,11 +1024,11 @@
             </div>
           </div>
         </div>
-
-        <div class="gradient-bar"></div>
       </section>
 
-      <section id="production" class="production-section">
+      <div class="gradient-bar full-bleed"></div>
+
+      <section id="production" class="production-section full-bleed">
         <div class="production-banner">
           <img src="assets/samaroli_-production-banner.png" alt="Production and Material Strategy">
           <div class="production-overlay">
@@ -966,7 +1066,7 @@
                 <li>Reviewed ink absorption and colour consistency</li>
               </ul>
             </div>
-            <div class="materials-thumb">
+            <div class="materials-thumb paper-thumb">
               <img src="assets/samaroli_-paper.png" alt="Paper and Texture Selection">
             </div>
           </div>
@@ -1043,32 +1143,86 @@
           </div>
         </div>
 
-        <div class="social-strip-section">
+        <div class="social-strip-section full-bleed">
           <div class="social-strip-full">
             <img src="assets/samaroli_-social-strip.png" alt="Social strip">
           </div>
         </div>
       </section>
 
-      <section id="editorial" class="editorial-section">
-        <div class="editorial-layout">
-          <div class="editorial-image">
-            <img src="assets/samaroli_-editorial-main.png" alt="Editorial and Retail Application">
+      <!-- PART 5 -->
+      <section id="editorial" class="part5-section">
+
+        <div class="catalogue-row">
+          <div class="catalogue-left">
+            <div class="catalog-cover">
+              <img src="assets/samaroli_-editorial-main.png" alt="Catalogue cover">
+            </div>
+            <div class="catalog-inside">
+              <img src="assets/samaroli_-editorial-samll-1.png" alt="Catalogue inside">
+            </div>
           </div>
 
-          <div class="editorial-copy">
-            <h2>Editorial &amp;<br>Retail Application</h2>
-            <h3>Editorial &amp; Retail Application</h3>
-            <p>
-              The packaging system was further applied across printed and physical brand environments to ensure continuity beyond the label.
-            </p>
+          <div class="box">
+            <h4>Catalogue Design</h4>
+            <ul>
+              <li>Structured product spreads using the established typographic hierarchy</li>
+              <li>Maintained consistent visual rhythm across editorial layouts</li>
+              <li>Ensured clarity of technical information within premium layout formats</li>
+            </ul>
           </div>
         </div>
+
+        <div class="retail-banner full-bleed">
+          <img src="assets/samaroli_-retail-row.png" alt="Retail and physical application">
+        </div>
+
+        <div class="retail-box box">
+          <h4>Retail &amp; Physical Application</h4>
+          <ul>
+            <li>Applied brand consistency across wooden presentation boxes</li>
+            <li>Managed packaging alignment between bottle, box and printed collateral</li>
+            <li>Reinforced premium positioning through cohesive physical detailing</li>
+          </ul>
+        </div>
+
+        <div id="evolution" class="beforeafter-row">
+          <div class="beforeafter-image">
+            <img src="assets/samaroli_-before-after.png" alt="Before / After Evolution">
+          </div>
+
+          <div class="beforeafter-copy">
+            <h2>Before / After Evolution</h2>
+            <p>
+              The evolved label system strengthened typographic hierarchy and improved structural clarity while preserving brand heritage.
+            </p>
+
+            <div class="box">
+              <h4>Key Improvements</h4>
+              <ul>
+                <li>Clearer typographic hierarchy</li>
+                <li>Improved spacing and alignment</li>
+                <li>More structured information layout</li>
+                <li>Enhanced production detailing</li>
+                <li>Greater scalability across future editions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-line">
+          At Samaroli, production detailing is not decorative — it is structural to the brand perception.
+        </div>
+
       </section>
 
-      <footer class="footer">
-        © 2026 Chi Wai Lau. All Rights Reserved.
-      </footer>
+      <div class="bottom-bar">
+        <div class="copyright">
+          © 2026 Chi Wai Lau. All Rights Reserved.
+        </div>
+
+        <a href="#" class="back-to-top">Back to top ↑</a>
+      </div>
 
     </div>
   </div>
