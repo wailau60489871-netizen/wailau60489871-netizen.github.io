@@ -1,64 +1,393 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>Chi Wai Lau Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi Wai Lau Portfolio</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: rgba(40, 38, 5, 0.82);
+      --panel-border: rgba(142, 135, 53, 0.35);
+      --text: #f3f0e6;
+      --muted: #c8c1a3;
+      --accent: #8b8440;
+      --line: rgba(255,255,255,0.35);
+      --menu-bg: rgba(8, 8, 8, 0.96);
+    }
 
-<style>
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-background:#111;
-color:white;
-font-family:Arial;
-text-align:center;
-padding:80px;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-h1{
-font-size:60px;
-}
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
+        url("assets/hero-studio.jpg") center center / cover no-repeat fixed;
+    }
 
-.project{
-margin-top:40px;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-img{
-width:600px;
-margin-top:20px;
-border-radius:10px;
-}
+    .page {
+      width: min(1220px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
 
-</style>
+    .frame {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      padding: 22px 22px 34px;
+    }
 
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      gap: 34px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1;
+      flex: 0 0 auto;
+      background: rgba(0,0,0,0.15);
+    }
+
+    .nav {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      padding-top: 8px;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle::after {
+      content: "";
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 205px;
+      background: var(--menu-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 22px;
+      display: none;
+      margin-top: 14px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 7px 0;
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .dropdown-menu a:first-child::before,
+    .side-list li.active a::before {
+      content: "▶ ";
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    .dropdown-menu a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: #111;
+    }
+
+    .hero-image {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      filter: brightness(0.88);
+    }
+
+    .hero-center-logo {
+      position: absolute;
+      top: 14%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 94px;
+      height: 94px;
+      border: 4px solid rgba(255,255,255,0.96);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 58px;
+      font-weight: 700;
+      line-height: 1;
+      background: rgba(0,0,0,0.06);
+    }
+
+    .hero-headline {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(88%, 860px);
+      text-align: center;
+      font-size: clamp(24px, 4.1vw, 62px);
+      line-height: 1.05;
+      font-weight: 700;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.48);
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 46px;
+      margin-top: 28px;
+      align-items: start;
+    }
+
+    .side-title {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.38);
+      padding: 13px 18px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .side-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .side-list li {
+      margin: 0 0 18px;
+    }
+
+    .side-list a {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .side-list a:hover {
+      color: var(--text);
+    }
+
+    .intro {
+      border-left: 2px solid var(--line);
+      padding-left: 36px;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .intro p {
+      margin: 0 0 28px;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .mobile-note {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .page {
+        width: min(100%, calc(100% - 24px));
+        padding: 14px 0 24px;
+      }
+
+      .frame {
+        padding: 14px 14px 24px;
+      }
+
+      .topbar {
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .nav {
+        gap: 24px;
+        font-size: 15px;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        width: 54px;
+        height: 54px;
+        font-size: 32px;
+      }
+
+      .hero-center-logo {
+        width: 68px;
+        height: 68px;
+        font-size: 40px;
+        border-width: 3px;
+      }
+
+      .hero-headline {
+        top: 36%;
+        width: 90%;
+      }
+
+      .bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .intro {
+        border-left: 0;
+        border-top: 2px solid var(--line);
+        padding-left: 0;
+        padding-top: 24px;
+      }
+
+      .side-list a {
+        font-size: 18px;
+      }
+
+      .intro p {
+        font-size: 16px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        display: block;
+        margin-top: 12px;
+        min-width: auto;
+        background: rgba(0,0,0,0.28);
+      }
+
+      .mobile-note {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page">
+    <div class="frame">
+      <header class="topbar">
+        <a href="index.html" class="logo">W</a>
 
-<h1>Chi Wai Lau</h1>
-<h2>Creative Designer</h2>
+        <nav class="nav">
+          <a href="about.html">About Me</a>
 
-<p>Brand systems • Packaging • Campaign visuals • Digital content</p>
+          <div class="dropdown">
+            <a href="work.html" class="dropdown-toggle">Selected Works</a>
+            <div class="dropdown-menu">
+              <a href="samaroli.html">Samaroli</a>
+              <a href="pizzaexpress.html">Pizzaexpress</a>
+              <a href="canon.html">Canon</a>
+              <a href="kmb.html">KMB</a>
+              <a href="illustration-book.html">Illustration Book</a>
+              <a href="youtube-channel.html">Youtube Channel</a>
+            </div>
+          </div>
+        </nav>
+      </header>
 
-<div class="project">
-<h3>Samaroli Packaging System</h3>
-<p>Premium whisky packaging design</p>
-</div>
+      <main class="hero">
+        <div class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="assets/hero-studio.jpg"
+            alt="Creative studio workspace"
+          />
+          <div class="hero-center-logo">W</div>
+          <div class="hero-headline">
+            Where brand strategy meets craft and visual storytelling.
+          </div>
+        </div>
 
-<div class="project">
-<h3>Pizza Express Campaign</h3>
-<p>Brand activation and photography</p>
-</div>
+        <section class="bottom-grid">
+          <aside>
+            <div class="side-title">Selected Works</div>
+            <ul class="side-list">
+              <li class="active"><a href="samaroli.html">Samaroli</a></li>
+              <li><a href="pizzaexpress.html">Pizzaexpress</a></li>
+              <li><a href="canon.html">Canon</a></li>
+              <li><a href="kmb.html">KMB</a></li>
+              <li><a href="illustration-book.html">Illustration Book</a></li>
+              <li><a href="youtube-channel.html">Youtube Channel</a></li>
+            </ul>
+          </aside>
 
-<div class="project">
-<h3>Film Campaign</h3>
-<p>Poster and large format visual identity</p>
-</div>
+          <section class="intro">
+            <p>
+              PizzaExpress is one of the most recognisable restaurant brands in the UK,
+              known for its distinctive dining experience and strong visual identity.
+            </p>
 
-<div class="project">
-<h3>Canon Retail Campaign</h3>
-<p>Retail display and POP design</p>
-</div>
+            <p>
+              This project explores the development of campaign visuals and branded content
+              designed to enhance the in-restaurant experience while extending the brand
+              narrative across digital and social platforms.
+            </p>
 
+            <p>
+              The work combines food photography, visual storytelling and graphic design
+              to create engaging campaign materials that celebrate the atmosphere and
+              personality of the brand.
+            </p>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
 </body>
-
 </html>
