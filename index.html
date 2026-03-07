@@ -13,6 +13,8 @@
       --muted: #c8c1a3;
       --line: rgba(255,255,255,0.35);
       --menu-bg: rgba(8, 8, 8, 0.96);
+      --button-bg: rgba(255,255,255,0.06);
+      --button-border: rgba(255,255,255,0.24);
     }
 
     * {
@@ -55,7 +57,7 @@
 
     .topbar {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 56px;
       margin-bottom: -30px;
       position: relative;
@@ -92,7 +94,7 @@
       display: flex;
       gap: 72px;
       align-items: center;
-      padding-top: 18px;
+      padding-top: 0;
       font-weight: 700;
       color: var(--muted);
       font-size: 18px;
@@ -102,7 +104,8 @@
     .dropdown > a {
       display: inline-flex;
       align-items: center;
-      height: 32px;
+      height: 40px;
+      line-height: 1;
     }
 
     .nav a:hover {
@@ -111,7 +114,15 @@
 
     .dropdown {
       position: relative;
-      padding-bottom: 18px;
+    }
+
+    .dropdown::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      height: 18px;
     }
 
     .dropdown-menu {
@@ -273,32 +284,85 @@
       opacity: 1;
     }
 
-    .intro {
+    .project-detail {
       border-left: 2px solid var(--line);
       padding-left: 40px;
-      max-width: 860px;
-      color: var(--muted);
-      height: 440px;
+      height: 460px;
       overflow-y: auto;
       padding-right: 18px;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.35) rgba(255,255,255,0.06);
     }
 
-    .intro::-webkit-scrollbar {
+    .project-detail::-webkit-scrollbar {
       width: 8px;
     }
 
-    .intro::-webkit-scrollbar-track {
+    .project-detail::-webkit-scrollbar-track {
       background: rgba(255,255,255,0.06);
     }
 
-    .intro::-webkit-scrollbar-thumb {
+    .project-detail::-webkit-scrollbar-thumb {
       background: rgba(255,255,255,0.35);
       border-radius: 20px;
     }
 
-    .intro h2 {
+    .project-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .project-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .project-preview-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.25);
+    }
+
+    .project-preview-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.25s ease;
+    }
+
+    .project-button-wrap {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .project-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+      padding: 12px 18px;
+      border: 1px solid var(--button-border);
+      background: var(--button-bg);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-button:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.38);
+      transform: translateY(-1px);
+    }
+
+    .project-copy h2 {
       margin: 0 0 20px;
       color: var(--text);
       font-size: 28px;
@@ -307,12 +371,13 @@
       white-space: pre-wrap;
     }
 
-    .intro p {
+    .project-copy p {
       margin: 0 0 24px;
       font-size: 18px;
       line-height: 1.72;
       min-height: 32px;
       white-space: pre-wrap;
+      color: var(--muted);
     }
 
     .typing-cursor::after {
@@ -395,26 +460,25 @@
         padding-left: 0;
       }
 
-      .intro {
+      .project-detail {
         border-left: 0;
         border-top: 2px solid var(--line);
         padding-left: 0;
         padding-top: 24px;
         height: auto;
-        max-height: none;
         overflow: visible;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-copy p {
+        font-size: 16px;
       }
 
       .side-list a {
         font-size: 18px;
-      }
-
-      .intro p {
-        font-size: 16px;
-      }
-
-      .dropdown {
-        padding-bottom: 0;
       }
 
       .dropdown-menu {
@@ -423,6 +487,10 @@
         margin-top: 12px;
         min-width: auto;
         background: rgba(0,0,0,0.28);
+      }
+
+      .dropdown::after {
+        display: none;
       }
     }
   </style>
@@ -494,11 +562,24 @@
             </ul>
           </aside>
 
-          <section class="intro" id="introBox">
-            <h2 id="introTitle"></h2>
-            <p id="introP1"></p>
-            <p id="introP2"></p>
-            <p id="introP3"></p>
+          <section class="project-detail" id="projectDetail">
+            <div class="project-grid">
+              <div class="project-preview">
+                <div class="project-preview-image">
+                  <img id="projectImage" src="assets/samaroli.jpg" alt="Project preview">
+                </div>
+                <div class="project-button-wrap">
+                  <a id="projectButton" class="project-button" href="#">View Project</a>
+                </div>
+              </div>
+
+              <div class="project-copy">
+                <h2 id="introTitle"></h2>
+                <p id="introP1"></p>
+                <p id="introP2"></p>
+                <p id="introP3"></p>
+              </div>
+            </div>
           </section>
         </section>
       </main>
@@ -513,6 +594,8 @@
     const projectData = {
       samaroli: {
         title: "Samaroli",
+        image: "assets/samaroli.jpg",
+        link: "samaroli.html",
         paragraphs: [
           "A premium packaging system created for limited-edition whisky releases, focused on hierarchy, label structure and refined production detailing.",
           "The project balances heritage aesthetics with a more structured visual system, allowing multiple editions to feel consistent while maintaining their own identity.",
@@ -521,6 +604,8 @@
       },
       pizzaexpress: {
         title: "Pizzaexpress",
+        image: "assets/pizza.jpg",
+        link: "pizzaexpress.html",
         paragraphs: [
           "PizzaExpress is one of the most recognisable restaurant brands in the UK, known for its distinctive dining experience and strong visual identity.",
           "This project explores the development of campaign visuals and branded content designed to enhance the in-restaurant experience while extending the brand narrative across digital and social platforms.",
@@ -529,6 +614,8 @@
       },
       canon: {
         title: "Canon",
+        image: "assets/canon.jpg",
+        link: "canon.html",
         paragraphs: [
           "Retail campaign and point-of-sale materials designed to improve product visibility and strengthen brand communication within store environments.",
           "The work focuses on clear hierarchy, structured layouts and promotional graphics tailored to retail touchpoints and customer engagement.",
@@ -537,6 +624,8 @@
       },
       kmb: {
         title: "KMB",
+        image: "assets/kmb.jpg",
+        link: "kmb.html",
         paragraphs: [
           "A large-scale public-facing visual project designed for an urban transport environment, where clarity and strong communication were essential.",
           "The work involved applying brand graphics across formats that needed to remain bold, recognisable and effective in motion.",
@@ -545,6 +634,8 @@
       },
       illustration: {
         title: "Illustration Book",
+        image: "assets/illustration.jpg",
+        link: "illustration-book.html",
         paragraphs: [
           "A collection of illustration-led work exploring storytelling, character and composition through print-based visual development.",
           "The project highlights a more expressive side of the portfolio while maintaining strong layout awareness and visual rhythm.",
@@ -553,6 +644,8 @@
       },
       youtube: {
         title: "Youtube Channel",
+        image: "assets/youtube.jpg",
+        link: "youtube-channel.html",
         paragraphs: [
           "A content-driven project focused on visual storytelling through video, brand presentation and audience engagement.",
           "The work combines planning, editing, graphics and content structure to create a more dynamic digital presence.",
@@ -567,7 +660,9 @@
     const introP1 = document.getElementById("introP1");
     const introP2 = document.getElementById("introP2");
     const introP3 = document.getElementById("introP3");
-    const introBox = document.getElementById("introBox");
+    const projectImage = document.getElementById("projectImage");
+    const projectButton = document.getElementById("projectButton");
+    const projectDetail = document.getElementById("projectDetail");
 
     let typingTimeouts = [];
     let activeTypingToken = 0;
@@ -611,14 +706,24 @@
       const currentToken = activeTypingToken;
 
       clearTyping();
-      introBox.scrollTop = 0;
+      projectDetail.scrollTop = 0;
+
+      projectImage.style.opacity = 0;
+      setTimeout(() => {
+        if (currentToken !== activeTypingToken) return;
+        projectImage.src = project.image;
+        projectImage.alt = project.title + " preview";
+        projectImage.style.opacity = 1;
+      }, 120);
+
+      projectButton.href = project.link;
 
       let delay = 0;
-      const speed = 6;
+      const speed = 7;
 
-      delay = typeText(introTitle, project.title, speed, delay, currentToken) + 120;
-      delay = typeText(introP1, project.paragraphs[0], speed, delay, currentToken) + 90;
-      delay = typeText(introP2, project.paragraphs[1], speed, delay, currentToken) + 90;
+      delay = typeText(introTitle, project.title, speed, delay, currentToken) + 100;
+      delay = typeText(introP1, project.paragraphs[0], speed, delay, currentToken) + 70;
+      delay = typeText(introP2, project.paragraphs[1], speed, delay, currentToken) + 70;
       typeText(introP3, project.paragraphs[2], speed, delay, currentToken);
     }
 
