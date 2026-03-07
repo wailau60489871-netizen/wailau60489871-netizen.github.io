@@ -56,10 +56,11 @@
     .topbar {
       display: flex;
       align-items: flex-start;
-      gap: 34px;
+      gap: 56px;
       margin-bottom: -30px;
       position: relative;
       z-index: 30;
+      padding-left: 18px;
     }
 
     .logo {
@@ -75,6 +76,7 @@
       flex: 0 0 auto;
       position: relative;
       top: 34px;
+      left: 10px;
       z-index: 35;
       box-shadow: 0 4px 20px rgba(0,0,0,0.28);
     }
@@ -88,12 +90,19 @@
 
     .nav {
       display: flex;
-      gap: 48px;
+      gap: 72px;
       align-items: center;
-      padding-top: 8px;
+      padding-top: 18px;
       font-weight: 700;
       color: var(--muted);
       font-size: 18px;
+    }
+
+    .nav > a,
+    .dropdown > a {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
     }
 
     .nav a:hover {
@@ -204,10 +213,16 @@
 
     .bottom-grid {
       display: grid;
-      grid-template-columns: 290px 1fr;
-      gap: 46px;
+      grid-template-columns: 320px 1fr;
+      gap: 52px;
       margin-top: 28px;
       align-items: start;
+      padding-left: 28px;
+      padding-right: 12px;
+    }
+
+    .side-panel {
+      padding-left: 8px;
     }
 
     .side-title {
@@ -223,7 +238,7 @@
     .side-list {
       list-style: none;
       margin: 0;
-      padding: 0;
+      padding: 0 0 0 6px;
     }
 
     .side-list li {
@@ -260,10 +275,27 @@
 
     .intro {
       border-left: 2px solid var(--line);
-      padding-left: 36px;
-      max-width: 760px;
+      padding-left: 40px;
+      max-width: 860px;
       color: var(--muted);
-      min-height: 280px;
+      height: 440px;
+      overflow-y: auto;
+      padding-right: 18px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.35) rgba(255,255,255,0.06);
+    }
+
+    .intro::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .intro::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .intro::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.35);
+      border-radius: 20px;
     }
 
     .intro-content {
@@ -318,10 +350,12 @@
         gap: 18px;
         flex-wrap: wrap;
         margin-bottom: 10px;
+        padding-left: 0;
       }
 
       .logo {
         top: 0;
+        left: 0;
         width: 58px;
         height: 58px;
       }
@@ -330,6 +364,7 @@
         gap: 24px;
         font-size: 15px;
         flex-wrap: wrap;
+        padding-top: 4px;
       }
 
       .hero-center-logo {
@@ -346,6 +381,16 @@
       .bottom-grid {
         grid-template-columns: 1fr;
         gap: 26px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .side-panel {
+        padding-left: 0;
+      }
+
+      .side-list {
+        padding-left: 0;
       }
 
       .intro {
@@ -353,7 +398,9 @@
         border-top: 2px solid var(--line);
         padding-left: 0;
         padding-top: 24px;
-        min-height: auto;
+        height: auto;
+        max-height: none;
+        overflow: visible;
       }
 
       .side-list a {
@@ -421,7 +468,7 @@
         </div>
 
         <section class="bottom-grid">
-          <aside>
+          <aside class="side-panel">
             <div class="side-title">Selected Works</div>
             <ul class="side-list" id="project-list">
               <li class="active">
@@ -527,6 +574,7 @@
     const links = document.querySelectorAll(".side-list a");
     const listItems = document.querySelectorAll(".side-list li");
     const introContent = document.getElementById("intro-content");
+    const introBox = document.querySelector(".intro");
 
     function renderProject(projectKey) {
       const project = projectData[projectKey];
@@ -542,6 +590,7 @@
           <p>${project.paragraphs[2]}</p>
         `;
         introContent.classList.remove("fade-out");
+        introBox.scrollTop = 0;
       }, 180);
     }
 
