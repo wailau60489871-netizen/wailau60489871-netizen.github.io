@@ -305,109 +305,113 @@
     }
 
     /* CAMPAIGN */
-    .campaign-wrap{
-      position:relative;
-      padding-top:16px;
-    }
+.campaign-wrap{
+  position:relative;
+  padding-top:12px;
+}
 
-    .campaign-gold-bar{
-      position:absolute;
-      left:-20px;
-      right:-20px;
-      top:88px;
-      height:160px;
-      background:var(--gold-bar);
-      z-index:0;
-    }
+.campaign-gold-bar{
+  position:absolute;
+  left:-20px;
+  right:-20px;
+  top:62px;              /* 升高 */
+  height:170px;          /* 再高啲 */
+  background:var(--gold-bar);
+  z-index:0;
+}
 
-    .campaign-layout{
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:360px 1fr;
-      gap:46px;
-      align-items:start;
-    }
+.campaign-layout{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:420px 1fr;
+  gap:54px;
+  align-items:start;
+}
 
-    .campaign-left{
-      display:grid;
-      gap:14px;
-    }
+.campaign-left{
+  display:grid;
+  gap:14px;
+}
 
-    .campaign-poster{
-      width:275px;
-      margin-left:6px;
-    }
+.campaign-poster{
+  width:358px;           /* 原本 275px，再放大約 30% */
+  margin-left:6px;       /* 位置不變 */
+}
 
-    .campaign-right{
-      display:grid;
-      grid-template-columns:380px 1fr;
-      gap:34px;
-      align-items:start;
-    }
+.campaign-right{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  align-items:start;
+}
 
-    .campaign-right-topimg{
-      width:380px;
-      margin-top:0;
-    }
+.campaign-right-topimg{
+  width:380px;
+  margin:0 0 8px 0;      /* 靠左，放喺文字上面 */
+}
 
-    .campaign-right-copy{
-      padding-top:0;
-    }
+.campaign-right-copy{
+  padding-top:34px;       /* 放到金色 bar 下面 */
+  max-width:430px;
+}
 
-    .campaign-right-copy h3{
-      font-size:22px;
-      line-height:1.1;
-      margin-bottom:10px;
-    }
+.campaign-right-copy h3{
+  font-size:22px;
+  line-height:1.1;
+  margin-bottom:12px;
+}
 
-    .campaign-right-copy p,
-    .campaign-right-copy ul{
-      font-size:14px;
-      line-height:1.56;
-    }
+.campaign-right-copy p,
+.campaign-right-copy ul{
+  font-size:14px;
+  line-height:1.62;
+}
 
-    .campaign-right-copy ul{
-      padding-left:18px;
-      margin-top:10px;
-    }
-
+.campaign-right-copy ul{
+  padding-left:18px;
+  margin-top:12px;
+}
     /* SOCIAL / CONTENT */
-    .social-large{
-      width:100%;
-      margin-bottom:36px;
-    }
+.social-large{
+  width:100%;
+  margin-bottom:52px;   /* 上下留多啲 */
+}
 
-    .social-layout{
-      display:grid;
-      grid-template-columns:360px 1fr;
-      gap:52px;
-      align-items:start;
-    }
+.social-layout{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:58px;
+  align-items:start;
+  margin-bottom:42px;   /* 中段同下面 food strip 拉開 */
+}
 
-    .social-video-thumb{
-      width:360px;
-    }
+.social-video-thumb{
+  width:360px;
+}
 
-    .social-copy h3{
-      font-size:22px;
-      line-height:1.1;
-      margin-bottom:18px;
-    }
+.social-copy{
+  padding-top:10px;
+}
 
-    .social-copy ul{
-      padding-left:18px;
-      font-size:14px;
-      line-height:1.72;
-    }
+.social-copy h3{
+  font-size:22px;
+  line-height:1.1;
+  margin-bottom:22px;
+}
 
-    .food-strip{
-      width:calc(100% + 40px);
-      margin-left:-20px;
-      margin-right:-20px;
-      margin-top:26px;
-    }
+.social-copy ul{
+  padding-left:18px;
+  font-size:14px;
+  line-height:1.82;
+}
 
+.food-strip{
+  width:calc(100% + 40px);
+  margin-left:-20px;
+  margin-right:-20px;
+  margin-top:42px;      /* 同上面再分開啲 */
+}
     /* ENVIRONMENTAL */
     .env-slider{
       position:relative;
@@ -610,35 +614,35 @@
 
       <!-- CAMPAIGN -->
       <section id="campaign" class="section">
-        <div class="campaign-wrap">
-          <div class="campaign-gold-bar"></div>
+  <div class="campaign-wrap">
+    <div class="campaign-gold-bar"></div>
 
-          <div class="campaign-layout">
-            <div class="campaign-left">
-              <img class="campaign-poster" src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
-            </div>
+    <div class="campaign-layout">
+      <div class="campaign-left">
+        <img class="campaign-poster" src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
+      </div>
 
-            <div class="campaign-right">
-              <div class="campaign-right-topimg">
-                <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
-              </div>
-
-              <div class="campaign-right-copy">
-                <h3>Campaign &amp; Charity Activation</h3>
-                <p>
-                  Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
-                </p>
-                <ul>
-                  <li>Designed campaign posters and promotional formats</li>
-                  <li>Developed package-based and on-pack visual applications</li>
-                  <li>Created in-store display materials and campaign headlines</li>
-                  <li>Translated restaurant launches into immersive campaign spaces</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      <div class="campaign-right">
+        <div class="campaign-right-topimg">
+          <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
         </div>
-      </section>
+
+        <div class="campaign-right-copy">
+          <h3>Campaign &amp; Charity Activation</h3>
+          <p>
+            Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
+          </p>
+          <ul>
+            <li>Designed campaign posters and promotional formats</li>
+            <li>Developed package-based and on-pack visual applications</li>
+            <li>Created in-store display materials and campaign headlines</li>
+            <li>Translated restaurant launches into immersive campaign spaces</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <div class="divider"></div>
 
