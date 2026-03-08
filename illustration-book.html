@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280, initial-scale=1.0" />
+  <title>Illustration – Chi Wai Lau Portfolio</title>
+
+  <style>
+    :root{
+      --text:#f3f0e6;
+      --muted:#d8d1b7;
+      --panel-border:rgba(188,178,110,.28);
+      --menu-bg:rgba(8,8,8,.96);
+      --bg-olive:rgba(40,38,5,.88);
+      --line:rgba(255,255,255,.18);
+      --blue-panel:#20263a;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      overflow-x:auto;
+    }
+
+    body{
+      min-width:1280px;
+      overflow-x:auto;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
+        url("assets/hero-studio.png") center center / cover no-repeat fixed;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .page{
+      width:1280px;
+      margin:0 auto;
+      padding:24px 0 40px;
+    }
+
+    .frame{
+      position:relative;
+      background:var(--bg-olive);
+      border:1px solid var(--panel-border);
+      padding:20px 20px 34px;
+      overflow:hidden;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================== */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      padding:14px 18px;
+      margin:-20px -20px 0 -20px;
+      background:#000;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      position:relative;
+      z-index:60;
+    }
+
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      margin-left:auto;
+    }
+
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border:2px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:24px;
+      color:var(--text);
+      flex:0 0 auto;
+    }
+
+    .nav{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      font-weight:700;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .nav > a,
+    .dropdown > a{
+      display:inline-flex;
+      align-items:center;
+      height:32px;
+      white-space:nowrap;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .dropdown{
+      position:relative;
+    }
+
+    .dropdown::after{
+      content:"";
+      position:absolute;
+      left:0;
+      top:100%;
+      width:100%;
+      height:14px;
+    }
+
+    .dropdown-menu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:210px;
+      background:var(--menu-bg);
+      border:1px solid rgba(255,255,255,.08);
+      padding:12px 18px;
+      display:none;
+      z-index:50;
+    }
+
+    .dropdown:hover .dropdown-menu{
+      display:block;
+    }
+
+    .dropdown-menu a{
+      display:block;
+      padding:6px 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+      transition:color .2s ease, transform .2s ease;
+    }
+
+    .dropdown-menu a::before{
+      content:"▶ ";
+      opacity:0;
+      transition:opacity .2s ease;
+      font-size:12px;
+    }
+
+    .dropdown-menu a:hover{
+      color:var(--text);
+      transform:translateX(4px);
+    }
+
+    .dropdown-menu a:hover::before{
+      opacity:1;
+    }
+
+    .quick-links-inline{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .quick-links-inline a:hover{
+      color:var(--text);
+    }
+
+    .site-title{
+      text-align:right;
+      line-height:1;
+      flex:0 0 auto;
+    }
+
+    .portfolio-word{
+      display:block;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1px;
+      color:var(--text);
+    }
+
+    .name-word{
+      display:block;
+      margin-top:2px;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.6px;
+      color:var(--muted);
+    }
+
+    /* =========================
+       ILLUSTRATION PAGE
+    ========================== */
+    .illu-page{
+      width:1120px;
+      margin:0 auto;
+      padding:0;
+    }
+
+    .illu-section{
+      padding:48px 0;
+    }
+
+    .illu-top{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:66px;
+      align-items:start;
+      padding:54px 40px 48px;
+    }
+
+    .illu-top-left{
+      padding-top:52px;
+      padding-left:8px;
+    }
+
+    .illu-main-title{
+      font-size:30px;
+      line-height:1.08;
+      font-weight:700;
+      margin-bottom:14px;
+      max-width:360px;
+    }
+
+    .illu-subtitle{
+      font-size:16px;
+      line-height:1.25;
+      font-weight:700;
+      margin-bottom:0;
+      color:var(--text);
+    }
+
+    .illu-copy{
+      font-size:14px;
+      line-height:1.62;
+      color:var(--text);
+    }
+
+    .illu-top-right{
+      max-width:470px;
+      padding-top:10px;
+    }
+
+    .illu-top-right p{
+      margin-bottom:18px;
+    }
+
+    .drama-section{
+      background:rgba(0,0,0,.58);
+      margin:0 -20px;
+      padding:46px 20px 42px;
+    }
+
+    .drama-inner{
+      width:1120px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:430px 1fr;
+      gap:72px;
+      align-items:start;
+    }
+
+    .drama-copy{
+      padding-top:24px;
+      max-width:370px;
+    }
+
+    .drama-title{
+      font-size:22px;
+      line-height:1.15;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .drama-subtitle{
+      font-size:16px;
+      line-height:1.22;
+      font-weight:700;
+      margin-bottom:26px;
+    }
+
+    .drama-copy p{
+      margin-bottom:16px;
+    }
+
+    .drama-image{
+      width:360px;
+      margin-left:10px;
+    }
+
+    .label-section{
+      padding:48px 0 56px;
+    }
+
+    .showreel-wrap{
+      width:980px;
+      margin:0 auto 48px;
+      position:relative;
+    }
+
+    .showreel{
+      position:relative;
+      height:300px;
+    }
+
+    .reel-card{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform-origin:center center;
+      transition:
+        transform .65s ease,
+        opacity .65s ease,
+        filter .65s ease,
+        z-index .65s ease;
+      cursor:pointer;
+      opacity:.55;
+    }
+
+    .reel-card img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .reel-card.is-center{
+      width:255px;
+      z-index:5;
+      opacity:1;
+      transform:translate(-50%,-50%) scale(1);
+      filter:none;
+    }
+
+    .reel-card.is-left-1{
+      width:220px;
+      z-index:4;
+      opacity:.9;
+      transform:translate(-170%,-50%) scale(.88);
+    }
+
+    .reel-card.is-left-2{
+      width:170px;
+      z-index:3;
+      opacity:.72;
+      transform:translate(-285%,-50%) scale(.8);
+    }
+
+    .reel-card.is-right-1{
+      width:220px;
+      z-index:4;
+      opacity:.9;
+      transform:translate(70%,-50%) scale(.88);
+    }
+
+    .reel-card.is-right-2{
+      width:170px;
+      z-index:3;
+      opacity:.72;
+      transform:translate(195%,-50%) scale(.8);
+    }
+
+    .reel-card.is-hidden{
+      width:140px;
+      z-index:1;
+      opacity:0;
+      transform:translate(-50%,-50%) scale(.4);
+      pointer-events:none;
+    }
+
+    .reel-card:hover{
+      filter:brightness(1.06);
+    }
+
+    .label-copy{
+      width:980px;
+      margin:0 auto;
+    }
+
+    .section-title{
+      font-size:22px;
+      line-height:1.16;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    .section-subtitle{
+      font-size:16px;
+      line-height:1.22;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .label-copy p{
+      margin-bottom:16px;
+    }
+
+    .book-section{
+      margin:0 -20px;
+      background:var(--blue-panel);
+      padding:30px 20px 26px;
+    }
+
+    .book-inner{
+      width:1120px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:250px 1fr;
+      gap:34px;
+      align-items:start;
+    }
+
+    .book-cover{
+      width:250px;
+      margin-left:24px;
+    }
+
+    .book-copy{
+      max-width:700px;
+      padding-top:6px;
+    }
+
+    .book-copy p{
+      margin-bottom:16px;
+    }
+
+    .sketch-section{
+      padding:56px 0 38px;
+    }
+
+    .sketch-inner{
+      width:1120px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:330px 1fr;
+      gap:62px;
+      align-items:start;
+    }
+
+    .sketch-copy{
+      max-width:290px;
+      padding-left:10px;
+      padding-top:138px;
+    }
+
+    .sketch-main-title{
+      font-size:24px;
+      line-height:1.08;
+      font-weight:700;
+      margin-bottom:16px;
+      max-width:220px;
+    }
+
+    .sketch-copy .section-subtitle{
+      max-width:200px;
+      margin-bottom:22px;
+    }
+
+    .sketch-copy p{
+      margin-bottom:16px;
+    }
+
+    .sketch-visual{
+      position:relative;
+      height:480px;
+    }
+
+    .blue-circle{
+      position:absolute;
+      right:70px;
+      top:88px;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:rgba(40,48,95,.65);
+      z-index:1;
+    }
+
+    .sketch-img{
+      position:absolute;
+      z-index:3;
+    }
+
+    .sketch-1{
+      width:250px;
+      left:10px;
+      top:10px;
+    }
+
+    .sketch-2{
+      width:250px;
+      left:10px;
+      top:220px;
+    }
+
+    .sketch-3{
+      width:300px;
+      right:40px;
+      top:46px;
+    }
+
+    .sketch-4{
+      width:300px;
+      right:40px;
+      top:260px;
+    }
+
+    .bottom-bar{
+      width:calc(100% + 40px);
+      margin:24px -20px -34px;
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.14);
+      padding:16px 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .copyright{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .back-to-top{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:124px;
+      height:40px;
+      border:1px solid rgba(255,255,255,.28);
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      transition:background .2s ease, transform .2s ease;
+    }
+
+    .back-to-top:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <a href="index.html" class="brand-mark">W</a>
+
+          <nav class="nav">
+            <a href="about.html">About Me</a>
+
+            <div class="dropdown">
+              <a href="#">Selected Works</a>
+              <div class="dropdown-menu">
+                <a href="samaroli.html">Samaroli</a>
+                <a href="pizzaexpress.html">Pizzaexpress</a>
+                <a href="canon.html">Canon</a>
+                <a href="kmb.html">KMB</a>
+                <a href="illustration-book.html">Illustration Book</a>
+                <a href="youtube-channel.html">Youtube Channel</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="topbar-right">
+          <nav class="quick-links-inline">
+            <a href="#overview">Overview</a>
+            <a href="#drama">Drama Poster</a>
+            <a href="#label">Label Illustration</a>
+            <a href="#book">Book</a>
+            <a href="#process">Process</a>
+          </nav>
+
+          <div class="site-title">
+            <span class="portfolio-word">PORTFOLIO</span>
+            <span class="name-word">Chi Wai Lau</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="illu-page">
+
+        <!-- Top intro -->
+        <section id="overview" class="illu-top">
+          <div class="illu-top-left">
+            <h1 class="illu-main-title">Illustration &amp;<br>Graphic Narrative</h1>
+            <div class="illu-subtitle">Visual Storytelling Through Illustration</div>
+          </div>
+
+          <div class="illu-top-right illu-copy">
+            <p>
+              This collection explores illustration as a visual storytelling medium, combining expressive imagery with graphic composition to communicate mood, narrative and atmosphere. The works span conceptual illustration, poster design and narrative imagery, demonstrating how illustration can function as both artistic expression and visual communication.
+            </p>
+            <p>
+              Through experimentation with colour, texture and composition, the projects investigate how illustrated imagery can evoke emotion, suggest narrative and create a distinctive visual identity. Each piece explores the relationship between illustration and design, where visual storytelling supports broader communication objectives.
+            </p>
+          </div>
+        </section>
+
+        <!-- Drama poster -->
+        <section id="drama" class="drama-section">
+          <div class="drama-inner">
+            <div class="drama-copy illu-copy">
+              <h2 class="drama-title">Drama poster</h2>
+              <div class="drama-subtitle">Concept &amp; Visual Expression</div>
+
+              <p>
+                This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere. The composition centres on a solitary figure illuminated by dramatic lighting, creating a strong sense of tension and narrative ambiguity.
+              </p>
+
+              <p>
+                The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context. Painterly textures and controlled colour contrasts help emphasise the emotional tone of the piece while maintaining clarity in the overall composition.
+              </p>
+
+              <p>
+                The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling, allowing the viewer to interpret the scene through visual cues.
+              </p>
+            </div>
+
+            <div class="drama-image">
+              <img src="assets/illustration_drama.png" alt="Drama poster illustration">
+            </div>
+          </div>
+        </section>
+
+        <!-- Label illustration -->
+        <section id="label" class="label-section">
+          <div class="showreel-wrap">
+            <div class="showreel" id="illuReel">
+              <div class="reel-card" data-index="0">
+                <img src="assets/illustration_1.png" alt="Illustration artwork 1">
+              </div>
+              <div class="reel-card" data-index="1">
+                <img src="assets/illustration_2.png" alt="Illustration artwork 2">
+              </div>
+              <div class="reel-card" data-index="2">
+                <img src="assets/illustration_3.png" alt="Illustration artwork 3">
+              </div>
+              <div class="reel-card" data-index="3">
+                <img src="assets/illustration_4.png" alt="Illustration artwork 4">
+              </div>
+              <div class="reel-card" data-index="4">
+                <img src="assets/illustration_5.png" alt="Illustration artwork 5">
+              </div>
+            </div>
+          </div>
+
+          <div class="label-copy illu-copy">
+            <h2 class="section-title">Label Illustration Series</h2>
+            <div class="section-subtitle">Illustration for Packaging Context</div>
+
+            <p>
+              This series explores how illustration can function within product packaging and label design. Each piece was created to act as both a narrative artwork and a structured design element within a packaging system.
+            </p>
+
+            <p>
+              The illustrations combine expressive imagery with controlled framing, ensuring that visual storytelling complements the informational structure required in label design. Colour, scale and composition were carefully considered to maintain clarity when applied to packaging formats.
+            </p>
+
+            <p>
+              By balancing illustration with typographic hierarchy and layout structure, the work demonstrates how narrative imagery can enhance brand identity while supporting product communication.
+            </p>
+          </div>
+        </section>
+
+        <!-- Illustration book -->
+        <section id="book" class="book-section">
+          <div class="book-inner">
+            <div class="book-cover">
+              <img src="assets/illustration_book_cover.png" alt="Illustration book cover">
+            </div>
+
+            <div class="book-copy illu-copy">
+              <h2 class="section-title">Illustration book</h2>
+              <div class="section-subtitle">Narrative Illustration</div>
+
+              <p>
+                This project involved the development of illustrated pages for a children's picture book, focusing on character expression, environmental storytelling and narrative pacing.
+              </p>
+
+              <p>
+                The illustrations were designed to guide readers through the story visually, using composition and colour to create rhythm across the pages. Character gestures, spatial depth and lighting were carefully developed to reinforce the emotional tone of the narrative.
+              </p>
+
+              <p>
+                The final result presents a cohesive visual world where illustration, storytelling and layout work together to support an engaging reading experience.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- From sketch to final -->
+        <section id="process" class="sketch-section">
+          <div class="sketch-inner">
+            <div class="sketch-copy illu-copy">
+              <h2 class="sketch-main-title">From Sketch<br>to Final</h2>
+              <div class="section-subtitle">Creative Development Process</div>
+
+              <p>
+                This section presents the creative development behind the illustrations, revealing how early sketches evolve into finished visual works.
+              </p>
+
+              <p>
+                Initial drawings focus on composition, character placement and narrative direction, allowing ideas to be explored freely before moving into more refined illustration stages. During the development process, colour palettes, lighting and textures are gradually introduced to strengthen the visual atmosphere of the piece.
+              </p>
+
+              <p>
+                By presenting both sketches and final artwork, the process highlights how experimentation and iterative refinement contribute to the final visual outcome.
+              </p>
+            </div>
+
+            <div class="sketch-visual">
+              <div class="blue-circle"></div>
+
+              <img class="sketch-img sketch-1" src="assets/illustration_sketch_1.png" alt="Initial sketch 1">
+              <img class="sketch-img sketch-2" src="assets/illustration_sketch_2.png" alt="Initial sketch 2">
+              <img class="sketch-img sketch-3" src="assets/illustration_final_1.png" alt="Final illustration 1">
+              <img class="sketch-img sketch-4" src="assets/illustration_final_2.png" alt="Final illustration 2">
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <div class="bottom-bar">
+        <div class="copyright">
+          © 2026 Chi Wai Lau. All Rights Reserved.
+        </div>
+
+        <a href="#" class="back-to-top">Back to top ↑</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const reelCards = Array.from(document.querySelectorAll(".reel-card"));
+    let reelCurrent = 2;
+    let reelTimer;
+
+    function reelClass(offset){
+      if(offset === 0) return "is-center";
+      if(offset === -1) return "is-left-1";
+      if(offset === -2) return "is-left-2";
+      if(offset === 1) return "is-right-1";
+      if(offset === 2) return "is-right-2";
+      return "is-hidden";
+    }
+
+    function renderReel(){
+      reelCards.forEach((card, i) => {
+        card.classList.remove(
+          "is-center",
+          "is-left-1",
+          "is-left-2",
+          "is-right-1",
+          "is-right-2",
+          "is-hidden"
+        );
+
+        let offset = i - reelCurrent;
+
+        if(offset > 2) offset -= reelCards.length;
+        if(offset < -2) offset += reelCards.length;
+
+        card.classList.add(reelClass(offset));
+      });
+    }
+
+    function nextReel(){
+      reelCurrent = (reelCurrent + 1) % reelCards.length;
+      renderReel();
+    }
+
+    function restartReel(){
+      clearInterval(reelTimer);
+      reelTimer = setInterval(nextReel, 2800);
+    }
+
+    reelCards.forEach((card, i) => {
+      card.addEventListener("click", () => {
+        reelCurrent = i;
+        renderReel();
+        restartReel();
+      });
+    });
+
+    renderReel();
+    reelTimer = setInterval(nextReel, 2800);
+  </script>
+</body>
+</html>
