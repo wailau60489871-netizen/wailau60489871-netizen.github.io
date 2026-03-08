@@ -239,7 +239,7 @@
 
     .illu-top-left{
       padding-top:52px;
-      padding-left:8px;
+      padding-left:90px;
     }
 
     .illu-main-title{
@@ -284,13 +284,17 @@
       margin:0 auto;
       display:grid;
       grid-template-columns:430px 1fr;
-      gap:72px;
+      gap:0;
       align-items:start;
+      position:relative;
     }
 
     .drama-copy{
       padding-top:24px;
       max-width:370px;
+      transform:translateX(90px);
+      position:relative;
+      z-index:3;
     }
 
     .drama-title{
@@ -313,7 +317,9 @@
 
     .drama-image{
       width:360px;
-      margin-left:10px;
+      margin-left:-80px;
+      position:relative;
+      z-index:1;
     }
 
     .label-section{
@@ -466,7 +472,7 @@
 
     .sketch-copy{
       max-width:290px;
-      padding-left:10px;
+      padding-left:90px;
       padding-top:138px;
     }
 
@@ -494,42 +500,21 @@
 
     .blue-circle{
       position:absolute;
-      right:70px;
-      top:88px;
-      width:360px;
-      height:360px;
+      right:40px;
+      top:70px;
+      width:420px;
+      height:420px;
       border-radius:50%;
       background:rgba(40,48,95,.65);
       z-index:1;
     }
 
-    .sketch-img{
+    .sketch-main-combined{
       position:absolute;
+      right:30px;
+      top:28px;
+      width:520px;
       z-index:3;
-    }
-
-    .sketch-1{
-      width:250px;
-      left:10px;
-      top:10px;
-    }
-
-    .sketch-2{
-      width:250px;
-      left:10px;
-      top:220px;
-    }
-
-    .sketch-3{
-      width:300px;
-      right:40px;
-      top:46px;
-    }
-
-    .sketch-4{
-      width:300px;
-      right:40px;
-      top:260px;
     }
 
     .bottom-bar{
@@ -587,7 +572,7 @@
                 <a href="pizzaexpress.html">Pizzaexpress</a>
                 <a href="canon.html">Canon</a>
                 <a href="kmb.html">KMB</a>
-                <a href="illustration-book.html">Illustration Book</a>
+                <a href="illustration.html">Illustration</a>
                 <a href="youtube-channel.html">Youtube Channel</a>
               </div>
             </div>
@@ -612,7 +597,6 @@
 
       <main class="illu-page">
 
-        <!-- Top intro -->
         <section id="overview" class="illu-top">
           <div class="illu-top-left">
             <h1 class="illu-main-title">Illustration &amp;<br>Graphic Narrative</h1>
@@ -629,7 +613,6 @@
           </div>
         </section>
 
-        <!-- Drama poster -->
         <section id="drama" class="drama-section">
           <div class="drama-inner">
             <div class="drama-copy illu-copy">
@@ -655,23 +638,22 @@
           </div>
         </section>
 
-        <!-- Label illustration -->
         <section id="label" class="label-section">
           <div class="showreel-wrap">
             <div class="showreel" id="illuReel">
-              <div class="reel-card" data-index="0">
+              <div class="reel-card">
                 <img src="assets/illustration_1.png" alt="Illustration artwork 1">
               </div>
-              <div class="reel-card" data-index="1">
+              <div class="reel-card">
                 <img src="assets/illustration_2.png" alt="Illustration artwork 2">
               </div>
-              <div class="reel-card" data-index="2">
+              <div class="reel-card">
                 <img src="assets/illustration_3.png" alt="Illustration artwork 3">
               </div>
-              <div class="reel-card" data-index="3">
+              <div class="reel-card">
                 <img src="assets/illustration_4.png" alt="Illustration artwork 4">
               </div>
-              <div class="reel-card" data-index="4">
+              <div class="reel-card">
                 <img src="assets/illustration_5.png" alt="Illustration artwork 5">
               </div>
             </div>
@@ -695,7 +677,6 @@
           </div>
         </section>
 
-        <!-- Illustration book -->
         <section id="book" class="book-section">
           <div class="book-inner">
             <div class="book-cover">
@@ -721,7 +702,6 @@
           </div>
         </section>
 
-        <!-- From sketch to final -->
         <section id="process" class="sketch-section">
           <div class="sketch-inner">
             <div class="sketch-copy illu-copy">
@@ -741,13 +721,9 @@
               </p>
             </div>
 
-            <div class="sketch-visual">
+            <div class="sketch-visual single-visual">
               <div class="blue-circle"></div>
-
-              <img class="sketch-img sketch-1" src="assets/illustration_sketch_1.png" alt="Initial sketch 1">
-              <img class="sketch-img sketch-2" src="assets/illustration_sketch_2.png" alt="Initial sketch 2">
-              <img class="sketch-img sketch-3" src="assets/illustration_final_1.png" alt="Final illustration 1">
-              <img class="sketch-img sketch-4" src="assets/illustration_final_2.png" alt="Final illustration 2">
+              <img class="sketch-main-combined" src="assets/illustration_process_combined.png" alt="From sketch to final">
             </div>
           </div>
         </section>
@@ -767,7 +743,7 @@
 
   <script>
     const reelCards = Array.from(document.querySelectorAll(".reel-card"));
-    let reelCurrent = 2;
+    let reelCurrent = Math.floor(reelCards.length / 2);
     let reelTimer;
 
     function reelClass(offset){
@@ -792,8 +768,8 @@
 
         let offset = i - reelCurrent;
 
-        if(offset > 2) offset -= reelCards.length;
-        if(offset < -2) offset += reelCards.length;
+        while(offset > 2) offset -= reelCards.length;
+        while(offset < -2) offset += reelCards.length;
 
         card.classList.add(reelClass(offset));
       });
@@ -806,7 +782,9 @@
 
     function restartReel(){
       clearInterval(reelTimer);
-      reelTimer = setInterval(nextReel, 2800);
+      if(reelCards.length > 1){
+        reelTimer = setInterval(nextReel, 2800);
+      }
     }
 
     reelCards.forEach((card, i) => {
@@ -817,8 +795,12 @@
       });
     });
 
-    renderReel();
-    reelTimer = setInterval(nextReel, 2800);
+    if(reelCards.length > 0){
+      renderReel();
+      if(reelCards.length > 1){
+        reelTimer = setInterval(nextReel, 2800);
+      }
+    }
   </script>
 </body>
 </html>
