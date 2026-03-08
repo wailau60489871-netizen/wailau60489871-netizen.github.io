@@ -12,9 +12,9 @@
       --panel-border:rgba(188,178,110,.28);
       --line:rgba(255,255,255,.22);
       --menu-bg:rgba(8,8,8,.96);
-      --shadow:none;
       --box-line:rgba(255,255,255,.58);
       --bg-olive:rgba(40,38,5,.88);
+      --gold-bar:#7f7440;
     }
 
     *{
@@ -63,9 +63,6 @@
       overflow:hidden;
     }
 
-    /* =========================
-       TOP BAR
-    ========================== */
     .topbar{
       display:flex;
       justify-content:space-between;
@@ -217,9 +214,6 @@
       color:var(--muted);
     }
 
-    /* =========================
-       HERO
-    ========================== */
     .hero{
       margin:0 -20px 0 -20px;
       border-bottom:1px solid rgba(255,255,255,.08);
@@ -230,9 +224,6 @@
       display:block;
     }
 
-    /* =========================
-       GENERIC
-    ========================== */
     .section{
       width:1120px;
       margin:0 auto;
@@ -277,32 +268,64 @@
 
     .box{
       border:1.5px solid var(--box-line);
-      border-radius:10px;
-      padding:18px 20px;
+      border-radius:12px;
+      padding:20px 22px 18px;
     }
 
-    /* =========================
-       INTRO
-    ========================== */
+    .box h4{
+      font-size:19px;
+      line-height:1.15;
+      margin-bottom:10px;
+    }
+
+    .box p,
+    .box ul{
+      font-size:14px;
+      line-height:1.55;
+      color:var(--text);
+    }
+
+    .box ul{
+      padding-left:18px;
+    }
+
+    /* INTRO */
     .intro-layout{
       display:grid;
-      grid-template-columns:340px 1fr;
-      gap:44px;
+      grid-template-columns:360px 1fr;
+      gap:62px;
       align-items:start;
+      padding-left:22px;
+      padding-right:22px;
     }
 
     .intro-right{
-      padding-left:26px;
+      padding-left:32px;
       border-left:2px solid rgba(255,255,255,.55);
     }
 
-    /* =========================
-       CAMPAIGN
-    ========================== */
+    /* CAMPAIGN */
+    .campaign-wrap{
+      position:relative;
+      padding-top:16px;
+    }
+
+    .campaign-gold-bar{
+      position:absolute;
+      left:-20px;
+      right:-20px;
+      top:160px;
+      height:86px;
+      background:var(--gold-bar);
+      z-index:0;
+    }
+
     .campaign-layout{
+      position:relative;
+      z-index:2;
       display:grid;
-      grid-template-columns:300px 1fr;
-      gap:42px;
+      grid-template-columns:360px 1fr;
+      gap:46px;
       align-items:start;
     }
 
@@ -312,19 +335,24 @@
     }
 
     .campaign-poster{
-      width:220px;
+      width:275px; /* 放大25% */
+      margin-left:6px;
     }
 
     .campaign-right{
       display:grid;
-      grid-template-columns:190px 1fr;
-      gap:28px;
+      grid-template-columns:280px 1fr;
+      gap:30px;
       align-items:start;
     }
 
     .campaign-right-topimg{
-      width:190px;
-      margin-top:6px;
+      width:280px; /* 大一倍 */
+      margin-top:-6px;
+    }
+
+    .campaign-right-copy{
+      padding-top:86px;
     }
 
     .campaign-right-copy h3{
@@ -344,12 +372,10 @@
       margin-top:10px;
     }
 
-    /* =========================
-       SOCIAL / CONTENT
-    ========================== */
+    /* SOCIAL / CONTENT */
     .social-large{
       width:100%;
-      margin-bottom:22px;
+      margin-bottom:26px;
     }
 
     .social-layout{
@@ -375,9 +401,6 @@
       line-height:1.58;
     }
 
-    /* =========================
-       FOOD STRIP
-    ========================== */
     .food-strip{
       width:calc(100% + 40px);
       margin-left:-20px;
@@ -385,9 +408,7 @@
       margin-top:26px;
     }
 
-    /* =========================
-       ENVIRONMENTAL
-    ========================== */
+    /* ENVIRONMENTAL */
     .env-image{
       width:100%;
       margin-bottom:28px;
@@ -397,22 +418,21 @@
       display:grid;
       grid-template-columns:280px 1fr;
       gap:42px;
-      align-items:start;
+      align-items:center;
     }
 
     .env-left h3{
       font-size:22px;
       line-height:1.15;
       max-width:240px;
+      margin-top:8px;
     }
 
     .env-right .copy{
       max-width:560px;
     }
 
-    /* =========================
-       MENU TOUCHPOINTS
-    ========================== */
+    /* MENU */
     .menu-layout{
       display:grid;
       grid-template-columns:420px 1fr;
@@ -421,20 +441,11 @@
     }
 
     .menu-left{
-      display:grid;
-      grid-template-columns:220px 1fr;
-      gap:18px;
-      align-items:start;
+      width:420px;
     }
 
     .menu-left-main{
-      width:220px;
-    }
-
-    .menu-left-stack{
-      display:grid;
-      gap:18px;
-      margin-top:92px;
+      width:420px;
     }
 
     .menu-right h3{
@@ -455,9 +466,6 @@
       margin-bottom:14px;
     }
 
-    /* =========================
-       FOOTER
-    ========================== */
     .bottom-bar{
       width:calc(100% + 40px);
       margin:24px -20px -34px;
@@ -536,7 +544,6 @@
         </div>
       </header>
 
-      <!-- HERO -->
       <section class="hero">
         <img class="hero-image" src="assets/pizzaexpress_-hero.png" alt="Pizza Express hero">
       </section>
@@ -560,31 +567,35 @@
         </div>
       </section>
 
-      <div class="divider"></div>
+      <!-- campaign 下方唔要嗰條線，所以呢度唔加 divider -->
 
       <!-- CAMPAIGN -->
       <section id="campaign" class="section">
-        <div class="campaign-layout">
-          <div class="campaign-left">
-            <img class="campaign-poster" src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
-          </div>
+        <div class="campaign-wrap">
+          <div class="campaign-gold-bar"></div>
 
-          <div class="campaign-right">
-            <div class="campaign-right-topimg">
-              <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
+          <div class="campaign-layout">
+            <div class="campaign-left">
+              <img class="campaign-poster" src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
             </div>
 
-            <div class="campaign-right-copy">
-              <h3>Campaign &amp; Charity Activation</h3>
-              <p>
-                Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
-              </p>
-              <ul>
-                <li>Designed campaign posters and promotional formats</li>
-                <li>Developed package-based and on-pack visual applications</li>
-                <li>Created in-store display materials and campaign headlines</li>
-                <li>Translated restaurant launches into immersive campaign spaces</li>
-              </ul>
+            <div class="campaign-right">
+              <div class="campaign-right-topimg">
+                <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
+              </div>
+
+              <div class="campaign-right-copy">
+                <h3>Campaign &amp; Charity Activation</h3>
+                <p>
+                  Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
+                </p>
+                <ul>
+                  <li>Designed campaign posters and promotional formats</li>
+                  <li>Developed package-based and on-pack visual applications</li>
+                  <li>Created in-store display materials and campaign headlines</li>
+                  <li>Translated restaurant launches into immersive campaign spaces</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -615,7 +626,7 @@
         </div>
 
         <div class="food-strip">
-          <img src="assets/pizzaexpress_-food-strip-1.png" alt="Food strip one">
+          <img src="assets/pizzaexpress_-food-strip.png" alt="Food strip one">
         </div>
       </section>
 
@@ -647,17 +658,12 @@
 
       <div class="divider"></div>
 
-      <!-- MENU / TOUCHPOINTS -->
+      <!-- MENU -->
       <section id="menu" class="section">
         <div class="menu-layout">
           <div class="menu-left">
             <div class="menu-left-main">
               <img src="assets/pizzaexpress_-menu-main.png" alt="Menu design main">
-            </div>
-
-            <div class="menu-left-stack">
-              <img src="assets/pizzaexpress_-menu-inside.png" alt="Menu inside">
-              <img src="assets/pizzaexpress_-touchpoint-small.png" alt="Touchpoint small">
             </div>
           </div>
 
