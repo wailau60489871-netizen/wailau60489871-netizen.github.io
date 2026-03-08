@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280, initial-scale=1.0" />
+  <title>KMB – Chi Wai Lau Portfolio</title>
+
+  <style>
+    :root{
+      --text:#f3f0e6;
+      --muted:#d8d1b7;
+      --panel-border:rgba(188,178,110,.28);
+      --menu-bg:rgba(8,8,8,.96);
+      --bg-olive:rgba(40,38,5,.88);
+      --line:rgba(255,255,255,.18);
+      --accent:#8e0000;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      overflow-x:auto;
+    }
+
+    body{
+      min-width:1280px;
+      overflow-x:auto;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
+        url("assets/hero-studio.png") center center / cover no-repeat fixed;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .page{
+      width:1280px;
+      margin:0 auto;
+      padding:24px 0 40px;
+    }
+
+    .frame{
+      position:relative;
+      background:var(--bg-olive);
+      border:1px solid var(--panel-border);
+      padding:20px 20px 34px;
+      overflow:hidden;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================== */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      padding:14px 18px;
+      margin:-20px -20px 0 -20px;
+      background:#000;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      position:relative;
+      z-index:60;
+    }
+
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      margin-left:auto;
+    }
+
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border:2px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:24px;
+      color:var(--text);
+      flex:0 0 auto;
+    }
+
+    .nav{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      font-weight:700;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .nav > a,
+    .dropdown > a{
+      display:inline-flex;
+      align-items:center;
+      height:32px;
+      white-space:nowrap;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .dropdown{
+      position:relative;
+    }
+
+    .dropdown::after{
+      content:"";
+      position:absolute;
+      left:0;
+      top:100%;
+      width:100%;
+      height:14px;
+    }
+
+    .dropdown-menu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:210px;
+      background:var(--menu-bg);
+      border:1px solid rgba(255,255,255,.08);
+      padding:12px 18px;
+      display:none;
+      z-index:50;
+    }
+
+    .dropdown:hover .dropdown-menu{
+      display:block;
+    }
+
+    .dropdown-menu a{
+      display:block;
+      padding:6px 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+      transition:color .2s ease, transform .2s ease;
+    }
+
+    .dropdown-menu a::before{
+      content:"▶ ";
+      opacity:0;
+      transition:opacity .2s ease;
+      font-size:12px;
+    }
+
+    .dropdown-menu a:hover{
+      color:var(--text);
+      transform:translateX(4px);
+    }
+
+    .dropdown-menu a:hover::before{
+      opacity:1;
+    }
+
+    .quick-links-inline{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .quick-links-inline a:hover{
+      color:var(--text);
+    }
+
+    .site-title{
+      text-align:right;
+      line-height:1;
+      flex:0 0 auto;
+    }
+
+    .portfolio-word{
+      display:block;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1px;
+      color:var(--text);
+    }
+
+    .name-word{
+      display:block;
+      margin-top:2px;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.6px;
+      color:var(--muted);
+    }
+
+    /* =========================
+       KMB PAGE
+    ========================== */
+    .kmb-page{
+      width:1120px;
+      margin:0 auto;
+      padding:30px 0 10px;
+    }
+
+    .kmb-grid-top{
+      display:grid;
+      grid-template-columns:350px 1fr;
+      gap:68px;
+      align-items:start;
+      margin-bottom:48px;
+    }
+
+    .kmb-poster{
+      width:100%;
+      max-width:350px;
+      margin-left:34px;
+    }
+
+    .kmb-top-copy{
+      padding-top:34px;
+      max-width:520px;
+    }
+
+    .kmb-title{
+      font-size:28px;
+      line-height:1.05;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .kmb-subtitle{
+      font-size:17px;
+      line-height:1.22;
+      font-weight:700;
+      margin-bottom:22px;
+      max-width:360px;
+    }
+
+    .kmb-copy{
+      font-size:14px;
+      line-height:1.62;
+      color:var(--text);
+    }
+
+    .kmb-copy + .kmb-section-title{
+      margin-top:54px;
+    }
+
+    .kmb-section-title{
+      font-size:18px;
+      line-height:1.2;
+      font-weight:700;
+      margin-bottom:16px;
+      max-width:340px;
+    }
+
+    .kmb-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:58px;
+      align-items:end;
+      margin-bottom:0;
+    }
+
+    .kmb-row-left{
+      max-width:430px;
+    }
+
+    .kmb-row-right{
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-end;
+    }
+
+    .kmb-bus{
+      width:560px;
+    }
+
+    .kmb-red-bar{
+      width:calc(100% + 40px);
+      height:20px;
+      background:var(--accent);
+      margin:12px -20px 48px;
+    }
+
+    .kmb-row-2{
+      display:grid;
+      grid-template-columns:520px 1fr;
+      gap:68px;
+      align-items:center;
+      margin-bottom:64px;
+    }
+
+    .kmb-banner{
+      width:520px;
+    }
+
+    .kmb-row-2-right{
+      max-width:430px;
+    }
+
+    .kmb-row-3{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:72px;
+      align-items:center;
+      margin-bottom:26px;
+    }
+
+    .kmb-row-3-left{
+      max-width:390px;
+      padding-left:22px;
+    }
+
+    .kmb-busstop{
+      width:340px;
+      margin-left:auto;
+      margin-right:28px;
+    }
+
+    .bottom-bar{
+      width:calc(100% + 40px);
+      margin:24px -20px -34px;
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.14);
+      padding:16px 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .copyright{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .back-to-top{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:124px;
+      height:40px;
+      border:1px solid rgba(255,255,255,.28);
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      transition:background .2s ease, transform .2s ease;
+    }
+
+    .back-to-top:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <a href="index.html" class="brand-mark">W</a>
+
+          <nav class="nav">
+            <a href="about.html">About Me</a>
+
+            <div class="dropdown">
+              <a href="#">Selected Works</a>
+              <div class="dropdown-menu">
+                <a href="samaroli.html">Samaroli</a>
+                <a href="pizzaexpress.html">Pizzaexpress</a>
+                <a href="canon.html">Canon</a>
+                <a href="kmb.html">KMB</a>
+                <a href="illustration-book.html">Illustration Book</a>
+                <a href="youtube-channel.html">Youtube Channel</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="topbar-right">
+          <nav class="quick-links-inline">
+            <a href="#overview">Overview</a>
+            <a href="#transit">Transit</a>
+            <a href="#outdoor">Outdoor</a>
+            <a href="#street">Street</a>
+          </nav>
+
+          <div class="site-title">
+            <span class="portfolio-word">PORTFOLIO</span>
+            <span class="name-word">Chi Wai Lau</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="kmb-page">
+
+        <!-- Top section -->
+        <section id="overview" class="kmb-grid-top">
+          <div class="kmb-poster">
+            <img src="assets/kmb_poster.png" alt="KMB recruitment campaign poster">
+          </div>
+
+          <div class="kmb-top-copy">
+            <h1 class="kmb-title">KMB</h1>
+            <h2 class="kmb-subtitle">Recruitment Campaign &amp;<br>Outdoor Brand Application</h2>
+
+            <p class="kmb-copy">
+              Developed a recruitment-focused campaign for KMB, translating a clear hiring message into high-visibility outdoor and transit environments. The project focused on communicating employment opportunities through bold visual messaging, strong typographic hierarchy and transport-led imagery that could be immediately recognised in busy urban contexts.
+            </p>
+
+            <h3 class="kmb-section-title">Campaign Concept &amp;<br>Visual Direction</h3>
+            <p class="kmb-copy">
+              The campaign was designed to function across multiple physical formats, including large-scale building banners, bus body advertising and street-level recruitment touchpoints. Each execution required careful adaptation of layout structure, ensuring the key message remained highly legible at distance while maintaining brand clarity and visual impact.
+            </p>
+          </div>
+        </section>
+
+        <!-- Bus row -->
+        <section id="transit" class="kmb-row">
+          <div class="kmb-row-left">
+            <h3 class="kmb-section-title">Transit Advertising Application</h3>
+            <p class="kmb-copy">
+              The campaign was designed to function across multiple physical formats, including large-scale building banners, bus body advertising and street-level recruitment touchpoints. Each execution required careful adaptation of layout structure, ensuring the key message remained highly legible at distance while maintaining brand clarity and visual impact.
+            </p>
+          </div>
+
+          <div class="kmb-row-right">
+            <img class="kmb-bus" src="assets/kmb_bus.png" alt="KMB bus advertising application">
+          </div>
+        </section>
+
+        <div class="kmb-red-bar"></div>
+
+        <!-- Building banner row -->
+        <section id="outdoor" class="kmb-row-2">
+          <div>
+            <img class="kmb-banner" src="assets/kmb_banner.png" alt="KMB large-format building banner">
+          </div>
+
+          <div class="kmb-row-2-right">
+            <h3 class="kmb-section-title">Large-Format Outdoor Application</h3>
+            <p class="kmb-copy">
+              Strong emphasis was placed on information hierarchy, balancing promotional messaging with practical recruitment details such as contact information and communication channels. The design approach prioritised message clarity, immediate recognition and strong public visibility within high-traffic environments.
+            </p>
+            <br>
+            <p class="kmb-copy">
+              Beyond the core visual concept, the project also involved adapting campaign artwork across different scales and physical placements. From large architectural banners to moving transit media, the campaign maintained a consistent visual system while responding to the spatial and environmental constraints of each application.
+            </p>
+          </div>
+        </section>
+
+        <!-- Street-level row -->
+        <section id="street" class="kmb-row-3">
+          <div class="kmb-row-3-left">
+            <h3 class="kmb-section-title">Street-Level Recruitment Touchpoints</h3>
+            <p class="kmb-copy">
+              The final outcome demonstrates how a unified design approach can extend across outdoor, transit and street-level formats, transforming everyday urban environments into effective communication platforms while reinforcing the visibility and accessibility of the recruitment message.
+            </p>
+          </div>
+
+          <div>
+            <img class="kmb-busstop" src="assets/kmb_busstop.png" alt="KMB street-level recruitment touchpoint">
+          </div>
+        </section>
+
+      </main>
+
+      <div class="bottom-bar">
+        <div class="copyright">
+          © 2026 Chi Wai Lau. All Rights Reserved.
+        </div>
+
+        <a href="#" class="back-to-top">Back to top ↑</a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
