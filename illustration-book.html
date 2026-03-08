@@ -273,54 +273,59 @@
       margin-bottom:18px;
     }
 
-    .drama-section{
-      background:rgba(0,0,0,.58);
-      margin:0 -20px;
-      padding:46px 20px 42px;
-    }
+.drama-section{
+  background:rgba(0,0,0,.58);
+  margin:0 -20px;
+  padding:46px 20px 42px;
+}
 
-    .drama-inner{
-      width:1120px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:430px 1fr;
-      gap:0;
-      align-items:start;
-      position:relative;
-    }
+.drama-inner{
+  width:1120px;
+  height:520px;
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+  background:#000;
+}
 
-    .drama-copy{
-      padding-top:24px;
-      max-width:370px;
-      transform:translateX(90px);
-      position:relative;
-      z-index:3;
-    }
+.drama-image-full{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
 
-    .drama-title{
-      font-size:22px;
-      line-height:1.15;
-      font-weight:700;
-      margin-bottom:18px;
-    }
+.drama-image-full img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
-    .drama-subtitle{
-      font-size:16px;
-      line-height:1.22;
-      font-weight:700;
-      margin-bottom:26px;
-    }
+.drama-copy{
+  position:absolute;
+  left:70px;
+  top:56px;
+  max-width:420px;
+  z-index:3;
+}
 
-    .drama-copy p{
-      margin-bottom:16px;
-    }
+.drama-title{
+  font-size:22px;
+  line-height:1.15;
+  font-weight:700;
+  margin-bottom:18px;
+}
 
-    .drama-image{
-      width:360px;
-      margin-left:-80px;
-      position:relative;
-      z-index:1;
-    }
+.drama-subtitle{
+  font-size:16px;
+  line-height:1.22;
+  font-weight:700;
+  margin-bottom:26px;
+}
+
+.drama-copy p{
+  margin-bottom:16px;
+}
 
     .label-section{
       padding:48px 0 56px;
@@ -461,20 +466,20 @@
       padding:56px 0 38px;
     }
 
-    .sketch-inner{
-      width:1120px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:330px 1fr;
-      gap:62px;
-      align-items:start;
-    }
+.sketch-inner{
+  width:1120px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:520px 1fr;
+  gap:40px;
+  align-items:start;
+}
 
-    .sketch-copy{
-      max-width:290px;
-      padding-left:90px;
-      padding-top:138px;
-    }
+.sketch-copy{
+  max-width:520px;
+  padding-left:60px;
+  padding-top:138px;
+}
 
     .sketch-main-title{
       font-size:24px;
@@ -493,21 +498,29 @@
       margin-bottom:16px;
     }
 
-    .sketch-visual{
-      position:relative;
-      height:480px;
-    }
+   .sketch-visual{
+  position:relative;
+  height:620px;
+}
 
-    .blue-circle{
-      position:absolute;
-      right:40px;
-      top:70px;
-      width:420px;
-      height:420px;
-      border-radius:50%;
-      background:rgba(40,48,95,.65);
-      z-index:1;
-    }
+.blue-circle{
+  position:absolute;
+  right:10px;
+  top:55px;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:rgba(40,48,95,.65);
+  z-index:1;
+}
+
+.sketch-main-combined{
+  position:absolute;
+  right:0;
+  top:10px;
+  width:680px;
+  z-index:3;
+}
 
     .sketch-main-combined{
       position:absolute;
@@ -613,30 +626,30 @@
           </div>
         </section>
 
-        <section id="drama" class="drama-section">
-          <div class="drama-inner">
-            <div class="drama-copy illu-copy">
-              <h2 class="drama-title">Drama poster</h2>
-              <div class="drama-subtitle">Concept &amp; Visual Expression</div>
+      <section id="drama" class="drama-section">
+  <div class="drama-inner">
+    <div class="drama-image-full">
+      <img src="assets/illustration_drama.png" alt="Drama poster illustration">
+    </div>
 
-              <p>
-                This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere. The composition centres on a solitary figure illuminated by dramatic lighting, creating a strong sense of tension and narrative ambiguity.
-              </p>
+    <div class="drama-copy illu-copy">
+      <h2 class="drama-title">Drama poster</h2>
+      <div class="drama-subtitle">Concept &amp; Visual Expression</div>
 
-              <p>
-                The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context. Painterly textures and controlled colour contrasts help emphasise the emotional tone of the piece while maintaining clarity in the overall composition.
-              </p>
+      <p>
+        This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere. The composition centres on a solitary figure illuminated by dramatic lighting, creating a strong sense of tension and narrative ambiguity.
+      </p>
 
-              <p>
-                The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling, allowing the viewer to interpret the scene through visual cues.
-              </p>
-            </div>
+      <p>
+        The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context. Painterly textures and controlled colour contrasts help emphasise the emotional tone of the piece while maintaining clarity in the overall composition.
+      </p>
 
-            <div class="drama-image">
-              <img src="assets/illustration_drama.png" alt="Drama poster illustration">
-            </div>
-          </div>
-        </section>
+      <p>
+        The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling, allowing the viewer to interpret the scene through visual cues.
+      </p>
+    </div>
+  </div>
+</section>
 
         <section id="label" class="label-section">
           <div class="showreel-wrap">
