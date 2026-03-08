@@ -63,6 +63,9 @@
       overflow:hidden;
     }
 
+    /* =========================
+       TOP BAR
+    ========================== */
     .topbar{
       display:flex;
       justify-content:space-between;
@@ -214,6 +217,9 @@
       color:var(--muted);
     }
 
+    /* =========================
+       HERO
+    ========================== */
     .hero{
       margin:0 -20px 0 -20px;
       border-bottom:1px solid rgba(255,255,255,.08);
@@ -224,6 +230,9 @@
       display:block;
     }
 
+    /* =========================
+       GENERIC
+    ========================== */
     .section{
       width:1120px;
       margin:0 auto;
@@ -289,7 +298,9 @@
       padding-left:18px;
     }
 
-    /* INTRO */
+    /* =========================
+       INTRO
+    ========================== */
     .intro-layout{
       display:grid;
       grid-template-columns:360px 1fr;
@@ -304,116 +315,124 @@
       border-left:2px solid rgba(255,255,255,.55);
     }
 
-    /* CAMPAIGN */
-.campaign-wrap{
-  position:relative;
-  padding-top:12px;
-}
+    /* =========================
+       CAMPAIGN
+    ========================== */
+    .campaign-wrap{
+      position:relative;
+      padding-top:12px;
+    }
 
-.campaign-gold-bar{
-  position:absolute;
-  left:-20px;
-  right:-20px;
-  top:30px;              /* 升高 */
-  height:110px;          /* 再高啲 */
-  background:var(--gold-bar);
-  z-index:0;
-}
+    .campaign-gold-bar{
+      position:absolute;
+      left:-20px;
+      right:-20px;
+      top:30px;
+      height:110px;
+      background:var(--gold-bar);
+      z-index:0;
+    }
 
-.campaign-layout{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:420px 1fr;
-  gap:54px;
-  align-items:start;
-}
+    .campaign-layout{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:420px 1fr;
+      gap:54px;
+      align-items:start;
+    }
 
-.campaign-left{
-  display:grid;
-  gap:14px;
-}
+    .campaign-left{
+      display:grid;
+      gap:14px;
+    }
 
-.campaign-poster{
-  width:358px;           /* 原本 275px，再放大約 30% */
-  margin-left:6px;       /* 位置不變 */
-}
+    .campaign-poster{
+      width:358px;
+      margin-left:6px;
+    }
 
-.campaign-right{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
-  align-items:start;
-}
+    .campaign-right{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      align-items:start;
+    }
 
-.campaign-right-topimg{
-  width:600px;
-  margin:0 0 8px 0;      /* 靠左，放喺文字上面 */
-}
+    .campaign-right-topimg{
+      width:600px;
+      margin:0 0 8px 0;
+    }
 
-.campaign-right-copy{
-  padding-top:34px;
-  max-width:430px;
-  transform:translateX(40px);
-}
+    .campaign-right-copy{
+      padding-top:34px;
+      max-width:430px;
+      transform:translateX(40px);
+    }
 
-.campaign-right-copy h3{
-  font-size:22px;
-  line-height:1.1;
-  margin-bottom:12px;
-}
+    .campaign-right-copy h3{
+      font-size:22px;
+      line-height:1.1;
+      margin-bottom:12px;
+    }
 
-.campaign-right-copy p,
-.campaign-right-copy ul{
-  font-size:14px;
-  line-height:1.62;
-}
+    .campaign-right-copy p,
+    .campaign-right-copy ul{
+      font-size:14px;
+      line-height:1.62;
+    }
 
-.campaign-right-copy ul{
-  padding-left:18px;
-  margin-top:12px;
-}
-    /* SOCIAL / CONTENT */
-.social-large{
-  width:100%;
-  margin-bottom:52px;   /* 上下留多啲 */
-}
+    .campaign-right-copy ul{
+      padding-left:18px;
+      margin-top:12px;
+    }
 
-.social-layout{
-  display:grid;
-  grid-template-columns:360px 1fr;
-  gap:58px;
-  align-items:start;
-  margin-bottom:42px;   /* 中段同下面 food strip 拉開 */
-}
+    /* =========================
+       SOCIAL / CONTENT
+    ========================== */
+    .social-large{
+      width:100%;
+      margin-bottom:52px;
+    }
 
-.social-video-thumb{
-  width:360px;
-}
+    .social-layout{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:58px;
+      align-items:start;
+      margin-bottom:42px;
+    }
 
-.social-copy{
-  padding-top:10px;
-}
+    .social-video-thumb{
+      width:360px;
+    }
 
-.social-copy h3{
-  font-size:22px;
-  line-height:1.1;
-  margin-bottom:22px;
-}
+    .social-copy{
+      padding-top:10px;
+    }
 
-.social-copy ul{
-  padding-left:18px;
-  font-size:14px;
-  line-height:1.82;
-}
+    .social-copy h3{
+      font-size:22px;
+      line-height:1.1;
+      margin-bottom:22px;
+    }
 
-.food-strip{
-  width:calc(100% + 40px);
-  margin-left:-20px;
-  margin-right:-20px;
-  margin-top:42px;      /* 同上面再分開啲 */
-}
-    /* ENVIRONMENTAL */
+    .social-copy ul{
+      padding-left:18px;
+      font-size:14px;
+      line-height:1.82;
+    }
+
+    .food-strip{
+      width:calc(100% + 40px);
+      margin-left:-20px;
+      margin-right:-20px;
+      margin-top:42px;
+    }
+
+    /* =========================
+       ENVIRONMENTAL SECTION
+    ========================== */
     .env-slider{
       position:relative;
       width:100%;
@@ -441,7 +460,7 @@
       background:rgba(0,0,0,0.5);
       color:#fff;
       border:none;
-      font-size:28px;＝
+      font-size:28px;
       width:44px;
       height:44px;
       cursor:pointer;
@@ -470,14 +489,15 @@
       margin-top:8px;
     }
 
-    .env-layout{
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:42px;
-  align-items:center;
-}
+    .env-right .copy{
+      max-width:560px;
+      margin:0 auto;
+      transform:translateX(-40px);
+    }
 
-    /* MENU */
+    /* =========================
+       MENU
+    ========================== */
     .menu-layout{
       display:grid;
       grid-template-columns:420px 1fr;
@@ -515,6 +535,9 @@
       margin-bottom:14px;
     }
 
+    /* =========================
+       FOOTER
+    ========================== */
     .bottom-bar{
       width:calc(100% + 40px);
       margin:24px -20px -34px;
@@ -618,35 +641,35 @@
 
       <!-- CAMPAIGN -->
       <section id="campaign" class="section">
-  <div class="campaign-wrap">
-    <div class="campaign-gold-bar"></div>
+        <div class="campaign-wrap">
+          <div class="campaign-gold-bar"></div>
 
-    <div class="campaign-layout">
-      <div class="campaign-left">
-        <img class="campaign-poster" src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
-      </div>
+          <div class="campaign-layout">
+            <div class="campaign-left">
+              <img class="campaign-poster" src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
+            </div>
 
-      <div class="campaign-right">
-        <div class="campaign-right-topimg">
-          <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
+            <div class="campaign-right">
+              <div class="campaign-right-topimg">
+                <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
+              </div>
+
+              <div class="campaign-right-copy">
+                <h3>Campaign &amp; Charity Activation</h3>
+                <p>
+                  Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
+                </p>
+                <ul>
+                  <li>Designed campaign posters and promotional formats</li>
+                  <li>Developed package-based and on-pack visual applications</li>
+                  <li>Created in-store display materials and campaign headlines</li>
+                  <li>Translated restaurant launches into immersive campaign spaces</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="campaign-right-copy">
-          <h3>Campaign &amp; Charity Activation</h3>
-          <p>
-            Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
-          </p>
-          <ul>
-            <li>Designed campaign posters and promotional formats</li>
-            <li>Developed package-based and on-pack visual applications</li>
-            <li>Created in-store display materials and campaign headlines</li>
-            <li>Translated restaurant launches into immersive campaign spaces</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <div class="divider"></div>
 
