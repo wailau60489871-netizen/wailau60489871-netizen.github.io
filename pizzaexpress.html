@@ -310,46 +310,49 @@
       padding-top:16px;
     }
 
-.campaign-gold-bar{
-  position:absolute;
-  left:-20px;
-  right:-20px;
-  top:88px;              /* 升高到文字上面 */
-  height:160px;
-  background:var(--gold-bar);
-  z-index:0;
-}
+    .campaign-gold-bar{
+      position:absolute;
+      left:-20px;
+      right:-20px;
+      top:88px;
+      height:160px;
+      background:var(--gold-bar);
+      z-index:0;
+    }
 
-.campaign-right{
-  display:grid;
-  grid-template-columns:380px 1fr;   /* thumb 位再大 */
-  gap:34px;
-  align-items:start;
-}
+    .campaign-layout{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:46px;
+      align-items:start;
+    }
 
-.campaign-right-topimg{
-  width:380px;          /* 放大 */
-  margin-top:0;
-}
+    .campaign-left{
+      display:grid;
+      gap:14px;
+    }
 
-.campaign-right-copy{
-  padding-top:0;        /* 唔再向下推，拍齊 thumb 底部 */
-}
+    .campaign-poster{
+      width:275px;
+      margin-left:6px;
+    }
 
     .campaign-right{
       display:grid;
-      grid-template-columns:280px 1fr;
-      gap:30px;
+      grid-template-columns:380px 1fr;
+      gap:34px;
       align-items:start;
     }
 
     .campaign-right-topimg{
-      width:280px; /* 大一倍 */
-      margin-top:-6px;
+      width:380px;
+      margin-top:0;
     }
 
     .campaign-right-copy{
-      padding-top:86px;
+      padding-top:0;
     }
 
     .campaign-right-copy h3{
@@ -370,33 +373,33 @@
     }
 
     /* SOCIAL / CONTENT */
-.social-large{
-  width:100%;
-  margin-bottom:36px;   /* 同下邊留多啲距離 */
-}
-
-.social-layout{
-  display:grid;
-  grid-template-columns:360px 1fr;
-  gap:52px;             /* 左右留多啲空間 */
-  align-items:start;
-}
-
-    .social-video-thumb{
-      width:340px;
+    .social-large{
+      width:100%;
+      margin-bottom:36px;
     }
 
-.social-copy h3{
-  font-size:22px;
-  line-height:1.1;
-  margin-bottom:18px;
-}
+    .social-layout{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:52px;
+      align-items:start;
+    }
 
-.social-copy ul{
-  padding-left:18px;
-  font-size:14px;
-  line-height:1.72;   /* 行距拉開 */
-}
+    .social-video-thumb{
+      width:360px;
+    }
+
+    .social-copy h3{
+      font-size:22px;
+      line-height:1.1;
+      margin-bottom:18px;
+    }
+
+    .social-copy ul{
+      padding-left:18px;
+      font-size:14px;
+      line-height:1.72;
+    }
 
     .food-strip{
       width:calc(100% + 40px);
@@ -406,9 +409,46 @@
     }
 
     /* ENVIRONMENTAL */
-    .env-image{
+    .env-slider{
+      position:relative;
       width:100%;
+      overflow:hidden;
       margin-bottom:28px;
+    }
+
+    .env-slide{
+      display:none;
+    }
+
+    .env-slide.active{
+      display:block;
+    }
+
+    .env-slide img{
+      width:100%;
+      display:block;
+    }
+
+    .env-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,0.5);
+      color:#fff;
+      border:none;
+      font-size:28px;
+      width:44px;
+      height:44px;
+      cursor:pointer;
+      z-index:5;
+    }
+
+    .env-arrow.left{
+      left:10px;
+    }
+
+    .env-arrow.right{
+      right:10px;
     }
 
     .env-layout{
@@ -430,12 +470,12 @@
     }
 
     /* MENU */
-.menu-layout{
-  display:grid;
-  grid-template-columns:420px 1fr;
-  gap:54px;
-  align-items:center;   /* 左右垂直置中 */
-}
+    .menu-layout{
+      display:grid;
+      grid-template-columns:420px 1fr;
+      gap:54px;
+      align-items:center;
+    }
 
     .menu-left{
       width:420px;
@@ -445,21 +485,21 @@
       width:420px;
     }
 
-.menu-right{
-  padding-top:26px;   /* 整段文字落返少少 */
-}
+    .menu-right{
+      padding-top:26px;
+    }
 
-.menu-right h3{
-  font-size:22px;
-  line-height:1.12;
-  margin-bottom:16px;
-}
+    .menu-right h3{
+      font-size:22px;
+      line-height:1.12;
+      margin-bottom:16px;
+    }
 
-.menu-right p,
-.menu-right ul{
-  font-size:14px;
-  line-height:1.68;
-}
+    .menu-right p,
+    .menu-right ul{
+      font-size:14px;
+      line-height:1.68;
+    }
 
     .menu-right ul{
       padding-left:18px;
@@ -568,8 +608,6 @@
         </div>
       </section>
 
-      <!-- campaign 下方唔要嗰條線，所以呢度唔加 divider -->
-
       <!-- CAMPAIGN -->
       <section id="campaign" class="section">
         <div class="campaign-wrap">
@@ -635,7 +673,26 @@
 
       <!-- ENVIRONMENTAL -->
       <section id="environmental" class="section">
-        <img class="env-image" src="assets/pizzaexpress_-environmental.png" alt="Environmental design">
+        <div class="env-slider">
+          <div class="env-slide active">
+            <img src="assets/pizzaexpress_-environmental.png" alt="Environmental design 1">
+          </div>
+
+          <div class="env-slide">
+            <img src="assets/pizzaexpress_-environmental-2.png" alt="Environmental design 2">
+          </div>
+
+          <div class="env-slide">
+            <img src="assets/pizzaexpress_-environmental-3.png" alt="Environmental design 3">
+          </div>
+
+          <div class="env-slide">
+            <img src="assets/pizzaexpress_-environmental-4.png" alt="Environmental design 4">
+          </div>
+
+          <button class="env-arrow left">&#10094;</button>
+          <button class="env-arrow right">&#10095;</button>
+        </div>
 
         <div class="env-layout">
           <div class="env-left">
@@ -700,5 +757,45 @@
 
     </div>
   </div>
+
+  <script>
+    let slides = document.querySelectorAll(".env-slide");
+    let index = 0;
+    let autoSlide;
+
+    function showSlide(i){
+      slides.forEach(s => s.classList.remove("active"));
+      slides[i].classList.add("active");
+    }
+
+    function nextSlide(){
+      index++;
+      if(index >= slides.length){ index = 0; }
+      showSlide(index);
+    }
+
+    function prevSlide(){
+      index--;
+      if(index < 0){ index = slides.length - 1; }
+      showSlide(index);
+    }
+
+    function restartAutoSlide(){
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextSlide, 5000);
+    }
+
+    document.querySelector(".env-arrow.right").onclick = function(){
+      nextSlide();
+      restartAutoSlide();
+    };
+
+    document.querySelector(".env-arrow.left").onclick = function(){
+      prevSlide();
+      restartAutoSlide();
+    };
+
+    autoSlide = setInterval(nextSlide, 5000);
+  </script>
 </body>
 </html>
