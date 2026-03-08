@@ -10,11 +10,10 @@
       --text:#f3f0e6;
       --muted:#d8d1b7;
       --panel-border:rgba(188,178,110,.28);
-      --line:rgba(255,255,255,.22);
       --menu-bg:rgba(8,8,8,.96);
       --box-line:rgba(255,255,255,.58);
       --bg-olive:rgba(40,38,5,.88);
-      --grey-block:#4b4b4f;
+      --line:rgba(255,255,255,.18);
     }
 
     *{
@@ -218,156 +217,119 @@
     }
 
     /* =========================
-       CANON PAGE
+       PAGE CONTENT
     ========================== */
-    .canon-section{
-      width:1120px;
+    .canon-page{
+      width:1040px;
       margin:0 auto;
-      padding:34px 0 0;
-      color:var(--text);
+      padding:34px 0 6px;
     }
 
-    .canon-hero-wrap{
-      position:relative;
-      padding:18px 0 34px;
+    .section-image{
+      width:100%;
+      margin:0 auto 34px;
     }
 
-    .canon-hero-bg{
-      position:absolute;
-      left:-160px;
-      right:-160px;
-      top:92px;
-      height:350px;
-      background:var(--grey-block);
-      z-index:0;
-    }
-
-    .canon-hero-image{
-      position:relative;
-      z-index:2;
-      width:1020px;
-      margin:0 auto;
-    }
-
-    .canon-intro{
+    .info-row{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:44px;
       align-items:start;
-      padding:6px 0 56px;
+      margin:0 0 56px;
     }
 
-    .canon-intro-left h1{
+    .info-left h1{
       font-size:28px;
       line-height:1.08;
-      margin:0 0 18px;
       font-weight:700;
+      margin:0 0 16px;
     }
 
-    .canon-intro-left h2{
+    .info-left h2{
       font-size:17px;
       line-height:1.28;
-      margin:0 0 24px;
       font-weight:700;
+      margin:0 0 20px;
     }
 
-    .canon-intro-left p,
-    .canon-intro-right li,
-    .canon-mid-copy p,
-    .canon-bottom-right li{
+    .info-left p,
+    .info-right li,
+    .mid-copy p,
+    .bottom-right li{
       font-size:14px;
-      line-height:1.62;
+      line-height:1.65;
+      color:var(--text);
     }
 
-    .canon-intro-left p{
-      max-width:430px;
-      margin-bottom:14px;
-    }
-
-    .canon-intro-right{
-      border-left:4px solid rgba(255,255,255,.9);
-      padding-left:24px;
-      margin-top:10px;
-    }
-
-    .canon-intro-right h3,
-    .canon-bottom-right h3{
-      font-size:18px;
-      line-height:1.18;
+    .info-left p{
       margin:0 0 14px;
-      font-weight:700;
+      max-width:430px;
     }
 
-    .canon-intro-right ul,
-    .canon-bottom-right ul{
-      margin:0;
+    .info-right{
+      border-left:4px solid rgba(255,255,255,.88);
+      padding-left:24px;
+      margin-top:4px;
+    }
+
+    .info-right h3,
+    .bottom-right h3,
+    .mid-copy h3{
+      font-size:18px;
+      line-height:1.2;
+      font-weight:700;
+      margin:0 0 14px;
+    }
+
+    .info-right ul,
+    .bottom-right ul{
       padding-left:18px;
     }
 
-    .canon-mid-wrap{
-      position:relative;
-      padding:10px 0 52px;
+    .mid-section{
+      margin:0 0 54px;
     }
 
-    .canon-mid-bg{
-      position:absolute;
-      left:-160px;
-      right:-160px;
-      top:84px;
-      height:510px;
-      background:var(--grey-block);
-      z-index:0;
-    }
-
-    .canon-mid-image{
-      position:relative;
-      z-index:2;
-      width:950px;
-      margin:0 auto 34px;
-    }
-
-    .canon-mid-copy{
-      position:relative;
-      z-index:2;
-      width:980px;
+    .mid-copy{
+      width:900px;
       margin:0 auto;
+      padding-top:6px;
     }
 
-    .canon-mid-copy h3{
-      font-size:18px;
-      line-height:1.18;
+    .mid-copy p{
       margin:0 0 14px;
-      font-weight:700;
-    }
-
-    .canon-mid-copy p{
       max-width:760px;
-      margin:0 0 14px;
     }
 
-    .canon-bottom{
+    .bottom-row{
       display:grid;
-      grid-template-columns:520px 28px 1fr;
+      grid-template-columns:520px 24px 1fr;
       gap:34px;
       align-items:center;
-      padding:26px 0 8px;
+      margin-top:18px;
     }
 
-    .canon-bottom-left{
+    .bottom-left{
       width:520px;
       border-radius:22px;
       overflow:hidden;
     }
 
-    .canon-bottom-divider{
+    .bottom-divider{
       width:4px;
       height:190px;
-      background:rgba(255,255,255,.92);
+      background:rgba(255,255,255,.9);
       justify-self:center;
     }
 
-    .canon-bottom-right{
+    .bottom-right{
       max-width:420px;
+    }
+
+    .section-gap{
+      height:1px;
+      background:var(--line);
+      margin:0 0 36px;
     }
 
     /* =========================
@@ -439,7 +401,7 @@
           <nav class="quick-links-inline">
             <a href="#campaign">Campaign</a>
             <a href="#catalogue">Catalogue</a>
-            <a href="#contribution">Contribution</a>
+            <a href="#contributions">Contributions</a>
           </nav>
 
           <div class="site-title">
@@ -449,45 +411,44 @@
         </div>
       </header>
 
-      <section class="canon-section">
+      <main class="canon-page">
 
-        <!-- 第一幅合成圖 -->
-        <div id="campaign" class="canon-hero-wrap">
-          <div class="canon-hero-bg"></div>
-          <img class="canon-hero-image" src="assets/canon_-poster.jpeg" alt="Canon retail campaign and POP design">
-        </div>
+        <!-- Section 1 -->
+        <section id="campaign">
+          <img class="section-image" src="assets/canon_-poster.jpeg" alt="Canon retail campaign and POP design" />
 
-        <!-- 中間文字 -->
-        <div class="canon-intro">
-          <div class="canon-intro-left">
-            <h1>Canon</h1>
-            <h2>Retail Campaign &amp; POP Design</h2>
-            <p>
-              Designed promotional posters and point-of-purchase materials for calculator product launches, translating technical features into clear, engaging retail communication.
-            </p>
-            <p>
-              The focus was on visual clarity, product visibility and strong typographic hierarchy to support in-store marketing objectives.
-            </p>
+          <div class="info-row">
+            <div class="info-left">
+              <h1>Canon</h1>
+              <h2>Retail Campaign &amp; POP Design</h2>
+              <p>
+                Designed promotional posters and point-of-purchase materials for calculator product launches, translating technical features into clear, engaging retail communication.
+              </p>
+              <p>
+                The focus was on visual clarity, product visibility and strong typographic hierarchy to support in-store marketing objectives.
+              </p>
+            </div>
+
+            <div class="info-right">
+              <h3>Key Contributions</h3>
+              <ul>
+                <li>Developed campaign posters for retail display</li>
+                <li>Designed POP materials to enhance in-store visibility</li>
+                <li>Structured product features into digestible visual messaging</li>
+                <li>Ensured alignment with Canon’s brand guidelines</li>
+                <li>Prepared artwork for print production and installation</li>
+              </ul>
+            </div>
           </div>
+        </section>
 
-          <div class="canon-intro-right">
-            <h3>Key Contributions</h3>
-            <ul>
-              <li>Developed campaign posters for retail display</li>
-              <li>Designed POP materials to enhance in-store visibility</li>
-              <li>Structured product features into digestible visual messaging</li>
-              <li>Ensured alignment with Canon’s brand guidelines</li>
-              <li>Prepared artwork for print production and installation</li>
-            </ul>
-          </div>
-        </div>
+        <div class="section-gap"></div>
 
-        <!-- 第二幅合成圖 -->
-        <div id="catalogue" class="canon-mid-wrap">
-          <div class="canon-mid-bg"></div>
-          <img class="canon-mid-image" src="assets/canon_-m80.jpeg" alt="Canon M80 catalogue and marketing collateral">
+        <!-- Section 2 -->
+        <section id="catalogue" class="mid-section">
+          <img class="section-image" src="assets/canon_-m80.jpeg" alt="Canon M80 catalogue and marketing collateral" />
 
-          <div class="canon-mid-copy">
+          <div class="mid-copy">
             <h3>Product Catalogue &amp; Marketing Collateral</h3>
             <p>
               Developed structured product catalogues and supporting retail materials for camera accessories, translating detailed specifications into clear, organised visual systems.
@@ -496,29 +457,33 @@
               The design approach focused on typographic hierarchy, grid precision and consistent layout structure across multi-page documents.
             </p>
           </div>
-        </div>
+        </section>
 
-        <!-- 第三幅合成圖 -->
-        <div id="contribution" class="canon-bottom">
-          <div class="canon-bottom-left">
-            <img src="assets/canon_-pop.png" alt="Canon POP and retail collateral board">
+        <div class="section-gap"></div>
+
+        <!-- Section 3 -->
+        <section id="contributions">
+          <div class="bottom-row">
+            <div class="bottom-left">
+              <img src="assets/canon_-pop.png" alt="Canon POP and retail collateral board" />
+            </div>
+
+            <div class="bottom-divider"></div>
+
+            <div class="bottom-right">
+              <h3>Key Contributions</h3>
+              <ul>
+                <li>Designed multi-page product catalogues</li>
+                <li>Established structured grid systems for technical content</li>
+                <li>Applied typographic hierarchy for product clarity</li>
+                <li>Ensured consistency across catalogue and retail materials</li>
+                <li>Managed artwork preparation to print-ready standards</li>
+              </ul>
+            </div>
           </div>
+        </section>
 
-          <div class="canon-bottom-divider"></div>
-
-          <div class="canon-bottom-right">
-            <h3>Key Contributions</h3>
-            <ul>
-              <li>Designed multi-page product catalogues</li>
-              <li>Established structured grid systems for technical content</li>
-              <li>Applied typographic hierarchy for product clarity</li>
-              <li>Ensured consistency across catalogue and retail materials</li>
-              <li>Managed artwork preparation to print-ready standards</li>
-            </ul>
-          </div>
-        </div>
-
-      </section>
+      </main>
 
       <div class="bottom-bar">
         <div class="copyright">
