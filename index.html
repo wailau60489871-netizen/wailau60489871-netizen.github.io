@@ -27,6 +27,9 @@
     html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
       background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
@@ -38,15 +41,11 @@
     }
 
     /* =========================
-       DESKTOP ORIGINAL
+       DESKTOP
     ========================= */
-    html.desktop-mode,
     body.desktop-mode {
       min-width: 1280px;
       overflow-x: auto;
-    }
-
-    body.desktop-mode {
       min-height: 100vh;
       background:
         linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
@@ -56,7 +55,7 @@
     .desktop-page {
       width: 1220px;
       margin: 0 auto;
-      padding: 24px 0 40px;
+      padding: 0 0 40px;
     }
 
     .frame {
@@ -99,10 +98,11 @@
       justify-content: flex-start;
       align-items: center;
       gap: 40px;
-      margin-bottom: 0;
+      margin: -22px -22px 0 -22px;
       position: relative;
       z-index: 30;
-      padding: 4px 0 8px 0;
+      padding: 14px 22px;
+      background: #000;
     }
 
     .nav {
@@ -420,11 +420,14 @@
     }
 
     /* =========================
-       MOBILE LAYOUT ONLY
+       MOBILE
     ========================= */
     .mobile-page {
       display: none;
-      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      background: #000;
     }
 
     .mobile-shell {
@@ -434,18 +437,21 @@
       background: #000;
       min-height: 100vh;
       position: relative;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     @media (max-width: 768px) {
       html, body {
         min-width: 0;
+        width: 100%;
+        max-width: 100%;
         overflow-x: hidden;
         background: #000;
       }
 
       body {
         background: #000;
+        min-height: 100vh;
       }
 
       .desktop-page {
@@ -454,11 +460,8 @@
 
       .mobile-page {
         display: block;
-        width: 100%;
         min-height: 100vh;
-        background: #000;
         color: #f4f0e7;
-        padding: 0;
       }
 
       .mobile-header {
@@ -541,13 +544,12 @@
         position: fixed;
         top: var(--mobile-header-h);
         left: 50%;
-        transform: translateX(-50%);
-        margin-left: var(--mobile-max-width);
+        transform: translateX(calc(-50% + 100%));
         width: 100%;
         max-width: var(--mobile-max-width);
         height: calc(100vh - var(--mobile-header-h));
         background: rgba(0,0,0,0.98);
-        transition: margin-left 0.28s ease;
+        transition: transform 0.28s ease;
         z-index: 9998;
         padding: 28px 26px 40px;
         overflow-y: auto;
@@ -555,7 +557,7 @@
       }
 
       .mobile-menu-panel.open {
-        margin-left: 0;
+        transform: translateX(-50%);
       }
 
       .mobile-menu-panel a {
@@ -1064,7 +1066,6 @@
       link.addEventListener("mouseenter", function() {
         listItems.forEach(item => item.classList.remove("active"));
         this.parentElement.classList.add("active");
-
         const projectKey = this.getAttribute("data-project");
         renderProject(projectKey);
       });
@@ -1105,8 +1106,11 @@
     function syncMode() {
       if (window.innerWidth <= 768) {
         document.body.classList.remove("desktop-mode");
+        document.documentElement.classList.remove("desktop-mode");
+        document.body.style.overflowX = "hidden";
       } else {
         document.body.classList.add("desktop-mode");
+        document.body.style.overflowX = "";
       }
     }
 
