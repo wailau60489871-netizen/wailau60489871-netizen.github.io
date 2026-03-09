@@ -515,25 +515,44 @@
       transform: rotate(-45deg);
     }
 
-    .mobile-menu-panel {
-      position: fixed;
-      top: var(--mobile-header-h);
-      left: 50%;
-      transform: translateX(calc(-50% + 100%));
-      width: 100%;
-      max-width: var(--mobile-max-width);
-      height: calc(100vh - var(--mobile-header-h));
-      background: rgba(0,0,0,0.98);
-      transition: transform 0.28s ease;
-      z-index: 9998;
-      padding: 28px 26px 40px;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
+    .menu-overlay {
+  position: fixed;
+  inset: var(--mobile-header-h) 0 0 0;
+  background: rgba(0,0,0,0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 9997;
+}
 
-    .mobile-menu-panel.open {
-      transform: translateX(-50%);
-    }
+.menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu-panel {
+  position: fixed;
+  top: var(--mobile-header-h);
+  right: 0;
+  width: 100%;
+  max-width: var(--mobile-max-width);
+  height: calc(100vh - var(--mobile-header-h));
+  background: rgba(0,0,0,0.98);
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+  z-index: 9998;
+  padding: 28px 26px 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobile-menu-panel.open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
 
     .mobile-menu-panel a {
       display: block;
@@ -825,6 +844,8 @@
         </button>
       </header>
 
+      <div class="menu-overlay" id="menuOverlay"></div>
+      
       <nav class="mobile-menu-panel" id="mobileMenuPanel">
         <a href="about.html">About Me</a>
         <a href="samaroli.html">Samaroli</a>
@@ -1072,35 +1093,47 @@
     renderProject("samaroli");
 
     const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-    const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+const menuOverlay = document.getElementById("menuOverlay");
 
-    function closeMobileMenu() {
-      if (!mobileMenuBtn || !mobileMenuPanel) return;
-      mobileMenuPanel.classList.remove("open");
-      mobileMenuBtn.classList.remove("active");
-      mobileMenuBtn.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
+function closeMobileMenu() {
+  if (!mobileMenuBtn || !mobileMenuPanel || !menuOverlay) return;
+  mobileMenuPanel.classList.remove("open");
+  menuOverlay.classList.remove("open");
+  mobileMenuBtn.classList.remove("active");
+  mobileMenuBtn.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+}
+
+if (mobileMenuBtn && mobileMenuPanel && menuOverlay) {
+  mobileMenuBtn.addEventListener("click", () => {
+    const isOpen = mobileMenuPanel.classList.toggle("open");
+    menuOverlay.classList.toggle("open", isOpen);
+    mobileMenuBtn.classList.toggle("active", isOpen);
+    mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    document.body.style.overflow = isOpen && window.innerWidth <= 768 ? "hidden" : "";
+  });
+
+  menuOverlay.addEventListener("click", closeMobileMenu);
+
+  mobileMenuPanel.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
     }
+  });
 
-    if (mobileMenuBtn && mobileMenuPanel) {
-      mobileMenuBtn.addEventListener("click", () => {
-        const isOpen = mobileMenuPanel.classList.toggle("open");
-        mobileMenuBtn.classList.toggle("active", isOpen);
-        mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        document.body.style.overflow = isOpen && window.innerWidth <= 768 ? "hidden" : "";
-      });
+  window.addEventListener("pageshow", () => {
+    closeMobileMenu();
+  });
 
-      mobileMenuPanel.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", closeMobileMenu);
-      });
-
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 768) {
-          closeMobileMenu();
-        }
-      });
-    }
-
+  window.addEventListener("load", () => {
+    closeMobileMenu();
+  });
+}
     window.addEventListener("pageshow", () => {
       window.scrollTo(0, 0);
       document.documentElement.scrollLeft = 0;
