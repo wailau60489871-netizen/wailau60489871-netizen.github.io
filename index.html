@@ -16,12 +16,7 @@
       --menu-bg: rgba(8, 8, 8, 0.96);
       --button-bg: rgba(255,255,255,0.06);
       --button-border: rgba(255,255,255,0.24);
-      --mobile-olive: #201e00;
-      --mobile-copy: rgba(255,255,255,0.70);
-      --mobile-dark-line: rgba(78,72,54,0.9);
-      --mobile-dark-text: rgba(73,67,53,0.96);
-      --mobile-light-line: rgba(255,255,255,0.92);
-      --mobile-light-text: rgba(255,255,255,0.96);
+      --mobile-header-h: 74px;
     }
 
     * {
@@ -34,15 +29,6 @@
       background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      min-width: 1280px;
-      overflow-x: auto;
-    }
-
-    body {
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
-        url("assets/hero-studio.png") center center / cover no-repeat fixed;
     }
 
     a {
@@ -50,7 +36,23 @@
       text-decoration: none;
     }
 
-    .page {
+    /* =========================
+       DESKTOP ORIGINAL
+    ========================= */
+    html.desktop-mode,
+    body.desktop-mode {
+      min-width: 1280px;
+      overflow-x: auto;
+    }
+
+    body.desktop-mode {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
+        url("assets/hero-studio.png") center center / cover no-repeat fixed;
+    }
+
+    .desktop-page {
       width: 1220px;
       margin: 0 auto;
       padding: 24px 0 40px;
@@ -416,328 +418,273 @@
       line-height: 1.6;
     }
 
-    /* mobile elements */
-    .mobile-shell,
-    .menu-button,
-    .mobile-menu-panel,
-    .mobile-menu-overlay{
-      display:none;
-    }
-
     /* =========================
-       MOBILE VERSION
-    ========================== */
-    @media (max-width: 768px){
-      html, body{
-        min-width:100%;
-        width:100%;
-        height:100%;
-        overflow:hidden;
-      }
-
-      body{
-        background:var(--mobile-olive);
-      }
-
-      .page{
-        display:none;
-      }
-
-      .mobile-shell{
-        display:block;
-        width:100%;
-        height:100%;
-        background:var(--mobile-olive);
-      }
-
-      .mobile-topbar{
-        position:fixed;
-        top:0;
-        left:0;
-        width:100%;
-        height:82px;
-        background:#000;
-        z-index:1000;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        padding:0 16px;
-      }
-
-      .mobile-logo{
-        width:64px;
-        height:64px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-      }
-
-      .mobile-logo img{
-        width:64px;
-        height:64px;
-        object-fit:contain;
-        display:block;
-      }
-
-      .menu-button{
-        display:flex;
-        width:52px;
-        height:52px;
-        border:none;
-        background:transparent;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        gap:6px;
-        cursor:pointer;
-        padding:0;
-      }
-
-      .menu-button span{
-        display:block;
-        width:34px;
-        height:3px;
-        background:#9a986e;
-        transition:transform .25s ease, opacity .25s ease;
-      }
-
-      .menu-button.is-open span:nth-child(1){
-        transform:translateY(9px) rotate(45deg);
-      }
-
-      .menu-button.is-open span:nth-child(2){
-        opacity:0;
-      }
-
-      .menu-button.is-open span:nth-child(3){
-        transform:translateY(-9px) rotate(-45deg);
-      }
-
-      .mobile-menu-overlay{
-        display:block;
-        position:fixed;
-        inset:0;
-        background:rgba(0,0,0,.42);
-        z-index:998;
-        opacity:0;
-        pointer-events:none;
-        transition:opacity .25s ease;
-      }
-
-      .mobile-menu-overlay.is-open{
-        opacity:1;
-        pointer-events:auto;
-      }
-
-      .mobile-menu-panel{
-        display:block;
-        position:fixed;
-        top:0;
-        right:0;
-        width:280px;
-        max-width:82vw;
-        height:100vh;
-        background:var(--menu-bg);
-        z-index:999;
-        transform:translateX(100%);
-        transition:transform .28s ease;
-        padding:96px 24px 24px;
-        border-left:1px solid rgba(255,255,255,0.08);
-      }
-
-      .mobile-menu-panel.is-open{
-        transform:translateX(0);
-      }
-
-      .mobile-menu-panel nav{
-        display:flex;
-        flex-direction:column;
-        gap:16px;
-      }
-
-      .mobile-menu-panel a{
-        font-size:18px;
-        font-weight:700;
-        color:var(--text);
-        line-height:1.3;
-      }
-
-      .mobile-menu-panel a.sub{
-        font-size:16px;
-        font-weight:600;
-        color:var(--muted);
-        padding-left:10px;
-      }
-
-      .mobile-menu-divider{
-        height:1px;
-        background:rgba(255,255,255,.14);
-        margin:4px 0;
-      }
-
-      .mobile-scroll{
-        position:fixed;
-        top:82px;
-        left:0;
-        width:100%;
-        height:calc(100vh - 82px);
-        overflow-y:auto;
-        overflow-x:hidden;
-        -webkit-overflow-scrolling:touch;
-        background:var(--mobile-olive);
-      }
-
-      .mobile-hero{
-        position:relative;
-      }
-
-      .mobile-hero img{
-        width:100%;
-        aspect-ratio: 512 / 310;
-        object-fit:cover;
-        display:block;
-        filter:brightness(.88);
-      }
-
-      .mobile-hero-title{
-        position:absolute;
-        left:34px;
-        bottom:26px;
-        width:74%;
-        color:#fff;
-        font-size:25px;
-        line-height:1.15;
-        font-weight:700;
-        text-shadow:0 2px 8px rgba(0,0,0,.28);
-      }
-
-      .mobile-copy-block{
-        background:var(--mobile-olive);
-        padding:24px 34px 14px;
-      }
-
-      .mobile-copy-block p{
-        margin:0 0 18px;
-        font-size:15px;
-        line-height:1.56;
-        color:var(--mobile-copy);
-        font-weight:600;
-      }
-
-      .mobile-project-list{
-        display:grid;
-        gap:0;
-      }
-
-      .mobile-project-card{
-        position:relative;
-        display:block;
-        width:100%;
-        overflow:hidden;
-      }
-
-      .mobile-project-card img{
-        width:100%;
-        aspect-ratio: 512 / 164;
-        object-fit:cover;
-        display:block;
-      }
-
-      .mobile-label{
-        position:absolute;
-        right:18px;
-        top:16px;
-        min-width:156px;
-        padding:7px 10px 10px;
-        text-align:center;
-        border:2px solid var(--mobile-light-line);
-        background:rgba(0,0,0,0.06);
-      }
-
-      .mobile-label.dark{
-        border-color:var(--mobile-dark-line);
-      }
-
-      .mobile-label-top{
-        display:block;
-        font-size:10px;
-        line-height:1;
-        font-weight:700;
-        margin-bottom:5px;
-        color:rgba(255,255,255,0.88);
-      }
-
-      .mobile-label.dark .mobile-label-top{
-        color:var(--mobile-dark-text);
-      }
-
-      .mobile-label-name{
-        display:block;
-        font-size:18px;
-        line-height:1;
-        font-weight:700;
-        color:#fff;
-      }
-
-      .mobile-label.dark .mobile-label-name{
-        color:var(--mobile-dark-text);
-      }
+       MOBILE LAYOUT ONLY
+    ========================= */
+    .mobile-page {
+      display: none;
     }
 
-    @media (max-width: 480px){
-      .mobile-topbar{
-        height:74px;
-        padding:0 12px;
+    @media (max-width: 768px) {
+      html, body {
+        min-width: 0;
+        overflow-x: hidden;
+        background: #000;
       }
 
-      .mobile-logo{
-        width:58px;
-        height:58px;
+      body {
+        background: #000;
       }
 
-      .mobile-logo img{
-        width:58px;
-        height:58px;
+      .desktop-page {
+        display: none;
       }
 
-      .mobile-scroll{
-        top:74px;
-        height:calc(100vh - 74px);
+      .mobile-page {
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+        background: #000;
+        color: #f4f0e7;
       }
 
-      .mobile-hero-title{
-        left:28px;
-        bottom:22px;
-        width:78%;
-        font-size:22px;
+      .mobile-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--mobile-header-h);
+        background: rgba(0,0,0,0.98);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px;
+        z-index: 9999;
       }
 
-      .mobile-copy-block{
-        padding:22px 22px 12px;
+      .mobile-logo {
+        width: 50px;
+        height: 50px;
+        display: block;
+        flex: 0 0 auto;
       }
 
-      .mobile-copy-block p{
-        font-size:14px;
-        margin-bottom:16px;
+      .mobile-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
       }
 
-      .mobile-label{
-        right:12px;
-        top:12px;
-        min-width:142px;
-        padding:7px 9px 9px;
+      .mobile-menu-btn {
+        width: 48px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
       }
 
-      .mobile-label-name{
-        font-size:17px;
+      .mobile-menu-icon {
+        width: 28px;
+        height: 20px;
+        position: relative;
+      }
+
+      .mobile-menu-icon span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2.5px;
+        background: #9f9a67;
+        border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.25s ease, top 0.25s ease;
+      }
+
+      .mobile-menu-icon span:nth-child(1) { top: 0; }
+      .mobile-menu-icon span:nth-child(2) { top: 8px; }
+      .mobile-menu-icon span:nth-child(3) { top: 16px; }
+
+      .mobile-menu-btn.active .mobile-menu-icon span:nth-child(1) {
+        top: 8px;
+        transform: rotate(45deg);
+      }
+
+      .mobile-menu-btn.active .mobile-menu-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-btn.active .mobile-menu-icon span:nth-child(3) {
+        top: 8px;
+        transform: rotate(-45deg);
+      }
+
+      .mobile-menu-panel {
+        position: fixed;
+        top: var(--mobile-header-h);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--mobile-header-h));
+        background: rgba(0,0,0,0.98);
+        transform: translateX(100%);
+        transition: transform 0.28s ease;
+        z-index: 9998;
+        padding: 28px 26px 40px;
+        overflow-y: auto;
+      }
+
+      .mobile-menu-panel.open {
+        transform: translateX(0);
+      }
+
+      .mobile-menu-panel a {
+        display: block;
+        color: #f3f0e6;
+        font-size: 28px;
+        font-weight: 700;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .mobile-content {
+        padding-top: var(--mobile-header-h);
+        background: #000;
+      }
+
+      .mobile-hero {
+        position: relative;
+        width: 100%;
+      }
+
+      .mobile-hero-image-wrap {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .mobile-hero-image-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.62) 100%);
+        pointer-events: none;
+      }
+
+      .mobile-hero-image {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .mobile-hero-headline {
+        position: absolute;
+        left: 36px;
+        right: 28px;
+        bottom: 28px;
+        z-index: 2;
+        font-size: 27px;
+        line-height: 1.15;
+        font-weight: 700;
+        color: #f5f2ea;
+        max-width: 320px;
+      }
+
+      .mobile-intro {
+        background: #1d1b05;
+        padding: 32px 34px 36px;
+      }
+
+      .mobile-intro p {
+        margin: 0 0 22px;
+        color: #c8c1a3;
+        font-size: 17px;
+        line-height: 1.55;
+        letter-spacing: 0.1px;
+      }
+
+      .mobile-intro p:last-child {
+        margin-bottom: 0;
+      }
+
+      .mobile-work-list {
+        background: #000;
+      }
+
+      .mobile-work-card {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 160px;
+        overflow: hidden;
+        background: #111;
+      }
+
+      .mobile-work-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .mobile-work-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.08) 100%);
+        pointer-events: none;
+      }
+
+      .mobile-work-label {
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        text-align: left;
+      }
+
+      .mobile-work-label .small {
+        display: block;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 700;
+        color: #efe9dc;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      }
+
+      .mobile-work-label .big {
+        display: inline-block;
+        font-size: 28px;
+        line-height: 1;
+        font-weight: 700;
+        color: #efe9dc;
+        border: 2px solid rgba(255,255,255,0.8);
+        padding: 10px 16px 9px;
+        background: rgba(0,0,0,0.12);
+        text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      }
+
+      .mobile-footer {
+        background: #000;
+        color: #9f9a67;
+        text-align: center;
+        padding: 26px 20px 34px;
+        font-size: 13px;
+        line-height: 1.6;
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
     }
   </style>
 </head>
-<body>
-
-  <!-- DESKTOP -->
-  <div class="page">
+<body class="desktop-mode">
+  <!-- DESKTOP VERSION -->
+  <div class="desktop-page">
     <div class="frame">
 
       <div class="site-title">
@@ -807,6 +754,7 @@
 
           <section class="project-detail" id="projectDetail">
             <div class="project-grid">
+
               <div class="project-preview">
                 <div class="project-preview-image">
                   <img id="projectImage" src="assets/samaroli.jpg" alt="Project preview">
@@ -833,44 +781,47 @@
     </div>
   </div>
 
-  <!-- MOBILE -->
-  <div class="mobile-shell">
-    <header class="mobile-topbar">
-      <a href="index.html" class="mobile-logo" aria-label="Home">
+  <!-- MOBILE VERSION -->
+  <div class="mobile-page">
+    <header class="mobile-header">
+      <a class="mobile-logo" href="index.html" aria-label="Home">
         <img src="assets/logo.png" alt="Chi Wai Lau logo">
       </a>
 
-      <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="mobile-menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </button>
     </header>
 
-    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <nav class="mobile-menu-panel" id="mobileMenuPanel">
+      <a href="about.html">About Me</a>
+      <a href="samaroli.html">Samaroli</a>
+      <a href="pizzaexpress.html">Pizzaexpress</a>
+      <a href="canon.html">Canon</a>
+      <a href="kmb.html">KMB</a>
+      <a href="video.html">Video</a>
+      <a href="illustration-book.html">Illustration</a>
+    </nav>
 
-    <aside class="mobile-menu-panel" id="menuPanel">
-      <nav>
-        <a href="about.html">About Me</a>
-        <div class="mobile-menu-divider"></div>
-        <a href="samaroli.html" class="sub">Samaroli</a>
-        <a href="pizzaexpress.html" class="sub">Pizzaexpress</a>
-        <a href="canon.html" class="sub">Canon</a>
-        <a href="kmb.html" class="sub">KMB</a>
-        <a href="video.html" class="sub">Video</a>
-        <a href="illustration-book.html" class="sub">Illustration</a>
-      </nav>
-    </aside>
-
-    <main class="mobile-scroll">
+    <main class="mobile-content">
       <section class="mobile-hero">
-        <img src="assets/hero-studio.png" alt="Creative studio workspace">
-        <div class="mobile-hero-title">
-          Where brand strategy meets craft and visual storytelling.
+        <div class="mobile-hero-image-wrap">
+          <img
+            class="mobile-hero-image"
+            src="assets/hero-studio.png"
+            alt="Creative studio workspace"
+          />
+          <div class="mobile-hero-headline">
+            Where brand strategy meets craft and visual storytelling.
+          </div>
         </div>
       </section>
 
-      <section class="mobile-copy-block">
+      <section class="mobile-intro">
         <p>
           PizzaExpress is one of the most recognisable restaurant brands in the UK, known for its distinctive dining experience and strong visual identity.
         </p>
@@ -882,56 +833,60 @@
         </p>
       </section>
 
-      <section class="mobile-project-list">
-        <a class="mobile-project-card" href="samaroli.html">
+      <section class="mobile-work-list">
+        <a class="mobile-work-card" href="samaroli.html">
           <img src="assets/samaroli.jpg" alt="Samaroli">
-          <div class="mobile-label dark">
-            <span class="mobile-label-top">Selected Works</span>
-            <span class="mobile-label-name">Samaroli</span>
+          <div class="mobile-work-label">
+            <span class="small">Selected Works</span>
+            <span class="big">Samaroli</span>
           </div>
         </a>
 
-        <a class="mobile-project-card" href="pizzaexpress.html">
+        <a class="mobile-work-card" href="pizzaexpress.html">
           <img src="assets/pizza.jpg" alt="Pizzaexpress">
-          <div class="mobile-label">
-            <span class="mobile-label-top">Selected Works</span>
-            <span class="mobile-label-name">Pizzaexpress</span>
+          <div class="mobile-work-label">
+            <span class="small">Selected Works</span>
+            <span class="big">Pizzaexpress</span>
           </div>
         </a>
 
-        <a class="mobile-project-card" href="canon.html">
+        <a class="mobile-work-card" href="canon.html">
           <img src="assets/canon.jpg" alt="Canon">
-          <div class="mobile-label dark">
-            <span class="mobile-label-top">Selected Works</span>
-            <span class="mobile-label-name">Canon</span>
+          <div class="mobile-work-label">
+            <span class="small">Selected Works</span>
+            <span class="big">Canon</span>
           </div>
         </a>
 
-        <a class="mobile-project-card" href="kmb.html">
+        <a class="mobile-work-card" href="kmb.html">
           <img src="assets/kmb.jpg" alt="KMB">
-          <div class="mobile-label dark">
-            <span class="mobile-label-top">Selected Works</span>
-            <span class="mobile-label-name">KMB</span>
+          <div class="mobile-work-label">
+            <span class="small">Selected Works</span>
+            <span class="big">KMB</span>
           </div>
         </a>
 
-        <a class="mobile-project-card" href="video.html">
+        <a class="mobile-work-card" href="video.html">
           <img src="assets/youtube.jpg" alt="Video">
-          <div class="mobile-label">
-            <span class="mobile-label-top">Selected Works</span>
-            <span class="mobile-label-name">Video</span>
+          <div class="mobile-work-label">
+            <span class="small">Selected Works</span>
+            <span class="big">Video</span>
           </div>
         </a>
 
-        <a class="mobile-project-card" href="illustration-book.html">
+        <a class="mobile-work-card" href="illustration-book.html">
           <img src="assets/illustration.jpg" alt="Illustration">
-          <div class="mobile-label">
-            <span class="mobile-label-top">Selected Works</span>
-            <span class="mobile-label-name">Illustration</span>
+          <div class="mobile-work-label">
+            <span class="small">Selected Works</span>
+            <span class="big">Illustration</span>
           </div>
         </a>
       </section>
     </main>
+
+    <footer class="mobile-footer">
+      © 2026 Chi Wai Lau. All Rights Reserved.
+    </footer>
   </div>
 
   <script>
@@ -1008,27 +963,24 @@
     const projectButton = document.getElementById("projectButton");
     const projectDetail = document.getElementById("projectDetail");
 
-    const menuButton = document.getElementById("menuButton");
-    const menuPanel = document.getElementById("menuPanel");
-    const menuOverlay = document.getElementById("menuOverlay");
-
     let typingTimeouts = [];
     let activeTypingToken = 0;
 
     function clearTyping() {
       typingTimeouts.forEach(timeout => clearTimeout(timeout));
       typingTimeouts = [];
-      introTitle.textContent = "";
-      introP1.textContent = "";
-      introP2.textContent = "";
-      introP3.textContent = "";
-      introTitle.classList.remove("typing-cursor");
-      introP1.classList.remove("typing-cursor");
-      introP2.classList.remove("typing-cursor");
-      introP3.classList.remove("typing-cursor");
+      if (introTitle) introTitle.textContent = "";
+      if (introP1) introP1.textContent = "";
+      if (introP2) introP2.textContent = "";
+      if (introP3) introP3.textContent = "";
+      if (introTitle) introTitle.classList.remove("typing-cursor");
+      if (introP1) introP1.classList.remove("typing-cursor");
+      if (introP2) introP2.classList.remove("typing-cursor");
+      if (introP3) introP3.classList.remove("typing-cursor");
     }
 
     function typeText(element, text, speed, startDelay, token) {
+      if (!element) return startDelay;
       element.textContent = "";
       element.classList.add("typing-cursor");
 
@@ -1054,17 +1006,21 @@
       const currentToken = activeTypingToken;
 
       clearTyping();
-      projectDetail.scrollTop = 0;
+      if (projectDetail) projectDetail.scrollTop = 0;
 
-      projectImage.style.opacity = 0;
-      setTimeout(() => {
-        if (currentToken !== activeTypingToken) return;
-        projectImage.src = project.image;
-        projectImage.alt = project.title + " preview";
-        projectImage.style.opacity = 1;
-      }, 120);
+      if (projectImage) {
+        projectImage.style.opacity = 0;
+        setTimeout(() => {
+          if (currentToken !== activeTypingToken) return;
+          projectImage.src = project.image;
+          projectImage.alt = project.title + " preview";
+          projectImage.style.opacity = 1;
+        }, 120);
+      }
 
-      projectButton.href = project.link;
+      if (projectButton) {
+        projectButton.href = project.link;
+      }
 
       let delay = 0;
       const speed = 3;
@@ -1085,41 +1041,50 @@
       });
     });
 
-    function openMenu() {
-      menuButton.classList.add("is-open");
-      menuPanel.classList.add("is-open");
-      menuOverlay.classList.add("is-open");
-      menuButton.setAttribute("aria-expanded", "true");
-    }
+    renderProject("samaroli");
 
-    function closeMenu() {
-      menuButton.classList.remove("is-open");
-      menuPanel.classList.remove("is-open");
-      menuOverlay.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
-    }
+    /* MOBILE MENU */
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenuPanel = document.getElementById("mobileMenuPanel");
 
-    if (menuButton) {
-      menuButton.addEventListener("click", () => {
-        if (menuPanel.classList.contains("is-open")) {
-          closeMenu();
-        } else {
-          openMenu();
+    if (mobileMenuBtn && mobileMenuPanel) {
+      mobileMenuBtn.addEventListener("click", () => {
+        const isOpen = mobileMenuPanel.classList.toggle("open");
+        mobileMenuBtn.classList.toggle("active", isOpen);
+        mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        document.body.style.overflow = isOpen && window.innerWidth <= 768 ? "hidden" : "";
+      });
+
+      mobileMenuPanel.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenuPanel.classList.remove("open");
+          mobileMenuBtn.classList.remove("active");
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          mobileMenuPanel.classList.remove("open");
+          mobileMenuBtn.classList.remove("active");
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
         }
       });
     }
 
-    if (menuOverlay) {
-      menuOverlay.addEventListener("click", closeMenu);
+    /* toggle desktop body behaviour */
+    function syncMode() {
+      if (window.innerWidth <= 768) {
+        document.body.classList.remove("desktop-mode");
+      } else {
+        document.body.classList.add("desktop-mode");
+      }
     }
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeMenu();
-      }
-    });
-
-    renderProject("samaroli");
+    syncMode();
+    window.addEventListener("resize", syncMode);
   </script>
 </body>
 </html>
