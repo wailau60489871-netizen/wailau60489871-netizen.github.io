@@ -16,6 +16,7 @@
       --white:#f4f1e8;
       --body-copy:#2f2a22;
       --mobile-max-width:430px;
+      --desktop-max-width:1220px;
       --header-h:52px;
     }
 
@@ -49,46 +50,22 @@
       height:auto;
     }
 
-    .page{
-      width:100%;
-      max-width:var(--mobile-max-width);
-      margin:0 auto;
-      background:#000;
-      min-height:100vh;
-      overflow:hidden;
-      position:relative;
-    }
-
-    /* HEADER */
-    .mobile-header{
+    /* =========================
+       SHARED
+    ========================= */
+    .menu-overlay{
       position:fixed;
-      top:0;
-      left:50%;
-      transform:translateX(-50%);
-      width:100%;
-      max-width:var(--mobile-max-width);
-      height:var(--header-h);
-      background:#000;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 12px;
-      z-index:9999;
+      inset:var(--header-h) 0 0 0;
+      background:rgba(0,0,0,.28);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+      z-index:9997;
     }
 
-    .logo-link{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:26px;
-      height:26px;
-      flex:0 0 auto;
-    }
-
-    .logo-link img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
+    .menu-overlay.open{
+      opacity:1;
+      pointer-events:auto;
     }
 
     .menu-btn{
@@ -124,6 +101,386 @@
       transform:translateY(-10px) rotate(-45deg);
     }
 
+    .section-title-dark{
+      font-size:28px;
+      line-height:1.02;
+      margin:0 0 10px;
+      color:#f5f0df;
+      font-weight:700;
+      letter-spacing:-0.3px;
+    }
+
+    .section-copy-dark{
+      color:#e6deca;
+      font-size:12px;
+      line-height:1.5;
+      margin-bottom:14px;
+      font-weight:400;
+    }
+
+    .white-section h2,
+    .olive-feature h2{
+      font-size:28px;
+      line-height:1.04;
+      margin-bottom:8px;
+      font-weight:700;
+      letter-spacing:-0.3px;
+    }
+
+    .white-section h2{ color:#231f12; }
+    .olive-feature h2{ color:#f3efdf; }
+
+    .white-section h3{
+      font-size:14px;
+      line-height:1.3;
+      margin-bottom:10px;
+      color:#6c644b;
+      font-weight:700;
+    }
+
+    .white-section p,
+    .olive-feature p{
+      font-size:12px;
+      line-height:1.5;
+      font-weight:400;
+    }
+
+    .white-section p{ color:var(--body-copy); }
+    .olive-feature p{ color:#d9d2bf; }
+
+    /* =========================
+       DESKTOP
+    ========================= */
+    .desktop-page{
+      display:block;
+      width:100%;
+      max-width:var(--desktop-max-width);
+      margin:0 auto;
+      padding:0 0 40px;
+    }
+
+    .desktop-frame{
+      background:rgba(40, 38, 5, 0.88);
+      border:1px solid rgba(188,178,110,.28);
+      padding:22px 22px 34px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .desktop-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      margin:-22px -22px 24px -22px;
+      padding:14px 22px;
+      background:#000;
+      position:relative;
+      z-index:30;
+    }
+
+    .desktop-left{
+      display:flex;
+      align-items:center;
+      gap:26px;
+    }
+
+    .desktop-logo{
+      width:44px;
+      height:44px;
+      border:2px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:24px;
+      color:var(--text);
+    }
+
+    .desktop-nav{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      font-weight:700;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .desktop-nav a:hover{
+      color:var(--text);
+    }
+
+    .desktop-wrap{
+      max-width:980px;
+      margin:0 auto;
+    }
+
+    .desktop-hero{
+      position:relative;
+      overflow:hidden;
+      background:#111;
+    }
+
+    .desktop-hero img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+      filter:brightness(.82);
+    }
+
+    .desktop-hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(0,0,0,.10) 0%, rgba(0,0,0,.20) 38%, rgba(0,0,0,.58) 100%);
+    }
+
+    .desktop-hero-copy{
+      position:absolute;
+      left:28px;
+      bottom:24px;
+      z-index:2;
+      max-width:420px;
+    }
+
+    .desktop-hero-copy h1{
+      font-size:42px;
+      line-height:1;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .desktop-hero-copy p{
+      font-size:16px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+
+    .desktop-challenge{
+      background:var(--white);
+      color:#222;
+      padding:28px 26px 26px;
+    }
+
+    .desktop-challenge h2{
+      font-size:28px;
+      line-height:1.05;
+      font-weight:700;
+      margin-bottom:10px;
+      color:#262114;
+    }
+
+    .desktop-challenge p{
+      font-size:16px;
+      line-height:1.55;
+      color:#3c3528;
+    }
+
+    .desktop-intro{
+      background:var(--olive-deep);
+      text-align:center;
+      padding:26px 24px 18px;
+    }
+
+    .desktop-intro-title{
+      font-size:13px;
+      color:#c9c2b4;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    .desktop-cards{
+      background:var(--olive-deep);
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      padding:0 24px 24px;
+    }
+
+    .desktop-card{
+      background:#efede7;
+      border-radius:18px;
+      padding:12px;
+    }
+
+    .desktop-card.wide{
+      grid-column:1 / -1;
+      max-width:48%;
+      justify-self:center;
+    }
+
+    .desktop-card img{
+      border-radius:12px;
+    }
+
+    .desktop-role,
+    .desktop-olive{
+      background:var(--olive);
+      padding:26px;
+    }
+
+    .desktop-role-layout{
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+    }
+
+    .desktop-role-text{
+      flex:1 1 auto;
+    }
+
+    .desktop-role-side{
+      flex:0 0 220px;
+      max-width:220px;
+    }
+
+    .desktop-role-side img{
+      width:100%;
+    }
+
+    .desktop-white{
+      background:var(--white);
+      padding:28px 26px;
+    }
+
+    .desktop-labelsystem-image{
+      width:85%;
+      margin:0 auto;
+    }
+
+    .desktop-mini-row{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      align-items:start;
+      margin-top:14px;
+    }
+
+    .desktop-mini{
+      width:100%;
+      text-align:center;
+    }
+
+    .desktop-mini img{
+      width:50%;
+      margin:0 auto 10px;
+    }
+
+    .desktop-mini p{
+      font-size:12px;
+      line-height:1.45;
+      color:#d8d0bb;
+    }
+
+    .desktop-rollout-banner{
+      margin-bottom:18px;
+    }
+
+    .desktop-rollout-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      align-items:start;
+      margin:0 auto 18px;
+      max-width:50%;
+    }
+
+    .desktop-rollout-grid img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .desktop-social-crop{
+      width:100%;
+      overflow:hidden;
+      margin-top:8px;
+    }
+
+    .desktop-social-crop img{
+      width:140%;
+      max-width:none;
+      height:auto;
+      display:block;
+      transform:translateX(-14%);
+    }
+
+    .desktop-editorial-copy{
+      margin-top:28px;
+      margin-bottom:34px;
+      font-size:14px;
+      line-height:1.6;
+      color:#d9d2bf;
+    }
+
+    .desktop-editorial-01{
+      width:100%;
+      margin:0 auto 18px;
+    }
+
+    .desktop-editorial-02{
+      width:70%;
+      margin:0 auto;
+    }
+
+    .desktop-footer{
+      background:#000;
+      color:var(--gold);
+      text-align:center;
+      padding:24px 16px 10px;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+    .mobile-page{
+      display:none;
+    }
+
+    .page{
+      width:100%;
+      max-width:var(--mobile-max-width);
+      margin:0 auto;
+      background:#000;
+      min-height:100vh;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .mobile-header{
+      position:fixed;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:100%;
+      max-width:var(--mobile-max-width);
+      height:var(--header-h);
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 12px;
+      z-index:9999;
+    }
+
+    .logo-link{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:26px;
+      height:26px;
+      flex:0 0 auto;
+    }
+
+    .logo-link img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
     .menu-panel{
       position:fixed;
       top:var(--header-h);
@@ -157,22 +514,6 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .menu-overlay{
-      position:fixed;
-      inset:var(--header-h) 0 0 0;
-      background:rgba(0,0,0,.28);
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .25s ease;
-      z-index:9997;
-    }
-
-    .menu-overlay.open{
-      opacity:1;
-      pointer-events:auto;
-    }
-
-    /* HERO */
     .hero{
       margin-top:var(--header-h);
       position:relative;
@@ -216,7 +557,6 @@
       max-width:220px;
     }
 
-    /* CHALLENGE */
     .challenge{
       background:var(--white);
       color:#222;
@@ -237,7 +577,6 @@
       color:#3c3528;
     }
 
-    /* PREVIEW */
     .intro{
       background:var(--olive-deep);
       color:#fff;
@@ -273,28 +612,10 @@
       height:auto;
     }
 
-    /* DARK SECTION */
     .role-section,
     .olive-feature{
       background:var(--olive);
       padding:16px 14px 18px;
-    }
-
-    .section-title-dark{
-      font-size:28px;
-      line-height:1.02;
-      margin:0 0 10px;
-      color:#f5f0df;
-      font-weight:700;
-      letter-spacing:-0.3px;
-    }
-
-    .section-copy-dark{
-      color:#e6deca;
-      font-size:12px;
-      line-height:1.5;
-      margin-bottom:14px;
-      font-weight:400;
     }
 
     .role-layout{
@@ -320,59 +641,15 @@
       display:block;
     }
 
-    /* WHITE SECTION */
     .white-section{
       background:var(--white);
       color:#1f1f1f;
       padding:18px 14px 18px;
     }
 
-    .white-section h2{
-      font-size:28px;
-      line-height:1.04;
-      margin-bottom:8px;
-      color:#231f12;
-      font-weight:700;
-      letter-spacing:-0.3px;
-    }
-
-    .white-section h3{
-      font-size:14px;
-      line-height:1.3;
-      margin-bottom:10px;
-      color:#6c644b;
-      font-weight:700;
-    }
-
-    .white-section p{
-      font-size:12px;
-      line-height:1.5;
-      color:var(--body-copy);
-      margin-bottom:14px;
-      font-weight:400;
-    }
-
     .labelsystem-image{
       width:85%;
       margin:0 auto 4px;
-    }
-
-    /* OLIVE FEATURE */
-    .olive-feature h2{
-      font-size:28px;
-      line-height:1.04;
-      margin-bottom:8px;
-      color:#f3efdf;
-      font-weight:700;
-      letter-spacing:-0.3px;
-    }
-
-    .olive-feature p{
-      font-size:12px;
-      line-height:1.5;
-      color:#d9d2bf;
-      margin-bottom:12px;
-      font-weight:400;
     }
 
     .mini-asset{
@@ -389,13 +666,13 @@
       width:86%;
     }
 
-    /* ROLLOUT */
     .rollout-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
       align-items:start;
-      margin-bottom:12px;
+      margin:0 auto 12px;
+      max-width:50%;
     }
 
     .rollout-grid img{
@@ -406,44 +683,39 @@
 
     .social-crop{
       width:100%;
-      height:170px;
       overflow:hidden;
-      margin-top:6px;
+      margin-top:8px;
     }
 
     .social-crop img{
       width:140%;
       max-width:none;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
+      height:auto;
+      display:block;
       transform:translateX(-14%);
     }
 
-    /* EDITORIAL */
     .editorial-banner{
-      margin-bottom:12px;
+      margin-bottom:18px;
     }
 
     .editorial-copy{
       font-size:12px;
       line-height:1.5;
       color:#d9d2bf;
-      margin-bottom:14px;
+      margin-bottom:30px;
     }
 
-    .before-after{
+    .editorial-01{
+      width:100%;
+      margin:0 auto 16px;
+    }
+
+    .editorial-02{
       width:70%;
       margin:0 auto;
     }
 
-    .before-after img{
-      width:100%;
-      display:block;
-      margin-bottom:10px;
-    }
-
-    /* FOOTER */
     .footer{
       background:#000;
       color:var(--gold);
@@ -454,191 +726,338 @@
       border-top:1px solid rgba(255,255,255,.08);
     }
 
-    @media (min-width: 769px){
-      body{
-        background:#111;
-      }
+    @media (max-width:768px){
+      .desktop-page{ display:none; }
+      .mobile-page{ display:block; }
+    }
 
-      .page{
-        max-width:430px;
-        box-shadow:0 0 0 1px rgba(255,255,255,.04);
-      }
+    @media (min-width:769px){
+      .desktop-page{ display:block; }
+      .mobile-page{ display:none !important; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
+  <!-- DESKTOP VERSION -->
+  <div class="desktop-page">
+    <div class="desktop-frame">
 
-    <header class="mobile-header">
-      <a class="logo-link" href="index.html" aria-label="Back to home">
-        <img src="assets/logo.png" alt="Chi Wai Lau logo">
-      </a>
+      <header class="desktop-topbar">
+        <div class="desktop-left">
+          <a href="index.html" class="desktop-logo">W</a>
+          <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="samaroli.html">Samaroli</a>
+            <a href="pizzaexpress.html">Pizzaexpress</a>
+            <a href="canon.html">Canon</a>
+            <a href="kmb.html">KMB</a>
+            <a href="video.html">Video</a>
+            <a href="illustration-book.html">Illustration</a>
+          </nav>
+        </div>
+      </header>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </header>
+      <div class="desktop-wrap">
+        <section class="desktop-hero">
+          <img src="assets/samaroli-mobile_mobile-hero.png" alt="Samaroli project hero">
+          <div class="desktop-hero-copy">
+            <h1>Samaroli</h1>
+            <p>
+              Label system development, packaging structure, print detailing, editorial rollout and campaign assets for a premium independent whisky brand.
+            </p>
+          </div>
+        </section>
 
-    <div class="menu-overlay" id="menuOverlay"></div>
+        <section class="desktop-challenge">
+          <h2>The Challenge</h2>
+          <p>
+            Refined and systemised the label structure to improve hierarchy, scalability and production consistency, while preserving Samaroli’s heritage aesthetic.
+          </p>
+        </section>
 
-    <nav class="menu-panel" id="menuPanel">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="samaroli.html">Samaroli</a>
-      <a href="pizzaexpress.html">Pizzaexpress</a>
-      <a href="canon.html">Canon</a>
-      <a href="kmb.html">KMB</a>
-      <a href="video.html">Video</a>
-      <a href="illustration-book.html">Illustration</a>
-    </nav>
+        <section class="desktop-intro">
+          <div class="desktop-intro-title">Image Preview</div>
+        </section>
 
-    <section class="hero">
-      <img class="hero-image" src="assets/samaroli-mobile_mobile-hero.png" alt="Samaroli project hero">
-      <div class="hero-overlay"></div>
+        <section class="desktop-cards">
+          <div class="desktop-card"><img src="assets/samaroli-mobile_card-01.png" alt="Label system comparison"></div>
+          <div class="desktop-card"><img src="assets/samaroli-mobile_card-02.png" alt="Mockup and campaign direction"></div>
+          <div class="desktop-card"><img src="assets/samaroli-mobile_card-03.png" alt="POS and print"></div>
+          <div class="desktop-card"><img src="assets/samaroli-mobile_card-04.png" alt="Retail output"></div>
+          <div class="desktop-card wide"><img src="assets/samaroli-mobile_card-05.png" alt="Campaign and editorial"></div>
+        </section>
 
-      <div class="hero-copy">
-        <h1>Samaroli</h1>
-        <p>
-          Label system development, packaging structure,
-          print detailing, editorial rollout and campaign
-          assets for a premium independent whisky brand.
-        </p>
+        <section class="desktop-role">
+          <h2 class="section-title-dark">My Role</h2>
+          <div class="desktop-role-layout">
+            <div class="desktop-role-text">
+              <p class="section-copy-dark">
+                I was responsible for the development of Samaroli’s label system, supporting visual hierarchy, typography consistency, production detail, editorial assets and campaign-led brand applications across different editions.
+              </p>
+            </div>
+            <div class="desktop-role-side">
+              <img src="assets/samaroli-mobile_application-across.png" alt="Application across editions">
+            </div>
+          </div>
+        </section>
+
+        <section class="desktop-white white-section">
+          <h2>Label System Development</h2>
+          <h3>Label System Development</h3>
+          <p>
+            A consistent visual system was created to support premium limited editions while allowing each bottling to retain individual narrative cues. This included hierarchy setting, typography handling, ornamental references and production alignment.
+          </p>
+          <div class="desktop-labelsystem-image">
+            <img src="assets/samaroli-mobile_labelsystem-01.png" alt="Label system layout">
+          </div>
+        </section>
+
+        <section class="desktop-olive olive-feature">
+          <h2>Production &amp; Material Strategy</h2>
+          <p>
+            Print structure, substrate behaviour and finishing logic were reviewed to ensure the label system translated effectively across bottles, supporting assets and different release formats.
+          </p>
+
+          <div class="desktop-mini-row">
+            <div class="desktop-mini">
+              <img src="assets/samaroli-mobile_foil-row.png" alt="Foil reference">
+              <p>Foil reference exploration to establish contrast, premium finish and consistency across label applications.</p>
+            </div>
+
+            <div class="desktop-mini">
+              <img src="assets/samaroli-mobile_paper.png" alt="Paper reference">
+              <p>Paper stock review to balance tactility, print performance and the heritage character of the brand.</p>
+            </div>
+
+            <div class="desktop-mini">
+              <img src="assets/samaroli-mobile_proofing.png" alt="Proofing and print accuracy">
+              <p>Proofing checks were used to verify alignment, material behaviour and production accuracy before rollout.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="desktop-white white-section">
+          <h2>Digital &amp; Campaign Rollout</h2>
+          <p>
+            The packaging system extended into web visuals, launch assets and digital presentation materials, helping the brand remain visually coherent beyond the bottle itself.
+          </p>
+
+          <img class="desktop-rollout-banner" src="assets/samaroli-mobile_rollout_banner.png" alt="Digital rollout banner">
+
+          <div class="desktop-rollout-grid">
+            <img src="assets/samaroli-mobile_rollout-01.png" alt="Digital rollout asset">
+            <img src="assets/samaroli-mobile_rollout-02.png" alt="Digital rollout applications">
+          </div>
+
+          <div class="desktop-social-crop">
+            <img src="assets/samaroli-mobile_social-media.png" alt="Social media adaptation">
+          </div>
+        </section>
+
+        <section class="desktop-olive olive-feature">
+          <h2>Editorial &amp; Retail Application</h2>
+
+          <img class="editorial-banner" src="assets/samaroli-mobile_editorial-banner.png" alt="Editorial and retail application banner">
+
+          <p class="desktop-editorial-copy">
+            Additional visual outputs were adapted across editorial pages, retail communication and display-led formats, strengthening the premium identity across multiple touchpoints.
+          </p>
+
+          <div class="desktop-editorial-01">
+            <img src="assets/samaroli-mobile_editorial-01.png" alt="Editorial layout example">
+          </div>
+
+          <div class="desktop-editorial-02">
+            <img src="assets/samaroli-mobile_editorial-02.png" alt="Retail application example">
+          </div>
+        </section>
+
+        <footer class="desktop-footer">
+          © 2026 Chi Wai Lau. All Rights Reserved.
+        </footer>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <section class="challenge">
-      <h2>The Challenge</h2>
-      <p>
-        Refined and systemised the label structure to improve hierarchy, scalability and production consistency, while preserving Samaroli’s heritage aesthetic.
-      </p>
-    </section>
+  <!-- MOBILE VERSION -->
+  <div class="mobile-page">
+    <div class="page">
 
-    <section class="intro">
-      <div class="intro-title">Image Preview</div>
-    </section>
+      <header class="mobile-header">
+        <a class="logo-link" href="index.html" aria-label="Back to home">
+          <img src="assets/logo.png" alt="Chi Wai Lau logo">
+        </a>
 
-    <section class="cards-wrap">
-      <div class="case-card">
-        <img src="assets/samaroli-mobile_card-01.png" alt="Label system comparison">
-      </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
 
-      <div class="case-card">
-        <img src="assets/samaroli-mobile_card-02.png" alt="Mockup and campaign direction">
-      </div>
+      <div class="menu-overlay" id="menuOverlay"></div>
 
-      <div class="case-card">
-        <img src="assets/samaroli-mobile_card-03.png" alt="POS and print">
-      </div>
+      <nav class="menu-panel" id="menuPanel">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="samaroli.html">Samaroli</a>
+        <a href="pizzaexpress.html">Pizzaexpress</a>
+        <a href="canon.html">Canon</a>
+        <a href="kmb.html">KMB</a>
+        <a href="video.html">Video</a>
+        <a href="illustration-book.html">Illustration</a>
+      </nav>
 
-      <div class="case-card">
-        <img src="assets/samaroli-mobile_card-04.png" alt="Retail output">
-      </div>
+      <section class="hero">
+        <img class="hero-image" src="assets/samaroli-mobile_mobile-hero.png" alt="Samaroli project hero">
+        <div class="hero-overlay"></div>
 
-      <div class="case-card">
-        <img src="assets/samaroli-mobile_card-05.png" alt="Campaign and editorial">
-      </div>
-    </section>
-
-    <section class="role-section">
-      <h2 class="section-title-dark">My Role</h2>
-
-      <div class="role-layout">
-        <div class="role-text">
-          <p class="section-copy-dark">
-            I was responsible for the development of Samaroli’s label system,
-            supporting visual hierarchy, typography consistency, production detail,
-            editorial assets and campaign-led brand applications across different editions.
+        <div class="hero-copy">
+          <h1>Samaroli</h1>
+          <p>
+            Label system development, packaging structure,
+            print detailing, editorial rollout and campaign
+            assets for a premium independent whisky brand.
           </p>
         </div>
+      </section>
 
-        <div class="role-side-image">
-          <img src="assets/samaroli-mobile_application-across.png" alt="Application across editions">
+      <section class="challenge">
+        <h2>The Challenge</h2>
+        <p>
+          Refined and systemised the label structure to improve hierarchy, scalability and production consistency, while preserving Samaroli’s heritage aesthetic.
+        </p>
+      </section>
+
+      <section class="intro">
+        <div class="intro-title">Image Preview</div>
+      </section>
+
+      <section class="cards-wrap">
+        <div class="case-card">
+          <img src="assets/samaroli-mobile_card-01.png" alt="Label system comparison">
         </div>
-      </div>
-    </section>
 
-    <section class="white-section">
-      <h2>Label System Development</h2>
-      <h3>Label System Development</h3>
-      <p>
-        A consistent visual system was created to support premium limited editions while allowing
-        each bottling to retain individual narrative cues. This included hierarchy setting,
-        typography handling, ornamental references and production alignment.
-      </p>
+        <div class="case-card">
+          <img src="assets/samaroli-mobile_card-02.png" alt="Mockup and campaign direction">
+        </div>
 
-      <div class="labelsystem-image">
-        <img src="assets/samaroli-mobile_labelsystem-01.png" alt="Label system layout">
-      </div>
-    </section>
+        <div class="case-card">
+          <img src="assets/samaroli-mobile_card-03.png" alt="POS and print">
+        </div>
 
-    <section class="olive-feature">
-      <h2>Production &amp; Material Strategy</h2>
-      <p>
-        Print structure, substrate behaviour and finishing logic were reviewed to ensure the label
-        system translated effectively across bottles, supporting assets and different release formats.
-      </p>
+        <div class="case-card">
+          <img src="assets/samaroli-mobile_card-04.png" alt="Retail output">
+        </div>
 
-      <div class="mini-asset">
-        <img src="assets/samaroli-mobile_foil-row.png" alt="Foil reference">
-      </div>
-      <div class="asset-caption">
-        Foil reference exploration to establish contrast, premium finish and consistency across label applications.
-      </div>
+        <div class="case-card">
+          <img src="assets/samaroli-mobile_card-05.png" alt="Campaign and editorial">
+        </div>
+      </section>
 
-      <div class="mini-asset">
-        <img src="assets/samaroli-mobile_paper.png" alt="Paper reference">
-      </div>
-      <div class="asset-caption">
-        Paper stock review to balance tactility, print performance and the heritage character of the brand.
-      </div>
+      <section class="role-section">
+        <h2 class="section-title-dark">My Role</h2>
 
-      <div class="mini-asset">
-        <img src="assets/samaroli-mobile_proofing.png" alt="Proofing and print accuracy">
-      </div>
-      <div class="asset-caption">
-        Proofing checks were used to verify alignment, material behaviour and production accuracy before rollout.
-      </div>
-    </section>
+        <div class="role-layout">
+          <div class="role-text">
+            <p class="section-copy-dark">
+              I was responsible for the development of Samaroli’s label system,
+              supporting visual hierarchy, typography consistency, production detail,
+              editorial assets and campaign-led brand applications across different editions.
+            </p>
+          </div>
 
-    <section class="white-section">
-      <h2>Digital &amp; Campaign Rollout</h2>
-      <p>
-        The packaging system extended into web visuals, launch assets and digital presentation materials,
-        helping the brand remain visually coherent beyond the bottle itself.
-      </p>
+          <div class="role-side-image">
+            <img src="assets/samaroli-mobile_application-across.png" alt="Application across editions">
+          </div>
+        </div>
+      </section>
 
-      <img src="assets/samaroli-mobile_rollout_banner.png" alt="Digital rollout banner">
+      <section class="white-section">
+        <h2>Label System Development</h2>
+        <h3>Label System Development</h3>
+        <p>
+          A consistent visual system was created to support premium limited editions while allowing
+          each bottling to retain individual narrative cues. This included hierarchy setting,
+          typography handling, ornamental references and production alignment.
+        </p>
 
-      <div class="rollout-grid">
-        <img src="assets/samaroli-mobile_rollout-01.png" alt="Digital rollout asset">
-        <img src="assets/samaroli-mobile_rollout-02.png" alt="Digital rollout applications">
-      </div>
+        <div class="labelsystem-image">
+          <img src="assets/samaroli-mobile_labelsystem-01.png" alt="Label system layout">
+        </div>
+      </section>
 
-      <div class="social-crop">
-        <img src="assets/samaroli-mobile_social-media.png" alt="Social media adaptation">
-      </div>
-    </section>
+      <section class="olive-feature">
+        <h2>Production &amp; Material Strategy</h2>
+        <p>
+          Print structure, substrate behaviour and finishing logic were reviewed to ensure the label
+          system translated effectively across bottles, supporting assets and different release formats.
+        </p>
 
-    <section class="olive-feature">
-      <h2>Editorial &amp; Retail Application</h2>
+        <div class="mini-asset">
+          <img src="assets/samaroli-mobile_foil-row.png" alt="Foil reference">
+        </div>
+        <div class="asset-caption">
+          Foil reference exploration to establish contrast, premium finish and consistency across label applications.
+        </div>
 
-      <img class="editorial-banner" src="assets/samaroli-mobile_editorial-banner.png" alt="Editorial and retail application banner">
+        <div class="mini-asset">
+          <img src="assets/samaroli-mobile_paper.png" alt="Paper reference">
+        </div>
+        <div class="asset-caption">
+          Paper stock review to balance tactility, print performance and the heritage character of the brand.
+        </div>
 
-      <p class="editorial-copy">
-        Additional visual outputs were adapted across editorial pages, retail communication and display-led formats, strengthening the premium identity across multiple touchpoints.
-      </p>
+        <div class="mini-asset">
+          <img src="assets/samaroli-mobile_proofing.png" alt="Proofing and print accuracy">
+        </div>
+        <div class="asset-caption">
+          Proofing checks were used to verify alignment, material behaviour and production accuracy before rollout.
+        </div>
+      </section>
 
-      <div class="before-after">
-        <img src="assets/samaroli-mobile_editorial-01.png" alt="Editorial layout example">
-        <img src="assets/samaroli-mobile_editorial-02.png" alt="Retail application example">
-      </div>
-    </section>
+      <section class="white-section">
+        <h2>Digital &amp; Campaign Rollout</h2>
+        <p>
+          The packaging system extended into web visuals, launch assets and digital presentation materials,
+          helping the brand remain visually coherent beyond the bottle itself.
+        </p>
 
-    <footer class="footer">
-      © 2026 Chi Wai Lau. All Rights Reserved.
-    </footer>
+        <img src="assets/samaroli-mobile_rollout_banner.png" alt="Digital rollout banner">
+
+        <div class="rollout-grid">
+          <img src="assets/samaroli-mobile_rollout-01.png" alt="Digital rollout asset">
+          <img src="assets/samaroli-mobile_rollout-02.png" alt="Digital rollout applications">
+        </div>
+
+        <div class="social-crop">
+          <img src="assets/samaroli-mobile_social-media.png" alt="Social media adaptation">
+        </div>
+      </section>
+
+      <section class="olive-feature">
+        <h2>Editorial &amp; Retail Application</h2>
+
+        <img class="editorial-banner" src="assets/samaroli-mobile_editorial-banner.png" alt="Editorial and retail application banner">
+
+        <p class="editorial-copy">
+          Additional visual outputs were adapted across editorial pages, retail communication and display-led formats, strengthening the premium identity across multiple touchpoints.
+        </p>
+
+        <div class="editorial-01">
+          <img src="assets/samaroli-mobile_editorial-01.png" alt="Editorial layout example">
+        </div>
+
+        <div class="editorial-02">
+          <img src="assets/samaroli-mobile_editorial-02.png" alt="Retail application example">
+        </div>
+      </section>
+
+      <footer class="footer">
+        © 2026 Chi Wai Lau. All Rights Reserved.
+      </footer>
+    </div>
   </div>
 
   <script>
@@ -647,6 +1066,7 @@
     const menuOverlay = document.getElementById("menuOverlay");
 
     function closeMenu() {
+      if (!menuBtn || !menuPanel || !menuOverlay) return;
       menuPanel.classList.remove("open");
       menuOverlay.classList.remove("open");
       menuBtn.classList.remove("active");
