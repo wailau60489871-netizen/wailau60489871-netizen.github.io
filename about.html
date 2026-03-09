@@ -12,6 +12,8 @@
       --panel-border:rgba(188,178,110,.28);
       --menu-bg:rgba(8,8,8,.96);
       --bg-olive:rgba(40,38,5,.88);
+      --mobile-header-h:78px;
+      --mobile-max-width:430px;
     }
 
     *{
@@ -210,10 +212,12 @@
     .about-copy p{
       font-family:Georgia, "Times New Roman", serif;
       font-size:16px;
-      line-height:1.34;
+      line-height:1.42;
       color:var(--text);
       margin:0 0 20px 0;
       max-width:900px;
+      text-align:justify;
+      hyphens:auto;
     }
 
     .working-title{
@@ -286,7 +290,7 @@
       }
 
       body{
-        background:var(--bg-olive);
+        background:#000;
       }
 
       .page,
@@ -300,36 +304,49 @@
       .mobile-shell{
         display:block;
         width:100%;
-        height:100%;
+        min-height:100vh;
+        background:#000;
+        overflow-x:hidden;
+      }
+
+      .mobile-inner{
+        width:100%;
+        max-width:var(--mobile-max-width);
+        margin:0 auto;
+        min-height:100vh;
         background:var(--bg-olive);
+        position:relative;
+        overflow-x:hidden;
       }
 
       .mobile-topbar{
         display:flex;
         position:fixed;
         top:0;
-        left:0;
+        left:50%;
+        transform:translateX(-50%);
         width:100%;
-        height:86px;
+        max-width:var(--mobile-max-width);
+        height:var(--mobile-header-h);
         background:#000;
         z-index:1000;
         align-items:center;
         justify-content:space-between;
-        padding:0 24px;
+        padding:0 18px;
       }
 
       .mobile-brand{
         display:flex;
         align-items:center;
         justify-content:center;
-        width:72px;
-        height:72px;
+        width:68px;
+        height:68px;
       }
 
       .mobile-brand .brand-mark{
-        width:58px;
-        height:58px;
-        font-size:36px;
+        width:54px;
+        height:54px;
+        font-size:34px;
         border-width:3px;
       }
 
@@ -348,14 +365,14 @@
 
       .menu-button span{
         display:block;
-        width:40px;
-        height:4px;
+        width:36px;
+        height:3px;
         background:#a4a17b;
         transition:transform .25s ease, opacity .25s ease;
       }
 
       .menu-button.is-open span:nth-child(1){
-        transform:translateY(11px) rotate(45deg);
+        transform:translateY(10px) rotate(45deg);
       }
 
       .menu-button.is-open span:nth-child(2){
@@ -363,13 +380,16 @@
       }
 
       .menu-button.is-open span:nth-child(3){
-        transform:translateY(-11px) rotate(-45deg);
+        transform:translateY(-10px) rotate(-45deg);
       }
 
       .menu-overlay{
         display:block;
         position:fixed;
-        inset:86px 0 0 0;
+        top:var(--mobile-header-h);
+        left:0;
+        width:100%;
+        height:calc(100vh - var(--mobile-header-h));
         background:rgba(0,0,0,.28);
         opacity:0;
         pointer-events:none;
@@ -385,22 +405,24 @@
       .menu-panel{
         display:block;
         position:fixed;
-        top:86px;
-        right:0;
-        width:280px;
-        max-width:84vw;
-        height:calc(100vh - 86px);
+        top:var(--mobile-header-h);
+        left:50%;
+        transform:translateX(-50%);
+        margin-left:var(--mobile-max-width);
+        width:100%;
+        max-width:var(--mobile-max-width);
+        height:calc(100vh - var(--mobile-header-h));
         background:var(--menu-bg);
-        transform:translateX(100%);
-        transition:transform .28s ease;
+        transition:margin-left .28s ease;
         z-index:999;
         border-left:1px solid rgba(255,255,255,.08);
         padding:28px 24px;
         overflow-y:auto;
+        overflow-x:hidden;
       }
 
       .menu-panel.is-open{
-        transform:translateX(0);
+        margin-left:0;
       }
 
       .menu-panel nav{
@@ -432,10 +454,12 @@
       .mobile-content-scroll{
         display:block;
         position:fixed;
-        top:86px;
-        left:0;
+        top:var(--mobile-header-h);
+        left:50%;
+        transform:translateX(-50%);
         width:100%;
-        height:calc(100vh - 86px);
+        max-width:var(--mobile-max-width);
+        height:calc(100vh - var(--mobile-header-h));
         overflow-y:auto;
         overflow-x:hidden;
         background:var(--bg-olive);
@@ -444,90 +468,75 @@
 
       .mobile-about-page{
         width:100%;
-        max-width:620px;
         margin:0 auto;
-        padding:76px 22px 90px;
+        padding:52px 18px 72px;
       }
 
       .mobile-hero-visual{
         width:100%;
-        margin:0 0 42px;
+        margin:0 0 38px;
         background:#000;
       }
 
       .mobile-about-copy h1{
         font-family:Georgia, "Times New Roman", serif;
-        font-size:56px;
+        font-size:46px;
         line-height:1;
         font-weight:700;
-        margin:0 0 28px;
+        margin:0 0 24px;
         color:var(--text);
       }
 
       .mobile-about-copy p{
         font-family:Georgia, "Times New Roman", serif;
-        font-size:18px;
-        line-height:1.28;
+        font-size:16px;
+        line-height:1.42;
         color:var(--text);
-        margin:0 0 28px;
+        margin:0 0 22px;
+        text-align:justify;
+        hyphens:auto;
       }
 
       .mobile-working-title{
         font-family:Georgia, "Times New Roman", serif;
-        font-size:28px;
+        font-size:24px;
         line-height:1.1;
         font-weight:700;
-        margin:56px 0 26px;
+        margin:42px 0 20px;
         color:var(--text);
+      }
+
+      .mobile-footer{
+        margin-top:18px;
+        padding-top:18px;
+        border-top:1px solid rgba(255,255,255,.12);
+        color:var(--muted);
+        font-size:13px;
+        line-height:1.5;
+        text-align:center;
       }
     }
 
     @media (max-width: 480px){
       .mobile-topbar{
-        height:78px;
-        padding:0 18px;
-      }
-
-      .mobile-brand{
-        width:68px;
-        height:68px;
-      }
-
-      .mobile-brand .brand-mark{
-        width:54px;
-        height:54px;
-        font-size:34px;
-      }
-
-      .menu-overlay{
-        inset:78px 0 0 0;
-      }
-
-      .menu-panel{
-        top:78px;
-        height:calc(100vh - 78px);
-      }
-
-      .mobile-content-scroll{
-        top:78px;
-        height:calc(100vh - 78px);
+        padding:0 16px;
       }
 
       .mobile-about-page{
-        padding:60px 18px 72px;
+        padding:46px 18px 64px;
       }
 
       .mobile-about-copy h1{
-        font-size:46px;
+        font-size:42px;
       }
 
       .mobile-about-copy p{
-        font-size:16px;
-        line-height:1.32;
+        font-size:15px;
+        line-height:1.44;
       }
 
       .mobile-working-title{
-        font-size:24px;
+        font-size:23px;
       }
     }
   </style>
@@ -553,7 +562,7 @@
                 <a href="pizzaexpress.html">Pizzaexpress</a>
                 <a href="canon.html">Canon</a>
                 <a href="kmb.html">KMB</a>
-                <a href="illustration.html">Illustration</a>
+                <a href="illustration-book.html">Illustration</a>
                 <a href="video.html">Video Projects</a>
               </div>
             </div>
@@ -562,7 +571,6 @@
       </header>
 
       <main class="about-page">
-
         <section class="hero-visual">
           <img src="assets/aboutme.png" alt="Chi Wai Lau portrait">
         </section>
@@ -596,7 +604,6 @@
             I enjoy working across disciplines — from graphic design and typography to photography, video and environmental graphics — allowing projects to develop as cohesive visual experiences.
           </p>
         </section>
-
       </main>
 
       <div class="bottom-bar">
@@ -612,76 +619,83 @@
 
   <!-- MOBILE VERSION -->
   <div class="mobile-shell">
+    <div class="mobile-inner">
 
-    <header class="mobile-topbar">
-      <a href="index.html" class="mobile-brand" aria-label="Home">
-        <div class="brand-mark">W</div>
-      </a>
+      <header class="mobile-topbar">
+        <a href="index.html" class="mobile-brand" aria-label="Home">
+          <div class="brand-mark">W</div>
+        </a>
 
-      <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </header>
+        <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
 
-    <div class="menu-overlay" id="menuOverlay"></div>
+      <div class="menu-overlay" id="menuOverlay"></div>
 
-    <aside class="menu-panel" id="menuPanel" aria-hidden="true">
-      <nav>
-        <a href="about.html">About Me</a>
+      <aside class="menu-panel" id="menuPanel" aria-hidden="true">
+        <nav>
+          <a href="about.html">About Me</a>
 
-        <div class="menu-divider"></div>
+          <div class="menu-divider"></div>
 
-        <a href="index.html">Home</a>
-        <a href="samaroli.html" class="sub">Samaroli</a>
-        <a href="pizzaexpress.html" class="sub">PizzaExpress</a>
-        <a href="canon.html" class="sub">Canon</a>
-        <a href="kmb.html" class="sub">KMB</a>
-        <a href="illustration.html" class="sub">Illustration</a>
-        <a href="video.html" class="sub">Video Projects</a>
-      </nav>
-    </aside>
+          <a href="index.html">Home</a>
+          <a href="samaroli.html" class="sub">Samaroli</a>
+          <a href="pizzaexpress.html" class="sub">PizzaExpress</a>
+          <a href="canon.html" class="sub">Canon</a>
+          <a href="kmb.html" class="sub">KMB</a>
+          <a href="illustration-book.html" class="sub">Illustration</a>
+          <a href="video.html" class="sub">Video Projects</a>
+        </nav>
+      </aside>
 
-    <main class="mobile-content-scroll">
-      <section class="mobile-about-page">
+      <main class="mobile-content-scroll">
+        <section class="mobile-about-page">
 
-        <div class="mobile-hero-visual">
-          <img src="assets/aboutme.png" alt="Chi Wai Lau portrait">
-        </div>
+          <div class="mobile-hero-visual">
+            <img src="assets/aboutme.png" alt="Chi Wai Lau portrait">
+          </div>
 
-        <section class="mobile-about-copy">
-          <h1>About</h1>
+          <section class="mobile-about-copy">
+            <h1>About</h1>
 
-          <p>
-            I am a multidisciplinary designer working across branding, packaging, visual storytelling and motion.
-          </p>
+            <p>
+              I am a multidisciplinary designer working across branding, packaging, visual storytelling and motion.
+            </p>
 
-          <p>
-            My work explores how design systems can translate brand ideas across different touchpoints — from labels and printed materials to campaigns, environments and film.
-          </p>
+            <p>
+              My work explores how design systems can translate brand ideas across different touchpoints — from labels and printed materials to campaigns, environments and film.
+            </p>
 
-          <p>
-            Projects range from packaging and brand development for Samaroli to campaign visuals and digital content for PizzaExpress, often combining design thinking with creative direction and production.
-          </p>
+            <p>
+              Projects range from packaging and brand development for Samaroli to campaign visuals and digital content for PizzaExpress, often combining design thinking with creative direction and production.
+            </p>
 
-          <p>
-            I am interested in building visual languages that remain consistent across physical and digital platforms while retaining strong narrative clarity.
-          </p>
+            <p>
+              I am interested in building visual languages that remain consistent across physical and digital platforms while retaining strong narrative clarity.
+            </p>
 
-          <div class="mobile-working-title">Working Approach</div>
+            <div class="mobile-working-title">Working Approach</div>
 
-          <p>
-            My practice combines concept development, visual design and production execution.
-          </p>
+            <p>
+              My practice combines concept development, visual design and production execution.
+            </p>
 
-          <p>
-            I enjoy working across disciplines — from graphic design and typography to photography, video and environmental graphics — allowing projects to develop as cohesive visual experiences.
-          </p>
+            <p>
+              I enjoy working across disciplines — from graphic design and typography to photography, video and environmental graphics — allowing projects to develop as cohesive visual experiences.
+            </p>
+          </section>
+
+          <footer class="mobile-footer">
+            © 2026 Chi Wai Lau. All Rights Reserved.
+          </footer>
+
         </section>
+      </main>
 
-      </section>
-    </main>
+    </div>
   </div>
 
   <script>
@@ -695,6 +709,7 @@
       menuOverlay.classList.add("is-open");
       menuButton.setAttribute("aria-expanded", "true");
       menuPanel.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = window.innerWidth <= 768 ? "hidden" : "";
     }
 
     function closeMenu() {
@@ -703,24 +718,33 @@
       menuOverlay.classList.remove("is-open");
       menuButton.setAttribute("aria-expanded", "false");
       menuPanel.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
     }
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuPanel.classList.contains("is-open");
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
+    if (menuButton && menuPanel && menuOverlay) {
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuPanel.classList.contains("is-open");
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
 
-    menuOverlay.addEventListener("click", closeMenu);
+      menuOverlay.addEventListener("click", closeMenu);
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeMenu();
-      }
-    });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          closeMenu();
+        }
+      });
+    }
   </script>
 
 </body>
