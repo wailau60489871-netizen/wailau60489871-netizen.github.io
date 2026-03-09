@@ -410,9 +410,7 @@
       line-height: 1.6;
     }
 
-    /* =========================
-       MOBILE MENU BUTTON
-    ========================== */
+    /* mobile-only */
     .menu-button{
       display:none;
       width:54px;
@@ -449,7 +447,9 @@
     }
 
     .mobile-menu-panel,
-    .mobile-menu-overlay{
+    .mobile-menu-overlay,
+    .mobile-intro,
+    .mobile-projects{
       display:none;
     }
 
@@ -460,54 +460,55 @@
 
       html, body{
         min-width:100%;
-        overflow-x:hidden;
+        width:100%;
+        height:100%;
+        overflow:hidden;
       }
 
       body{
-        background:
-          linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
-          url("assets/hero-studio.png") center center / cover no-repeat fixed;
+        background:var(--bg);
       }
 
       .page{
         width:100%;
+        height:100%;
         padding:0;
       }
 
       .frame{
-        padding:14px 14px 24px;
+        width:100%;
+        height:100%;
+        padding:0;
         border:none;
+        overflow:hidden;
+        background:var(--bg);
       }
 
-      .site-title{
-        position:static;
-        transform:none;
-        margin:18px 0 10px;
-      }
-
-      .site-title .portfolio-word{
-        font-size:18px;
-      }
-
-      .site-title .name-word{
-        font-size:11px;
+      .site-title,
+      .bottom-grid,
+      .footer{
+        display:none;
       }
 
       .topbar{
-        position:sticky;
+        position:fixed;
         top:0;
-        align-items:center;
-        gap:16px;
-        padding:10px 0 12px;
-        margin:-14px -14px 0 -14px;
-        padding-left:14px;
-        padding-right:14px;
+        left:0;
+        width:100%;
+        z-index:1000;
+        margin:0;
+        padding:0 14px;
+        height:78px;
         background:#000;
+        gap:0;
+        border:none;
       }
 
       .topbar-left{
         width:100%;
+        display:flex;
         justify-content:space-between;
+        align-items:center;
         gap:12px;
       }
 
@@ -582,7 +583,10 @@
       }
 
       .hero{
-        margin-top:0;
+        margin-top:78px;
+        height:calc(100vh - 78px);
+        overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
       }
 
       .hero-image-wrap{
@@ -591,155 +595,143 @@
 
       .hero-image{
         aspect-ratio: 4 / 5;
+        filter:brightness(.82);
       }
 
       .hero-center-logo{
-        width:72px;
-        height:72px;
-        top:12%;
+        top:18px;
+        left:18px;
+        transform:none;
+        width:62px;
+        height:62px;
         border-width:3px;
+        background:transparent;
+        box-shadow:none;
       }
 
       .hero-headline{
-        width:86%;
-        top:28%;
-        font-size:22px;
-        line-height:1.25;
-      }
-
-      .bottom-grid{
-        display:block;
-        margin-top:24px;
-        padding-left:0;
-        padding-right:0;
-      }
-
-      .side-panel{
-        padding-left:0;
-        margin-bottom:22px;
-      }
-
-      .side-title{
-        margin-bottom:18px;
-        font-size:16px;
-        padding:10px 14px;
-      }
-
-      .side-list{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px 16px;
-        padding-left:0;
-      }
-
-      .side-list li{
-        margin:0;
-      }
-
-      .side-list a{
-        font-size:18px;
-        line-height:1.25;
-      }
-
-      .project-detail{
-        border-left:none;
-        border-top:1px solid var(--line);
-        padding-left:0;
-        padding-top:22px;
-        padding-right:0;
-        height:auto;
-        overflow:visible;
-      }
-
-      .project-grid{
-        grid-template-columns:1fr;
-        gap:22px;
-      }
-
-      .project-preview{
-        position:static;
-        gap:14px;
-      }
-
-      .project-preview-image{
-        aspect-ratio: 4 / 4;
-      }
-
-      .project-button-wrap{
-        justify-content:flex-start;
-      }
-
-      .project-button{
-        min-width:146px;
-        padding:12px 16px;
-        font-size:14px;
-      }
-
-      .project-copy h2{
+        left:18px;
+        right:18px;
+        bottom:28px;
+        top:auto;
+        transform:none;
+        width:auto;
+        text-align:left;
         font-size:24px;
-        min-height:auto;
-        margin-bottom:16px;
+        line-height:1.18;
+        font-weight:700;
       }
 
-      .project-copy p{
-        font-size:16px;
-        line-height:1.65;
-        margin-bottom:18px;
-        min-height:auto;
+      .mobile-intro{
+        display:block;
+        background:var(--bg);
+        padding:28px 32px 22px;
       }
 
-      .footer{
-        margin-top:28px;
-        padding-top:16px;
-        font-size:13px;
+      .mobile-intro p{
+        margin:0 0 22px;
+        font-size:15px;
+        line-height:1.56;
+        color:var(--muted);
+        font-weight:600;
+      }
+
+      .mobile-projects{
+        display:grid;
+        gap:0;
+      }
+
+      .mobile-card{
+        display:block;
+        position:relative;
+        width:100%;
+        overflow:hidden;
+        background:#111;
+        border:none;
+      }
+
+      .mobile-card img{
+        width:100%;
+        aspect-ratio:16/9;
+        object-fit:cover;
+        display:block;
+      }
+
+      .mobile-card .label-box{
+        position:absolute;
+        right:16px;
+        top:18px;
+        border:2px solid rgba(255,255,255,.75);
+        padding:8px 12px 10px;
+        min-width:155px;
+        text-align:center;
+        background:rgba(0,0,0,0.08);
+      }
+
+      .mobile-card .label-small{
+        display:block;
+        font-size:11px;
+        font-weight:700;
+        color:rgba(255,255,255,.78);
+        margin-bottom:4px;
+      }
+
+      .mobile-card .label-big{
+        display:block;
+        font-size:20px;
+        line-height:1;
+        font-weight:700;
+        color:#fff;
       }
     }
 
     @media (max-width: 480px){
-      .frame{
-        padding:12px 12px 22px;
-      }
-
       .topbar{
-        margin:-12px -12px 0 -12px;
-        padding-left:12px;
-        padding-right:12px;
+        height:72px;
+        padding:0 12px;
       }
 
-      .brand-mark{
-        width:40px;
-        height:40px;
-        font-size:22px;
-      }
-
-      .site-title .portfolio-word{
-        font-size:16px;
+      .hero{
+        margin-top:72px;
+        height:calc(100vh - 72px);
       }
 
       .hero-center-logo{
-        width:64px;
-        height:64px;
+        width:58px;
+        height:58px;
+        top:16px;
+        left:14px;
       }
 
       .hero-headline{
-        font-size:20px;
-        width:88%;
-      }
-
-      .side-list{
-        grid-template-columns:1fr;
-      }
-
-      .side-list a{
-        font-size:17px;
-      }
-
-      .project-copy h2{
+        left:14px;
+        right:14px;
+        bottom:22px;
         font-size:22px;
       }
 
-      .project-copy p{
-        font-size:15px;
+      .mobile-intro{
+        padding:24px 22px 18px;
+      }
+
+      .mobile-intro p{
+        font-size:14px;
+        margin-bottom:18px;
+      }
+
+      .mobile-card .label-box{
+        right:12px;
+        top:14px;
+        min-width:142px;
+        padding:7px 10px 9px;
+      }
+
+      .mobile-card .label-small{
+        font-size:10px;
+      }
+
+      .mobile-card .label-big{
+        font-size:18px;
       }
     }
   </style>
@@ -789,8 +781,8 @@
           <a href="pizzaexpress.html" class="sub">Pizzaexpress</a>
           <a href="canon.html" class="sub">Canon</a>
           <a href="kmb.html" class="sub">KMB</a>
+          <a href="video.html" class="sub">Video</a>
           <a href="illustration-book.html" class="sub">Illustration</a>
-          <a href="video.html" class="sub">Video Project</a>
         </nav>
       </aside>
 
@@ -811,6 +803,7 @@
           </div>
         </div>
 
+        <!-- desktop -->
         <section class="bottom-grid">
           <aside class="side-panel">
             <div class="side-title">Selected Works</div>
@@ -856,6 +849,69 @@
               </div>
             </div>
           </section>
+        </section>
+
+        <!-- mobile -->
+        <section class="mobile-intro">
+          <p>
+            PizzaExpress is one of the most recognisable restaurant brands in the UK, known for its distinctive dining experience and strong visual identity.
+          </p>
+          <p>
+            This project explores the development of campaign visuals and branded content designed to enhance the in-restaurant experience while extending the brand narrative across digital and social platforms.
+          </p>
+          <p>
+            The work combines food photography, visual storytelling and graphic design to create engaging campaign materials that celebrate the atmosphere and personality of the brand.
+          </p>
+        </section>
+
+        <section class="mobile-projects">
+          <a class="mobile-card" href="samaroli.html">
+            <img src="assets/samaroli.jpg" alt="Samaroli">
+            <div class="label-box">
+              <span class="label-small">Selected Works</span>
+              <span class="label-big">Samaroli</span>
+            </div>
+          </a>
+
+          <a class="mobile-card" href="pizzaexpress.html">
+            <img src="assets/pizza.jpg" alt="Pizzaexpress">
+            <div class="label-box">
+              <span class="label-small">Selected Works</span>
+              <span class="label-big">Pizzaexpress</span>
+            </div>
+          </a>
+
+          <a class="mobile-card" href="canon.html">
+            <img src="assets/canon.jpg" alt="Canon">
+            <div class="label-box">
+              <span class="label-small">Selected Works</span>
+              <span class="label-big">Canon</span>
+            </div>
+          </a>
+
+          <a class="mobile-card" href="kmb.html">
+            <img src="assets/kmb.jpg" alt="KMB">
+            <div class="label-box">
+              <span class="label-small">Selected Works</span>
+              <span class="label-big">KMB</span>
+            </div>
+          </a>
+
+          <a class="mobile-card" href="video.html">
+            <img src="assets/youtube.jpg" alt="Video Project">
+            <div class="label-box">
+              <span class="label-small">Selected Works</span>
+              <span class="label-big">Video</span>
+            </div>
+          </a>
+
+          <a class="mobile-card" href="illustration-book.html">
+            <img src="assets/illustration.jpg" alt="Illustration">
+            <div class="label-box">
+              <span class="label-small">Selected Works</span>
+              <span class="label-big">Illustration</span>
+            </div>
+          </a>
         </section>
       </main>
 
@@ -1013,15 +1069,6 @@
 
         const projectKey = this.getAttribute("data-project");
         renderProject(projectKey);
-      });
-
-      link.addEventListener("click", function() {
-        const projectKey = this.getAttribute("data-project");
-        if (window.innerWidth <= 768 && projectData[projectKey]) {
-          listItems.forEach(item => item.classList.remove("active"));
-          this.parentElement.classList.add("active");
-          renderProject(projectKey);
-        }
       });
     });
 
