@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1280, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chi Wai Lau Portfolio</title>
 
   <style>
@@ -409,6 +409,339 @@
       font-size: 14px;
       line-height: 1.6;
     }
+
+    /* =========================
+       MOBILE MENU BUTTON
+    ========================== */
+    .menu-button{
+      display:none;
+      width:54px;
+      height:54px;
+      border:none;
+      background:transparent;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+      padding:0;
+      margin-left:auto;
+    }
+
+    .menu-button span{
+      display:block;
+      width:34px;
+      height:3px;
+      background:#a4a17b;
+      transition:transform .25s ease, opacity .25s ease;
+    }
+
+    .menu-button.is-open span:nth-child(1){
+      transform:translateY(9px) rotate(45deg);
+    }
+
+    .menu-button.is-open span:nth-child(2){
+      opacity:0;
+    }
+
+    .menu-button.is-open span:nth-child(3){
+      transform:translateY(-9px) rotate(-45deg);
+    }
+
+    .mobile-menu-panel,
+    .mobile-menu-overlay{
+      display:none;
+    }
+
+    /* =========================
+       MOBILE VERSION
+    ========================== */
+    @media (max-width: 768px){
+
+      html, body{
+        min-width:100%;
+        overflow-x:hidden;
+      }
+
+      body{
+        background:
+          linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
+          url("assets/hero-studio.png") center center / cover no-repeat fixed;
+      }
+
+      .page{
+        width:100%;
+        padding:0;
+      }
+
+      .frame{
+        padding:14px 14px 24px;
+        border:none;
+      }
+
+      .site-title{
+        position:static;
+        transform:none;
+        margin:18px 0 10px;
+      }
+
+      .site-title .portfolio-word{
+        font-size:18px;
+      }
+
+      .site-title .name-word{
+        font-size:11px;
+      }
+
+      .topbar{
+        position:sticky;
+        top:0;
+        align-items:center;
+        gap:16px;
+        padding:10px 0 12px;
+        margin:-14px -14px 0 -14px;
+        padding-left:14px;
+        padding-right:14px;
+        background:#000;
+      }
+
+      .topbar-left{
+        width:100%;
+        justify-content:space-between;
+        gap:12px;
+      }
+
+      .nav{
+        display:none;
+      }
+
+      .menu-button{
+        display:flex;
+      }
+
+      .mobile-menu-overlay{
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.42);
+        z-index:998;
+        opacity:0;
+        pointer-events:none;
+        transition:opacity .25s ease;
+      }
+
+      .mobile-menu-overlay.is-open{
+        display:block;
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .mobile-menu-panel{
+        position:fixed;
+        top:0;
+        right:0;
+        width:280px;
+        max-width:82vw;
+        height:100vh;
+        background:var(--menu-bg);
+        z-index:999;
+        transform:translateX(100%);
+        transition:transform .28s ease;
+        padding:88px 24px 24px;
+        border-left:1px solid rgba(255,255,255,0.08);
+      }
+
+      .mobile-menu-panel.is-open{
+        display:block;
+        transform:translateX(0);
+      }
+
+      .mobile-menu-panel nav{
+        display:flex;
+        flex-direction:column;
+        gap:16px;
+      }
+
+      .mobile-menu-panel a{
+        font-size:18px;
+        font-weight:700;
+        color:var(--text);
+        line-height:1.3;
+      }
+
+      .mobile-menu-panel a.sub{
+        font-size:16px;
+        font-weight:600;
+        color:var(--muted);
+        padding-left:10px;
+      }
+
+      .mobile-menu-divider{
+        height:1px;
+        background:rgba(255,255,255,.14);
+        margin:4px 0;
+      }
+
+      .hero{
+        margin-top:0;
+      }
+
+      .hero-image-wrap{
+        border:none;
+      }
+
+      .hero-image{
+        aspect-ratio: 4 / 5;
+      }
+
+      .hero-center-logo{
+        width:72px;
+        height:72px;
+        top:12%;
+        border-width:3px;
+      }
+
+      .hero-headline{
+        width:86%;
+        top:28%;
+        font-size:22px;
+        line-height:1.25;
+      }
+
+      .bottom-grid{
+        display:block;
+        margin-top:24px;
+        padding-left:0;
+        padding-right:0;
+      }
+
+      .side-panel{
+        padding-left:0;
+        margin-bottom:22px;
+      }
+
+      .side-title{
+        margin-bottom:18px;
+        font-size:16px;
+        padding:10px 14px;
+      }
+
+      .side-list{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px 16px;
+        padding-left:0;
+      }
+
+      .side-list li{
+        margin:0;
+      }
+
+      .side-list a{
+        font-size:18px;
+        line-height:1.25;
+      }
+
+      .project-detail{
+        border-left:none;
+        border-top:1px solid var(--line);
+        padding-left:0;
+        padding-top:22px;
+        padding-right:0;
+        height:auto;
+        overflow:visible;
+      }
+
+      .project-grid{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+
+      .project-preview{
+        position:static;
+        gap:14px;
+      }
+
+      .project-preview-image{
+        aspect-ratio: 4 / 4;
+      }
+
+      .project-button-wrap{
+        justify-content:flex-start;
+      }
+
+      .project-button{
+        min-width:146px;
+        padding:12px 16px;
+        font-size:14px;
+      }
+
+      .project-copy h2{
+        font-size:24px;
+        min-height:auto;
+        margin-bottom:16px;
+      }
+
+      .project-copy p{
+        font-size:16px;
+        line-height:1.65;
+        margin-bottom:18px;
+        min-height:auto;
+      }
+
+      .footer{
+        margin-top:28px;
+        padding-top:16px;
+        font-size:13px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .frame{
+        padding:12px 12px 22px;
+      }
+
+      .topbar{
+        margin:-12px -12px 0 -12px;
+        padding-left:12px;
+        padding-right:12px;
+      }
+
+      .brand-mark{
+        width:40px;
+        height:40px;
+        font-size:22px;
+      }
+
+      .site-title .portfolio-word{
+        font-size:16px;
+      }
+
+      .hero-center-logo{
+        width:64px;
+        height:64px;
+      }
+
+      .hero-headline{
+        font-size:20px;
+        width:88%;
+      }
+
+      .side-list{
+        grid-template-columns:1fr;
+      }
+
+      .side-list a{
+        font-size:17px;
+      }
+
+      .project-copy h2{
+        font-size:22px;
+      }
+
+      .project-copy p{
+        font-size:15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -421,22 +754,45 @@
       </div>
 
       <header class="topbar">
-        <nav class="nav">
-          <a href="about.html">About Me</a>
+        <div class="topbar-left">
+          <nav class="nav">
+            <a href="about.html">About Me</a>
 
-          <div class="dropdown">
-            <a href="#">Selected Works</a>
-            <div class="dropdown-menu">
-              <a href="samaroli.html">Samaroli</a>
-              <a href="pizzaexpress.html">Pizzaexpress</a>
-              <a href="canon.html">Canon</a>
-              <a href="kmb.html">KMB</a>
-              <a href="illustration-book.html">Illustration</a>
-              <a href="video.html">Video Project</a>
+            <div class="dropdown">
+              <a href="#">Selected Works</a>
+              <div class="dropdown-menu">
+                <a href="samaroli.html">Samaroli</a>
+                <a href="pizzaexpress.html">Pizzaexpress</a>
+                <a href="canon.html">Canon</a>
+                <a href="kmb.html">KMB</a>
+                <a href="illustration-book.html">Illustration</a>
+                <a href="video.html">Video Project</a>
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+
+          <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </header>
+
+      <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+      <aside class="mobile-menu-panel" id="menuPanel">
+        <nav>
+          <a href="about.html">About Me</a>
+          <div class="mobile-menu-divider"></div>
+          <a href="samaroli.html" class="sub">Samaroli</a>
+          <a href="pizzaexpress.html" class="sub">Pizzaexpress</a>
+          <a href="canon.html" class="sub">Canon</a>
+          <a href="kmb.html" class="sub">KMB</a>
+          <a href="illustration-book.html" class="sub">Illustration</a>
+          <a href="video.html" class="sub">Video Project</a>
+        </nav>
+      </aside>
 
       <main class="hero">
         <div class="hero-image-wrap">
@@ -561,7 +917,7 @@
           "It demonstrates versatility across concept, drawing and finished presentation."
         ]
       },
-      VideoProject: {
+      video: {
         title: "Video Project",
         image: "assets/youtube.jpg",
         link: "video.html",
@@ -582,6 +938,10 @@
     const projectImage = document.getElementById("projectImage");
     const projectButton = document.getElementById("projectButton");
     const projectDetail = document.getElementById("projectDetail");
+
+    const menuButton = document.getElementById("menuButton");
+    const menuPanel = document.getElementById("menuPanel");
+    const menuOverlay = document.getElementById("menuOverlay");
 
     let typingTimeouts = [];
     let activeTypingToken = 0;
@@ -654,6 +1014,45 @@
         const projectKey = this.getAttribute("data-project");
         renderProject(projectKey);
       });
+
+      link.addEventListener("click", function() {
+        const projectKey = this.getAttribute("data-project");
+        if (window.innerWidth <= 768 && projectData[projectKey]) {
+          listItems.forEach(item => item.classList.remove("active"));
+          this.parentElement.classList.add("active");
+          renderProject(projectKey);
+        }
+      });
+    });
+
+    function openMenu() {
+      menuButton.classList.add("is-open");
+      menuPanel.classList.add("is-open");
+      menuOverlay.classList.add("is-open");
+      menuButton.setAttribute("aria-expanded", "true");
+    }
+
+    function closeMenu() {
+      menuButton.classList.remove("is-open");
+      menuPanel.classList.remove("is-open");
+      menuOverlay.classList.remove("is-open");
+      menuButton.setAttribute("aria-expanded", "false");
+    }
+
+    menuButton.addEventListener("click", () => {
+      if (menuPanel.classList.contains("is-open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menuOverlay.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
     });
 
     renderProject("samaroli");
