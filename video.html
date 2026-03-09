@@ -43,7 +43,7 @@
       text-decoration:none;
     }
 
-    img, video{
+    img, video, iframe{
       display:block;
       width:100%;
       height:auto;
@@ -88,7 +88,7 @@
     .topbar-right{
       display:flex;
       align-items:center;
-      gap:28px;
+      gap:18px;
       margin-left:auto;
     }
 
@@ -183,11 +183,14 @@
     .quick-links-inline{
       display:flex;
       align-items:center;
-      gap:16px;
-      font-size:12px;
+      gap:12px;
+      font-size:11px;
       font-weight:700;
       color:var(--muted);
       white-space:nowrap;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      max-width:720px;
     }
 
     .quick-links-inline a:hover{
@@ -274,20 +277,21 @@
       align-items:start;
     }
 
-    .video-grid.reverse{
-      grid-template-columns:1fr 1fr;
-    }
-
     .video-media{
       width:100%;
     }
 
     .video-thumb-wrap{
       width:100%;
+      background:#000;
+      overflow:hidden;
     }
 
     .video-thumb{
       width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      display:block;
       background:#000;
     }
 
@@ -311,6 +315,10 @@
       filter:brightness(1.08);
     }
 
+    .center-btn{
+      text-align:center;
+    }
+
     .video-copy h2{
       font-size:19px;
       line-height:1.2;
@@ -328,31 +336,40 @@
     .storyboard-stack{
       position:relative;
       width:100%;
-      min-height:210px;
+      min-height:220px;
     }
 
     .storyboard-a{
       position:absolute;
       left:18px;
       top:20px;
-      width:160px;
+      width:170px;
       transform:rotate(-10deg);
     }
 
     .storyboard-b{
       position:absolute;
-      left:120px;
-      top:68px;
-      width:160px;
+      left:132px;
+      top:74px;
+      width:170px;
       transform:rotate(8deg);
+    }
+
+    .storyboard-thumb{
+      box-shadow:0 10px 22px rgba(0,0,0,.22);
+      background:#000;
     }
 
     .small-thumb{
       width:150px;
     }
 
-    .center-btn{
-      text-align:center;
+    .loop-frame{
+      width:100%;
+      aspect-ratio:9/16;
+      border:none;
+      display:block;
+      background:#000;
     }
 
     /* =========================
@@ -376,7 +393,7 @@
     .video-modal-inner{
       position:relative;
       width:min(960px, 92vw);
-      aspect-ratio:16 / 9;
+      aspect-ratio:16/9;
       background:#000;
     }
 
@@ -459,7 +476,7 @@
                 <a href="canon.html">Canon</a>
                 <a href="kmb.html">KMB</a>
                 <a href="illustration.html">Illustration</a>
-                <a href="video-motion.html">Video & Motion</a>
+                <a href="video.html">Video &amp; Motion</a>
               </div>
             </div>
           </nav>
@@ -469,8 +486,11 @@
           <nav class="quick-links-inline">
             <a href="#samaroli">Samaroli</a>
             <a href="#pizzaexpress">PizzaExpress</a>
-            <a href="#social">Social</a>
-            <a href="#kewah">Ke Wah</a>
+            <a href="#social">Social Reels</a>
+            <a href="#whiskylibrary">Whisky Library</a>
+            <a href="#ricenoodle">Mixian</a>
+            <a href="#musicvideo">Music Video</a>
+            <a href="#mooncake">Mooncake</a>
           </nav>
 
           <div class="site-title">
@@ -486,7 +506,7 @@
           <h1 class="video-main-title">Video &amp; Motion Projects</h1>
           <div class="video-subtitle">Visual Storytelling Through Motion</div>
           <p class="video-intro">
-            This collection presents moving-image projects across brand storytelling, food content, campaign communication and social-first production. The works combine concept development, filming, editing and visual finishing to transform real-world processes and spaces into engaging visual narratives.
+            This collection presents moving-image projects across brand storytelling, campaign communication, food production, social-first content and independent filmmaking. The work spans concept development, storyboard planning, directing, cinematography, editing, colour treatment and visual finishing.
           </p>
         </section>
 
@@ -497,183 +517,189 @@
             <div class="video-grid">
               <div class="video-media">
                 <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_samaroli.png" alt="Samaroli video cover">
+                  <img class="video-thumb" src="assets/video_samaroli.png" alt="Samaroli Karuizawa video cover">
                 </div>
                 <div class="center-btn">
-                  <button class="watch-btn"
-                    data-vimeo="1171730751">
-                    Watch
-                  </button>
+                  <button class="watch-btn" data-vimeo="REPLACE_SAMAROLI_VIMEO_ID">Watch</button>
                 </div>
               </div>
 
               <div class="video-copy">
-                <h2>Samaroli karuizawa</h2>
+                <h2>Samaroli Karuizawa</h2>
                 <p>
-                  A short-form product film developed to extend the visual atmosphere of the packaging into motion. The piece focuses on mood, texture and brand tone, combining close-up imagery with a controlled cinematic pace to support premium product storytelling.
+                  This film was created to support the launch of a rare Japanese whisky release bottled in Scotland by Samaroli. The product originated from a historic Japanese distillery that had already closed, making the remaining aged stock highly limited and culturally significant.
                 </p>
                 <p>
-                  The project explores how packaging visuals can be translated into moving image content while maintaining a consistent luxury aesthetic across digital touchpoints.
+                  My role began with the development of the label and packaging design, where the visual direction was built around the fusion of Japanese and Scottish influences. The film extended this same design language into motion, translating the product’s rarity, heritage and collectable value into a cinematic visual narrative.
+                </p>
+                <p>
+                  Through close-up product cinematography, controlled lighting and a more atmospheric pacing, the film was designed to express the sense of preciousness and cultural depth behind the release, reinforcing both its premium positioning and its storytelling value.
                 </p>
               </div>
             </div>
           </article>
 
-          <!-- 2 PizzaExpress -->
+          <!-- 2 PizzaExpress anniversary -->
           <article id="pizzaexpress" class="video-item">
-            <div class="video-grid reverse">
+            <div class="video-grid">
               <div class="video-media">
-                <div class="storyboard-stack">
-                  <img class="storyboard-a" src="assets/video_storyboard.png" alt="PizzaExpress storyboard 1">
-                  <img class="storyboard-b" src="assets/video_storyboard.png" alt="PizzaExpress storyboard 2">
+                <div class="video-thumb-wrap">
+                  <img class="video-thumb" src="assets/video_pizzaexpress.png" alt="PizzaExpress 20th anniversary film">
+                </div>
+                <div class="center-btn">
+                  <button class="watch-btn" data-vimeo="REPLACE_PIZZAEXPRESS_VIMEO_ID">Watch</button>
                 </div>
               </div>
 
+              <div class="video-copy">
+                <h2>PizzaExpress 20th Anniversary Film</h2>
+                <p>
+                  This short film was created to celebrate the 20th anniversary of PizzaExpress in Hong Kong. The concept centres on the popularity of the brand’s signature Romana pizza, using a playful anthropomorphic approach to exaggerate and visualise the product’s distinctive characteristics.
+                </p>
+                <p>
+                  The narrative follows a group of characters whose personalities reflect different qualities of the Romana pizza, turning familiar product features into humorous visual metaphors. Through this stylised storytelling approach, the film transforms a simple food promotion into a light-hearted and memorable brand narrative.
+                </p>
+                <p>
+                  From concept development and storyboard planning to directing the shoot, editing and visual effects, the production was developed collaboratively with the team to create a cohesive campaign film celebrating the brand’s milestone.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 Social reels loop -->
+          <article id="social" class="video-item">
+            <div class="video-grid">
               <div class="video-media">
-                <!-- 呢條係頁面內不停 loop 播 -->
-                <div class="video-thumb-wrap">
+                <div class="video-thumb-wrap" style="max-width:260px;">
                   <iframe
-                    src="https://player.vimeo.com/video/REPLACE_PIZZAEXPRESS_VIMEO_ID?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
-                    style="width:100%;aspect-ratio:16/9;border:none;display:block;"
+                    class="loop-frame"
+                    src="https://player.vimeo.com/video/REPLACE_SOCIAL_REEL_VIMEO_ID?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
                     allow="autoplay; fullscreen"
                     allowfullscreen>
                   </iframe>
                 </div>
               </div>
-            </div>
-
-            <div class="video-copy" style="margin-top:22px;">
-              <h2>Pizzaexpress 20th TVC</h2>
-              <p>
-                A social-first reel developed to bring campaign energy into motion through quick edits, lifestyle framing and a food-led visual rhythm. The short-form format is designed for continuous playback, allowing the film to function as an attention-grabbing digital asset within the page itself.
-              </p>
-            </div>
-          </article>
-
-          <!-- 3 Social media reels -->
-          <article id="social" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap small-thumb">
-                  <img class="video-thumb" src="assets/video_social.png" alt="Social media reels cover">
-                </div>
-              </div>
 
               <div class="video-copy">
-                <h2>Social media reels</h2>
+                <h2>PizzaExpress Social Media Reels</h2>
                 <p>
-                  A collection of short-form vertical and social-led video content developed for digital platforms. These pieces focus on immediacy, visual rhythm and compact storytelling, adapting brand, food and lifestyle subjects into highly accessible motion content.
+                  This short-form social media reel was created to highlight the journey of PizzaExpress doughballs, from the kitchen to the customer’s table. The film captures the freshness and warmth of the product while maintaining the playful visual tone associated with the brand.
                 </p>
                 <p>
-                  The work demonstrates how editing pace, framing and concise narrative structure can be used to optimise content for mobile viewing and platform-based distribution.
+                  The concept centres on a visual transformation where a prop doughball used during filming gradually transitions into a real, edible doughball through post-production. This approach blends practical filming with visual effects to create a seamless and engaging visual moment.
+                </p>
+                <p>
+                  Designed for social media viewing, the reel emphasises quick pacing, strong visual clarity and food-focused imagery, turning a simple product moment into dynamic short-form content.
                 </p>
               </div>
             </div>
           </article>
 
           <!-- 4 Whisky Library -->
-          <article class="video-item">
+          <article id="whiskylibrary" class="video-item">
             <div class="video-grid">
-              <div class="video-copy">
-                <h2>The Whisky Library Pop up store</h2>
-                <p>
-                  A spatial and brand-focused film documenting the visual atmosphere of a retail pop-up environment. The piece captures material details, interior mood and environmental composition, transforming a physical space into a cinematic brand experience.
-                </p>
-              </div>
-
               <div class="video-media">
                 <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_whiskylibrary.png" alt="The Whisky Library cover">
+                  <img class="video-thumb" src="assets/video_whiskylibrary.png" alt="The Whisky Library pop up store film">
                 </div>
                 <div class="center-btn">
-                  <button class="watch-btn"
-                    data-vimeo="REPLACE_WHISKYLIBRARY_VIMEO_ID">
-                    Watch
-                  </button>
+                  <button class="watch-btn" data-vimeo="REPLACE_WHISKY_LIBRARY_VIMEO_ID">Watch</button>
                 </div>
+              </div>
+
+              <div class="video-copy">
+                <h2>The Whisky Library — Pop-Up Store Launch Film</h2>
+                <p>
+                  This teaser film was produced to promote the opening of The Whisky Library’s pop-up store in central Hong Kong. The objective was to introduce the temporary retail space through a cinematic preview that highlighted the craftsmanship and unique design features of the installation.
+                </p>
+                <p>
+                  Due to location restrictions, filming could only take place after 11pm and had to be completed within a four-hour window without the use of heavy production equipment. The challenge required a compact production setup while still achieving a polished visual result.
+                </p>
+                <p>
+                  The film focuses on the transformation elements within the pop-up store design. A wooden case gradually unfolds and reveals itself as an elegant display counter, demonstrating the modular structure and refined aesthetic of the retail concept.
+                </p>
               </div>
             </div>
           </article>
 
           <!-- 5 Mixian -->
-          <article class="video-item">
+          <article id="ricenoodle" class="video-item">
             <div class="video-grid">
               <div class="video-media">
                 <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_mixian.png" alt="Mixian launch TVC cover">
+                  <img class="video-thumb" src="assets/video_ricenoodle.png" alt="Rice noodle restaurant commercial">
                 </div>
                 <div class="center-btn">
-                  <button class="watch-btn"
-                    data-vimeo="REPLACE_MIXIAN_VIMEO_ID">
-                    Watch
-                  </button>
+                  <button class="watch-btn" data-vimeo="REPLACE_RICENOODLE_VIMEO_ID">Watch</button>
                 </div>
               </div>
 
               <div class="video-copy">
-                <h2>Mixian sense New Product Launch TVC</h2>
+                <h2>Rice Noodle Restaurant Commercial</h2>
                 <p>
-                  A launch-focused promotional video created to introduce a new product through clean visual composition and product-led storytelling. The film balances human presence and product detail to build a warm and contemporary viewing experience.
+                  This commercial was produced for a Hong Kong noodle restaurant chain, focusing on elevating the brand’s image through a warm and approachable narrative.
                 </p>
                 <p>
-                  The final piece is structured to support launch communication across both digital display and campaign distribution.
+                  From concept development and storyboard creation to directing the shoot and post-production, the project was developed collaboratively with the production team to deliver a cohesive advertising piece.
+                </p>
+                <p>
+                  The casting featured a rising young actress whose natural screen presence and friendly personality helped convey the welcoming character of the brand. Combined with carefully shot food preparation scenes, the film highlights both the craftsmanship of the dishes and the inviting atmosphere of the restaurant.
                 </p>
               </div>
             </div>
           </article>
 
-          <!-- 6 YouTube channel -->
-          <article class="video-item">
+          <!-- 6 Music video -->
+          <article id="musicvideo" class="video-item">
             <div class="video-grid">
-              <div class="video-copy">
-                <h2>Youtube Channel</h2>
-                <p>
-                  An ongoing video channel project covering a variety of content types, including lifestyle documentation, urban visuals and observational storytelling. The work reflects a flexible approach to moving image production, balancing spontaneity with careful framing and edit rhythm.
-                </p>
-              </div>
-
               <div class="video-media">
                 <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_youtube.png" alt="YouTube channel cover">
+                  <img class="video-thumb" src="assets/video_musicproject.png" alt="Independent music video project">
                 </div>
                 <div class="center-btn">
-                  <button class="watch-btn"
-                    data-vimeo="REPLACE_YOUTUBECHANNEL_VIMEO_ID">
-                    Watch
-                  </button>
+                  <button class="watch-btn" data-vimeo="REPLACE_MUSIC_VIDEO_VIMEO_ID">Watch</button>
                 </div>
+              </div>
+
+              <div class="video-copy">
+                <h2>Independent Music Video (Pandemic Project)</h2>
+                <p>
+                  This music video was produced during the pandemic as part of an independent YouTube channel created with a group of musician friends. The project explored how visual storytelling could reflect the emotional atmosphere of the period while working under extremely limited production conditions.
+                </p>
+                <p>
+                  Inspired by the song’s lyrics, the film portrays how simple everyday activities became unexpectedly difficult during the pandemic, turning quiet moments into the central narrative of the piece.
+                </p>
+                <p>
+                  With no production budget available, the entire shoot was executed independently using a minimal setup. Operating the camera and lighting alone required constant on-set adjustments to achieve the desired visual tone while maintaining a cinematic feel.
+                </p>
               </div>
             </div>
           </article>
 
-          <!-- 7 Ke Wah -->
-          <article id="kewah" class="video-item">
+          <!-- 7 Mooncake -->
+          <article id="mooncake" class="video-item">
             <div class="video-grid">
               <div class="video-media">
                 <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_kewah.png" alt="Ke Wah TVC cover">
+                  <img class="video-thumb" src="assets/video_mooncake.png" alt="Mooncake production film">
                 </div>
                 <div class="center-btn">
-                  <button class="watch-btn"
-                    data-vimeo="1171730751">
-                    Watch
-                  </button>
+                  <button class="watch-btn" data-vimeo="REPLACE_MOONCAKE_VIMEO_ID">Watch</button>
                 </div>
               </div>
 
-              <div class="video-media">
-                <div class="storyboard-stack">
-                  <img class="storyboard-a" src="assets/video_storyboard.png" alt="Storyboard 1">
-                  <img class="storyboard-b" src="assets/video_storyboard.png" alt="Storyboard 2">
-                </div>
+              <div class="video-copy">
+                <h2>Mooncake Production Film</h2>
+                <p>
+                  This film documents the mooncake production process for a long-established Hong Kong food retail brand, capturing the craftsmanship behind the product while presenting the company’s commitment to quality and professional food production.
+                </p>
+                <p>
+                  From concept development and storyboard planning to filming and post-production, the entire project was independently produced, shaping both the narrative and the visual tone of the final film.
+                </p>
+                <p>
+                  The key creative challenge was translating the cold factory environment into a film that still conveys warmth and human craftsmanship. The visual narrative follows the process from pastry preparation to the final products arriving in retail stores, highlighting the precision and care behind every stage of production.
+                </p>
               </div>
-            </div>
-
-            <div class="video-copy" style="margin-top:22px;">
-              <h2>Kee Wah TVC</h2>
-              <p>
-                A short production film documenting the making of traditional mooncakes, focusing on craft detail, food texture and process-based storytelling. The project was independently developed from concept and storyboard planning through filming, lighting and post-production.
-              </p>
             </div>
           </article>
 
@@ -690,15 +716,10 @@
     </div>
   </div>
 
-  <!-- Video modal -->
   <div class="video-modal" id="videoModal">
     <div class="video-modal-inner">
       <button class="modal-close" id="modalClose">×</button>
-      <iframe id="videoFrame"
-        src=""
-        allow="autoplay; fullscreen"
-        allowfullscreen>
-      </iframe>
+      <iframe id="videoFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
   </div>
 
