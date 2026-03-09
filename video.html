@@ -1,767 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1280, initial-scale=1.0" />
-  <title>Video & Motion – Chi Wai Lau Portfolio</title>
-
-  <style>
-    :root{
-      --text:#f3f0e6;
-      --muted:#d8d1b7;
-      --panel-border:rgba(188,178,110,.28);
-      --menu-bg:rgba(8,8,8,.96);
-      --bg-olive:rgba(40,38,5,.88);
-      --line:rgba(255,255,255,.18);
-      --button-bg:#8c8a65;
-      --button-text:#f3f0e6;
-    }
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-      overflow-x:auto;
-    }
-
-    body{
-      min-width:1280px;
-      overflow-x:auto;
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:
-        linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
-        url("assets/hero-studio.png") center center / cover no-repeat fixed;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img, video, iframe{
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    .page{
-      width:1280px;
-      margin:0 auto;
-      padding:24px 0 40px;
-    }
-
-    .frame{
-      position:relative;
-      background:var(--bg-olive);
-      border:1px solid var(--panel-border);
-      padding:20px 20px 34px;
-      overflow:hidden;
-    }
-
-    /* =========================
-       TOP BAR
-    ========================== */
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:24px;
-      padding:14px 18px;
-      margin:-20px -20px 0 -20px;
-      background:#000;
-      border-bottom:1px solid rgba(255,255,255,.12);
-      position:relative;
-      z-index:60;
-    }
-
-    .topbar-left{
-      display:flex;
-      align-items:center;
-      gap:24px;
-    }
-
-    .topbar-right{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      margin-left:auto;
-    }
-
-    .brand-mark{
-      width:44px;
-      height:44px;
-      border:2px solid rgba(255,255,255,.92);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-weight:700;
-      font-size:24px;
-      color:var(--text);
-      flex:0 0 auto;
-    }
-
-    .nav{
-      display:flex;
-      gap:34px;
-      align-items:center;
-      font-weight:700;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .nav > a,
-    .dropdown > a{
-      display:inline-flex;
-      align-items:center;
-      height:32px;
-      white-space:nowrap;
-    }
-
-    .nav a:hover{
-      color:var(--text);
-    }
-
-    .dropdown{
-      position:relative;
-    }
-
-    .dropdown::after{
-      content:"";
-      position:absolute;
-      left:0;
-      top:100%;
-      width:100%;
-      height:14px;
-    }
-
-    .dropdown-menu{
-      position:absolute;
-      top:100%;
-      left:0;
-      min-width:210px;
-      background:var(--menu-bg);
-      border:1px solid rgba(255,255,255,.08);
-      padding:12px 18px;
-      display:none;
-      z-index:50;
-    }
-
-    .dropdown:hover .dropdown-menu{
-      display:block;
-    }
-
-    .dropdown-menu a{
-      display:block;
-      padding:6px 0;
-      color:var(--muted);
-      font-size:14px;
-      font-weight:700;
-      transition:color .2s ease, transform .2s ease;
-    }
-
-    .dropdown-menu a::before{
-      content:"▶ ";
-      opacity:0;
-      transition:opacity .2s ease;
-      font-size:12px;
-    }
-
-    .dropdown-menu a:hover{
-      color:var(--text);
-      transform:translateX(4px);
-    }
-
-    .dropdown-menu a:hover::before{
-      opacity:1;
-    }
-
-    .quick-links-inline{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-size:11px;
-      font-weight:700;
-      color:var(--muted);
-      white-space:nowrap;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      max-width:720px;
-    }
-
-    .quick-links-inline a:hover{
-      color:var(--text);
-    }
-
-    .site-title{
-      text-align:right;
-      line-height:1;
-      flex:0 0 auto;
-    }
-
-    .portfolio-word{
-      display:block;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:1px;
-      color:var(--text);
-    }
-
-    .name-word{
-      display:block;
-      margin-top:2px;
-      font-size:10px;
-      font-weight:600;
-      letter-spacing:.6px;
-      color:var(--muted);
-    }
-
-    /* =========================
-       VIDEO PAGE
-    ========================== */
-    .video-page{
-      width:980px;
-      margin:0 auto;
-      padding:28px 0 0;
-    }
-
-    .video-hero{
-      text-align:center;
-      padding:10px 0 38px;
-    }
-
-    .video-main-title{
-      font-size:34px;
-      line-height:1.08;
-      font-weight:700;
-      margin-bottom:10px;
-    }
-
-    .video-subtitle{
-      font-size:16px;
-      line-height:1.22;
-      font-weight:700;
-      margin-bottom:16px;
-    }
-
-    .video-intro{
-      max-width:760px;
-      margin:0 auto;
-      font-size:13px;
-      line-height:1.6;
-      color:var(--text);
-    }
-
-    .video-list{
-      margin-top:16px;
-    }
-
-    .video-item{
-      padding:38px 0 28px;
-      border-top:1px solid rgba(255,255,255,.22);
-    }
-
-    .video-item:first-child{
-      border-top:none;
-      padding-top:12px;
-    }
-
-    .video-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:38px;
-      align-items:start;
-    }
-
-    .video-media{
-      width:100%;
-    }
-
-    .video-thumb-wrap{
-      width:100%;
-      background:#000;
-      overflow:hidden;
-    }
-
-    .video-thumb{
-      width:100%;
-      aspect-ratio:16/9;
-      object-fit:cover;
-      display:block;
-      background:#000;
-    }
-
-    .watch-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:92px;
-      height:28px;
-      padding:0 18px;
-      background:var(--button-bg);
-      color:var(--button-text);
-      border:none;
-      cursor:pointer;
-      font-size:12px;
-      font-weight:700;
-      margin:14px auto 0;
-    }
-
-    .watch-btn:hover{
-      filter:brightness(1.08);
-    }
-
-    .center-btn{
-      text-align:center;
-    }
-
-    .video-copy h2{
-      font-size:19px;
-      line-height:1.2;
-      font-weight:700;
-      margin-bottom:14px;
-    }
-
-    .video-copy p{
-      font-size:13px;
-      line-height:1.62;
-      margin-bottom:14px;
-      color:var(--text);
-    }
-
-    .storyboard-stack{
-      position:relative;
-      width:100%;
-      min-height:220px;
-    }
-
-    .storyboard-a{
-      position:absolute;
-      left:18px;
-      top:20px;
-      width:170px;
-      transform:rotate(-10deg);
-    }
-
-    .storyboard-b{
-      position:absolute;
-      left:132px;
-      top:74px;
-      width:170px;
-      transform:rotate(8deg);
-    }
-
-    .storyboard-thumb{
-      box-shadow:0 10px 22px rgba(0,0,0,.22);
-      background:#000;
-    }
-
-    .small-thumb{
-      width:150px;
-    }
-
-    .loop-frame{
-      width:100%;
-      aspect-ratio:9/16;
-      border:none;
-      display:block;
-      background:#000;
-    }
-
-    /* =========================
-       MODAL VIDEO
-    ========================== */
-    .video-modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.82);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:9999;
-      padding:30px;
-    }
-
-    .video-modal.is-open{
-      display:flex;
-    }
-
-    .video-modal-inner{
-      position:relative;
-      width:min(960px, 92vw);
-      aspect-ratio:16/9;
-      background:#000;
-    }
-
-    .video-modal iframe{
-      width:100%;
-      height:100%;
-      border:none;
-      display:block;
-    }
-
-    .modal-close{
-      position:absolute;
-      right:-12px;
-      top:-12px;
-      width:36px;
-      height:36px;
-      border-radius:999px;
-      border:none;
-      background:#fff;
-      color:#000;
-      font-size:20px;
-      font-weight:700;
-      cursor:pointer;
-      z-index:2;
-    }
-
-    .bottom-bar{
-      width:calc(100% + 40px);
-      margin:24px -20px -34px;
-      background:#000;
-      border-top:1px solid rgba(255,255,255,.14);
-      padding:16px 26px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .copyright{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.4;
-    }
-
-    .back-to-top{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:124px;
-      height:40px;
-      border:1px solid rgba(255,255,255,.28);
-      color:var(--text);
-      font-size:13px;
-      font-weight:700;
-      border-radius:999px;
-      transition:background .2s ease, transform .2s ease;
-    }
-
-    .back-to-top:hover{
-      background:rgba(255,255,255,.08);
-      transform:translateY(-1px);
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <div class="frame">
-
-      <header class="topbar">
-        <div class="topbar-left">
-          <a href="index.html" class="brand-mark">W</a>
-
-          <nav class="nav">
-            <a href="about.html">About Me</a>
-
-            <div class="dropdown">
-              <a href="#">Selected Works</a>
-              <div class="dropdown-menu">
-                <a href="samaroli.html">Samaroli</a>
-                <a href="pizzaexpress.html">Pizzaexpress</a>
-                <a href="canon.html">Canon</a>
-                <a href="kmb.html">KMB</a>
-                <a href="illustration.html">Illustration</a>
-                <a href="video.html">Video &amp; Motion</a>
-              </div>
-            </div>
-          </nav>
-        </div>
-
-        <div class="topbar-right">
-          <nav class="quick-links-inline">
-            <a href="#samaroli">Samaroli</a>
-            <a href="#pizzaexpress">PizzaExpress</a>
-            <a href="#social">Social Reels</a>
-            <a href="#whiskylibrary">Whisky Library</a>
-            <a href="#ricenoodle">Mixian</a>
-            <a href="#musicvideo">Music Video</a>
-            <a href="#mooncake">Mooncake</a>
-          </nav>
-
-          <div class="site-title">
-            <span class="portfolio-word">PORTFOLIO</span>
-            <span class="name-word">Chi Wai Lau</span>
-          </div>
-        </div>
-      </header>
-
-      <main class="video-page">
-
-        <section class="video-hero">
-          <h1 class="video-main-title">Video &amp; Motion Projects</h1>
-          <div class="video-subtitle">Visual Storytelling Through Motion</div>
-          <p class="video-intro">
-            This collection presents moving-image projects across brand storytelling, campaign communication, food production, social-first content and independent filmmaking. The work spans concept development, storyboard planning, directing, cinematography, editing, colour treatment and visual finishing.
-          </p>
-        </section>
-
-        <section class="video-list">
-
-          <!-- 1 Samaroli -->
-          <article id="samaroli" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_samaroli.png" alt="Samaroli Karuizawa video cover">
-                </div>
-                <div class="center-btn">
-                  <button class="watch-btn" data-vimeo="REPLACE_SAMAROLI_VIMEO_ID">Watch</button>
-                </div>
-              </div>
-
-              <div class="video-copy">
-                <h2>Samaroli Karuizawa</h2>
-                <p>
-                  This film was created to support the launch of a rare Japanese whisky release bottled in Scotland by Samaroli. The product originated from a historic Japanese distillery that had already closed, making the remaining aged stock highly limited and culturally significant.
-                </p>
-                <p>
-                  My role began with the development of the label and packaging design, where the visual direction was built around the fusion of Japanese and Scottish influences. The film extended this same design language into motion, translating the product’s rarity, heritage and collectable value into a cinematic visual narrative.
-                </p>
-                <p>
-                  Through close-up product cinematography, controlled lighting and a more atmospheric pacing, the film was designed to express the sense of preciousness and cultural depth behind the release, reinforcing both its premium positioning and its storytelling value.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2 PizzaExpress anniversary -->
-          <article id="pizzaexpress" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_pizzaexpress.png" alt="PizzaExpress 20th anniversary film">
-                </div>
-                <div class="center-btn">
-                  <button class="watch-btn" data-vimeo="REPLACE_PIZZAEXPRESS_VIMEO_ID">Watch</button>
-                </div>
-              </div>
-
-              <div class="video-copy">
-                <h2>PizzaExpress 20th Anniversary Film</h2>
-                <p>
-                  This short film was created to celebrate the 20th anniversary of PizzaExpress in Hong Kong. The concept centres on the popularity of the brand’s signature Romana pizza, using a playful anthropomorphic approach to exaggerate and visualise the product’s distinctive characteristics.
-                </p>
-                <p>
-                  The narrative follows a group of characters whose personalities reflect different qualities of the Romana pizza, turning familiar product features into humorous visual metaphors. Through this stylised storytelling approach, the film transforms a simple food promotion into a light-hearted and memorable brand narrative.
-                </p>
-                <p>
-                  From concept development and storyboard planning to directing the shoot, editing and visual effects, the production was developed collaboratively with the team to create a cohesive campaign film celebrating the brand’s milestone.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3 Social reels loop -->
-          <article id="social" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap" style="max-width:260px;">
-                  <iframe
-                    class="loop-frame"
-                    src="https://player.vimeo.com/video/REPLACE_SOCIAL_REEL_VIMEO_ID?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
-                    allow="autoplay; fullscreen"
-                    allowfullscreen>
-                  </iframe>
-                </div>
-              </div>
-
-              <div class="video-copy">
-                <h2>PizzaExpress Social Media Reels</h2>
-                <p>
-                  This short-form social media reel was created to highlight the journey of PizzaExpress doughballs, from the kitchen to the customer’s table. The film captures the freshness and warmth of the product while maintaining the playful visual tone associated with the brand.
-                </p>
-                <p>
-                  The concept centres on a visual transformation where a prop doughball used during filming gradually transitions into a real, edible doughball through post-production. This approach blends practical filming with visual effects to create a seamless and engaging visual moment.
-                </p>
-                <p>
-                  Designed for social media viewing, the reel emphasises quick pacing, strong visual clarity and food-focused imagery, turning a simple product moment into dynamic short-form content.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 4 Whisky Library -->
-          <article id="whiskylibrary" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_whiskylibrary.png" alt="The Whisky Library pop up store film">
-                </div>
-                <div class="center-btn">
-                  <button class="watch-btn" data-vimeo="REPLACE_WHISKY_LIBRARY_VIMEO_ID">Watch</button>
-                </div>
-              </div>
-
-              <div class="video-copy">
-                <h2>The Whisky Library — Pop-Up Store Launch Film</h2>
-                <p>
-                  This teaser film was produced to promote the opening of The Whisky Library’s pop-up store in central Hong Kong. The objective was to introduce the temporary retail space through a cinematic preview that highlighted the craftsmanship and unique design features of the installation.
-                </p>
-                <p>
-                  Due to location restrictions, filming could only take place after 11pm and had to be completed within a four-hour window without the use of heavy production equipment. The challenge required a compact production setup while still achieving a polished visual result.
-                </p>
-                <p>
-                  The film focuses on the transformation elements within the pop-up store design. A wooden case gradually unfolds and reveals itself as an elegant display counter, demonstrating the modular structure and refined aesthetic of the retail concept.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 5 Mixian -->
-          <article id="ricenoodle" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_ricenoodle.png" alt="Rice noodle restaurant commercial">
-                </div>
-                <div class="center-btn">
-                  <button class="watch-btn" data-vimeo="REPLACE_RICENOODLE_VIMEO_ID">Watch</button>
-                </div>
-              </div>
-
-              <div class="video-copy">
-                <h2>Rice Noodle Restaurant Commercial</h2>
-                <p>
-                  This commercial was produced for a Hong Kong noodle restaurant chain, focusing on elevating the brand’s image through a warm and approachable narrative.
-                </p>
-                <p>
-                  From concept development and storyboard creation to directing the shoot and post-production, the project was developed collaboratively with the production team to deliver a cohesive advertising piece.
-                </p>
-                <p>
-                  The casting featured a rising young actress whose natural screen presence and friendly personality helped convey the welcoming character of the brand. Combined with carefully shot food preparation scenes, the film highlights both the craftsmanship of the dishes and the inviting atmosphere of the restaurant.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6 Music video -->
-          <article id="musicvideo" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_musicproject.png" alt="Independent music video project">
-                </div>
-                <div class="center-btn">
-                  <button class="watch-btn" data-vimeo="REPLACE_MUSIC_VIDEO_VIMEO_ID">Watch</button>
-                </div>
-              </div>
-
-              <div class="video-copy">
-                <h2>Independent Music Video (Pandemic Project)</h2>
-                <p>
-                  This music video was produced during the pandemic as part of an independent YouTube channel created with a group of musician friends. The project explored how visual storytelling could reflect the emotional atmosphere of the period while working under extremely limited production conditions.
-                </p>
-                <p>
-                  Inspired by the song’s lyrics, the film portrays how simple everyday activities became unexpectedly difficult during the pandemic, turning quiet moments into the central narrative of the piece.
-                </p>
-                <p>
-                  With no production budget available, the entire shoot was executed independently using a minimal setup. Operating the camera and lighting alone required constant on-set adjustments to achieve the desired visual tone while maintaining a cinematic feel.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 7 Mooncake -->
-          <article id="mooncake" class="video-item">
-            <div class="video-grid">
-              <div class="video-media">
-                <div class="video-thumb-wrap">
-                  <img class="video-thumb" src="assets/video_mooncake.png" alt="Mooncake production film">
-                </div>
-                <div class="center-btn">
-                  <button class="watch-btn" data-vimeo="REPLACE_MOONCAKE_VIMEO_ID">Watch</button>
-                </div>
-              </div>
-
-              <div class="video-copy">
-                <h2>Mooncake Production Film</h2>
-                <p>
-                  This film documents the mooncake production process for a long-established Hong Kong food retail brand, capturing the craftsmanship behind the product while presenting the company’s commitment to quality and professional food production.
-                </p>
-                <p>
-                  From concept development and storyboard planning to filming and post-production, the entire project was independently produced, shaping both the narrative and the visual tone of the final film.
-                </p>
-                <p>
-                  The key creative challenge was translating the cold factory environment into a film that still conveys warmth and human craftsmanship. The visual narrative follows the process from pastry preparation to the final products arriving in retail stores, highlighting the precision and care behind every stage of production.
-                </p>
-              </div>
-            </div>
-          </article>
-
-        </section>
-      </main>
-
-      <div class="bottom-bar">
-        <div class="copyright">
-          © 2026 Chi Wai Lau. All Rights Reserved.
-        </div>
-        <a href="#" class="back-to-top">Back to top ↑</a>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="video-modal" id="videoModal">
-    <div class="video-modal-inner">
-      <button class="modal-close" id="modalClose">×</button>
-      <iframe id="videoFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById("videoModal");
-    const frame = document.getElementById("videoFrame");
-    const closeBtn = document.getElementById("modalClose");
-    const watchButtons = document.querySelectorAll(".watch-btn");
-
-    function openVimeo(videoId){
-      const src = `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
-      frame.src = src;
-      modal.classList.add("is-open");
-    }
-
-    function closeVimeo(){
-      frame.src = "";
-      modal.classList.remove("is-open");
-    }
-
-    watchButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const videoId = btn.getAttribute("data-vimeo");
-        if(videoId && !videoId.includes("REPLACE_")){
-          openVimeo(videoId);
-        }
-      });
-    });
-
-    closeBtn.addEventListener("click", closeVimeo);
-
-    modal.addEventListener("click", (e) => {
-      if(e.target === modal){
-        closeVimeo();
-      }
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape"){
-        closeVimeo();
-      }
-    });
-  </script>
-</body>
-</html>
+<section class="video-section">
+
+<style>
+
+.video-section{
+width:900px;
+margin:auto;
+color:#eee;
+}
+
+.video-row{
+display:flex;
+align-items:flex-start;
+justify-content:space-between;
+margin:80px 0;
+gap:40px;
+}
+
+.video-left{
+width:45%;
+}
+
+.video-right{
+width:55%;
+}
+
+.video-thumb{
+width:100%;
+display:block;
+}
+
+.watch-btn{
+margin-top:12px;
+padding:6px 18px;
+background:#8f8d6c;
+border:none;
+cursor:pointer;
+font-size:12px;
+}
+
+.video-right h3{
+margin-bottom:10px;
+font-size:18px;
+}
+
+.video-right p{
+font-size:13px;
+line-height:1.6;
+margin-bottom:12px;
+}
+
+hr{
+border:0;
+border-top:1px solid rgba(255,255,255,0.2);
+margin:60px 0;
+}
+
+/* storyboard */
+
+.storyboard-stack{
+position:relative;
+}
+
+.storyboard-a{
+position:absolute;
+width:160px;
+left:-30px;
+top:120px;
+transform:rotate(-12deg);
+}
+
+.storyboard-b{
+position:absolute;
+width:160px;
+left:60px;
+top:180px;
+transform:rotate(8deg);
+}
+
+/* reel */
+
+.reel-video{
+width:200px;
+height:360px;
+border:none;
+}
+
+/* modal */
+
+.video-modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.video-modal iframe{
+width:900px;
+height:500px;
+border:none;
+}
+
+.close-modal{
+position:absolute;
+top:30px;
+right:40px;
+color:white;
+font-size:30px;
+cursor:pointer;
+}
+
+</style>
+
+
+<!-- SAMAROLI -->
+
+<div class="video-row">
+
+<div class="video-left">
+
+<img src="video_samaroli.png" class="video-thumb">
+
+<button class="watch-btn" data-vimeo="REPLACE_SAMAROLI">
+Watch
+</button>
+
+</div>
+
+<div class="video-right">
+
+<h3>Samaroli Karuizawa</h3>
+
+<p>
+This film was created to support the launch of a rare Japanese whisky release bottled in Scotland by Samaroli. The product originated from a historic Japanese distillery that had already closed, making the remaining aged stock extremely limited and culturally significant.
+</p>
+
+<p>
+The project combined packaging design and cinematic storytelling. The visual narrative reflects the fusion between Japanese heritage and Scottish whisky craftsmanship, translating the rarity and cultural value of the product into a refined visual experience.
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+
+<!-- PIZZAEXPRESS -->
+
+<div class="video-row">
+
+<div class="video-left">
+
+<div class="storyboard-stack">
+
+<img src="video_pizzaexpress.png" class="video-thumb">
+
+<img src="pizza_storyboard_1.png" class="storyboard-a">
+<img src="pizza_storyboard_2.png" class="storyboard-b">
+
+</div>
+
+<button class="watch-btn" data-vimeo="REPLACE_PIZZA">
+Watch
+</button>
+
+</div>
+
+<div class="video-right">
+
+<h3>PizzaExpress 20th TVC</h3>
+
+<p>
+This short film celebrates the 20th anniversary of PizzaExpress in Hong Kong. The concept focuses on the brand's iconic Romana pizza, using exaggerated storytelling to highlight the product’s distinctive character.
+</p>
+
+<p>
+The project involved concept development, storyboard creation, directing and post-production. Through character-driven scenes and stylised humour, the film transforms product features into engaging visual metaphors.
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+
+<!-- SOCIAL REEL -->
+
+<div class="video-row">
+
+<div class="video-left">
+
+<iframe class="reel-video"
+src="https://player.vimeo.com/video/REPLACE_REEL?background=1&autoplay=1&loop=1&muted=1">
+</iframe>
+
+</div>
+
+<div class="video-right">
+
+<h3>Social Media Reels</h3>
+
+<p>
+This short-form reel was created for social media platforms, focusing on the journey of freshly baked doughballs from kitchen preparation to the customer’s table.
+</p>
+
+<p>
+The visual concept integrates practical filming with post-production effects, transforming a prop doughball into a real edible doughball to create a playful visual moment.
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+
+<!-- WHISKY LIBRARY -->
+
+<div class="video-row">
+
+<div class="video-left">
+
+<img src="video_whiskylibrary.png" class="video-thumb">
+
+<button class="watch-btn" data-vimeo="REPLACE_WHISKY">
+Watch
+</button>
+
+</div>
+
+<div class="video-right">
+
+<h3>The Whisky Library Pop-up Store</h3>
+
+<p>
+This teaser film was produced to promote the launch of a whisky pop-up store in central Hong Kong. The video highlights the design details and spatial atmosphere of the temporary retail installation.
+</p>
+
+<p>
+Filming could only take place after 11pm with a four-hour window and minimal equipment, creating a production challenge that required a compact and efficient shooting setup.
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+
+<!-- MIXIAN -->
+
+<div class="video-row">
+
+<div class="video-left">
+
+<img src="video_ricenoodle.png" class="video-thumb">
+
+<button class="watch-btn" data-vimeo="REPLACE_MIXIAN">
+Watch
+</button>
+
+</div>
+
+<div class="video-right">
+
+<h3>Mixian Sense New Product Launch TVC</h3>
+
+<p>
+This commercial was produced for a Hong Kong rice noodle restaurant chain. The concept highlights the warmth and approachability of the brand through expressive food cinematography and character performance.
+</p>
+
+<p>
+From storyboard development to directing, filming and post-production, the project was executed collaboratively with the production team to create a visually engaging advertisement.
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+
+<!-- YOUTUBE CHANNEL -->
+
+<div class="video-row">
+
+<div class="video-left">
+
+<img src="video_musicproject.png" class="video-thumb">
+
+<button class="watch-btn" data-vimeo="REPLACE_MUSIC">
+Watch
+</button>
+
+</div>
+
+<div class="video-right">
+
+<h3>YouTube Channel</h3>
+
+<p>
+This independent music video was produced during the pandemic with musician friends. The project explored how everyday moments became unexpectedly difficult during this period.
+</p>
+
+<p>
+With no production budget available, the entire shoot was executed independently using a minimal camera and lighting setup.
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+
+<!-- KEE WAH -->
+
+<div class="video-row">
+
+<div class="video-left">
+
+<div class="storyboard-stack">
+
+<img src="video_mooncake.png" class="video-thumb">
+
+<img src="mooncake_storyboard_1.png" class="storyboard-a">
+<img src="mooncake_storyboard_2.png" class="storyboard-b">
+
+</div>
+
+<button class="watch-btn" data-vimeo="REPLACE_MOONCAKE">
+Watch
+</button>
+
+</div>
+
+<div class="video-right">
+
+<h3>Kee Wah TVC</h3>
+
+<p>
+This film documents the mooncake production process for a long-established Hong Kong food brand. The narrative follows the journey from pastry preparation to the final products arriving in retail stores.
+</p>
+
+<p>
+The challenge was to convey warmth and craftsmanship within the cold environment of a modern food factory, highlighting the care and professionalism behind the production process.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VIDEO POPUP -->
+
+<div class="video-modal" id="videoModal">
+<span class="close-modal" onclick="closeVideo()">×</span>
+<iframe id="videoFrame"></iframe>
+</div>
+
+
+<script>
+
+const buttons = document.querySelectorAll(".watch-btn")
+
+buttons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+
+const id = btn.dataset.vimeo
+const frame = document.getElementById("videoFrame")
+
+frame.src = "https://player.vimeo.com/video/"+id+"?autoplay=1"
+
+document.getElementById("videoModal").style.display="flex"
+
+})
+})
+
+function closeVideo(){
+
+document.getElementById("videoModal").style.display="none"
+document.getElementById("videoFrame").src=""
+
+}
+
+</script>
