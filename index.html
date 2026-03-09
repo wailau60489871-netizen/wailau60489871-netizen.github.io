@@ -16,6 +16,12 @@
       --menu-bg: rgba(8, 8, 8, 0.96);
       --button-bg: rgba(255,255,255,0.06);
       --button-border: rgba(255,255,255,0.24);
+      --mobile-olive: #201e00;
+      --mobile-copy: rgba(255,255,255,0.70);
+      --mobile-dark-line: rgba(78,72,54,0.9);
+      --mobile-dark-text: rgba(73,67,53,0.96);
+      --mobile-light-line: rgba(255,255,255,0.92);
+      --mobile-light-text: rgba(255,255,255,0.96);
     }
 
     * {
@@ -410,46 +416,11 @@
       line-height: 1.6;
     }
 
-    /* mobile-only */
-    .menu-button{
-      display:none;
-      width:54px;
-      height:54px;
-      border:none;
-      background:transparent;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      gap:6px;
-      cursor:pointer;
-      padding:0;
-      margin-left:auto;
-    }
-
-    .menu-button span{
-      display:block;
-      width:34px;
-      height:3px;
-      background:#a4a17b;
-      transition:transform .25s ease, opacity .25s ease;
-    }
-
-    .menu-button.is-open span:nth-child(1){
-      transform:translateY(9px) rotate(45deg);
-    }
-
-    .menu-button.is-open span:nth-child(2){
-      opacity:0;
-    }
-
-    .menu-button.is-open span:nth-child(3){
-      transform:translateY(-9px) rotate(-45deg);
-    }
-
+    /* mobile elements */
+    .mobile-shell,
+    .menu-button,
     .mobile-menu-panel,
-    .mobile-menu-overlay,
-    .mobile-intro,
-    .mobile-projects{
+    .mobile-menu-overlay{
       display:none;
     }
 
@@ -457,7 +428,6 @@
        MOBILE VERSION
     ========================== */
     @media (max-width: 768px){
-
       html, body{
         min-width:100%;
         width:100%;
@@ -466,61 +436,85 @@
       }
 
       body{
-        background:var(--bg);
+        background:var(--mobile-olive);
       }
 
       .page{
-        width:100%;
-        height:100%;
-        padding:0;
-      }
-
-      .frame{
-        width:100%;
-        height:100%;
-        padding:0;
-        border:none;
-        overflow:hidden;
-        background:var(--bg);
-      }
-
-      .site-title,
-      .bottom-grid,
-      .footer{
         display:none;
       }
 
-      .topbar{
+      .mobile-shell{
+        display:block;
+        width:100%;
+        height:100%;
+        background:var(--mobile-olive);
+      }
+
+      .mobile-topbar{
         position:fixed;
         top:0;
         left:0;
         width:100%;
-        z-index:1000;
-        margin:0;
-        padding:0 14px;
-        height:78px;
+        height:82px;
         background:#000;
-        gap:0;
-        border:none;
-      }
-
-      .topbar-left{
-        width:100%;
+        z-index:1000;
         display:flex;
-        justify-content:space-between;
         align-items:center;
-        gap:12px;
+        justify-content:space-between;
+        padding:0 16px;
       }
 
-      .nav{
-        display:none;
+      .mobile-logo{
+        width:64px;
+        height:64px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .mobile-logo img{
+        width:64px;
+        height:64px;
+        object-fit:contain;
+        display:block;
       }
 
       .menu-button{
         display:flex;
+        width:52px;
+        height:52px;
+        border:none;
+        background:transparent;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:6px;
+        cursor:pointer;
+        padding:0;
+      }
+
+      .menu-button span{
+        display:block;
+        width:34px;
+        height:3px;
+        background:#9a986e;
+        transition:transform .25s ease, opacity .25s ease;
+      }
+
+      .menu-button.is-open span:nth-child(1){
+        transform:translateY(9px) rotate(45deg);
+      }
+
+      .menu-button.is-open span:nth-child(2){
+        opacity:0;
+      }
+
+      .menu-button.is-open span:nth-child(3){
+        transform:translateY(-9px) rotate(-45deg);
       }
 
       .mobile-menu-overlay{
+        display:block;
         position:fixed;
         inset:0;
         background:rgba(0,0,0,.42);
@@ -531,12 +525,12 @@
       }
 
       .mobile-menu-overlay.is-open{
-        display:block;
         opacity:1;
         pointer-events:auto;
       }
 
       .mobile-menu-panel{
+        display:block;
         position:fixed;
         top:0;
         right:0;
@@ -547,12 +541,11 @@
         z-index:999;
         transform:translateX(100%);
         transition:transform .28s ease;
-        padding:88px 24px 24px;
+        padding:96px 24px 24px;
         border-left:1px solid rgba(255,255,255,0.08);
       }
 
       .mobile-menu-panel.is-open{
-        display:block;
         transform:translateX(0);
       }
 
@@ -582,161 +575,168 @@
         margin:4px 0;
       }
 
-      .hero{
-        margin-top:78px;
-        height:calc(100vh - 78px);
+      .mobile-scroll{
+        position:fixed;
+        top:82px;
+        left:0;
+        width:100%;
+        height:calc(100vh - 82px);
         overflow-y:auto;
+        overflow-x:hidden;
         -webkit-overflow-scrolling:touch;
+        background:var(--mobile-olive);
       }
 
-      .hero-image-wrap{
-        border:none;
+      .mobile-hero{
+        position:relative;
       }
 
-      .hero-image{
-        aspect-ratio: 4 / 5;
-        filter:brightness(.82);
-      }
-
-      .hero-center-logo{
-        top:18px;
-        left:18px;
-        transform:none;
-        width:62px;
-        height:62px;
-        border-width:3px;
-        background:transparent;
-        box-shadow:none;
-      }
-
-      .hero-headline{
-        left:18px;
-        right:18px;
-        bottom:28px;
-        top:auto;
-        transform:none;
-        width:auto;
-        text-align:left;
-        font-size:24px;
-        line-height:1.18;
-        font-weight:700;
-      }
-
-      .mobile-intro{
+      .mobile-hero img{
+        width:100%;
+        aspect-ratio: 512 / 310;
+        object-fit:cover;
         display:block;
-        background:var(--bg);
-        padding:28px 32px 22px;
+        filter:brightness(.88);
       }
 
-      .mobile-intro p{
-        margin:0 0 22px;
+      .mobile-hero-title{
+        position:absolute;
+        left:34px;
+        bottom:26px;
+        width:74%;
+        color:#fff;
+        font-size:25px;
+        line-height:1.15;
+        font-weight:700;
+        text-shadow:0 2px 8px rgba(0,0,0,.28);
+      }
+
+      .mobile-copy-block{
+        background:var(--mobile-olive);
+        padding:24px 34px 14px;
+      }
+
+      .mobile-copy-block p{
+        margin:0 0 18px;
         font-size:15px;
         line-height:1.56;
-        color:var(--muted);
+        color:var(--mobile-copy);
         font-weight:600;
       }
 
-      .mobile-projects{
+      .mobile-project-list{
         display:grid;
         gap:0;
       }
 
-      .mobile-card{
-        display:block;
+      .mobile-project-card{
         position:relative;
+        display:block;
         width:100%;
         overflow:hidden;
-        background:#111;
-        border:none;
       }
 
-      .mobile-card img{
+      .mobile-project-card img{
         width:100%;
-        aspect-ratio:16/9;
+        aspect-ratio: 512 / 164;
         object-fit:cover;
         display:block;
       }
 
-      .mobile-card .label-box{
+      .mobile-label{
         position:absolute;
-        right:16px;
-        top:18px;
-        border:2px solid rgba(255,255,255,.75);
-        padding:8px 12px 10px;
-        min-width:155px;
+        right:18px;
+        top:16px;
+        min-width:156px;
+        padding:7px 10px 10px;
         text-align:center;
-        background:rgba(0,0,0,0.08);
+        border:2px solid var(--mobile-light-line);
+        background:rgba(0,0,0,0.06);
       }
 
-      .mobile-card .label-small{
+      .mobile-label.dark{
+        border-color:var(--mobile-dark-line);
+      }
+
+      .mobile-label-top{
         display:block;
-        font-size:11px;
+        font-size:10px;
+        line-height:1;
         font-weight:700;
-        color:rgba(255,255,255,.78);
-        margin-bottom:4px;
+        margin-bottom:5px;
+        color:rgba(255,255,255,0.88);
       }
 
-      .mobile-card .label-big{
+      .mobile-label.dark .mobile-label-top{
+        color:var(--mobile-dark-text);
+      }
+
+      .mobile-label-name{
         display:block;
-        font-size:20px;
+        font-size:18px;
         line-height:1;
         font-weight:700;
         color:#fff;
       }
+
+      .mobile-label.dark .mobile-label-name{
+        color:var(--mobile-dark-text);
+      }
     }
 
     @media (max-width: 480px){
-      .topbar{
-        height:72px;
+      .mobile-topbar{
+        height:74px;
         padding:0 12px;
       }
 
-      .hero{
-        margin-top:72px;
-        height:calc(100vh - 72px);
-      }
-
-      .hero-center-logo{
+      .mobile-logo{
         width:58px;
         height:58px;
-        top:16px;
-        left:14px;
       }
 
-      .hero-headline{
-        left:14px;
-        right:14px;
+      .mobile-logo img{
+        width:58px;
+        height:58px;
+      }
+
+      .mobile-scroll{
+        top:74px;
+        height:calc(100vh - 74px);
+      }
+
+      .mobile-hero-title{
+        left:28px;
         bottom:22px;
+        width:78%;
         font-size:22px;
       }
 
-      .mobile-intro{
-        padding:24px 22px 18px;
+      .mobile-copy-block{
+        padding:22px 22px 12px;
       }
 
-      .mobile-intro p{
+      .mobile-copy-block p{
         font-size:14px;
-        margin-bottom:18px;
+        margin-bottom:16px;
       }
 
-      .mobile-card .label-box{
+      .mobile-label{
         right:12px;
-        top:14px;
+        top:12px;
         min-width:142px;
-        padding:7px 10px 9px;
+        padding:7px 9px 9px;
       }
 
-      .mobile-card .label-small{
-        font-size:10px;
-      }
-
-      .mobile-card .label-big{
-        font-size:18px;
+      .mobile-label-name{
+        font-size:17px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- DESKTOP -->
   <div class="page">
     <div class="frame">
 
@@ -746,45 +746,22 @@
       </div>
 
       <header class="topbar">
-        <div class="topbar-left">
-          <nav class="nav">
-            <a href="about.html">About Me</a>
-
-            <div class="dropdown">
-              <a href="#">Selected Works</a>
-              <div class="dropdown-menu">
-                <a href="samaroli.html">Samaroli</a>
-                <a href="pizzaexpress.html">Pizzaexpress</a>
-                <a href="canon.html">Canon</a>
-                <a href="kmb.html">KMB</a>
-                <a href="illustration-book.html">Illustration</a>
-                <a href="video.html">Video Project</a>
-              </div>
-            </div>
-          </nav>
-
-          <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </header>
-
-      <div class="mobile-menu-overlay" id="menuOverlay"></div>
-
-      <aside class="mobile-menu-panel" id="menuPanel">
-        <nav>
+        <nav class="nav">
           <a href="about.html">About Me</a>
-          <div class="mobile-menu-divider"></div>
-          <a href="samaroli.html" class="sub">Samaroli</a>
-          <a href="pizzaexpress.html" class="sub">Pizzaexpress</a>
-          <a href="canon.html" class="sub">Canon</a>
-          <a href="kmb.html" class="sub">KMB</a>
-          <a href="video.html" class="sub">Video</a>
-          <a href="illustration-book.html" class="sub">Illustration</a>
+
+          <div class="dropdown">
+            <a href="#">Selected Works</a>
+            <div class="dropdown-menu">
+              <a href="samaroli.html">Samaroli</a>
+              <a href="pizzaexpress.html">Pizzaexpress</a>
+              <a href="canon.html">Canon</a>
+              <a href="kmb.html">KMB</a>
+              <a href="illustration-book.html">Illustration</a>
+              <a href="video.html">Video Project</a>
+            </div>
+          </div>
         </nav>
-      </aside>
+      </header>
 
       <main class="hero">
         <div class="hero-image-wrap">
@@ -803,7 +780,6 @@
           </div>
         </div>
 
-        <!-- desktop -->
         <section class="bottom-grid">
           <aside class="side-panel">
             <div class="side-title">Selected Works</div>
@@ -831,7 +807,6 @@
 
           <section class="project-detail" id="projectDetail">
             <div class="project-grid">
-
               <div class="project-preview">
                 <div class="project-preview-image">
                   <img id="projectImage" src="assets/samaroli.jpg" alt="Project preview">
@@ -850,75 +825,113 @@
             </div>
           </section>
         </section>
-
-        <!-- mobile -->
-        <section class="mobile-intro">
-          <p>
-            PizzaExpress is one of the most recognisable restaurant brands in the UK, known for its distinctive dining experience and strong visual identity.
-          </p>
-          <p>
-            This project explores the development of campaign visuals and branded content designed to enhance the in-restaurant experience while extending the brand narrative across digital and social platforms.
-          </p>
-          <p>
-            The work combines food photography, visual storytelling and graphic design to create engaging campaign materials that celebrate the atmosphere and personality of the brand.
-          </p>
-        </section>
-
-        <section class="mobile-projects">
-          <a class="mobile-card" href="samaroli.html">
-            <img src="assets/samaroli.jpg" alt="Samaroli">
-            <div class="label-box">
-              <span class="label-small">Selected Works</span>
-              <span class="label-big">Samaroli</span>
-            </div>
-          </a>
-
-          <a class="mobile-card" href="pizzaexpress.html">
-            <img src="assets/pizza.jpg" alt="Pizzaexpress">
-            <div class="label-box">
-              <span class="label-small">Selected Works</span>
-              <span class="label-big">Pizzaexpress</span>
-            </div>
-          </a>
-
-          <a class="mobile-card" href="canon.html">
-            <img src="assets/canon.jpg" alt="Canon">
-            <div class="label-box">
-              <span class="label-small">Selected Works</span>
-              <span class="label-big">Canon</span>
-            </div>
-          </a>
-
-          <a class="mobile-card" href="kmb.html">
-            <img src="assets/kmb.jpg" alt="KMB">
-            <div class="label-box">
-              <span class="label-small">Selected Works</span>
-              <span class="label-big">KMB</span>
-            </div>
-          </a>
-
-          <a class="mobile-card" href="video.html">
-            <img src="assets/youtube.jpg" alt="Video Project">
-            <div class="label-box">
-              <span class="label-small">Selected Works</span>
-              <span class="label-big">Video</span>
-            </div>
-          </a>
-
-          <a class="mobile-card" href="illustration-book.html">
-            <img src="assets/illustration.jpg" alt="Illustration">
-            <div class="label-box">
-              <span class="label-small">Selected Works</span>
-              <span class="label-big">Illustration</span>
-            </div>
-          </a>
-        </section>
       </main>
 
       <footer class="footer">
         © 2026 Chi Wai Lau. All Rights Reserved.
       </footer>
     </div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="mobile-shell">
+    <header class="mobile-topbar">
+      <a href="index.html" class="mobile-logo" aria-label="Home">
+        <img src="assets/logo.png" alt="Chi Wai Lau logo">
+      </a>
+
+      <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <aside class="mobile-menu-panel" id="menuPanel">
+      <nav>
+        <a href="about.html">About Me</a>
+        <div class="mobile-menu-divider"></div>
+        <a href="samaroli.html" class="sub">Samaroli</a>
+        <a href="pizzaexpress.html" class="sub">Pizzaexpress</a>
+        <a href="canon.html" class="sub">Canon</a>
+        <a href="kmb.html" class="sub">KMB</a>
+        <a href="video.html" class="sub">Video</a>
+        <a href="illustration-book.html" class="sub">Illustration</a>
+      </nav>
+    </aside>
+
+    <main class="mobile-scroll">
+      <section class="mobile-hero">
+        <img src="assets/hero-studio.png" alt="Creative studio workspace">
+        <div class="mobile-hero-title">
+          Where brand strategy meets craft and visual storytelling.
+        </div>
+      </section>
+
+      <section class="mobile-copy-block">
+        <p>
+          PizzaExpress is one of the most recognisable restaurant brands in the UK, known for its distinctive dining experience and strong visual identity.
+        </p>
+        <p>
+          This project explores the development of campaign visuals and branded content designed to enhance the in-restaurant experience while extending the brand narrative across digital and social platforms.
+        </p>
+        <p>
+          The work combines food photography, visual storytelling and graphic design to create engaging campaign materials that celebrate the atmosphere and personality of the brand.
+        </p>
+      </section>
+
+      <section class="mobile-project-list">
+        <a class="mobile-project-card" href="samaroli.html">
+          <img src="assets/samaroli.jpg" alt="Samaroli">
+          <div class="mobile-label dark">
+            <span class="mobile-label-top">Selected Works</span>
+            <span class="mobile-label-name">Samaroli</span>
+          </div>
+        </a>
+
+        <a class="mobile-project-card" href="pizzaexpress.html">
+          <img src="assets/pizza.jpg" alt="Pizzaexpress">
+          <div class="mobile-label">
+            <span class="mobile-label-top">Selected Works</span>
+            <span class="mobile-label-name">Pizzaexpress</span>
+          </div>
+        </a>
+
+        <a class="mobile-project-card" href="canon.html">
+          <img src="assets/canon.jpg" alt="Canon">
+          <div class="mobile-label dark">
+            <span class="mobile-label-top">Selected Works</span>
+            <span class="mobile-label-name">Canon</span>
+          </div>
+        </a>
+
+        <a class="mobile-project-card" href="kmb.html">
+          <img src="assets/kmb.jpg" alt="KMB">
+          <div class="mobile-label dark">
+            <span class="mobile-label-top">Selected Works</span>
+            <span class="mobile-label-name">KMB</span>
+          </div>
+        </a>
+
+        <a class="mobile-project-card" href="video.html">
+          <img src="assets/youtube.jpg" alt="Video">
+          <div class="mobile-label">
+            <span class="mobile-label-top">Selected Works</span>
+            <span class="mobile-label-name">Video</span>
+          </div>
+        </a>
+
+        <a class="mobile-project-card" href="illustration-book.html">
+          <img src="assets/illustration.jpg" alt="Illustration">
+          <div class="mobile-label">
+            <span class="mobile-label-top">Selected Works</span>
+            <span class="mobile-label-name">Illustration</span>
+          </div>
+        </a>
+      </section>
+    </main>
   </div>
 
   <script>
@@ -1086,15 +1099,19 @@
       menuButton.setAttribute("aria-expanded", "false");
     }
 
-    menuButton.addEventListener("click", () => {
-      if (menuPanel.classList.contains("is-open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
+    if (menuButton) {
+      menuButton.addEventListener("click", () => {
+        if (menuPanel.classList.contains("is-open")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+    }
 
-    menuOverlay.addEventListener("click", closeMenu);
+    if (menuOverlay) {
+      menuOverlay.addEventListener("click", closeMenu);
+    }
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
