@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280, initial-scale=1.0" />
+  <title>Video & Motion – Chi Wai Lau Portfolio</title>
+
+  <style>
+    :root{
+      --text:#f3f0e6;
+      --muted:#d8d1b7;
+      --panel-border:rgba(188,178,110,.28);
+      --menu-bg:rgba(8,8,8,.96);
+      --bg-olive:rgba(40,38,5,.88);
+      --line:rgba(255,255,255,.18);
+      --button-bg:#8c8a65;
+      --button-text:#f3f0e6;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      overflow-x:auto;
+    }
+
+    body{
+      min-width:1280px;
+      overflow-x:auto;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
+        url("assets/hero-studio.png") center center / cover no-repeat fixed;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img, video{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .page{
+      width:1280px;
+      margin:0 auto;
+      padding:24px 0 40px;
+    }
+
+    .frame{
+      position:relative;
+      background:var(--bg-olive);
+      border:1px solid var(--panel-border);
+      padding:20px 20px 34px;
+      overflow:hidden;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================== */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      padding:14px 18px;
+      margin:-20px -20px 0 -20px;
+      background:#000;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      position:relative;
+      z-index:60;
+    }
+
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      margin-left:auto;
+    }
+
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border:2px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:24px;
+      color:var(--text);
+      flex:0 0 auto;
+    }
+
+    .nav{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      font-weight:700;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .nav > a,
+    .dropdown > a{
+      display:inline-flex;
+      align-items:center;
+      height:32px;
+      white-space:nowrap;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+    }
+
+    .dropdown{
+      position:relative;
+    }
+
+    .dropdown::after{
+      content:"";
+      position:absolute;
+      left:0;
+      top:100%;
+      width:100%;
+      height:14px;
+    }
+
+    .dropdown-menu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:210px;
+      background:var(--menu-bg);
+      border:1px solid rgba(255,255,255,.08);
+      padding:12px 18px;
+      display:none;
+      z-index:50;
+    }
+
+    .dropdown:hover .dropdown-menu{
+      display:block;
+    }
+
+    .dropdown-menu a{
+      display:block;
+      padding:6px 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+      transition:color .2s ease, transform .2s ease;
+    }
+
+    .dropdown-menu a::before{
+      content:"▶ ";
+      opacity:0;
+      transition:opacity .2s ease;
+      font-size:12px;
+    }
+
+    .dropdown-menu a:hover{
+      color:var(--text);
+      transform:translateX(4px);
+    }
+
+    .dropdown-menu a:hover::before{
+      opacity:1;
+    }
+
+    .quick-links-inline{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .quick-links-inline a:hover{
+      color:var(--text);
+    }
+
+    .site-title{
+      text-align:right;
+      line-height:1;
+      flex:0 0 auto;
+    }
+
+    .portfolio-word{
+      display:block;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1px;
+      color:var(--text);
+    }
+
+    .name-word{
+      display:block;
+      margin-top:2px;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.6px;
+      color:var(--muted);
+    }
+
+    /* =========================
+       VIDEO PAGE
+    ========================== */
+    .video-page{
+      width:980px;
+      margin:0 auto;
+      padding:28px 0 0;
+    }
+
+    .video-hero{
+      text-align:center;
+      padding:10px 0 38px;
+    }
+
+    .video-main-title{
+      font-size:34px;
+      line-height:1.08;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .video-subtitle{
+      font-size:16px;
+      line-height:1.22;
+      font-weight:700;
+      margin-bottom:16px;
+    }
+
+    .video-intro{
+      max-width:760px;
+      margin:0 auto;
+      font-size:13px;
+      line-height:1.6;
+      color:var(--text);
+    }
+
+    .video-list{
+      margin-top:16px;
+    }
+
+    .video-item{
+      padding:38px 0 28px;
+      border-top:1px solid rgba(255,255,255,.22);
+    }
+
+    .video-item:first-child{
+      border-top:none;
+      padding-top:12px;
+    }
+
+    .video-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:38px;
+      align-items:start;
+    }
+
+    .video-grid.reverse{
+      grid-template-columns:1fr 1fr;
+    }
+
+    .video-media{
+      width:100%;
+    }
+
+    .video-thumb-wrap{
+      width:100%;
+    }
+
+    .video-thumb{
+      width:100%;
+      background:#000;
+    }
+
+    .watch-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:92px;
+      height:28px;
+      padding:0 18px;
+      background:var(--button-bg);
+      color:var(--button-text);
+      border:none;
+      cursor:pointer;
+      font-size:12px;
+      font-weight:700;
+      margin:14px auto 0;
+    }
+
+    .watch-btn:hover{
+      filter:brightness(1.08);
+    }
+
+    .video-copy h2{
+      font-size:19px;
+      line-height:1.2;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+
+    .video-copy p{
+      font-size:13px;
+      line-height:1.62;
+      margin-bottom:14px;
+      color:var(--text);
+    }
+
+    .storyboard-stack{
+      position:relative;
+      width:100%;
+      min-height:210px;
+    }
+
+    .storyboard-a{
+      position:absolute;
+      left:18px;
+      top:20px;
+      width:160px;
+      transform:rotate(-10deg);
+    }
+
+    .storyboard-b{
+      position:absolute;
+      left:120px;
+      top:68px;
+      width:160px;
+      transform:rotate(8deg);
+    }
+
+    .small-thumb{
+      width:150px;
+    }
+
+    .center-btn{
+      text-align:center;
+    }
+
+    /* =========================
+       MODAL VIDEO
+    ========================== */
+    .video-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.82);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:30px;
+    }
+
+    .video-modal.is-open{
+      display:flex;
+    }
+
+    .video-modal-inner{
+      position:relative;
+      width:min(960px, 92vw);
+      aspect-ratio:16 / 9;
+      background:#000;
+    }
+
+    .video-modal iframe{
+      width:100%;
+      height:100%;
+      border:none;
+      display:block;
+    }
+
+    .modal-close{
+      position:absolute;
+      right:-12px;
+      top:-12px;
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:none;
+      background:#fff;
+      color:#000;
+      font-size:20px;
+      font-weight:700;
+      cursor:pointer;
+      z-index:2;
+    }
+
+    .bottom-bar{
+      width:calc(100% + 40px);
+      margin:24px -20px -34px;
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.14);
+      padding:16px 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .copyright{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .back-to-top{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:124px;
+      height:40px;
+      border:1px solid rgba(255,255,255,.28);
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      transition:background .2s ease, transform .2s ease;
+    }
+
+    .back-to-top:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <a href="index.html" class="brand-mark">W</a>
+
+          <nav class="nav">
+            <a href="about.html">About Me</a>
+
+            <div class="dropdown">
+              <a href="#">Selected Works</a>
+              <div class="dropdown-menu">
+                <a href="samaroli.html">Samaroli</a>
+                <a href="pizzaexpress.html">Pizzaexpress</a>
+                <a href="canon.html">Canon</a>
+                <a href="kmb.html">KMB</a>
+                <a href="illustration.html">Illustration</a>
+                <a href="video-motion.html">Video & Motion</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="topbar-right">
+          <nav class="quick-links-inline">
+            <a href="#samaroli">Samaroli</a>
+            <a href="#pizzaexpress">PizzaExpress</a>
+            <a href="#social">Social</a>
+            <a href="#kewah">Ke Wah</a>
+          </nav>
+
+          <div class="site-title">
+            <span class="portfolio-word">PORTFOLIO</span>
+            <span class="name-word">Chi Wai Lau</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="video-page">
+
+        <section class="video-hero">
+          <h1 class="video-main-title">Video &amp; Motion Projects</h1>
+          <div class="video-subtitle">Visual Storytelling Through Motion</div>
+          <p class="video-intro">
+            This collection presents moving-image projects across brand storytelling, food content, campaign communication and social-first production. The works combine concept development, filming, editing and visual finishing to transform real-world processes and spaces into engaging visual narratives.
+          </p>
+        </section>
+
+        <section class="video-list">
+
+          <!-- 1 Samaroli -->
+          <article id="samaroli" class="video-item">
+            <div class="video-grid">
+              <div class="video-media">
+                <div class="video-thumb-wrap">
+                  <img class="video-thumb" src="assets/video_samaroli.png" alt="Samaroli video cover">
+                </div>
+                <div class="center-btn">
+                  <button class="watch-btn"
+                    data-vimeo="1171730751">
+                    Watch
+                  </button>
+                </div>
+              </div>
+
+              <div class="video-copy">
+                <h2>Samaroli karuizawa</h2>
+                <p>
+                  A short-form product film developed to extend the visual atmosphere of the packaging into motion. The piece focuses on mood, texture and brand tone, combining close-up imagery with a controlled cinematic pace to support premium product storytelling.
+                </p>
+                <p>
+                  The project explores how packaging visuals can be translated into moving image content while maintaining a consistent luxury aesthetic across digital touchpoints.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 PizzaExpress -->
+          <article id="pizzaexpress" class="video-item">
+            <div class="video-grid reverse">
+              <div class="video-media">
+                <div class="storyboard-stack">
+                  <img class="storyboard-a" src="assets/video_storyboard.png" alt="PizzaExpress storyboard 1">
+                  <img class="storyboard-b" src="assets/video_storyboard.png" alt="PizzaExpress storyboard 2">
+                </div>
+              </div>
+
+              <div class="video-media">
+                <!-- 呢條係頁面內不停 loop 播 -->
+                <div class="video-thumb-wrap">
+                  <iframe
+                    src="https://player.vimeo.com/video/REPLACE_PIZZAEXPRESS_VIMEO_ID?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
+                    style="width:100%;aspect-ratio:16/9;border:none;display:block;"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="video-copy" style="margin-top:22px;">
+              <h2>Pizzaexpress 20th TVC</h2>
+              <p>
+                A social-first reel developed to bring campaign energy into motion through quick edits, lifestyle framing and a food-led visual rhythm. The short-form format is designed for continuous playback, allowing the film to function as an attention-grabbing digital asset within the page itself.
+              </p>
+            </div>
+          </article>
+
+          <!-- 3 Social media reels -->
+          <article id="social" class="video-item">
+            <div class="video-grid">
+              <div class="video-media">
+                <div class="video-thumb-wrap small-thumb">
+                  <img class="video-thumb" src="assets/video_social.png" alt="Social media reels cover">
+                </div>
+              </div>
+
+              <div class="video-copy">
+                <h2>Social media reels</h2>
+                <p>
+                  A collection of short-form vertical and social-led video content developed for digital platforms. These pieces focus on immediacy, visual rhythm and compact storytelling, adapting brand, food and lifestyle subjects into highly accessible motion content.
+                </p>
+                <p>
+                  The work demonstrates how editing pace, framing and concise narrative structure can be used to optimise content for mobile viewing and platform-based distribution.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4 Whisky Library -->
+          <article class="video-item">
+            <div class="video-grid">
+              <div class="video-copy">
+                <h2>The Whisky Library Pop up store</h2>
+                <p>
+                  A spatial and brand-focused film documenting the visual atmosphere of a retail pop-up environment. The piece captures material details, interior mood and environmental composition, transforming a physical space into a cinematic brand experience.
+                </p>
+              </div>
+
+              <div class="video-media">
+                <div class="video-thumb-wrap">
+                  <img class="video-thumb" src="assets/video_whiskylibrary.png" alt="The Whisky Library cover">
+                </div>
+                <div class="center-btn">
+                  <button class="watch-btn"
+                    data-vimeo="REPLACE_WHISKYLIBRARY_VIMEO_ID">
+                    Watch
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5 Mixian -->
+          <article class="video-item">
+            <div class="video-grid">
+              <div class="video-media">
+                <div class="video-thumb-wrap">
+                  <img class="video-thumb" src="assets/video_mixian.png" alt="Mixian launch TVC cover">
+                </div>
+                <div class="center-btn">
+                  <button class="watch-btn"
+                    data-vimeo="REPLACE_MIXIAN_VIMEO_ID">
+                    Watch
+                  </button>
+                </div>
+              </div>
+
+              <div class="video-copy">
+                <h2>Mixian sense New Product Launch TVC</h2>
+                <p>
+                  A launch-focused promotional video created to introduce a new product through clean visual composition and product-led storytelling. The film balances human presence and product detail to build a warm and contemporary viewing experience.
+                </p>
+                <p>
+                  The final piece is structured to support launch communication across both digital display and campaign distribution.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6 YouTube channel -->
+          <article class="video-item">
+            <div class="video-grid">
+              <div class="video-copy">
+                <h2>Youtube Channel</h2>
+                <p>
+                  An ongoing video channel project covering a variety of content types, including lifestyle documentation, urban visuals and observational storytelling. The work reflects a flexible approach to moving image production, balancing spontaneity with careful framing and edit rhythm.
+                </p>
+              </div>
+
+              <div class="video-media">
+                <div class="video-thumb-wrap">
+                  <img class="video-thumb" src="assets/video_youtube.png" alt="YouTube channel cover">
+                </div>
+                <div class="center-btn">
+                  <button class="watch-btn"
+                    data-vimeo="REPLACE_YOUTUBECHANNEL_VIMEO_ID">
+                    Watch
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7 Ke Wah -->
+          <article id="kewah" class="video-item">
+            <div class="video-grid">
+              <div class="video-media">
+                <div class="video-thumb-wrap">
+                  <img class="video-thumb" src="assets/video_kewah.png" alt="Ke Wah TVC cover">
+                </div>
+                <div class="center-btn">
+                  <button class="watch-btn"
+                    data-vimeo="1171730751">
+                    Watch
+                  </button>
+                </div>
+              </div>
+
+              <div class="video-media">
+                <div class="storyboard-stack">
+                  <img class="storyboard-a" src="assets/video_storyboard.png" alt="Storyboard 1">
+                  <img class="storyboard-b" src="assets/video_storyboard.png" alt="Storyboard 2">
+                </div>
+              </div>
+            </div>
+
+            <div class="video-copy" style="margin-top:22px;">
+              <h2>Kee Wah TVC</h2>
+              <p>
+                A short production film documenting the making of traditional mooncakes, focusing on craft detail, food texture and process-based storytelling. The project was independently developed from concept and storyboard planning through filming, lighting and post-production.
+              </p>
+            </div>
+          </article>
+
+        </section>
+      </main>
+
+      <div class="bottom-bar">
+        <div class="copyright">
+          © 2026 Chi Wai Lau. All Rights Reserved.
+        </div>
+        <a href="#" class="back-to-top">Back to top ↑</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Video modal -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-modal-inner">
+      <button class="modal-close" id="modalClose">×</button>
+      <iframe id="videoFrame"
+        src=""
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("videoModal");
+    const frame = document.getElementById("videoFrame");
+    const closeBtn = document.getElementById("modalClose");
+    const watchButtons = document.querySelectorAll(".watch-btn");
+
+    function openVimeo(videoId){
+      const src = `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
+      frame.src = src;
+      modal.classList.add("is-open");
+    }
+
+    function closeVimeo(){
+      frame.src = "";
+      modal.classList.remove("is-open");
+    }
+
+    watchButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const videoId = btn.getAttribute("data-vimeo");
+        if(videoId && !videoId.includes("REPLACE_")){
+          openVimeo(videoId);
+        }
+      });
+    });
+
+    closeBtn.addEventListener("click", closeVimeo);
+
+    modal.addEventListener("click", (e) => {
+      if(e.target === modal){
+        closeVimeo();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        closeVimeo();
+      }
+    });
+  </script>
+</body>
+</html>
