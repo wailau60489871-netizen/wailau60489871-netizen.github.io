@@ -257,7 +257,7 @@
     }
 
     .video-item{
-      padding:30px 0 34px;
+      padding:56px 0 56px;
       border-top:1px solid rgba(255,255,255,.18);
     }
 
@@ -291,12 +291,6 @@
       background:#000;
     }
 
-    .video-thumb.vertical{
-      aspect-ratio:9 / 16;
-      object-fit:cover;
-      width:200px;
-    }
-
     .center-btn{
       text-align:center;
     }
@@ -321,30 +315,34 @@
       filter:brightness(1.08);
     }
 
-    .video-right h2{
+    .video-right h2,
+    .pizza-copy-block h2,
+    .social-right h2,
+    .whisky-copy h2,
+    .music-copy h2,
+    .mooncake-copy-block h2{
       font-size:19px;
       line-height:1.2;
       font-weight:700;
       margin-bottom:14px;
     }
 
-    .video-right p{
+    .video-right p,
+    .pizza-copy-block p,
+    .social-right p,
+    .whisky-copy p,
+    .music-copy p,
+    .mooncake-copy-block p{
       font-size:13px;
       line-height:1.62;
       margin-bottom:14px;
+      color:var(--text);
     }
 
     /* storyboard */
-    .storyboard-layout{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      align-items:start;
-    }
-
     .storyboard-stack{
       position:relative;
-      min-height:170px;
+      min-height:210px;
     }
 
     .storyboard-img{
@@ -365,17 +363,115 @@
       transform:rotate(8deg);
     }
 
-    .storyboard-empty{
-      min-height:210px;
+    /* pizza */
+    .video-item-pizza{
+      border-top:1px solid rgba(255,255,255,.18);
     }
 
-    /* reels autoplay */
+    .pizza-top-row{
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:70px;
+      align-items:start;
+    }
+
+    .pizza-storyboard{
+      min-height:230px;
+    }
+
+    .pizza-cover-block{
+      width:100%;
+      max-width:360px;
+      margin-left:40px;
+    }
+
+    .pizza-copy-block{
+      margin-top:34px;
+      width:100%;
+      max-width:860px;
+    }
+
+    /* social */
+    .social-grid{
+      align-items:center;
+    }
+
+    .social-left{
+      display:flex;
+      justify-content:center;
+      padding-left:90px;
+    }
+
     .reel-frame{
       width:200px;
       aspect-ratio:9 / 16;
       border:none;
       display:block;
       background:#000;
+    }
+
+    .social-right{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:360px;
+    }
+
+    /* whisky */
+    .whisky-grid{
+      align-items:center;
+    }
+
+    .whisky-media{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .whisky-media .video-thumb-wrap{
+      max-width:420px;
+      margin-left:auto;
+    }
+
+    /* music */
+    .music-grid{
+      align-items:start;
+    }
+
+    .music-copy{
+      order:1;
+    }
+
+    .music-media{
+      order:2;
+    }
+
+    .music-media .video-thumb-wrap{
+      max-width:420px;
+      margin-left:auto;
+    }
+
+    /* mooncake */
+    .mooncake-top-row{
+      display:grid;
+      grid-template-columns:360px 260px;
+      gap:56px;
+      align-items:start;
+    }
+
+    .mooncake-cover-block{
+      width:100%;
+      max-width:360px;
+    }
+
+    .mooncake-storyboard{
+      min-height:230px;
+    }
+
+    .mooncake-copy-block{
+      margin-top:34px;
+      width:100%;
+      max-width:860px;
     }
 
     /* video modal */
@@ -493,7 +589,7 @@
             <a href="#social">Social Reels</a>
             <a href="#whiskylibrary">Whisky Library</a>
             <a href="#ricenoodle">Mixian</a>
-            <a href="#musicvideo">YouTube Channel</a>
+            <a href="#musicvideo">Youtube Channel</a>
             <a href="#mooncake">Kee Wah</a>
           </nav>
 
@@ -538,43 +634,41 @@
           </div>
         </article>
 
-        <!-- 2 PIZZAEXPRESS TVC + STORYBOARD -->
-        <article id="pizzaexpress" class="video-item">
-          <div class="video-grid">
-            <div class="video-left">
-              <div class="storyboard-layout">
-                <div class="storyboard-stack">
-                  <img class="storyboard-img one" src="pizza_storyboard_1.png" alt="PizzaExpress storyboard 1">
-                  <img class="storyboard-img two" src="pizza_storyboard_2.png" alt="PizzaExpress storyboard 2">
-                </div>
+        <!-- 2 PIZZAEXPRESS TVC -->
+        <article id="pizzaexpress" class="video-item video-item-pizza">
+          <div class="pizza-top-row">
 
-                <div>
-                  <div class="video-thumb-wrap">
-                    <img class="video-thumb" src="video_pizzaexpress.png" alt="PizzaExpress 20th anniversary film">
-                  </div>
-                  <div class="center-btn">
-                    <button class="watch-btn" data-vimeo="REPLACE_PIZZA_ID">Watch</button>
-                  </div>
-                </div>
+            <div class="storyboard-stack pizza-storyboard">
+              <img class="storyboard-img one" src="pizza_storyboard_1.png" alt="PizzaExpress storyboard 1">
+              <img class="storyboard-img two" src="pizza_storyboard_2.png" alt="PizzaExpress storyboard 2">
+            </div>
+
+            <div class="pizza-cover-block">
+              <div class="video-thumb-wrap">
+                <img class="video-thumb" src="video_pizzaexpress.png" alt="PizzaExpress 20th anniversary film">
+              </div>
+              <div class="center-btn">
+                <button class="watch-btn" data-vimeo="REPLACE_PIZZA_ID">Watch</button>
               </div>
             </div>
 
-            <div class="video-right">
-              <h2>PizzaExpress 20th TVC</h2>
-              <p>
-                This short film celebrates the 20th anniversary of PizzaExpress in Hong Kong. The concept focuses on the brand’s iconic Romana pizza, using exaggerated and playful storytelling to highlight the product’s distinctive character.
-              </p>
-              <p>
-                The project involved concept development, storyboard creation, directing and post-production. Through character-driven scenes and stylised humour, the film transforms product features into engaging visual metaphors.
-              </p>
-            </div>
+          </div>
+
+          <div class="pizza-copy-block">
+            <h2>Pizzaexpress 20th TVC</h2>
+            <p>
+              This short film celebrates the 20th anniversary of PizzaExpress in Hong Kong. The concept focuses on the brand’s iconic Romana pizza, using exaggerated and playful storytelling to highlight the product’s distinctive character.
+            </p>
+            <p>
+              The project involved concept development, storyboard creation, directing and post-production. Through character-driven scenes and stylised humour, the film transforms product features into engaging visual metaphors.
+            </p>
           </div>
         </article>
 
-        <!-- 3 SOCIAL REELS LOOP -->
-        <article id="social" class="video-item">
-          <div class="video-grid">
-            <div class="video-left">
+        <!-- 3 SOCIAL REELS -->
+        <article id="social" class="video-item social-item">
+          <div class="video-grid social-grid">
+            <div class="video-left social-left">
               <iframe
                 class="reel-frame"
                 src="https://player.vimeo.com/video/REPLACE_REEL_ID?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
@@ -583,8 +677,8 @@
               </iframe>
             </div>
 
-            <div class="video-right">
-              <h2>Social Media Reels</h2>
+            <div class="video-right social-right">
+              <h2>Social media reels</h2>
               <p>
                 This short-form reel was created for social media platforms, focusing on the journey of freshly baked doughballs from kitchen preparation to the customer’s table.
               </p>
@@ -596,18 +690,10 @@
         </article>
 
         <!-- 4 WHISKY LIBRARY -->
-        <article id="whiskylibrary" class="video-item">
-          <div class="video-grid">
-            <div class="video-left">
-              <div class="video-thumb-wrap">
-                <img class="video-thumb" src="video_whiskylibrary.png" alt="The Whisky Library pop up store film">
-              </div>
-              <div class="center-btn">
-                <button class="watch-btn" data-vimeo="REPLACE_WHISKY_ID">Watch</button>
-              </div>
-            </div>
+        <article id="whiskylibrary" class="video-item whisky-item">
+          <div class="video-grid whisky-grid">
 
-            <div class="video-right">
+            <div class="video-left whisky-copy">
               <h2>The Whisky Library Pop up store</h2>
               <p>
                 This teaser film was produced to promote the opening of The Whisky Library’s pop-up store in central Hong Kong. The objective was to introduce the temporary retail space through a cinematic preview that highlighted the craftsmanship and unique design features of the installation.
@@ -616,6 +702,16 @@
                 Due to location restrictions, filming could only take place after 11pm and had to be completed within a four-hour window without the use of heavy production equipment. The challenge required a compact production setup while still achieving a polished visual result.
               </p>
             </div>
+
+            <div class="video-right whisky-media">
+              <div class="video-thumb-wrap">
+                <img class="video-thumb" src="video_whiskylibrary.png" alt="The Whisky Library pop up store film">
+              </div>
+              <div class="center-btn">
+                <button class="watch-btn" data-vimeo="REPLACE_WHISKY_ID">Watch</button>
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -632,7 +728,7 @@
             </div>
 
             <div class="video-right">
-              <h2>Mixian Sense New Product Launch TVC</h2>
+              <h2>Mixian sense New Product Launch TVC</h2>
               <p>
                 This commercial was produced for a Hong Kong rice noodle restaurant chain. The concept highlights the warmth and approachability of the brand through expressive food cinematography and character performance.
               </p>
@@ -643,19 +739,11 @@
           </div>
         </article>
 
-        <!-- 6 YOUTUBE CHANNEL / MUSIC VIDEO -->
-        <article id="musicvideo" class="video-item">
-          <div class="video-grid">
-            <div class="video-left">
-              <div class="video-thumb-wrap">
-                <img class="video-thumb" src="video_musicproject.png" alt="YouTube channel music video project">
-              </div>
-              <div class="center-btn">
-                <button class="watch-btn" data-vimeo="REPLACE_MUSIC_ID">Watch</button>
-              </div>
-            </div>
+        <!-- 6 YOUTUBE CHANNEL -->
+        <article id="musicvideo" class="video-item music-item">
+          <div class="video-grid music-grid">
 
-            <div class="video-right">
+            <div class="video-left music-copy">
               <h2>Youtube Channel</h2>
               <p>
                 This independent music video was produced during the pandemic with musician friends. The project explored how everyday moments became unexpectedly difficult during this period, translating the song’s lyrical mood into a quiet visual narrative.
@@ -664,40 +752,50 @@
                 With no production budget available, the entire shoot was executed independently using a minimal camera and lighting setup, requiring constant on-site adjustments to achieve the intended atmosphere.
               </p>
             </div>
-          </div>
-        </article>
 
-        <!-- 7 KEE WAH + STORYBOARD -->
-        <article id="mooncake" class="video-item">
-          <div class="video-grid">
-            <div class="video-left">
-              <div class="storyboard-layout">
-                <div>
-                  <div class="video-thumb-wrap">
-                    <img class="video-thumb" src="video_mooncake.png" alt="Kee Wah mooncake production film">
-                  </div>
-                  <div class="center-btn">
-                    <button class="watch-btn" data-vimeo="REPLACE_MOONCAKE_ID">Watch</button>
-                  </div>
-                </div>
-
-                <div class="storyboard-stack storyboard-empty">
-                  <img class="storyboard-img one" src="mooncake_storyboard_1.png" alt="Kee Wah storyboard 1">
-                  <img class="storyboard-img two" src="mooncake_storyboard_2.png" alt="Kee Wah storyboard 2">
-                </div>
+            <div class="video-right music-media">
+              <div class="video-thumb-wrap">
+                <img class="video-thumb" src="video_musicproject.png" alt="YouTube channel music video project">
+              </div>
+              <div class="center-btn">
+                <button class="watch-btn" data-vimeo="REPLACE_MUSIC_ID">Watch</button>
               </div>
             </div>
 
-            <div class="video-right">
-              <h2>Kee Wah TVC</h2>
-              <p>
-                This film documents the mooncake production process for a long-established Hong Kong food brand. The narrative follows the journey from pastry preparation to the final products arriving in retail stores.
-              </p>
-              <p>
-                The challenge was to convey warmth and craftsmanship within the cold environment of a modern food factory, highlighting the care and professionalism behind the production process.
-              </p>
-            </div>
           </div>
+        </article>
+
+        <!-- 7 KEE WAH -->
+        <article id="mooncake" class="video-item mooncake-item">
+
+          <div class="mooncake-top-row">
+
+            <div class="mooncake-cover-block">
+              <div class="video-thumb-wrap">
+                <img class="video-thumb" src="video_mooncake.png" alt="Kee Wah mooncake production film">
+              </div>
+              <div class="center-btn">
+                <button class="watch-btn" data-vimeo="REPLACE_MOONCAKE_ID">Watch</button>
+              </div>
+            </div>
+
+            <div class="storyboard-stack mooncake-storyboard">
+              <img class="storyboard-img one" src="mooncake_storyboard_1.png" alt="Kee Wah storyboard 1">
+              <img class="storyboard-img two" src="mooncake_storyboard_2.png" alt="Kee Wah storyboard 2">
+            </div>
+
+          </div>
+
+          <div class="mooncake-copy-block">
+            <h2>Kee Wah TVC</h2>
+            <p>
+              This film documents the mooncake production process for a long-established Hong Kong food brand. The narrative follows the journey from pastry preparation to the final products arriving in retail stores.
+            </p>
+            <p>
+              The challenge was to convey warmth and craftsmanship within the cold environment of a modern food factory, highlighting the care and professionalism behind the production process.
+            </p>
+          </div>
+
         </article>
 
       </main>
