@@ -583,6 +583,7 @@
        MOBILE ONLY
     ========================== */
     .mobile-shell,
+    .mobile-inner,
     .mobile-topbar,
     .mobile-content-scroll,
     .mobile-menu-panel,
@@ -619,6 +620,7 @@
       }
 
       .mobile-inner{
+        display:block;
         width:100%;
         max-width:var(--mobile-max-width);
         margin:0 auto;
@@ -815,8 +817,8 @@
         margin:0 auto;
       }
 
-      .mobile-campaign-text-gap{
-        margin-top:10px;
+      .mobile-campaign-gap{
+        padding-top:34px;
       }
 
       .mobile-social-video img{
@@ -837,7 +839,7 @@
         background:var(--mobile-gold);
         color:#000;
         margin-top:28px;
-        padding:28px 18px;
+        padding:28px 18px 36px;
       }
 
       .mobile-gold-section .mobile-section-title{
@@ -847,6 +849,11 @@
 
       .mobile-gold-section .mobile-copy{
         color:#000;
+      }
+
+      .mobile-gold-section .mobile-image-block{
+        padding-left:0;
+        padding-right:0;
       }
 
       .mobile-footer{
@@ -1075,8 +1082,7 @@
 
     </div>
   </div>
-
-  <!-- =========================
+<!-- =========================
 MOBILE VERSION
 ========================= -->
 
@@ -1085,19 +1091,23 @@ MOBILE VERSION
   <div class="mobile-inner">
 
     <header class="mobile-topbar">
+
       <a href="index.html" class="mobile-brand">W</a>
 
-      <button class="mobile-menu-button" id="menuButton" aria-label="Open menu">
+      <button class="mobile-menu-button" id="menuButton">
         <span></span>
         <span></span>
         <span></span>
       </button>
+
     </header>
 
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
 
     <aside class="mobile-menu-panel" id="menuPanel">
+
       <nav>
+
         <a href="about.html">About Me</a>
         <a href="index.html">Home</a>
         <a href="samaroli.html">Samaroli</a>
@@ -1106,151 +1116,231 @@ MOBILE VERSION
         <a href="kmb.html">KMB</a>
         <a href="illustration-book.html">Illustration</a>
         <a href="video.html">Video Projects</a>
+
       </nav>
+
     </aside>
 
     <main class="mobile-content-scroll">
 
+      <!-- HERO -->
+
       <div class="mobile-hero">
-        <img src="assets/pizzaexpress_-hero.png" alt="Pizza Express hero">
+        <img src="assets/pizzaexpress_-hero.png" alt="">
       </div>
 
+
+      <!-- INTRO -->
+
       <section class="mobile-section">
-        <div class="mobile-title">Pizza Express</div>
-        <div class="mobile-subtitle">Brand Activation &amp; Multi-Channel Design</div>
-        <div class="mobile-copy">
-          Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
+
+        <div class="mobile-title">
+          Pizza Express
         </div>
+
+        <div class="mobile-subtitle">
+          Brand Activation & Multi-Channel Design
+        </div>
+
+        <div class="mobile-copy">
+
+          Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
+
+        </div>
+
       </section>
+
+
+      <!-- CAMPAIGN -->
 
       <div class="mobile-image-block mobile-campaign-poster">
-        <img src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
+        <img src="assets/pizzaexpress_-campaign-poster.png" alt="">
       </div>
 
-      <div class="mobile-image-block mobile-campaign-text-gap">
-        <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
+      <div class="mobile-image-block mobile-campaign-gap">
+        <img src="assets/pizzaexpress_-campaign-thumb.png" alt="">
       </div>
+
+
+      <!-- SOCIAL MEDIA GOLD SECTION -->
 
       <section class="mobile-gold-section">
-        <div class="mobile-section-title">Social Media &amp; Content Production</div>
-        <div class="mobile-copy">
-          Produced campaign-led social content across food, beverage and branding campaigns.
-          <br><br>
-          Created and captured product photography, directed lighting for promotional visuals and adapted assets for social-first formats.
+
+        <div class="mobile-section-title">
+          Social Media & Content Production
         </div>
+
+        <div class="mobile-copy">
+
+          Produced campaign-led social content across food, beverage and branding campaigns.
+
+          <br><br>
+
+          Created and captured product photography, directed lighting for promotional visuals and adapted assets for social-first formats.
+
+        </div>
+
+
+        <div class="mobile-image-block">
+          <img src="assets/pizzaexpress_-food-large.png" alt="">
+        </div>
+
+        <div class="mobile-image-block mobile-social-video">
+          <img src="assets/pizzaexpress_-social-video.png" alt="">
+        </div>
+
       </section>
 
-      <div class="mobile-image-block">
-        <img src="assets/pizzaexpress_-food-large.png" alt="Food content production">
-      </div>
 
-      <div class="mobile-image-block mobile-social-video">
-        <img src="assets/pizzaexpress_-social-video.png" alt="Social video stills">
-      </div>
+      <!-- ENVIRONMENTAL -->
 
       <section class="mobile-section">
-        <div class="mobile-section-title">Environmental &amp; Experiential Design</div>
-        <div class="mobile-copy">
-          Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
+
+        <div class="mobile-section-title">
+          Environmental & Experiential Design
         </div>
+
+        <div class="mobile-copy">
+
+          Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
+
+        </div>
+
       </section>
 
       <div class="mobile-image-block mobile-environmental">
-        <img src="assets/pizzaexpress_-environmental.png" alt="Environmental design">
+        <img src="assets/pizzaexpress_-environmental.png" alt="">
       </div>
+
+
+      <!-- MENU GOLD SECTION -->
 
       <section class="mobile-gold-section">
-        <div class="mobile-section-title">Menu Design &amp; In-Restaurant Touchpoints</div>
-        <div class="mobile-copy">
-          Designed and managed menu format applications, tray liners and branded identity across dine-in environments.
-          <br><br>
-          Created seasonal and everyday menu systems, organised menu photography and ensured consistent visual presentation across restaurant touchpoints.
+
+        <div class="mobile-section-title">
+          Menu Design & In-Restaurant Touchpoints
         </div>
+
+        <div class="mobile-copy">
+
+          Designed and managed menu format applications, tray liners and branded identity across dine-in environments.
+
+          <br><br>
+
+          Created seasonal and everyday menu systems, organised menu photography and ensured consistent visual presentation across restaurant touchpoints.
+
+        </div>
+
+
+        <div class="mobile-image-block mobile-menu-main">
+          <img src="assets/pizzaexpress_-menu-main.png" alt="">
+        </div>
+
       </section>
 
-      <div class="mobile-image-block mobile-menu-main">
-        <img src="assets/pizzaexpress_-menu-main.png" alt="Menu design main">
-      </div>
+
+      <!-- FOOTER -->
 
       <footer class="mobile-footer">
+
         © 2026 Chi Wai Lau. All Rights Reserved.
+
       </footer>
 
     </main>
+
   </div>
+
 </div>
 
-  <script>
-    let slides = document.querySelectorAll(".env-slide");
-    let index = 0;
-    let autoSlide;
 
-    function showSlide(i){
-      slides.forEach(s => s.classList.remove("active"));
-      slides[i].classList.add("active");
-    }
+<script>
 
-    function nextSlide(){
-      index++;
-      if(index >= slides.length){ index = 0; }
-      showSlide(index);
-    }
+let slides = document.querySelectorAll(".env-slide");
+let index = 0;
+let autoSlide;
 
-    function prevSlide(){
-      index--;
-      if(index < 0){ index = slides.length - 1; }
-      showSlide(index);
-    }
+function showSlide(i){
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
+}
 
-    function restartAutoSlide(){
-      clearInterval(autoSlide);
-      autoSlide = setInterval(nextSlide, 5000);
-    }
+function nextSlide(){
+  index++;
+  if(index >= slides.length){ index = 0; }
+  showSlide(index);
+}
 
-    document.querySelector(".env-arrow.right").onclick = function(){
-      nextSlide();
-      restartAutoSlide();
-    };
+function prevSlide(){
+  index--;
+  if(index < 0){ index = slides.length - 1; }
+  showSlide(index);
+}
 
-    document.querySelector(".env-arrow.left").onclick = function(){
-      prevSlide();
-      restartAutoSlide();
-    };
+function restartAutoSlide(){
+  clearInterval(autoSlide);
+  autoSlide = setInterval(nextSlide, 5000);
+}
 
-    autoSlide = setInterval(nextSlide, 5000);
+document.querySelector(".env-arrow.right").onclick = function(){
+  nextSlide();
+  restartAutoSlide();
+};
 
-    const menuButton = document.getElementById("menuButton");
-    const menuPanel = document.getElementById("menuPanel");
-    const menuOverlay = document.getElementById("menuOverlay");
+document.querySelector(".env-arrow.left").onclick = function(){
+  prevSlide();
+  restartAutoSlide();
+};
 
-    function openMenu(){
-      menuButton.classList.add("is-open");
-      menuPanel.classList.add("is-open");
-      menuOverlay.classList.add("is-open");
-    }
+autoSlide = setInterval(nextSlide, 5000);
 
-    function closeMenu(){
-      menuButton.classList.remove("is-open");
-      menuPanel.classList.remove("is-open");
-      menuOverlay.classList.remove("is-open");
-    }
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuPanel.classList.contains("is-open");
-      if(isOpen){
-        closeMenu();
-      }else{
-        openMenu();
-      }
-    });
+/* MOBILE MENU */
 
-    menuOverlay.addEventListener("click", closeMenu);
+const menuButton = document.getElementById("menuButton");
+const menuPanel = document.getElementById("menuPanel");
+const menuOverlay = document.getElementById("menuOverlay");
 
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape"){
-        closeMenu();
-      }
-    });
-  </script>
+function openMenu(){
+
+  menuButton.classList.add("is-open");
+  menuPanel.classList.add("is-open");
+  menuOverlay.classList.add("is-open");
+
+}
+
+function closeMenu(){
+
+  menuButton.classList.remove("is-open");
+  menuPanel.classList.remove("is-open");
+  menuOverlay.classList.remove("is-open");
+
+}
+
+menuButton.addEventListener("click", () => {
+
+  const isOpen = menuPanel.classList.contains("is-open");
+
+  if(isOpen){
+    closeMenu();
+  }else{
+    openMenu();
+  }
+
+});
+
+menuOverlay.addEventListener("click", closeMenu);
+
+document.addEventListener("keydown", (e) => {
+
+  if(e.key === "Escape"){
+    closeMenu();
+  }
+
+});
+
+</script>
+
 </body>
 </html>
+  
