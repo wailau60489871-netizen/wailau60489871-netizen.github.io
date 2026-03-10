@@ -275,16 +275,311 @@
       margin-bottom:4px;
     }
 
-    /* (其餘 CSS 同你原本一樣，完全沒有改動) */
+    .box{
+      border:1.5px solid var(--box-line);
+      border-radius:12px;
+      padding:20px 22px 18px;
+    }
 
+    .box h4{
+      font-size:19px;
+      line-height:1.15;
+      margin-bottom:10px;
+    }
+
+    .box p,
+    .box ul{
+      font-size:14px;
+      line-height:1.55;
+      color:var(--text);
+    }
+
+    .box ul{
+      padding-left:18px;
+    }
+
+    /* =========================
+       INTRO
+    ========================== */
+    .intro-layout{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:62px;
+      align-items:start;
+      padding-left:22px;
+      padding-right:22px;
+    }
+
+    .intro-right{
+      padding-left:32px;
+      border-left:2px solid rgba(255,255,255,.55);
+    }
+
+    /* =========================
+       CAMPAIGN
+    ========================== */
+    .campaign-wrap{
+      position:relative;
+      padding-top:12px;
+    }
+
+    .campaign-gold-bar{
+      position:absolute;
+      left:-20px;
+      right:-20px;
+      top:30px;
+      height:110px;
+      background:var(--gold-bar);
+      z-index:0;
+    }
+
+    .campaign-layout{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:420px 1fr;
+      gap:54px;
+      align-items:start;
+    }
+
+    .campaign-left{
+      display:grid;
+      gap:14px;
+    }
+
+    .campaign-poster{
+      width:358px;
+      margin-left:6px;
+    }
+
+    .campaign-right{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .campaign-right-topimg{
+      width:600px;
+      margin:0 0 8px 0;
+    }
+
+    .campaign-right-copy{
+      padding-top:34px;
+      max-width:430px;
+      transform:translateX(40px);
+    }
+
+    .campaign-right-copy h3{
+      font-size:22px;
+      line-height:1.1;
+      margin-bottom:12px;
+    }
+
+    .campaign-right-copy p,
+    .campaign-right-copy ul{
+      font-size:14px;
+      line-height:1.62;
+    }
+
+    .campaign-right-copy ul{
+      padding-left:18px;
+      margin-top:12px;
+    }
+
+    /* =========================
+       SOCIAL / CONTENT
+    ========================== */
+    .social-large{
+      width:100%;
+      margin-bottom:52px;
+    }
+
+    .social-layout{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:58px;
+      align-items:start;
+      margin-bottom:42px;
+    }
+
+    .social-video-thumb{
+      width:360px;
+    }
+
+    .social-copy{
+      padding-top:10px;
+    }
+
+    .social-copy h3{
+      font-size:22px;
+      line-height:1.1;
+      margin-bottom:22px;
+    }
+
+    .social-copy ul{
+      padding-left:18px;
+      font-size:14px;
+      line-height:1.82;
+    }
+
+    .food-strip{
+      width:calc(100% + 40px);
+      margin-left:-20px;
+      margin-right:-20px;
+      margin-top:42px;
+    }
+
+    /* =========================
+       ENVIRONMENTAL SECTION
+    ========================== */
+    .env-slider{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      margin-bottom:28px;
+    }
+
+    .env-slide{
+      display:none;
+    }
+
+    .env-slide.active{
+      display:block;
+    }
+
+    .env-slide img{
+      width:100%;
+      display:block;
+    }
+
+    .env-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,0.5);
+      color:#fff;
+      border:none;
+      font-size:28px;
+      width:44px;
+      height:44px;
+      cursor:pointer;
+      z-index:5;
+    }
+
+    .env-arrow.left{
+      left:10px;
+    }
+
+    .env-arrow.right{
+      right:10px;
+    }
+
+    .env-layout{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:42px;
+      align-items:center;
+    }
+
+    .env-left h3{
+      font-size:22px;
+      line-height:1.15;
+      max-width:240px;
+      margin-top:8px;
+      transform:translateX(130px);
+    }
+
+    .env-right .copy{
+      max-width:560px;
+      margin:0 auto;
+      transform:translateX(-10px);
+    }
+
+    /* =========================
+       MENU
+    ========================== */
+    .menu-layout{
+      display:grid;
+      grid-template-columns:420px 1fr;
+      gap:54px;
+      align-items:center;
+    }
+
+    .menu-left{
+      width:420px;
+    }
+
+    .menu-left-main{
+      width:420px;
+    }
+
+    .menu-right{
+      padding-top:26px;
+    }
+
+    .menu-right h3{
+      font-size:22px;
+      line-height:1.12;
+      margin-bottom:16px;
+    }
+
+    .menu-right p,
+    .menu-right ul{
+      font-size:14px;
+      line-height:1.68;
+    }
+
+    .menu-right ul{
+      padding-left:18px;
+      margin-top:10px;
+      margin-bottom:14px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    .bottom-bar{
+      width:calc(100% + 40px);
+      margin:24px -20px -34px;
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.14);
+      padding:16px 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .copyright{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .back-to-top{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:124px;
+      height:40px;
+      border:1px solid rgba(255,255,255,.28);
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      transition:background .2s ease, transform .2s ease;
+    }
+
+    .back-to-top:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
   </style>
 </head>
-
 <body>
   <div class="page">
     <div class="frame">
 
-      <!-- Header -->
       <header class="topbar">
         <div class="topbar-left">
           <a href="index.html" class="brand-mark">W</a>
@@ -322,12 +617,167 @@
         </div>
       </header>
 
-      <!-- Hero -->
       <section class="hero">
         <img class="hero-image" src="assets/pizzaexpress_-hero.png" alt="Pizza Express hero">
       </section>
 
-      <!-- 其餘 section 與你原本完全相同 -->
+      <!-- INTRO -->
+      <section id="intro" class="section">
+        <div class="intro-layout">
+          <div class="intro-left">
+            <h1 class="title">Pizza Express</h1>
+            <div class="subtitle">Brand Activation &amp; Multi-Channel Design</div>
+            <div class="copy" style="margin-top:6px;">Role: Brand Activation &amp; Visual</div>
+          </div>
+
+          <div class="intro-right">
+            <div class="copy">
+              Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
+              <br><br>
+              The work demonstrates the breadth of brand execution across physical, digital and retail environments while maintaining visual consistency.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAMPAIGN -->
+      <section id="campaign" class="section">
+        <div class="campaign-wrap">
+          <div class="campaign-gold-bar"></div>
+
+          <div class="campaign-layout">
+            <div class="campaign-left">
+              <img class="campaign-poster" src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
+            </div>
+
+            <div class="campaign-right">
+              <div class="campaign-right-topimg">
+                <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
+              </div>
+
+              <div class="campaign-right-copy">
+                <h3>Campaign &amp; Charity Activation</h3>
+                <p>
+                  Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
+                </p>
+                <ul>
+                  <li>Designed campaign posters and promotional formats</li>
+                  <li>Developed package-based and on-pack visual applications</li>
+                  <li>Created in-store display materials and campaign headlines</li>
+                  <li>Translated restaurant launches into immersive campaign spaces</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- SOCIAL / CONTENT -->
+      <section id="social" class="section">
+        <img class="social-large" src="assets/pizzaexpress_-food-large.png" alt="Food content production">
+
+        <div class="social-layout">
+          <div class="social-video-thumb">
+            <img src="assets/pizzaexpress_-social-video.png" alt="Social video stills">
+          </div>
+
+          <div class="social-copy">
+            <h3>Social Media &amp; Content Production</h3>
+            <ul>
+              <li>Produced campaign-led social content across food, beverage and branding campaigns</li>
+              <li>Created and captured product photography</li>
+              <li>Directed lighting for promotional visuals</li>
+              <li>Managed lifestyle storytelling for post-production</li>
+              <li>Adapted assets for social-first formats</li>
+              <li>Maintained consistent brand tone across campaign touchpoints</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="food-strip">
+          <img src="assets/pizzaexpress_-food-strip.png" alt="Food strip one">
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ENVIRONMENTAL -->
+      <section id="environmental" class="section">
+        <div class="env-slider">
+          <div class="env-slide active">
+            <img src="assets/pizzaexpress_-environmental.png" alt="Environmental design 1">
+          </div>
+
+          <div class="env-slide">
+            <img src="assets/pizzaexpress_-environmental-2.png" alt="Environmental design 2">
+          </div>
+
+          <div class="env-slide">
+            <img src="assets/pizzaexpress_-environmental-3.png" alt="Environmental design 3">
+          </div>
+
+          <div class="env-slide">
+            <img src="assets/pizzaexpress_-environmental-4.png" alt="Environmental design 4">
+          </div>
+
+          <button class="env-arrow left">&#10094;</button>
+          <button class="env-arrow right">&#10095;</button>
+        </div>
+
+        <div class="env-layout">
+          <div class="env-left">
+            <h3>Environmental &amp;<br>Experiential Design</h3>
+          </div>
+
+          <div class="env-right">
+            <div class="copy">
+              Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
+              <ul>
+                <li>Designed store event executions blending messages</li>
+                <li>Developed outdoor event backdrops</li>
+                <li>Created wayfinding and pop-up store visuals</li>
+                <li>Produced install design and graphic implementation layouts</li>
+              </ul>
+              This work extended the brand beyond print into immersive physical experiences.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- MENU -->
+      <section id="menu" class="section">
+        <div class="menu-layout">
+          <div class="menu-left">
+            <div class="menu-left-main">
+              <img src="assets/pizzaexpress_-menu-main.png" alt="Menu design main">
+            </div>
+          </div>
+
+          <div class="menu-right">
+            <h3>Menu Design &amp;<br>In-Restaurant Touchpoints</h3>
+            <p>
+              Designed and managed menu format applications, in-layout brand execution, tray liners and branded identity across dine-in environments.
+            </p>
+            <ul>
+              <li>Created seasonal and everyday menu systems</li>
+              <li>Developed and organised menu photography</li>
+              <li>Designed in-store table materials and supporting POS graphics</li>
+              <li>Maintained visual consistency across printed and physical touchpoints</li>
+            </ul>
+            <p>
+              Across multiple brand phases, consistency remained central, ensuring brand guidelines into cohesive dining experiences.
+            </p>
+          </div>
+        </div>
+
+        <div class="food-strip" style="margin-top:34px;">
+          <img src="assets/pizzaexpress_-food-strip-2.png" alt="Food strip two">
+        </div>
+      </section>
 
       <div class="bottom-bar">
         <div class="copyright">
@@ -340,5 +790,44 @@
     </div>
   </div>
 
+  <script>
+    let slides = document.querySelectorAll(".env-slide");
+    let index = 0;
+    let autoSlide;
+
+    function showSlide(i){
+      slides.forEach(s => s.classList.remove("active"));
+      slides[i].classList.add("active");
+    }
+
+    function nextSlide(){
+      index++;
+      if(index >= slides.length){ index = 0; }
+      showSlide(index);
+    }
+
+    function prevSlide(){
+      index--;
+      if(index < 0){ index = slides.length - 1; }
+      showSlide(index);
+    }
+
+    function restartAutoSlide(){
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextSlide, 5000);
+    }
+
+    document.querySelector(".env-arrow.right").onclick = function(){
+      nextSlide();
+      restartAutoSlide();
+    };
+
+    document.querySelector(".env-arrow.left").onclick = function(){
+      prevSlide();
+      restartAutoSlide();
+    };
+
+    autoSlide = setInterval(nextSlide, 5000);
+  </script>
 </body>
 </html>
