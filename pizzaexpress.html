@@ -583,7 +583,6 @@
        MOBILE ONLY
     ========================== */
     .mobile-shell,
-    .mobile-inner,
     .mobile-topbar,
     .mobile-content-scroll,
     .mobile-menu-panel,
@@ -620,7 +619,6 @@
       }
 
       .mobile-inner{
-        display:block;
         width:100%;
         max-width:var(--mobile-max-width);
         margin:0 auto;
@@ -646,7 +644,7 @@
         z-index:1000;
       }
 
-      .mobile-brand-mark{
+      .mobile-brand{
         width:54px;
         height:54px;
         border:2px solid rgba(255,255,255,.92);
@@ -815,6 +813,10 @@
       .mobile-campaign-poster img{
         width:70%;
         margin:0 auto;
+      }
+
+      .mobile-campaign-text-gap{
+        margin-top:10px;
       }
 
       .mobile-social-video img{
@@ -1073,258 +1075,182 @@
 
     </div>
   </div>
-<!-- =========================
+
+  <!-- =========================
 MOBILE VERSION
 ========================= -->
 
 <div class="mobile-shell">
 
-<div class="mobile-inner">
+  <div class="mobile-inner">
 
-<header class="mobile-topbar">
+    <header class="mobile-topbar">
+      <a href="index.html" class="mobile-brand">W</a>
 
-<a href="index.html" class="mobile-brand-mark">W</a>
+      <button class="mobile-menu-button" id="menuButton" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
 
-<button class="mobile-menu-button" id="menuButton">
-<span></span>
-<span></span>
-<span></span>
-</button>
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
 
-</header>
+    <aside class="mobile-menu-panel" id="menuPanel">
+      <nav>
+        <a href="about.html">About Me</a>
+        <a href="index.html">Home</a>
+        <a href="samaroli.html">Samaroli</a>
+        <a href="pizzaexpress.html">PizzaExpress</a>
+        <a href="canon.html">Canon</a>
+        <a href="kmb.html">KMB</a>
+        <a href="illustration-book.html">Illustration</a>
+        <a href="video.html">Video Projects</a>
+      </nav>
+    </aside>
 
-<div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <main class="mobile-content-scroll">
 
-<aside class="mobile-menu-panel" id="menuPanel">
+      <div class="mobile-hero">
+        <img src="assets/pizzaexpress_-hero.png" alt="Pizza Express hero">
+      </div>
 
-<nav>
+      <section class="mobile-section">
+        <div class="mobile-title">Pizza Express</div>
+        <div class="mobile-subtitle">Brand Activation &amp; Multi-Channel Design</div>
+        <div class="mobile-copy">
+          Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
+        </div>
+      </section>
 
-<a href="about.html">About Me</a>
+      <div class="mobile-image-block mobile-campaign-poster">
+        <img src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
+      </div>
 
-<a href="index.html">Home</a>
-<a href="samaroli.html">Samaroli</a>
-<a href="pizzaexpress.html">PizzaExpress</a>
-<a href="canon.html">Canon</a>
-<a href="kmb.html">KMB</a>
-<a href="illustration-book.html">Illustration</a>
-<a href="video.html">Video Projects</a>
+      <div class="mobile-image-block mobile-campaign-text-gap">
+        <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign overview">
+      </div>
 
-</nav>
+      <section class="mobile-gold-section">
+        <div class="mobile-section-title">Social Media &amp; Content Production</div>
+        <div class="mobile-copy">
+          Produced campaign-led social content across food, beverage and branding campaigns.
+          <br><br>
+          Created and captured product photography, directed lighting for promotional visuals and adapted assets for social-first formats.
+        </div>
+      </section>
 
-</aside>
+      <div class="mobile-image-block">
+        <img src="assets/pizzaexpress_-food-large.png" alt="Food content production">
+      </div>
 
-<main class="mobile-content-scroll">
+      <div class="mobile-image-block mobile-social-video">
+        <img src="assets/pizzaexpress_-social-video.png" alt="Social video stills">
+      </div>
 
-<div class="mobile-hero">
-<img src="assets/pizzaexpress_-hero.png">
+      <section class="mobile-section">
+        <div class="mobile-section-title">Environmental &amp; Experiential Design</div>
+        <div class="mobile-copy">
+          Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
+        </div>
+      </section>
+
+      <div class="mobile-image-block mobile-environmental">
+        <img src="assets/pizzaexpress_-environmental.png" alt="Environmental design">
+      </div>
+
+      <section class="mobile-gold-section">
+        <div class="mobile-section-title">Menu Design &amp; In-Restaurant Touchpoints</div>
+        <div class="mobile-copy">
+          Designed and managed menu format applications, tray liners and branded identity across dine-in environments.
+          <br><br>
+          Created seasonal and everyday menu systems, organised menu photography and ensured consistent visual presentation across restaurant touchpoints.
+        </div>
+      </section>
+
+      <div class="mobile-image-block mobile-menu-main">
+        <img src="assets/pizzaexpress_-menu-main.png" alt="Menu design main">
+      </div>
+
+      <footer class="mobile-footer">
+        © 2026 Chi Wai Lau. All Rights Reserved.
+      </footer>
+
+    </main>
+  </div>
 </div>
 
-<section class="mobile-section">
-
-<div class="mobile-title">
-Pizza Express
-</div>
-
-<div class="mobile-subtitle">
-Brand Activation & Multi-Channel Design
-</div>
-
-<div class="mobile-copy">
-
-Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
-
-</div>
-
-</section>
-
-
-<!-- CAMPAIGN -->
-
-<div class="mobile-image-block mobile-campaign-poster">
-<img src="assets/pizzaexpress_-campaign-poster.png">
-</div>
-
-<div class="mobile-image-block">
-<img src="assets/pizzaexpress_-campaign-thumb.png">
-</div>
-
-
-<!-- SOCIAL GOLD SECTION -->
-
-<section class="mobile-gold-section">
-
-<div class="mobile-section-title">
-Social Media & Content Production
-</div>
-
-<div class="mobile-copy">
-
-Produced campaign-led social content across food, beverage and branding campaigns.
-
-Created and captured product photography, directed lighting for promotional visuals and adapted assets for social-first formats.
-
-</div>
-
-</section>
-
-
-<div class="mobile-image-block">
-<img src="assets/pizzaexpress_-food-large.png">
-</div>
-
-
-<div class="mobile-image-block mobile-social-video">
-<img src="assets/pizzaexpress_-social-video.png">
-</div>
-
-
-<!-- ENVIRONMENTAL -->
-
-<section class="mobile-section">
-
-<div class="mobile-section-title">
-Environmental & Experiential Design
-</div>
-
-<div class="mobile-copy">
-
-Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
-
-</div>
-
-</section>
-
-
-<div class="mobile-image-block mobile-environmental">
-<img src="assets/pizzaexpress_-environmental.png">
-</div>
-
-
-<!-- MENU GOLD SECTION -->
-
-<section class="mobile-gold-section">
-
-<div class="mobile-section-title">
-Menu Design & In-Restaurant Touchpoints
-</div>
-
-<div class="mobile-copy">
-
-Designed and managed menu format applications, tray liners and branded identity across dine-in environments.
-
-<br><br>
-
-Created seasonal and everyday menu systems, organised menu photography and ensured consistent visual presentation across restaurant touchpoints.
-
-</div>
-
-</section>
-
-
-<div class="mobile-image-block mobile-menu-main">
-<img src="assets/pizzaexpress_-menu-main.png">
-</div>
-
-
-<footer class="mobile-footer">
-
-© 2026 Chi Wai Lau. All Rights Reserved.
-
-</footer>
-
-</main>
-
-</div>
-</div>
-
-
-<script>
-
-/* =========================
-ENVIRONMENT SLIDER
-========================= */
-
-let slides = document.querySelectorAll(".env-slide");
-let index = 0;
-let autoSlide;
-
-function showSlide(i){
-slides.forEach(s => s.classList.remove("active"));
-slides[i].classList.add("active");
-}
-
-function nextSlide(){
-index++;
-if(index >= slides.length){ index = 0; }
-showSlide(index);
-}
-
-function prevSlide(){
-index--;
-if(index < 0){ index = slides.length - 1; }
-showSlide(index);
-}
-
-function restartAutoSlide(){
-clearInterval(autoSlide);
-autoSlide = setInterval(nextSlide, 5000);
-}
-
-document.querySelector(".env-arrow.right").onclick = function(){
-nextSlide();
-restartAutoSlide();
-};
-
-document.querySelector(".env-arrow.left").onclick = function(){
-prevSlide();
-restartAutoSlide();
-};
-
-autoSlide = setInterval(nextSlide, 5000);
-
-
-/* =========================
-MOBILE MENU
-========================= */
-
-const menuButton = document.getElementById("menuButton");
-const menuPanel = document.getElementById("menuPanel");
-const menuOverlay = document.getElementById("menuOverlay");
-
-function openMenu(){
-menuButton.classList.add("is-open");
-menuPanel.classList.add("is-open");
-menuOverlay.classList.add("is-open");
-}
-
-function closeMenu(){
-menuButton.classList.remove("is-open");
-menuPanel.classList.remove("is-open");
-menuOverlay.classList.remove("is-open");
-}
-
-menuButton.addEventListener("click", () => {
-
-const isOpen = menuPanel.classList.contains("is-open");
-
-if(isOpen){
-closeMenu();
-}else{
-openMenu();
-}
-
-});
-
-menuOverlay.addEventListener("click", closeMenu);
-
-document.addEventListener("keydown", (e)=>{
-if(e.key === "Escape"){
-closeMenu();
-}
-});
-
-</script>
-
+  <script>
+    let slides = document.querySelectorAll(".env-slide");
+    let index = 0;
+    let autoSlide;
+
+    function showSlide(i){
+      slides.forEach(s => s.classList.remove("active"));
+      slides[i].classList.add("active");
+    }
+
+    function nextSlide(){
+      index++;
+      if(index >= slides.length){ index = 0; }
+      showSlide(index);
+    }
+
+    function prevSlide(){
+      index--;
+      if(index < 0){ index = slides.length - 1; }
+      showSlide(index);
+    }
+
+    function restartAutoSlide(){
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextSlide, 5000);
+    }
+
+    document.querySelector(".env-arrow.right").onclick = function(){
+      nextSlide();
+      restartAutoSlide();
+    };
+
+    document.querySelector(".env-arrow.left").onclick = function(){
+      prevSlide();
+      restartAutoSlide();
+    };
+
+    autoSlide = setInterval(nextSlide, 5000);
+
+    const menuButton = document.getElementById("menuButton");
+    const menuPanel = document.getElementById("menuPanel");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function openMenu(){
+      menuButton.classList.add("is-open");
+      menuPanel.classList.add("is-open");
+      menuOverlay.classList.add("is-open");
+    }
+
+    function closeMenu(){
+      menuButton.classList.remove("is-open");
+      menuPanel.classList.remove("is-open");
+      menuOverlay.classList.remove("is-open");
+    }
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuPanel.classList.contains("is-open");
+      if(isOpen){
+        closeMenu();
+      }else{
+        openMenu();
+      }
+    });
+
+    menuOverlay.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        closeMenu();
+      }
+    });
+  </script>
 </body>
 </html>
-  
