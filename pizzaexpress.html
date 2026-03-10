@@ -20,6 +20,10 @@
 --mobile-header-h:78px;
 }
 
+/* ----------------
+GLOBAL
+---------------- */
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -66,9 +70,9 @@ padding:20px 20px 34px;
 overflow:hidden;
 }
 
-/* =========================
-TOP BAR
-========================= */
+/* ----------------
+TOPBAR
+---------------- */
 
 .topbar{
 display:flex;
@@ -79,21 +83,6 @@ padding:14px 18px;
 margin:-20px -20px 0 -20px;
 background:#000;
 border-bottom:1px solid rgba(255,255,255,.12);
-position:relative;
-z-index:60;
-}
-
-.topbar-left{
-display:flex;
-align-items:center;
-gap:24px;
-}
-
-.topbar-right{
-display:flex;
-align-items:center;
-gap:28px;
-margin-left:auto;
 }
 
 .brand-mark{
@@ -105,13 +94,11 @@ display:grid;
 place-items:center;
 font-weight:700;
 font-size:24px;
-color:var(--text);
-flex:0 0 auto;
 }
 
-/* =========================
+/* ----------------
 HERO
-========================= */
+---------------- */
 
 .hero{
 margin:0 -20px 0 -20px;
@@ -123,9 +110,9 @@ width:100%;
 display:block;
 }
 
-/* =========================
-GENERIC
-========================= */
+/* ----------------
+SECTION
+---------------- */
 
 .section{
 width:1120px;
@@ -154,16 +141,46 @@ font-size:14px;
 line-height:1.58;
 }
 
-/* =========================
-MOBILE CSS
-========================= */
+/* ----------------
+FOOTER
+---------------- */
+
+.bottom-bar{
+width:calc(100% + 40px);
+margin:24px -20px -34px;
+background:#000;
+border-top:1px solid rgba(255,255,255,.14);
+padding:16px 26px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.copyright{
+color:var(--muted);
+font-size:13px;
+}
+
+.back-to-top{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:124px;
+height:40px;
+border:1px solid rgba(255,255,255,.28);
+font-size:13px;
+font-weight:700;
+border-radius:999px;
+}
+
+/* ----------------
+MOBILE SYSTEM
+---------------- */
 
 .mobile-shell,
 .mobile-topbar,
 .mobile-content-scroll,
-.mobile-footer,
-.mobile-menu-panel,
-.mobile-menu-overlay{
+.mobile-footer{
 display:none;
 }
 
@@ -185,8 +202,7 @@ width:100%;
 }
 
 .mobile-inner{
-width:100%;
-max-width:var(--mobile-max-width);
+max-width:430px;
 margin:0 auto;
 background:var(--bg-olive);
 }
@@ -198,8 +214,8 @@ top:0;
 left:50%;
 transform:translateX(-50%);
 width:100%;
-max-width:var(--mobile-max-width);
-height:var(--mobile-header-h);
+max-width:430px;
+height:78px;
 background:#000;
 align-items:center;
 justify-content:space-between;
@@ -219,8 +235,7 @@ font-size:24px;
 }
 
 .mobile-content-scroll{
-display:block;
-padding-top:var(--mobile-header-h);
+padding-top:78px;
 }
 
 .mobile-section{
@@ -266,14 +281,24 @@ margin:0 auto;
 width:100%;
 }
 
-.mobile-section-title{
-font-size:22px;
-font-weight:700;
-margin-bottom:14px;
+/* GOLD SECTIONS */
+
+.mobile-gold-section{
+background:#c1b6a3;
+color:#000;
+margin-top:28px;
+padding:28px 18px;
 }
 
-.mobile-social-copy{
-margin-bottom:22px;
+.mobile-gold-section .mobile-section-title{
+font-size:22px;
+font-weight:700;
+margin-bottom:12px;
+color:#000;
+}
+
+.mobile-gold-section .mobile-copy{
+color:#000;
 }
 
 .mobile-footer{
@@ -291,15 +316,12 @@ margin-top:40px;
 </head>
 <body>
 
+<!-- DESKTOP VERSION -->
 <div class="page">
 <div class="frame">
 
 <header class="topbar">
-
-<div class="topbar-left">
 <a href="index.html" class="brand-mark">W</a>
-</div>
-
 </header>
 
 <section class="hero">
@@ -307,52 +329,152 @@ margin-top:40px;
 </section>
 
 <section class="section">
-
 <h1 class="title">Pizza Express</h1>
 <div class="subtitle">Brand Activation & Multi-Channel Design</div>
 
 <div class="copy">
-Long-term collaboration delivering visual solutions across multiple brand touchpoints.
+Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
+</div>
+</section>
+
+<div class="divider"></div>
+
+  <!-- CAMPAIGN -->
+
+<section class="section">
+<div class="copy" style="padding:20px 0;">
+<h3 style="font-size:22px;margin-bottom:12px;">Campaign & Charity Activation</h3>
+
+Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
+
+<ul style="margin-top:12px;padding-left:18px;">
+<li>Designed campaign posters and promotional formats</li>
+<li>Developed package-based and on-pack visual applications</li>
+<li>Created in-store display materials and campaign headlines</li>
+<li>Translated restaurant launches into immersive campaign spaces</li>
+</ul>
+
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOCIAL -->
+
+<section class="section">
+
+<img src="assets/pizzaexpress_-food-large.png" style="margin-bottom:40px;">
+
+<div style="display:flex;gap:60px;align-items:flex-start;">
+
+<div style="width:360px;">
+<img src="assets/pizzaexpress_-social-video.png">
+</div>
+
+<div style="max-width:520px;">
+<h3 style="font-size:22px;margin-bottom:16px;">
+Social Media & Content Production
+</h3>
+
+<ul style="padding-left:18px;line-height:1.7;">
+<li>Produced campaign-led social content across food, beverage and branding campaigns</li>
+<li>Created and captured product photography</li>
+<li>Directed lighting for promotional visuals</li>
+<li>Managed lifestyle storytelling for post-production</li>
+<li>Adapted assets for social-first formats</li>
+<li>Maintained consistent brand tone across campaign touchpoints</li>
+</ul>
+
+</div>
+
+</div>
+
+<img src="assets/pizzaexpress_-food-strip.png" style="margin-top:40px;">
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ENVIRONMENTAL -->
+
+<section class="section">
+
+<img src="assets/pizzaexpress_-environmental.png">
+
+<div style="display:flex;gap:40px;margin-top:40px;">
+
+<div style="width:260px;">
+<h3 style="font-size:22px;">
+Environmental & Experiential Design
+</h3>
+</div>
+
+<div style="max-width:600px;line-height:1.6;">
+
+Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
+
+<ul style="padding-left:18px;margin-top:12px;">
+<li>Designed store event executions blending messages</li>
+<li>Developed outdoor event backdrops</li>
+<li>Created wayfinding and pop-up store visuals</li>
+<li>Produced install design and graphic implementation layouts</li>
+</ul>
+
+This work extended the brand beyond print into immersive physical experiences.
+
+</div>
+
 </div>
 
 </section>
 
 <div class="divider"></div>
 
-  <!-- CAMPAIGN -->
-<section class="section">
-  <div class="copy" style="padding:20px 0;">
-    <h3 style="font-size:22px; margin-bottom:12px;">Campaign &amp; Charity Activation</h3>
-    Delivered campaign visuals supporting brand partnerships and promotional initiatives, including Pizza Express collaborations with Movember.
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SOCIAL -->
-<section class="section">
-  <div class="copy" style="padding:20px 0;">
-    <h3 style="font-size:22px; margin-bottom:12px;">Social Media &amp; Content Production</h3>
-    Produced campaign-led social content across food, beverage and branding campaigns, creating product photography, directing lighting and adapting assets for social-first formats.
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- MENU -->
+
 <section class="section">
-  <div class="copy" style="padding:20px 0;">
-    <h3 style="font-size:22px; margin-bottom:12px;">Menu Design &amp; In-Restaurant Touchpoints</h3>
-    Designed and managed menu format applications, in-layout brand execution, tray liners and branded identity across dine-in environments.
-  </div>
+
+<div style="display:flex;gap:54px;align-items:center;">
+
+<div style="width:420px;">
+<img src="assets/pizzaexpress_-menu-main.png">
+</div>
+
+<div style="max-width:520px;">
+
+<h3 style="font-size:22px;margin-bottom:16px;">
+Menu Design & In-Restaurant Touchpoints
+</h3>
+
+<p style="margin-bottom:14px;line-height:1.7;">
+Designed and managed menu format applications, in-layout brand execution, tray liners and branded identity across dine-in environments.
+</p>
+
+<ul style="padding-left:18px;line-height:1.7;margin-bottom:14px;">
+<li>Created seasonal and everyday menu systems</li>
+<li>Developed and organised menu photography</li>
+<li>Designed in-store table materials and supporting POS graphics</li>
+<li>Maintained visual consistency across printed and physical touchpoints</li>
+</ul>
+
+<p style="line-height:1.7;">
+Across multiple brand phases, consistency remained central, ensuring brand guidelines translated into cohesive dining experiences.
+</p>
+
+</div>
+
+</div>
+
+<img src="assets/pizzaexpress_-food-strip-2.png" style="margin-top:40px;">
+
 </section>
 
 <div class="bottom-bar">
-  <div class="copyright">
-    © 2026 Chi Wai Lau. All Rights Reserved.
-  </div>
+<div class="copyright">
+© 2026 Chi Wai Lau. All Rights Reserved.
+</div>
 
-  <a href="#" class="back-to-top">Back to top ↑</a>
+<a href="#" class="back-to-top">Back to top ↑</a>
 </div>
 
 </div>
@@ -363,79 +485,112 @@ MOBILE VERSION
 ========================= -->
 
 <div class="mobile-shell">
-  <div class="mobile-inner">
 
-    <header class="mobile-topbar">
-      <a href="index.html" class="mobile-brand">W</a>
-    </header>
+<div class="mobile-inner">
 
-    <div class="mobile-content-scroll">
+<header class="mobile-topbar">
+<a href="index.html" class="mobile-brand">W</a>
+</header>
 
-      <div class="mobile-hero">
-        <img src="assets/pizzaexpress_-hero.png" alt="Pizza Express hero">
-      </div>
+<div class="mobile-content-scroll">
 
-      <section class="mobile-section">
-        <div class="mobile-title">Pizza Express</div>
-        <div class="mobile-subtitle">Brand Activation &amp; Multi-Channel Design</div>
-        <div class="mobile-copy">
-          Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
-        </div>
-      </section>
+<div class="mobile-hero">
+<img src="assets/pizzaexpress_-hero.png">
+</div>
 
-      <div class="mobile-image-block mobile-campaign-poster">
-        <img src="assets/pizzaexpress_-campaign-poster.png" alt="Campaign poster">
-      </div>
+<section class="mobile-section">
 
-      <div class="mobile-image-block">
-        <img src="assets/pizzaexpress_-campaign-thumb.png" alt="Campaign thumb">
-      </div>
+<div class="mobile-title">Pizza Express</div>
+<div class="mobile-subtitle">Brand Activation & Multi-Channel Design</div>
 
-      <section class="mobile-section">
-        <div class="mobile-section-title mobile-social-copy">Social Media &amp; Content Production</div>
-        <div class="mobile-copy">
-          Produced campaign-led social content across food, beverage and branding campaigns, created and captured product photography, directed lighting for promotional visuals, and adapted assets for social-first formats.
-        </div>
-      </section>
+<div class="mobile-copy">
+Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
+</div>
 
-      <div class="mobile-image-block">
-        <img src="assets/pizzaexpress_-food-large.png" alt="Food large">
-      </div>
+</section>
 
-      <div class="mobile-image-block mobile-social-video">
-        <img src="assets/pizzaexpress_-social-video.png" alt="Social video">
-      </div>
+<div class="mobile-image-block mobile-campaign-poster">
+<img src="assets/pizzaexpress_-campaign-poster.png">
+</div>
 
-      <section class="mobile-section">
-        <div class="mobile-section-title">Environmental &amp; Experiential Design</div>
-        <div class="mobile-copy">
-          Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
-        </div>
-      </section>
+<div class="mobile-image-block">
+<img src="assets/pizzaexpress_-campaign-thumb.png">
+</div>
 
-      <div class="mobile-image-block mobile-environmental">
-        <img src="assets/pizzaexpress_-environmental.png" alt="Environmental design">
-      </div>
+<!-- GOLD SOCIAL SECTION -->
 
-      <section class="mobile-section">
-        <div class="mobile-section-title">Menu Design &amp; In-Restaurant Touchpoints</div>
-        <div class="mobile-copy">
-          Designed and managed menu format applications, in-layout brand execution, tray liners and branded identity across dine-in environments.
-          <br><br>
-          Created seasonal and everyday menu systems, developed and organised menu photography, and maintained visual consistency across printed and physical touchpoints.
-        </div>
-      </section>
+<section class="mobile-gold-section">
 
-      <div class="mobile-image-block mobile-menu-main">
-        <img src="assets/pizzaexpress_-menu-main.png" alt="Menu main">
-      </div>
+<div class="mobile-section-title">
+Social Media & Content Production
+</div>
 
-      <footer class="mobile-footer">
-        © 2026 Chi Wai Lau. All Rights Reserved.
-      </footer>
+<div class="mobile-copy">
 
-    </div>
-  </div>
+Produced campaign-led social content across food, beverage and branding campaigns.
+
+Created and captured product photography, directed lighting for promotional visuals and adapted assets for social-first formats.
+
+</div>
+
+</section>
+
+<div class="mobile-image-block">
+<img src="assets/pizzaexpress_-food-large.png">
+</div>
+
+<div class="mobile-image-block mobile-social-video">
+<img src="assets/pizzaexpress_-social-video.png">
+</div>
+
+<section class="mobile-section">
+
+<div class="mobile-section-title">
+Environmental & Experiential Design
+</div>
+
+<div class="mobile-copy">
+
+Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
+
+</div>
+
+</section>
+
+<div class="mobile-image-block mobile-environmental">
+<img src="assets/pizzaexpress_-environmental.png">
+</div>
+
+<!-- GOLD MENU SECTION -->
+
+<section class="mobile-gold-section">
+
+<div class="mobile-section-title">
+Menu Design & In-Restaurant Touchpoints
+</div>
+
+<div class="mobile-copy">
+
+Designed and managed menu format applications, tray liners and branded identity across dine-in environments.
+
+<br><br>
+
+Created seasonal and everyday menu systems, organised menu photography and ensured consistent visual presentation across all restaurant touchpoints.
+
+</div>
+
+</section>
+
+<div class="mobile-image-block mobile-menu-main">
+<img src="assets/pizzaexpress_-menu-main.png">
+</div>
+
+<footer class="mobile-footer">
+© 2026 Chi Wai Lau. All Rights Reserved.
+</footer>
+
+</div>
+</div>
 </div>
 
 </body>
