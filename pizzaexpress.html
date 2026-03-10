@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1280, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pizza Express – Chi Wai Lau Portfolio</title>
 
   <style>
@@ -15,6 +15,9 @@
       --box-line:rgba(255,255,255,.58);
       --bg-olive:rgba(40,38,5,.88);
       --gold-bar:#7f7440;
+
+      --mobile-max-width:430px;
+      --mobile-header-h:78px;
     }
 
     *{
@@ -574,6 +577,250 @@
       background:rgba(255,255,255,.08);
       transform:translateY(-1px);
     }
+
+    /* =========================
+       MOBILE ONLY
+    ========================== */
+    .mobile-shell,
+    .mobile-topbar,
+    .mobile-content-scroll,
+    .mobile-menu-panel,
+    .mobile-menu-overlay,
+    .mobile-menu-button,
+    .mobile-footer{
+      display:none;
+    }
+
+    @media (max-width:768px){
+
+      html, body{
+        width:100%;
+        max-width:100%;
+        min-width:100%;
+        overflow-x:hidden;
+        background:#000;
+      }
+
+      body{
+        min-width:0;
+      }
+
+      .page{
+        display:none;
+      }
+
+      .mobile-shell{
+        display:block;
+        width:100%;
+        max-width:100%;
+        min-height:100vh;
+        background:#000;
+        overflow:hidden;
+      }
+
+      .mobile-inner{
+        width:100%;
+        max-width:var(--mobile-max-width);
+        margin:0 auto;
+        min-height:100vh;
+        background:var(--bg-olive);
+        position:relative;
+        overflow:hidden;
+      }
+
+      .mobile-topbar{
+        display:flex;
+        position:fixed;
+        top:0;
+        left:50%;
+        transform:translateX(-50%);
+        width:100%;
+        max-width:var(--mobile-max-width);
+        height:var(--mobile-header-h);
+        background:#000;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 18px;
+        z-index:1000;
+      }
+
+      .mobile-brand{
+        width:54px;
+        height:54px;
+        border:2px solid rgba(255,255,255,.92);
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:700;
+        font-size:24px;
+        color:var(--text);
+        flex:0 0 auto;
+      }
+
+      .mobile-menu-button{
+        display:flex;
+        width:42px;
+        height:42px;
+        border:none;
+        background:transparent;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:6px;
+        cursor:pointer;
+      }
+
+      .mobile-menu-button span{
+        display:block;
+        width:28px;
+        height:2px;
+        background:#fff;
+        transition:transform .25s ease, opacity .25s ease;
+      }
+
+      .mobile-menu-button.is-open span:nth-child(1){
+        transform:translateY(8px) rotate(45deg);
+      }
+
+      .mobile-menu-button.is-open span:nth-child(2){
+        opacity:0;
+      }
+
+      .mobile-menu-button.is-open span:nth-child(3){
+        transform:translateY(-8px) rotate(-45deg);
+      }
+
+      .mobile-menu-overlay{
+        display:block;
+        position:fixed;
+        top:var(--mobile-header-h);
+        left:0;
+        width:100%;
+        height:calc(100vh - var(--mobile-header-h));
+        background:rgba(0,0,0,.28);
+        opacity:0;
+        pointer-events:none;
+        transition:opacity .25s ease;
+        z-index:998;
+      }
+
+      .mobile-menu-overlay.is-open{
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .mobile-menu-panel{
+        display:block;
+        position:fixed;
+        top:var(--mobile-header-h);
+        right:0;
+        width:100%;
+        max-width:var(--mobile-max-width);
+        height:calc(100vh - var(--mobile-header-h));
+        background:rgba(0,0,0,.97);
+        padding:28px 24px;
+        transform:translateX(100%);
+        transition:transform .28s ease;
+        z-index:999;
+        overflow-y:auto;
+        overflow-x:hidden;
+        visibility:hidden;
+        pointer-events:none;
+      }
+
+      .mobile-menu-panel.is-open{
+        transform:translateX(0);
+        visibility:visible;
+        pointer-events:auto;
+      }
+
+      .mobile-menu-panel nav{
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+      }
+
+      .mobile-menu-panel a{
+        display:block;
+        font-size:18px;
+        line-height:1.25;
+        font-weight:700;
+        color:var(--text);
+      }
+
+      .mobile-content-scroll{
+        display:block;
+        width:100%;
+        max-width:var(--mobile-max-width);
+        margin:0 auto;
+        padding-top:var(--mobile-header-h);
+        overflow-x:hidden;
+      }
+
+      .mobile-hero{
+        width:100%;
+      }
+
+      .mobile-hero img{
+        width:100%;
+        display:block;
+      }
+
+      .mobile-section{
+        padding:28px 18px 0;
+      }
+
+      .mobile-title{
+        font-size:30px;
+        line-height:1.05;
+        font-weight:700;
+        margin-bottom:6px;
+        color:var(--text);
+      }
+
+      .mobile-subtitle{
+        font-size:16px;
+        line-height:1.35;
+        font-weight:700;
+        color:var(--text);
+        margin-bottom:14px;
+      }
+
+      .mobile-copy{
+        font-size:14px;
+        line-height:1.6;
+        color:var(--text);
+      }
+
+      .mobile-image-block{
+        padding:22px 18px 0;
+      }
+
+      .mobile-image-block img{
+        width:100%;
+        display:block;
+      }
+
+      .mobile-section-title{
+        font-size:22px;
+        line-height:1.15;
+        font-weight:700;
+        color:var(--text);
+        margin-bottom:14px;
+      }
+
+      .mobile-footer{
+        display:block;
+        margin-top:42px;
+        background:#000;
+        color:var(--muted);
+        text-align:center;
+        padding:22px 16px 28px;
+        font-size:12px;
+        line-height:1.5;
+      }
+    }
   </style>
 </head>
 <body>
@@ -789,45 +1036,266 @@
 
     </div>
   </div>
+  <!-- =========================
+MOBILE VERSION
+========================= -->
 
-  <script>
-    let slides = document.querySelectorAll(".env-slide");
-    let index = 0;
-    let autoSlide;
+<div class="mobile-shell">
 
-    function showSlide(i){
-      slides.forEach(s => s.classList.remove("active"));
-      slides[i].classList.add("active");
-    }
+  <div class="mobile-inner">
 
-    function nextSlide(){
-      index++;
-      if(index >= slides.length){ index = 0; }
-      showSlide(index);
-    }
+    <header class="mobile-topbar">
 
-    function prevSlide(){
-      index--;
-      if(index < 0){ index = slides.length - 1; }
-      showSlide(index);
-    }
+      <a href="index.html" class="mobile-brand">W</a>
 
-    function restartAutoSlide(){
-      clearInterval(autoSlide);
-      autoSlide = setInterval(nextSlide, 5000);
-    }
+      <button class="mobile-menu-button" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    document.querySelector(".env-arrow.right").onclick = function(){
-      nextSlide();
-      restartAutoSlide();
-    };
+    </header>
 
-    document.querySelector(".env-arrow.left").onclick = function(){
-      prevSlide();
-      restartAutoSlide();
-    };
 
-    autoSlide = setInterval(nextSlide, 5000);
-  </script>
+    <!-- MENU OVERLAY -->
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <div class="mobile-menu-panel" id="mobileMenuPanel">
+
+      <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About Me</a>
+
+        <a href="samaroli.html">Samaroli</a>
+
+        <a href="pizzaexpress.html">Pizza Express</a>
+
+        <a href="canon.html">Canon</a>
+
+        <a href="kmb.html">KMB</a>
+
+        <a href="illustration-book.html">Illustration</a>
+
+        <a href="video.html">Video Project</a>
+
+      </nav>
+
+    </div>
+
+
+
+    <!-- MOBILE CONTENT -->
+
+    <div class="mobile-content-scroll">
+
+      <div class="mobile-hero">
+        <img src="assets/pizzaexpress_-hero.png">
+      </div>
+
+
+      <section class="mobile-section">
+
+        <div class="mobile-title">
+          Pizza Express
+        </div>
+
+        <div class="mobile-subtitle">
+          Brand Activation & Multi-Channel Design
+        </div>
+
+        <div class="mobile-copy">
+          Long-term collaboration delivering visual solutions across multiple brand touchpoints — from in-store campaigns and digital charity promotions to experiential installations and food content production.
+        </div>
+
+      </section>
+
+
+
+      <div class="mobile-image-block">
+        <img src="assets/pizzaexpress_-campaign-poster.png">
+      </div>
+
+      <div class="mobile-image-block">
+        <img src="assets/pizzaexpress_-campaign-thumb.png">
+      </div>
+
+
+
+      <section class="mobile-section">
+
+        <div class="mobile-section-title">
+          Social Media & Content Production
+        </div>
+
+        <div class="mobile-copy">
+
+          <ul>
+
+            <li>Produced campaign-led social content across food, beverage and branding campaigns</li>
+
+            <li>Created and captured product photography</li>
+
+            <li>Directed lighting for promotional visuals</li>
+
+            <li>Managed lifestyle storytelling for post-production</li>
+
+            <li>Adapted assets for social-first formats</li>
+
+            <li>Maintained consistent brand tone across campaign touchpoints</li>
+
+          </ul>
+
+        </div>
+
+      </section>
+
+
+
+      <div class="mobile-image-block">
+        <img src="assets/pizzaexpress_-food-large.png">
+      </div>
+
+      <div class="mobile-image-block">
+        <img src="assets/pizzaexpress_-social-video.png">
+      </div>
+
+
+
+      <section class="mobile-section">
+
+        <div class="mobile-section-title">
+          Environmental & Experiential Design
+        </div>
+
+        <div class="mobile-copy">
+
+          Delivered large-scale environmental graphics and experiential brand installations across retail and event environments.
+
+        </div>
+
+      </section>
+
+
+
+      <div class="mobile-image-block">
+        <img src="assets/pizzaexpress_-environmental.png">
+      </div>
+
+
+
+      <section class="mobile-section">
+
+        <div class="mobile-section-title">
+          Menu Design
+        </div>
+
+        <div class="mobile-copy">
+
+          Designed and managed menu format applications and in-restaurant visual execution.
+
+        </div>
+
+      </section>
+
+
+
+      <div class="mobile-image-block">
+        <img src="assets/pizzaexpress_-menu-main.png">
+      </div>
+
+
+
+      <footer class="mobile-footer">
+
+        © 2026 Chi Wai Lau  
+        All Rights Reserved
+
+      </footer>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+DESKTOP SLIDER SCRIPT
+========================= -->
+
+<script>
+
+let slides = document.querySelectorAll(".env-slide");
+let index = 0;
+let autoSlide;
+
+function showSlide(i){
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+function nextSlide(){
+  index++;
+  if(index >= slides.length){ index = 0; }
+  showSlide(index);
+}
+
+function prevSlide(){
+  index--;
+  if(index < 0){ index = slides.length - 1; }
+  showSlide(index);
+}
+
+function restartAutoSlide(){
+  clearInterval(autoSlide);
+  autoSlide = setInterval(nextSlide, 5000);
+}
+
+document.querySelector(".env-arrow.right").onclick = function(){
+  nextSlide();
+  restartAutoSlide();
+};
+
+document.querySelector(".env-arrow.left").onclick = function(){
+  prevSlide();
+  restartAutoSlide();
+};
+
+autoSlide = setInterval(nextSlide, 5000);
+
+</script>
+
+
+
+<!-- =========================
+MOBILE MENU SCRIPT
+========================= -->
+
+<script>
+
+const menuBtn = document.getElementById("mobileMenuBtn");
+const menuPanel = document.getElementById("mobileMenuPanel");
+const menuOverlay = document.getElementById("mobileMenuOverlay");
+
+function toggleMenu(){
+
+  menuBtn.classList.toggle("is-open");
+  menuPanel.classList.toggle("is-open");
+  menuOverlay.classList.toggle("is-open");
+
+}
+
+menuBtn.addEventListener("click", toggleMenu);
+menuOverlay.addEventListener("click", toggleMenu);
+
+</script>
+
+
+
 </body>
 </html>
