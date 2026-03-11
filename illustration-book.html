@@ -525,14 +525,6 @@
 
     .sketch-main-combined{
       position:absolute;
-      right:0;
-      top:10px;
-      width:680px;
-      z-index:3;
-    }
-
-    .sketch-main-combined{
-      position:absolute;
       right:30px;
       top:28px;
       width:520px;
@@ -726,8 +718,9 @@
       background:var(--mobile-olive);
     }
 
+    /* top section changed to white background + green text */
     .mobile-intro{
-      background:var(--mobile-olive);
+      background:var(--mobile-white);
       padding:32px 18px 26px;
       text-align:left;
     }
@@ -736,21 +729,21 @@
       font-size:28px;
       line-height:1.08;
       margin-bottom:10px;
-      color:#fff;
+      color:#231f12;
     }
 
     .mobile-intro h2{
       font-size:15px;
       line-height:1.25;
       margin-bottom:16px;
-      color:#ddd6c4;
+      color:#231f12;
       font-weight:700;
     }
 
     .mobile-intro p{
       font-size:12px;
       line-height:1.55;
-      color:#ddd6c4;
+      color:var(--mobile-body);
       margin-bottom:12px;
     }
 
@@ -815,6 +808,26 @@
       margin-bottom:16px;
     }
 
+    /* drama image cropped left black area + zoomed 30% */
+    .mobile-drama-crop{
+      width:100%;
+      height:300px;
+      overflow:hidden;
+      margin-bottom:16px;
+      position:relative;
+      background:#000;
+    }
+
+    .mobile-drama-crop img{
+      width:130%;
+      max-width:none;
+      height:100%;
+      object-fit:cover;
+      object-position:72% center;
+      transform:translateX(-14%);
+      display:block;
+    }
+
     .mobile-reel-strip{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -824,8 +837,8 @@
 
     .mobile-reel-strip img{
       width:100%;
-      display:block;
       border-radius:10px;
+      display:block;
     }
 
     .mobile-reel-single{
@@ -887,7 +900,6 @@
   </style>
 </head>
 <body>
-  <!-- DESKTOP VERSION -->
   <div class="page">
     <div class="frame">
 
@@ -1118,7 +1130,9 @@
         </section>
 
         <section class="mobile-section dark">
-          <img class="mobile-full-image" src="assets/illustration_drama.png" alt="Drama poster illustration">
+          <div class="mobile-drama-crop">
+            <img src="assets/illustration_drama.png" alt="Drama poster illustration">
+          </div>
           <h2>Drama poster</h2>
           <h3>Concept &amp; Visual Expression</h3>
           <p>
