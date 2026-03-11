@@ -292,14 +292,13 @@
     /* =========================
        MOBILE VERSION
     ========================== */
-  @media (max-width: 768px){
-  html, body{
-    width:100%;
-    min-width:100%;
-    max-width:100%;
-    overflow:hidden;
-  }
-}
+    @media (max-width: 768px){
+      html, body{
+        width:100%;
+        min-width:100%;
+        max-width:100%;
+        overflow:hidden;
+      }
 
       body{
         background:#000;
@@ -342,7 +341,7 @@
         max-width:var(--mobile-max-width);
         height:var(--mobile-header-h);
         background:#000;
-        z-index:1000;
+        z-index:10000;
         align-items:center;
         justify-content:space-between;
         padding:0 18px;
@@ -377,6 +376,8 @@
         gap:7px;
         cursor:pointer;
         padding:0;
+        position:relative;
+        z-index:10001;
       }
 
       .menu-button span{
@@ -729,7 +730,6 @@
       menuOverlay.classList.add("is-open");
       menuButton.setAttribute("aria-expanded", "true");
       menuPanel.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = window.innerWidth <= 768 ? "hidden" : "";
     }
 
     function closeMenu() {
@@ -738,7 +738,6 @@
       menuOverlay.classList.remove("is-open");
       menuButton.setAttribute("aria-expanded", "false");
       menuPanel.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
     }
 
     if (menuButton && menuPanel && menuOverlay) {
