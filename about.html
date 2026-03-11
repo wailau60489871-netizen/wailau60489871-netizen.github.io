@@ -1,785 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About – Chi Wai Lau</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – Chi Wai Lau</title>
 
-  <style>
-    :root{
-      --text:#f3f0e6;
-      --muted:#d8d1b7;
-      --panel-border:rgba(188,178,110,.28);
-      --menu-bg:rgba(8,8,8,.96);
-      --bg-olive:rgba(40,38,5,.88);
-      --mobile-header-h:78px;
-      --mobile-max-width:430px;
-    }
+<style>
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-      background:#000;
-      width:100%;
-      max-width:100%;
-      overflow-x:hidden;
-    }
-
-    body{
-      width:100%;
-      max-width:100%;
-      min-width:1280px;
-      overflow-x:auto;
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:
-        linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
-        url("assets/hero-studio.png") center center / cover no-repeat fixed;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    .page{
-      width:1280px;
-      margin:0 auto;
-      padding:0 0 40px;
-    }
-
-    .frame{
-      position:relative;
-      background:var(--bg-olive);
-      border:1px solid var(--panel-border);
-      padding:20px 20px 0;
-      overflow:hidden;
-      min-height:1400px;
-    }
-
-    /* =========================
-       TOP BAR - DESKTOP
-    ========================== */
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:24px;
-      padding:14px 18px;
-      margin:-20px -20px 0 -20px;
-      background:#000;
-      border-bottom:none;
-      position:relative;
-      z-index:60;
-    }
-
-    .topbar-left{
-      display:flex;
-      align-items:center;
-      gap:24px;
-    }
-
-    .brand-mark{
-      width:44px;
-      height:44px;
-      border:2px solid rgba(255,255,255,.92);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-weight:700;
-      font-size:24px;
-      color:var(--text);
-      flex:0 0 auto;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .nav{
-      display:flex;
-      gap:34px;
-      align-items:center;
-      font-weight:700;
-      color:var(--muted);
-      font-size:14px;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .nav > a,
-    .dropdown > a{
-      display:inline-flex;
-      align-items:center;
-      height:32px;
-      white-space:nowrap;
-    }
-
-    .nav a:hover{
-      color:var(--text);
-    }
-
-    .dropdown{
-      position:relative;
-    }
-
-    .dropdown::after{
-      content:"";
-      position:absolute;
-      left:0;
-      top:100%;
-      width:100%;
-      height:14px;
-    }
-
-    .dropdown-menu{
-      position:absolute;
-      top:100%;
-      left:0;
-      min-width:210px;
-      background:var(--menu-bg);
-      border:1px solid rgba(255,255,255,.08);
-      padding:12px 18px;
-      display:none;
-      z-index:50;
-    }
-
-    .dropdown:hover .dropdown-menu{
-      display:block;
-    }
-
-    .dropdown-menu a{
-      display:block;
-      padding:6px 0;
-      color:var(--muted);
-      font-size:14px;
-      font-weight:700;
-      transition:color .2s ease, transform .2s ease;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .dropdown-menu a::before{
-      content:"▶ ";
-      opacity:0;
-      transition:opacity .2s ease;
-      font-size:12px;
-    }
-
-    .dropdown-menu a:hover{
-      color:var(--text);
-      transform:translateX(4px);
-    }
-
-    .dropdown-menu a:hover::before{
-      opacity:1;
-    }
-
-    /* =========================
-       ABOUT PAGE - DESKTOP
-    ========================== */
-    .about-page{
-      width:900px;
-      margin:0 auto;
-      padding:82px 0 28px;
-    }
-
-    .hero-visual{
-      width:724px;
-      margin:0 auto 62px;
-      overflow:hidden;
-      background:#000;
-    }
-
-    .hero-visual img{
-      width:100%;
-      display:block;
-    }
-
-    .about-copy{
-      width:900px;
-      margin:0 auto;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .about-copy h1{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:52px;
-      line-height:1;
-      font-weight:700;
-      margin:0 0 24px 0;
-      color:var(--text);
-      letter-spacing:0;
-    }
-
-    .about-copy p{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:16px;
-      line-height:1.5;
-      color:var(--text);
-      margin:0 0 20px 0;
-      max-width:900px;
-      text-align:justify;
-      hyphens:auto;
-      font-weight:400;
-    }
-
-    .working-title{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:24px;
-      line-height:1.2;
-      font-weight:700;
-      margin:38px 0 18px;
-      color:var(--text);
-    }
-
-    .bottom-bar{
-      width:calc(100% + 40px);
-      margin:24px -20px 0;
-      background:#000;
-      border-top:1px solid rgba(255,255,255,.14);
-      padding:16px 26px 40px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .copyright{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.4;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .back-to-top{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:124px;
-      height:40px;
-      border:1px solid rgba(255,255,255,.28);
-      color:var(--text);
-      font-size:13px;
-      font-weight:700;
-      border-radius:999px;
-      transition:background .2s ease, transform .2s ease;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .back-to-top:hover{
-      background:rgba(255,255,255,.08);
-      transform:translateY(-1px);
-    }
-
-    /* =========================
-       MOBILE ONLY ELEMENTS
-    ========================== */
-    .mobile-shell,
-    .mobile-topbar,
-    .mobile-content-scroll,
-    .menu-button,
-    .menu-panel,
-    .menu-overlay{
-      display:none;
-    }
-
-    /* =========================
-       MOBILE VERSION
-    ========================== */
-    @media (max-width: 768px){
-      html, body{
-        width:100%;
-        min-width:100%;
-        max-width:100%;
-        overflow:hidden;
-      }
-
-      body{
-        background:#000;
-        min-width:0;
-      }
-
-      .page,
-      .frame,
-      .topbar,
-      .about-page,
-      .bottom-bar{
-        display:none;
-      }
-
-      .mobile-shell{
-        display:block;
-        width:100%;
-        min-height:100vh;
-        background:#000;
-        overflow:hidden;
-      }
-
-      .mobile-inner{
-        width:100%;
-        max-width:var(--mobile-max-width);
-        margin:0 auto;
-        min-height:100vh;
-        background:var(--bg-olive);
-        position:relative;
-        overflow:hidden;
-      }
-
-      .mobile-topbar{
-        display:flex;
-        position:fixed;
-        top:0;
-        left:50%;
-        transform:translateX(-50%);
-        width:100%;
-        max-width:var(--mobile-max-width);
-        height:var(--mobile-header-h);
-        background:#000;
-        z-index:10000;
-        align-items:center;
-        justify-content:space-between;
-        padding:0 18px;
-        border-bottom:none;
-      }
-
-      .mobile-brand{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        width:68px;
-        height:68px;
-        flex:0 0 auto;
-      }
-
-      .mobile-brand img{
-        width:54px;
-        height:54px;
-        object-fit:contain;
-        display:block;
-      }
-
-      .menu-button{
-        display:flex;
-        width:56px;
-        height:56px;
-        border:none;
-        background:transparent;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        gap:7px;
-        cursor:pointer;
-        padding:0;
-        position:relative;
-        z-index:10001;
-      }
-
-      .menu-button span{
-        display:block;
-        width:36px;
-        height:3px;
-        background:#a4a17b;
-        transition:transform .25s ease, opacity .25s ease;
-      }
-
-      .menu-button.is-open span:nth-child(1){
-        transform:translateY(10px) rotate(45deg);
-      }
-
-      .menu-button.is-open span:nth-child(2){
-        opacity:0;
-      }
-
-      .menu-button.is-open span:nth-child(3){
-        transform:translateY(-10px) rotate(-45deg);
-      }
-
-      .menu-overlay{
-        display:block;
-        position:fixed;
-        top:var(--mobile-header-h);
-        left:0;
-        width:100%;
-        height:calc(100vh - var(--mobile-header-h));
-        background:rgba(0,0,0,.28);
-        opacity:0;
-        pointer-events:none;
-        transition:opacity .25s ease;
-        z-index:998;
-      }
-
-      .menu-overlay.is-open{
-        opacity:1;
-        pointer-events:auto;
-      }
-
-      .menu-panel{
-        display:block;
-        position:fixed;
-        top:var(--mobile-header-h);
-        left:50%;
-        transform:translateX(calc(-50% + 100%));
-        width:100%;
-        max-width:var(--mobile-max-width);
-        height:calc(100vh - var(--mobile-header-h));
-        background:var(--menu-bg);
-        transition:transform .28s ease;
-        will-change:transform;
-        z-index:999;
-        border-left:1px solid rgba(255,255,255,.08);
-        padding:28px 24px;
-        overflow-y:auto;
-        overflow-x:hidden;
-      }
-
-      .menu-panel.is-open{
-        transform:translateX(-50%);
-      }
-
-      .menu-panel nav{
-        display:flex;
-        flex-direction:column;
-        gap:18px;
-      }
-
-      .menu-panel a{
-        font-size:18px;
-        font-weight:700;
-        color:var(--text);
-        line-height:1.25;
-        font-family:Arial, Helvetica, sans-serif;
-      }
-
-      .menu-panel a.sub{
-        font-size:16px;
-        font-weight:600;
-        color:var(--muted);
-        padding-left:10px;
-      }
-
-      .menu-divider{
-        height:1px;
-        background:rgba(255,255,255,.16);
-        margin:6px 0 2px;
-      }
-
-.mobile-content-scroll{
-  display:block;
-  position:fixed;
-  top:var(--mobile-header-h);
-  left:0;
-  right:0;
-  width:100%;
-  max-width:var(--mobile-max-width);
-  margin:0 auto;
-  height:calc(100vh - var(--mobile-header-h));
-  overflow-y:auto;
-  overflow-x:hidden;
-  background:var(--bg-olive);
-  -webkit-overflow-scrolling:touch;
+:root{
+--text:#f3f0e6;
+--muted:#d8d1b7;
+--panel-border:rgba(188,178,110,.28);
+--menu-bg:rgba(8,8,8,.96);
+--bg-olive:rgba(40,38,5,.88);
+--mobile-header-h:78px;
+--mobile-max-width:430px;
 }
 
-      .mobile-about-page{
-        width:100%;
-        margin:0 auto;
-        padding:52px 18px 0;
-      }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-      .mobile-hero-visual{
-        width:100%;
-        margin:0 0 38px;
-        background:#000;
-      }
+html{
+scroll-behavior:smooth;
+background:#000;
+overflow-x:hidden;
+}
 
-      .mobile-about-copy h1{
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:42px;
-        line-height:1;
-        font-weight:700;
-        margin:0 0 24px;
-        color:var(--text);
-      }
+body{
+min-width:1280px;
+font-family:Arial, Helvetica, sans-serif;
+color:var(--text);
+background:
+linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
+url("assets/hero-studio.png") center center / cover no-repeat fixed;
+}
 
-      .mobile-about-copy p{
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:15px;
-        line-height:1.5;
-        color:var(--text);
-        margin:0 0 22px;
-        text-align:justify;
-        hyphens:auto;
-        font-weight:400;
-      }
+img{
+display:block;
+width:100%;
+}
 
-      .mobile-working-title{
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:23px;
-        line-height:1.15;
-        font-weight:700;
-        margin:42px 0 20px;
-        color:var(--text);
-      }
+a{
+color:inherit;
+text-decoration:none;
+}
 
-      .mobile-footer{
-        margin-top:18px;
-        padding:18px 0 32px;
-        border-top:1px solid rgba(255,255,255,.12);
-        color:var(--muted);
-        font-size:13px;
-        line-height:1.5;
-        text-align:center;
-        font-family:Arial, Helvetica, sans-serif;
-        background:#000;
-      }
-    }
+/* DESKTOP */
 
-    @media (max-width: 480px){
-      .mobile-topbar{
-        padding:0 16px;
-      }
+.page{
+width:1280px;
+margin:0 auto;
+}
 
-      .mobile-about-page{
-        padding:46px 18px 0;
-      }
+.frame{
+background:var(--bg-olive);
+border:1px solid var(--panel-border);
+padding:20px 20px 0;
+min-height:1400px;
+}
 
-      .mobile-about-copy h1{
-        font-size:40px;
-      }
+.topbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 18px;
+margin:-20px -20px 0 -20px;
+background:#000;
+}
 
-      .mobile-about-copy p{
-        font-size:15px;
-        line-height:1.48;
-      }
+.topbar-left{
+display:flex;
+align-items:center;
+gap:24px;
+}
 
-      .mobile-working-title{
-        font-size:22px;
-      }
-    }
-  </style>
+.brand-mark{
+width:44px;
+height:44px;
+border:2px solid #fff;
+border-radius:50%;
+display:grid;
+place-items:center;
+font-weight:700;
+font-size:24px;
+}
+
+.nav{
+display:flex;
+gap:34px;
+font-weight:700;
+color:var(--muted);
+}
+
+.dropdown{
+position:relative;
+}
+
+.dropdown-menu{
+position:absolute;
+top:100%;
+left:0;
+min-width:210px;
+background:var(--menu-bg);
+padding:12px 18px;
+display:none;
+}
+
+.dropdown:hover .dropdown-menu{
+display:block;
+}
+
+.dropdown-menu a{
+display:block;
+padding:6px 0;
+}
+
+/* ABOUT */
+
+.about-page{
+width:900px;
+margin:0 auto;
+padding:82px 0 28px;
+}
+
+.hero-visual{
+width:724px;
+margin:0 auto 62px;
+}
+
+.about-copy h1{
+font-size:52px;
+margin-bottom:24px;
+}
+
+.about-copy p{
+font-size:16px;
+line-height:1.5;
+margin-bottom:20px;
+text-align:justify;
+}
+
+.working-title{
+font-size:24px;
+font-weight:700;
+margin:38px 0 18px;
+}
+
+.bottom-bar{
+margin:24px -20px 0;
+background:#000;
+border-top:1px solid rgba(255,255,255,.14);
+padding:16px 26px 40px;
+display:flex;
+justify-content:space-between;
+}
+
+.back-to-top{
+border:1px solid rgba(255,255,255,.28);
+padding:8px 16px;
+border-radius:999px;
+}
+
+/* MOBILE HIDDEN */
+
+.mobile-shell,
+.mobile-topbar,
+.mobile-content-scroll,
+.menu-button,
+.menu-panel,
+.menu-overlay{
+display:none;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+body{
+min-width:0;
+background:#000;
+}
+
+.page,
+.frame,
+.topbar,
+.about-page,
+.bottom-bar{
+display:none;
+}
+
+.mobile-shell{
+display:block;
+background:#000;
+min-height:100vh;
+}
+
+.mobile-inner{
+max-width:var(--mobile-max-width);
+margin:auto;
+background:var(--bg-olive);
+min-height:100vh;
+}
+
+/* HEADER */
+
+.mobile-topbar{
+display:flex;
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:var(--mobile-header-h);
+background:#000;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+z-index:1000;
+}
+
+.mobile-brand{
+display:flex;
+align-items:center;
+}
+
+.mobile-brand img{
+width:54px;
+height:54px;
+object-fit:contain;
+}
+
+/* MENU BUTTON */
+
+.menu-button{
+display:flex;
+flex-direction:column;
+gap:7px;
+width:56px;
+height:56px;
+justify-content:center;
+align-items:center;
+background:none;
+border:none;
+cursor:pointer;
+}
+
+.menu-button span{
+width:36px;
+height:3px;
+background:#a4a17b;
+}
+
+/* MENU PANEL */
+
+.menu-panel{
+display:block;
+position:fixed;
+top:var(--mobile-header-h);
+right:0;
+width:100%;
+max-width:var(--mobile-max-width);
+height:calc(100vh - var(--mobile-header-h));
+background:var(--menu-bg);
+transform:translateX(100%);
+transition:transform .3s ease;
+padding:28px 24px;
+z-index:999;
+}
+
+.menu-panel.is-open{
+transform:translateX(0);
+}
+
+.menu-panel nav{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.menu-panel a{
+font-size:18px;
+font-weight:700;
+}
+
+.menu-panel a.sub{
+font-size:16px;
+color:var(--muted);
+padding-left:10px;
+}
+
+.menu-overlay{
+display:block;
+position:fixed;
+top:var(--mobile-header-h);
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,.3);
+opacity:0;
+pointer-events:none;
+transition:.3s;
+}
+
+.menu-overlay.is-open{
+opacity:1;
+pointer-events:auto;
+}
+
+/* CONTENT */
+
+.mobile-content-scroll{
+display:block;
+position:fixed;
+top:var(--mobile-header-h);
+left:0;
+right:0;
+bottom:0;
+overflow-y:auto;
+background:var(--bg-olive);
+}
+
+.mobile-about-page{
+padding:52px 18px 0;
+}
+
+.mobile-about-copy h1{
+font-size:42px;
+margin-bottom:24px;
+}
+
+.mobile-about-copy p{
+font-size:15px;
+line-height:1.5;
+margin-bottom:22px;
+text-align:justify;
+}
+
+.mobile-working-title{
+font-size:23px;
+font-weight:700;
+margin:42px 0 20px;
+}
+
+.mobile-footer{
+padding:18px 0 32px;
+border-top:1px solid rgba(255,255,255,.12);
+text-align:center;
+font-size:13px;
+background:#000;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- DESKTOP VERSION -->
-  <div class="page">
-    <div class="frame">
+<!-- DESKTOP -->
 
-      <header class="topbar">
-        <div class="topbar-left">
-          <a href="index.html" class="brand-mark">W</a>
+<div class="page">
+<div class="frame">
 
-          <nav class="nav">
-            <a href="about.html">About Me</a>
+<header class="topbar">
 
-            <div class="dropdown">
-              <a href="#">Selected Works</a>
-              <div class="dropdown-menu">
-                <a href="samaroli.html">Samaroli</a>
-                <a href="pizzaexpress.html">Pizzaexpress</a>
-                <a href="canon.html">Canon</a>
-                <a href="kmb.html">KMB</a>
-                <a href="illustration-book.html">Illustration</a>
-                <a href="video.html">Video Projects</a>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+<div class="topbar-left">
 
-      <main class="about-page">
-        <section class="hero-visual">
-          <img src="assets/aboutme.png" alt="Chi Wai Lau portrait">
-        </section>
+<a href="index.html" class="brand-mark">W</a>
 
-        <section class="about-copy">
-          <h1>About</h1>
+<nav class="nav">
 
-          <p>
-            I am a multidisciplinary designer working across branding, packaging, visual storytelling and motion.
-          </p>
+<a href="about.html">About Me</a>
 
-          <p>
-            My work explores how design systems can translate brand ideas across different touchpoints — from labels and printed materials to campaigns, environments and film.
-          </p>
+<div class="dropdown">
 
-          <p>
-            Projects range from packaging and brand development for Samaroli to campaign visuals and digital content for PizzaExpress, often combining design thinking with creative direction and production.
-          </p>
+<a href="#">Selected Works</a>
 
-          <p>
-            I am interested in building visual languages that remain consistent across physical and digital platforms while retaining strong narrative clarity.
-          </p>
+<div class="dropdown-menu">
 
-          <div class="working-title">Working Approach</div>
+<a href="samaroli.html">Samaroli</a>
+<a href="pizzaexpress.html">Pizzaexpress</a>
+<a href="canon.html">Canon</a>
+<a href="kmb.html">KMB</a>
+<a href="illustration-book.html">Illustration</a>
+<a href="video.html">Video Projects</a>
 
-          <p>
-            My practice combines concept development, visual design and production execution.
-          </p>
+</div>
+</div>
 
-          <p>
-            I enjoy working across disciplines — from graphic design and typography to photography, video and environmental graphics — allowing projects to develop as cohesive visual experiences.
-          </p>
-        </section>
-      </main>
+</nav>
+</div>
 
-      <div class="bottom-bar">
-        <div class="copyright">
-          © 2026 Chi Wai Lau. All Rights Reserved.
-        </div>
+</header>
 
-        <a href="#" class="back-to-top">Back to top ↑</a>
-      </div>
+<main class="about-page">
 
-    </div>
-  </div>
+<section class="hero-visual">
+<img src="assets/aboutme.png">
+</section>
 
-  <!-- MOBILE VERSION -->
-  <div class="mobile-shell">
-    <div class="mobile-inner">
+<section class="about-copy">
 
-      <header class="mobile-topbar">
-        <a href="index.html" class="mobile-brand" aria-label="Home">
-          <img src="assets/logo.png" alt="Chi Wai Lau logo">
-        </a>
+<h1>About</h1>
 
-        <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </header>
+<p>I am a multidisciplinary designer working across branding, packaging, visual storytelling and motion.</p>
 
-      <div class="menu-overlay" id="menuOverlay"></div>
+<p>My work explores how design systems can translate brand ideas across different touchpoints — from labels and printed materials to campaigns, environments and film.</p>
 
-      <aside class="menu-panel" id="menuPanel" aria-hidden="true">
-        <nav>
-          <a href="about.html">About Me</a>
+<p>Projects range from packaging and brand development for Samaroli to campaign visuals and digital content for PizzaExpress, often combining design thinking with creative direction and production.</p>
 
-          <div class="menu-divider"></div>
+<p>I am interested in building visual languages that remain consistent across physical and digital platforms while retaining strong narrative clarity.</p>
 
-          <a href="index.html">Home</a>
-          <a href="samaroli.html" class="sub">Samaroli</a>
-          <a href="pizzaexpress.html" class="sub">PizzaExpress</a>
-          <a href="canon.html" class="sub">Canon</a>
-          <a href="kmb.html" class="sub">KMB</a>
-          <a href="illustration-book.html" class="sub">Illustration</a>
-          <a href="video.html" class="sub">Video Projects</a>
-        </nav>
-      </aside>
+<div class="working-title">Working Approach</div>
 
-      <main class="mobile-content-scroll">
-        <section class="mobile-about-page">
+<p>My practice combines concept development, visual design and production execution.</p>
 
-          <div class="mobile-hero-visual">
-            <img src="assets/aboutme.png" alt="Chi Wai Lau portrait">
-          </div>
+<p>I enjoy working across disciplines — from graphic design and typography to photography, video and environmental graphics — allowing projects to develop as cohesive visual experiences.</p>
 
-          <section class="mobile-about-copy">
-            <h1>About</h1>
+</section>
 
-            <p>
-              I am a multidisciplinary designer working across branding, packaging, visual storytelling and motion.
-            </p>
+</main>
 
-            <p>
-              My work explores how design systems can translate brand ideas across different touchpoints — from labels and printed materials to campaigns, environments and film.
-            </p>
+<div class="bottom-bar">
 
-            <p>
-              Projects range from packaging and brand development for Samaroli to campaign visuals and digital content for PizzaExpress, often combining design thinking with creative direction and production.
-            </p>
+<div class="copyright">
+© 2026 Chi Wai Lau
+</div>
 
-            <p>
-              I am interested in building visual languages that remain consistent across physical and digital platforms while retaining strong narrative clarity.
-            </p>
+<a href="#" class="back-to-top">Back to top ↑</a>
 
-            <div class="mobile-working-title">Working Approach</div>
+</div>
 
-            <p>
-              My practice combines concept development, visual design and production execution.
-            </p>
+</div>
+</div>
 
-            <p>
-              I enjoy working across disciplines — from graphic design and typography to photography, video and environmental graphics — allowing projects to develop as cohesive visual experiences.
-            </p>
-          </section>
+<!-- MOBILE -->
 
-          <footer class="mobile-footer">
-            © 2026 Chi Wai Lau. All Rights Reserved.
-          </footer>
+<div class="mobile-shell">
 
-        </section>
-      </main>
+<div class="mobile-inner">
 
-    </div>
-  </div>
+<header class="mobile-topbar">
 
-  <script>
-    const menuButton = document.getElementById("menuButton");
-    const menuPanel = document.getElementById("menuPanel");
-    const menuOverlay = document.getElementById("menuOverlay");
+<a href="index.html" class="mobile-brand">
+<img src="assets/logo.png">
+</a>
 
-    function openMenu() {
-      menuButton.classList.add("is-open");
-      menuPanel.classList.add("is-open");
-      menuOverlay.classList.add("is-open");
-      menuButton.setAttribute("aria-expanded", "true");
-      menuPanel.setAttribute("aria-hidden", "false");
-    }
+<button class="menu-button" id="menuButton">
+<span></span>
+<span></span>
+<span></span>
+</button>
 
-    function closeMenu() {
-      menuButton.classList.remove("is-open");
-      menuPanel.classList.remove("is-open");
-      menuOverlay.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuPanel.setAttribute("aria-hidden", "true");
-    }
+</header>
 
-    if (menuButton && menuPanel && menuOverlay) {
-      menuButton.addEventListener("click", () => {
-        const isOpen = menuPanel.classList.contains("is-open");
-        if (isOpen) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
+<div class="menu-overlay" id="menuOverlay"></div>
 
-      menuOverlay.addEventListener("click", closeMenu);
+<aside class="menu-panel" id="menuPanel">
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeMenu();
-        }
-      });
+<nav>
 
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 768) {
-          closeMenu();
-        }
-      });
-    }
+<a href="about.html">About Me</a>
 
-    window.addEventListener("pageshow", () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollLeft = 0;
-      document.body.scrollLeft = 0;
-      closeMenu();
-    });
+<a href="index.html">Home</a>
+<a href="samaroli.html" class="sub">Samaroli</a>
+<a href="pizzaexpress.html" class="sub">PizzaExpress</a>
+<a href="canon.html" class="sub">Canon</a>
+<a href="kmb.html" class="sub">KMB</a>
+<a href="illustration-book.html" class="sub">Illustration</a>
+<a href="video.html" class="sub">Video Projects</a>
 
-    window.addEventListener("load", () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollLeft = 0;
-      document.body.scrollLeft = 0;
-      closeMenu();
-    });
-  </script>
+</nav>
+
+</aside>
+
+<main class="mobile-content-scroll">
+
+<section class="mobile-about-page">
+
+<div class="mobile-hero-visual">
+<img src="assets/aboutme.png">
+</div>
+
+<section class="mobile-about-copy">
+
+<h1>About</h1>
+
+<p>I am a multidisciplinary designer working across branding, packaging, visual storytelling and motion.</p>
+
+<p>My work explores how design systems can translate brand ideas across different touchpoints — from labels and printed materials to campaigns, environments and film.</p>
+
+<p>Projects range from packaging and brand development for Samaroli to campaign visuals and digital content for PizzaExpress, often combining design thinking with creative direction and production.</p>
+
+<p>I am interested in building visual languages that remain consistent across physical and digital platforms while retaining strong narrative clarity.</p>
+
+<div class="mobile-working-title">Working Approach</div>
+
+<p>My practice combines concept development, visual design and production execution.</p>
+
+<p>I enjoy working across disciplines — from graphic design and typography to photography, video and environmental graphics — allowing projects to develop as cohesive visual experiences.</p>
+
+</section>
+
+<footer class="mobile-footer">
+© 2026 Chi Wai Lau
+</footer>
+
+</section>
+
+</main>
+
+</div>
+</div>
+
+<script>
+
+const menuButton=document.getElementById("menuButton");
+const menuPanel=document.getElementById("menuPanel");
+const menuOverlay=document.getElementById("menuOverlay");
+
+menuButton.onclick=()=>{
+menuPanel.classList.toggle("is-open");
+menuOverlay.classList.toggle("is-open");
+};
+
+menuOverlay.onclick=()=>{
+menuPanel.classList.remove("is-open");
+menuOverlay.classList.remove("is-open");
+};
+
+</script>
 
 </body>
 </html>
