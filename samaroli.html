@@ -227,6 +227,7 @@ overflow-y:auto;
 overflow-x:hidden;
 visibility:hidden;
 pointer-events:none;
+-webkit-overflow-scrolling:touch;
 }
 
 .mobile-menu-panel.open{
@@ -272,6 +273,7 @@ width:100%;
 height:2.5px;
 background:#9f9a67;
 border-radius:2px;
+transition:transform .25s ease, opacity .25s ease, top .25s ease;
 }
 
 .mobile-menu-icon span:nth-child(1){top:0;}
@@ -727,30 +729,49 @@ Role: Lead Designer — Packaging & Brand Rollout
 
     <main style="padding-top:var(--mobile-header-h); background:#000;">
 
-      <section style="position:relative; width:100%;">
-        <div style="position:relative; width:100%; overflow:hidden;">
-          <img
-            src="assets/samaroli-mobile_mobile-hero.png"
-            alt="Samaroli project hero"
-            style="width:100%; height:390px; object-fit:cover; object-position:center center; display:block;"
-          >
+<section style="position:relative; width:100%;">
+  <div style="position:relative; width:100%; overflow:hidden;">
+    <img
+      src="assets/samaroli-mobile_mobile-hero.png"
+      alt="Samaroli project hero"
+      style="width:100%; height:390px; object-fit:cover; object-position:center center; display:block;"
+    >
 
-          <div style="
-            position:absolute;
-            left:34px;
-            right:24px;
-            top:160px;
-            z-index:2;
-            font-size:27px;
-            line-height:1.15;
-            font-weight:700;
-            color:#f5f2ea;
-            max-width:250px;">
-            Samaroli
-          </div>
-        </div>
-      </section>
+    <div style="
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.62) 100%);
+      z-index:1;">
+    </div>
 
+   <div style="
+  position:absolute;
+  left:34px;
+  right:24px;
+  top:150px;
+  z-index:2;
+  max-width:250px;">
+  <h1 style="
+    font-size:27px;
+    line-height:1.1;
+    font-weight:700;
+    color:#f5f2ea;
+    margin:0 0 8px 0;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);">
+    Samaroli
+  </h1>
+
+  <p style="
+    font-size:12px;
+    line-height:1.5;
+    color:rgba(245,242,234,0.88);
+    margin:0;
+    text-shadow:0 2px 10px rgba(0,0,0,0.35);">
+    Label system development, packaging structure, print detailing, editorial rollout and campaign assets for a premium independent whisky brand.
+  </p>
+</div>
+  </div>
+</section>
       <section style="background:#f4f1e8; padding:20px 16px 18px;">
         <h2 style="
           font-size:18px;
