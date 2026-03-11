@@ -354,14 +354,14 @@
         justify-content:center;
         width:68px;
         height:68px;
+        flex:0 0 auto;
       }
 
-      .mobile-brand .brand-mark{
+      .mobile-brand img{
         width:54px;
         height:54px;
-        font-size:34px;
-        border-width:3px;
-        font-family:Arial, Helvetica, sans-serif;
+        object-fit:contain;
+        display:block;
       }
 
       .menu-button{
@@ -644,7 +644,7 @@
 
       <header class="mobile-topbar">
         <a href="index.html" class="mobile-brand" aria-label="Home">
-          <div class="brand-mark">W</div>
+          <img src="assets/logo.png" alt="Chi Wai Lau logo">
         </a>
 
         <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
