@@ -664,153 +664,385 @@ Role: Lead Designer — Packaging & Brand Rollout
 <div class="mobile-page">
   <div class="mobile-shell">
 
-<header class="mobile-header">
+    <header class="mobile-header">
+      <a class="mobile-logo" href="index.html">
+        <img src="assets/logo.png" alt="Chi Wai Lau logo">
+      </a>
 
-<a class="mobile-logo" href="index.html">
-<img src="assets/logo.png" alt="Chi Wai Lau logo">
-</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="mobile-menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </header>
 
-<button class="mobile-menu-btn" id="mobileMenuBtn">
+    <div class="menu-overlay" id="menuOverlay"></div>
 
-<span class="mobile-menu-icon">
-<span></span>
-<span></span>
-<span></span>
-</span>
+    <nav class="mobile-menu-panel" id="mobileMenuPanel">
+      <a href="about.html">About Me</a>
+      <a href="samaroli.html">Samaroli</a>
+      <a href="pizzaexpress.html">Pizzaexpress</a>
+      <a href="canon.html">Canon</a>
+      <a href="kmb.html">KMB</a>
+      <a href="video.html">Video</a>
+      <a href="illustration-book.html">Illustration</a>
+    </nav>
 
-</button>
+    <main style="padding-top:var(--mobile-header-h); background:#000;">
 
-</header>
+      <section style="position:relative; width:100%;">
+        <div style="position:relative; width:100%; overflow:hidden;">
+          <img
+            src="assets/samaroli-mobile_mobile-hero.png"
+            alt="Samaroli project hero"
+            style="width:100%; height:390px; object-fit:cover; object-position:center center; display:block;"
+          >
 
-<div class="menu-overlay" id="menuOverlay"></div>
+          <div style="
+            position:absolute;
+            left:34px;
+            right:24px;
+            top:160px;
+            z-index:2;
+            font-size:27px;
+            line-height:1.15;
+            font-weight:700;
+            color:#f5f2ea;
+            max-width:250px;">
+            Samaroli
+          </div>
+        </div>
+      </section>
 
-<nav class="mobile-menu-panel" id="mobileMenuPanel">
+      <section style="background:#f4f1e8; padding:20px 16px 18px;">
+        <h2 style="
+          font-size:18px;
+          line-height:1.1;
+          font-weight:700;
+          margin-bottom:8px;
+          color:#262114;">
+          The Challenge
+        </h2>
 
-<a href="about.html">About Me</a>
-<a href="samaroli.html">Samaroli</a>
-<a href="pizzaexpress.html">Pizzaexpress</a>
-<a href="canon.html">Canon</a>
-<a href="kmb.html">KMB</a>
-<a href="video.html">Video</a>
-<a href="illustration-book.html">Illustration</a>
+        <p style="
+          font-size:13px;
+          line-height:1.5;
+          color:#3c3528;">
+          Refined and systemised the label structure to improve hierarchy, scalability and production consistency, while preserving Samaroli’s heritage aesthetic.
+        </p>
+      </section>
 
-</nav>
+      <section style="background:#171702; color:#fff; text-align:center; padding:22px 16px 14px;">
+        <div style="
+          font-size:12px;
+          color:#c9c2b4;
+          margin-bottom:14px;
+          font-weight:700;
+          letter-spacing:.2px;">
+          Image Preview
+        </div>
+      </section>
 
-<main style="padding-top:var(--mobile-header-h); background:#000;">
+      <section style="background:#171702; padding:0 0 20px;">
+        <div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
+          <img src="assets/samaroli-mobile_card-01.png" alt="Label system comparison" style="border-radius:10px;">
+        </div>
 
-<section style="position:relative; width:100%;">
+        <div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
+          <img src="assets/samaroli-mobile_card-02.png" alt="Mockup and campaign direction" style="border-radius:10px;">
+        </div>
 
-<div style="position:relative; width:100%; overflow:hidden;">
+        <div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
+          <img src="assets/samaroli-mobile_card-03.png" alt="POS and print" style="border-radius:10px;">
+        </div>
 
-<img src="assets/samaroli-mobile_mobile-hero.png"
-style="width:100%; height:390px; object-fit:cover;">
+        <div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
+          <img src="assets/samaroli-mobile_card-04.png" alt="Retail output" style="border-radius:10px;">
+        </div>
 
-<div style="
-position:absolute;
-left:34px;
-right:24px;
-top:160px;
-font-size:27px;
-line-height:1.15;
-font-weight:700;
-color:#f5f2ea;
-max-width:250px;">
+        <div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
+          <img src="assets/samaroli-mobile_card-05.png" alt="Campaign and editorial" style="border-radius:10px;">
+        </div>
+      </section>
 
-Samaroli
+      <section style="background:#201f04; padding:16px 14px 18px;">
+        <h2 style="
+          font-size:28px;
+          line-height:1.02;
+          margin:0 0 10px;
+          color:#f5f0df;
+          font-weight:700;
+          letter-spacing:-0.3px;">
+          My Role
+        </h2>
 
-</div>
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="flex:1 1 auto; min-width:0;">
+            <p style="
+              color:#e6deca;
+              font-size:12px;
+              line-height:1.5;
+              margin-bottom:14px;
+              font-weight:400;">
+              I was responsible for the development of Samaroli’s label system,
+              supporting visual hierarchy, typography consistency, production detail,
+              editorial assets and campaign-led brand applications across different editions.
+            </p>
+          </div>
 
-</div>
+          <div style="flex:0 0 34%; max-width:34%; align-self:flex-start;">
+            <img src="assets/samaroli-mobile_application-across.png" alt="Application across editions">
+          </div>
+        </div>
+      </section>
 
-</section>
+      <section style="background:#f4f1e8; color:#1f1f1f; padding:18px 14px 18px;">
+        <h2 style="
+          font-size:28px;
+          line-height:1.04;
+          margin-bottom:8px;
+          color:#231f12;
+          font-weight:700;
+          letter-spacing:-0.3px;">
+          Label System Development
+        </h2>
 
-<section style="background:#f4f1e8; padding:20px 16px 18px;">
+        <h3 style="
+          font-size:14px;
+          line-height:1.3;
+          margin-bottom:10px;
+          color:#6c644b;
+          font-weight:700;">
+          Label System Development
+        </h3>
 
-<h2 style="
-font-size:18px;
-line-height:1.1;
-font-weight:700;
-margin-bottom:8px;
-color:#262114;">
+        <p style="
+          font-size:12px;
+          line-height:1.5;
+          color:#2f2a22;
+          margin-bottom:14px;
+          font-weight:400;">
+          A consistent visual system was created to support premium limited editions while allowing
+          each bottling to retain individual narrative cues. This included hierarchy setting,
+          typography handling, ornamental references and production alignment.
+        </p>
 
-The Challenge
+        <div style="width:85%; margin:0 auto 4px;">
+          <img src="assets/samaroli-mobile_labelsystem-01.png" alt="Label system layout">
+        </div>
+      </section>
 
-</h2>
+      <section style="background:#201f04; padding:16px 14px 18px;">
+        <h2 style="
+          font-size:28px;
+          line-height:1.04;
+          margin-bottom:8px;
+          color:#f3efdf;
+          font-weight:700;
+          letter-spacing:-0.3px;">
+          Production &amp; Material Strategy
+        </h2>
 
-<p style="
-font-size:13px;
-line-height:1.5;
-color:#3c3528;">
+        <p style="
+          font-size:12px;
+          line-height:1.5;
+          color:#d9d2bf;
+          margin-bottom:12px;
+          font-weight:400;">
+          Print structure, substrate behaviour and finishing logic were reviewed to ensure the label
+          system translated effectively across bottles, supporting assets and different release formats.
+        </p>
 
-Refined and systemised the label structure to improve hierarchy, scalability and production consistency, while preserving Samaroli’s heritage aesthetic.
+        <div style="width:50%; margin:0 auto 14px;">
+          <img src="assets/samaroli-mobile_foil-row.png" alt="Foil reference">
+        </div>
+        <div style="
+          font-size:11px;
+          line-height:1.45;
+          color:#d8d0bb;
+          text-align:center;
+          margin:-4px auto 14px;
+          width:86%;">
+          Foil reference exploration to establish contrast, premium finish and consistency across label applications.
+        </div>
 
-</p>
+        <div style="width:50%; margin:0 auto 14px;">
+          <img src="assets/samaroli-mobile_paper.png" alt="Paper reference">
+        </div>
+        <div style="
+          font-size:11px;
+          line-height:1.45;
+          color:#d8d0bb;
+          text-align:center;
+          margin:-4px auto 14px;
+          width:86%;">
+          Paper stock review to balance tactility, print performance and the heritage character of the brand.
+        </div>
 
-</section>
+        <div style="width:50%; margin:0 auto 14px;">
+          <img src="assets/samaroli-mobile_proofing.png" alt="Proofing and print accuracy">
+        </div>
+        <div style="
+          font-size:11px;
+          line-height:1.45;
+          color:#d8d0bb;
+          text-align:center;
+          margin:-4px auto 14px;
+          width:86%;">
+          Proofing checks were used to verify alignment, material behaviour and production accuracy before rollout.
+        </div>
+      </section>
 
-<section style="background:#171702; padding:0 0 20px;">
+      <section style="background:#f4f1e8; color:#1f1f1f; padding:18px 14px 18px;">
+        <h2 style="
+          font-size:28px;
+          line-height:1.04;
+          margin-bottom:8px;
+          color:#231f12;
+          font-weight:700;
+          letter-spacing:-0.3px;">
+          Digital &amp; Campaign Rollout
+        </h2>
 
-<div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
-<img src="assets/samaroli-mobile_card-01.png">
-</div>
+        <p style="
+          font-size:12px;
+          line-height:1.5;
+          color:#2f2a22;
+          margin-bottom:14px;
+          font-weight:400;">
+          The packaging system extended into web visuals, launch assets and digital presentation materials,
+          helping the brand remain visually coherent beyond the bottle itself.
+        </p>
 
-<div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
-<img src="assets/samaroli-mobile_card-02.png">
-</div>
+        <img src="assets/samaroli-mobile_rollout_banner.png" alt="Digital rollout banner">
 
-<div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
-<img src="assets/samaroli-mobile_card-03.png">
-</div>
+        <div style="
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:10px;
+          align-items:start;
+          margin:0 auto 12px;
+          max-width:50%;">
+          <img src="assets/samaroli-mobile_rollout-01.png" alt="Digital rollout asset">
+          <img src="assets/samaroli-mobile_rollout-02.png" alt="Digital rollout applications">
+        </div>
 
-<div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
-<img src="assets/samaroli-mobile_card-04.png">
-</div>
+        <div style="width:100%; overflow:hidden; margin-top:8px;">
+          <img
+            src="assets/samaroli-mobile_social-media.png"
+            alt="Social media adaptation"
+            style="width:140%; max-width:none; height:auto; display:block; transform:translateX(-14%);">
+        </div>
+      </section>
 
-<div style="width:86%; margin:0 auto 14px; background:#efede7; border-radius:16px; padding:10px;">
-<img src="assets/samaroli-mobile_card-05.png">
-</div>
+      <section style="background:#201f04; padding:16px 14px 18px;">
+        <h2 style="
+          font-size:28px;
+          line-height:1.04;
+          margin-bottom:8px;
+          color:#f3efdf;
+          font-weight:700;
+          letter-spacing:-0.3px;">
+          Editorial &amp; Retail Application
+        </h2>
 
-</section>
+        <img
+          src="assets/samaroli-mobile_editorial-banner.png"
+          alt="Editorial and retail application banner"
+          style="margin-bottom:18px;">
 
-<footer style="
-background:#000;
-color:#9f9a67;
-text-align:center;
-padding:26px 20px 34px;
-font-size:13px;
-line-height:1.6;
-border-top:1px solid rgba(255,255,255,0.08);">
+        <p style="
+          font-size:12px;
+          line-height:1.5;
+          color:#d9d2bf;
+          margin-bottom:30px;">
+          Additional visual outputs were adapted across editorial pages, retail communication and display-led formats, strengthening the premium identity across multiple touchpoints.
+        </p>
 
-© 2026 Chi Wai Lau. All Rights Reserved.
+        <div style="width:100%; margin:0 auto 16px;">
+          <img src="assets/samaroli-mobile_editorial-01.png" alt="Editorial layout example">
+        </div>
 
-</footer>
+        <div style="width:70%; margin:0 auto;">
+          <img src="assets/samaroli-mobile_editorial-02.png" alt="Retail application example">
+        </div>
+      </section>
 
-</main>
-</div>
+    </main>
+
+    <footer style="
+      background:#000;
+      color:#9f9a67;
+      text-align:center;
+      padding:26px 20px 34px;
+      font-size:13px;
+      line-height:1.6;
+      border-top:1px solid rgba(255,255,255,0.08);">
+      © 2026 Chi Wai Lau. All Rights Reserved.
+    </footer>
+
+  </div>
 </div>
 
 <script>
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+const menuOverlay = document.getElementById("menuOverlay");
 
-const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-const mobileMenuPanel = document.getElementById("mobileMenuPanel")
-const menuOverlay = document.getElementById("menuOverlay")
-
-function closeMobileMenu(){
-
-mobileMenuPanel.classList.remove("open")
-menuOverlay.classList.remove("open")
-
+function closeMobileMenu() {
+  if (!mobileMenuBtn || !mobileMenuPanel || !menuOverlay) return;
+  mobileMenuPanel.classList.remove("open");
+  menuOverlay.classList.remove("open");
+  mobileMenuBtn.classList.remove("active");
+  mobileMenuBtn.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
 }
 
-mobileMenuBtn.addEventListener("click",()=>{
+if (mobileMenuBtn && mobileMenuPanel && menuOverlay) {
+  mobileMenuBtn.addEventListener("click", () => {
+    const isOpen = mobileMenuPanel.classList.toggle("open");
+    menuOverlay.classList.toggle("open", isOpen);
+    mobileMenuBtn.classList.toggle("active", isOpen);
+    mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    document.body.style.overflow = isOpen && window.innerWidth <= 768 ? "hidden" : "";
+  });
 
-mobileMenuPanel.classList.toggle("open")
-menuOverlay.classList.toggle("open")
+  menuOverlay.addEventListener("click", closeMobileMenu);
 
-})
+  mobileMenuPanel.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMobileMenu);
+  });
 
-menuOverlay.addEventListener("click",closeMobileMenu)
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
+    }
+  });
 
+  window.addEventListener("pageshow", () => {
+    closeMobileMenu();
+  });
+
+  window.addEventListener("load", () => {
+    closeMobileMenu();
+  });
+}
+
+window.addEventListener("pageshow", () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
+  closeMobileMenu();
+});
+
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
+  closeMobileMenu();
+});
 </script>
 
 </body>
