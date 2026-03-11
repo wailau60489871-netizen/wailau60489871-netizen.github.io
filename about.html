@@ -12,7 +12,7 @@
       --panel-border:rgba(188,178,110,.28);
       --menu-bg:rgba(8,8,8,.96);
       --bg-olive:rgba(40,38,5,.88);
-      --mobile-header-h:78px;
+      --mobile-header-h:74px;
       --mobile-max-width:430px;
     }
 
@@ -354,53 +354,53 @@
         justify-content:space-between;
       }
 
-      .mobile-brand{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        width:56px;
-        height:56px;
-        flex:0 0 auto;
-      }
+.mobile-brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:50px;
+  height:50px;
+  flex:0 0 auto;
+}
 
-      .mobile-brand img{
-        width:54px;
-        height:54px;
-        object-fit:contain;
-        display:block;
-      }
+.mobile-brand img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+  display:block;
+}
 
-      .menu-button{
-        display:flex;
-        width:56px;
-        height:56px;
-        border:none;
-        background:transparent;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        gap:7px;
-        cursor:pointer;
-        padding:0;
-        position:relative;
-        z-index:10001;
-      }
+ .menu-button{
+  display:flex;
+  width:48px;
+  height:48px;
+  border:none;
+  background:transparent;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  padding:0;
+  position:relative;
+  z-index:10001;
+}
 
-      .menu-button span{
-        display:block;
-        width:36px;
-        height:3px;
-        background:#a4a17b;
-        transition:transform .25s ease, opacity .25s ease;
-      }
+.menu-button span{
+  display:block;
+  width:28px;
+  height:2.5px;
+  background:#9f9a67;
+  transition:transform .25s ease, opacity .25s ease, top .25s ease;
+}
 
-      .menu-button.is-open span:nth-child(1){
-        transform:translateY(10px) rotate(45deg);
-      }
+ .menu-button.is-open span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
 
-      .menu-button.is-open span:nth-child(2){
-        opacity:0;
-      }
+.menu-button.is-open span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
 
       .menu-button.is-open span:nth-child(3){
         transform:translateY(-10px) rotate(-45deg);
