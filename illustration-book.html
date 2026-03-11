@@ -809,24 +809,44 @@
     }
 
     /* drama image cropped left black area + zoomed 30% */
-    .mobile-drama-crop{
-      width:100%;
-      height:300px;
-      overflow:hidden;
-      margin-bottom:16px;
-      position:relative;
-      background:#000;
-    }
+.mobile-drama-crop{
+  width:100%;
+  height:300px;
+  overflow:hidden;
+  margin-bottom:16px;
+  position:relative;
+  background:#000;
+}
 
-    .mobile-drama-crop img{
-      width:130%;
-      max-width:none;
-      height:100%;
-      object-fit:cover;
-      object-position:72% center;
-      transform:translateX(-14%);
-      display:block;
-    }
+.mobile-drama-crop img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+.mobile-drama-overlay{
+  position:absolute;
+  left:16px;
+  top:18px;
+  z-index:2;
+  max-width:160px;
+}
+
+.mobile-drama-overlay h2{
+  font-size:22px;
+  line-height:1.1;
+  margin-bottom:8px;
+  color:#f3efdf;
+}
+
+.mobile-drama-overlay h3{
+  font-size:14px;
+  line-height:1.25;
+  color:#ddd6c4;
+  margin:0;
+}
 
     .mobile-reel-strip{
       display:grid;
@@ -1129,22 +1149,26 @@
           </p>
         </section>
 
-        <section class="mobile-section dark">
-          <div class="mobile-drama-crop">
-            <img src="assets/illustration_drama.png" alt="Drama poster illustration">
-          </div>
-          <h2>Drama poster</h2>
-          <h3>Concept &amp; Visual Expression</h3>
-          <p>
-            This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere.
-          </p>
-          <p>
-            The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context.
-          </p>
-          <p>
-            The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling.
-          </p>
-        </section>
+       <section class="mobile-section dark">
+  <div class="mobile-drama-crop">
+    <img src="assets/illustration_drama.png" alt="Drama poster illustration">
+
+    <div class="mobile-drama-overlay">
+      <h2>Drama poster</h2>
+      <h3>Concept &amp; Visual Expression</h3>
+    </div>
+  </div>
+
+  <p>
+    This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere.
+  </p>
+  <p>
+    The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context.
+  </p>
+  <p>
+    The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling.
+  </p>
+</section>
 
         <section class="mobile-section white">
           <div class="mobile-reel-strip">
