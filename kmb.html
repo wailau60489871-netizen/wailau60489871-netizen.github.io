@@ -1,404 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KMB – Chi Wai Lau Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KMB – Chi Wai Lau Portfolio</title>
 
-<style>
+  <style>
+    :root{
+      --bg:#1c1a00;
+      --text:#f3f0e6;
+      --muted:#d8d1b7;
+      --panel-border:rgba(188,178,110,.28);
+      --menu-bg:rgba(8,8,8,.96);
+      --bg-olive:rgba(40,38,5,.88);
+      --line:rgba(255,255,255,.18);
+      --accent:#8e0000;
 
-:root{
---bg:#1c1a00;
---text:#f3f0e6;
---muted:#d8d1b7;
---panel-border:rgba(188,178,110,.28);
---menu-bg:rgba(8,8,8,.96);
---bg-olive:rgba(40,38,5,.88);
---line:rgba(255,255,255,.18);
---accent:#8e0000;
+      --mobile-header-h:74px;
+      --mobile-max-width:430px;
+      --mobile-gold:#9f9a67;
+      --mobile-white:#f4f1e8;
+      --mobile-dark:#171702;
+      --mobile-olive:#201f04;
+      --mobile-body:#2f2a22;
+    }
 
---mobile-header-h:74px;
---mobile-max-width:430px;
---mobile-gold:#9f9a67;
---mobile-white:#f4f1e8;
---mobile-olive:#201f04;
-}
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+    html, body{
+      width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+    }
 
-html,body{
-width:100%;
-max-width:100%;
-overflow-x:hidden;
-font-family:Arial, Helvetica, sans-serif;
-color:var(--text);
-background:var(--bg);
-}
+    body{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
+        url("assets/hero-studio.png") center center / cover no-repeat fixed;
+    }
 
-body{
-background:
-linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.76)),
-url("assets/hero-studio.png") center center / cover no-repeat fixed;
-}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-/* ================= DESKTOP ================= */
+    img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
 
-.page{
-width:1220px;
-margin:0 auto;
-padding:24px 0 40px;
-}
+    /* =========================
+       DESKTOP
+    ========================== */
+    .page{
+      width:1220px;
+      margin:0 auto;
+      padding:24px 0 40px;
+      display:block;
+    }
 
-.frame{
-background:var(--bg-olive);
-border:1px solid var(--panel-border);
-padding:20px 20px 34px;
-}
+    .frame{
+      position:relative;
+      background:var(--bg-olive);
+      border:1px solid var(--panel-border);
+      padding:20px 20px 34px;
+      overflow:hidden;
+    }
 
-/* topbar */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      padding:14px 18px;
+      margin:-20px -20px 0 -20px;
+      background:#000;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      position:relative;
+      z-index:60;
+    }
 
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 18px;
-margin:-20px -20px 0 -20px;
-background:#000;
-}
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
 
-.nav{
-display:flex;
-gap:34px;
-font-weight:700;
-font-size:14px;
-color:var(--muted);
-}
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      margin-left:auto;
+    }
 
-.nav a:hover{
-color:var(--text);
-}
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border:2px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:24px;
+      color:var(--text);
+      flex:0 0 auto;
+    }
 
-/* ================= MOBILE ================= */
+    .nav{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      font-weight:700;
+      color:var(--muted);
+      font-size:14px;
+    }
 
-.mobile-page{
-display:none;
-background:#000;
-}
+    .nav > a,
+    .dropdown > a{
+      display:inline-flex;
+      align-items:center;
+      height:32px;
+      white-space:nowrap;
+    }
 
-.mobile-shell{
-max-width:430px;
-margin:0 auto;
-}
+    .nav a:hover{
+      color:var(--text);
+    }
 
-.mobile-header{
-position:fixed;
-top:0;
-left:50%;
-transform:translateX(-50%);
-width:100%;
-max-width:430px;
-height:74px;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 18px;
-z-index:9999;
-}
+    .dropdown{
+      position:relative;
+    }
 
-.mobile-logo{
-width:50px;
-height:50px;
-}
+    .dropdown::after{
+      content:"";
+      position:absolute;
+      left:0;
+      top:100%;
+      width:100%;
+      height:14px;
+    }
 
-.mobile-menu-btn{
-width:48px;
-height:48px;
-border:0;
-background:none;
-cursor:pointer;
-}
+    .dropdown-menu{
+      position:absolute;
+      top:100%;
+      left:0;
+      min-width:210px;
+      background:var(--menu-bg);
+      border:1px solid rgba(255,255,255,.08);
+      padding:12px 18px;
+      display:none;
+      z-index:50;
+    }
 
-.mobile-menu-icon{
-width:28px;
-height:20px;
-position:relative;
-}
+    .dropdown:hover .dropdown-menu{
+      display:block;
+    }
 
-.mobile-menu-icon span{
-position:absolute;
-width:100%;
-height:2px;
-background:var(--mobile-gold);
-}
+    .dropdown-menu a{
+      display:block;
+      padding:6px 0;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+      transition:color .2s ease, transform .2s ease;
+    }
 
-.mobile-menu-icon span:nth-child(1){top:0;}
-.mobile-menu-icon span:nth-child(2){top:8px;}
-.mobile-menu-icon span:nth-child(3){top:16px;}
+    .dropdown-menu a::before{
+      content:"▶ ";
+      opacity:0;
+      transition:opacity .2s ease;
+      font-size:12px;
+    }
 
-.menu-overlay{
-position:fixed;
-top:74px;
-left:0;
-right:0;
-bottom:0;
-background:rgba(0,0,0,.4);
-opacity:0;
-pointer-events:none;
-}
+    .dropdown-menu a:hover{
+      color:var(--text);
+      transform:translateX(4px);
+    }
 
-.menu-overlay.open{
-opacity:1;
-pointer-events:auto;
-}
+    .dropdown-menu a:hover::before{
+      opacity:1;
+    }
 
-.mobile-menu-panel{
-position:fixed;
-top:74px;
-right:0;
-width:100%;
-max-width:430px;
-height:100vh;
-background:#000;
-transform:translateX(100%);
-transition:.3s;
-padding:28px;
-}
+    .quick-links-inline{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      white-space:nowrap;
+    }
 
-.mobile-menu-panel.open{
-transform:translateX(0);
-}
+    .quick-links-inline a:hover{
+      color:var(--text);
+    }
 
-.mobile-menu-panel a{
-display:block;
-font-size:28px;
-font-weight:700;
-padding:14px 0;
-border-bottom:1px solid rgba(255,255,255,.08);
-}
+    .site-title{
+      text-align:right;
+      line-height:1;
+      flex:0 0 auto;
+    }
 
-/* ================= HERO ================= */
+    .portfolio-word{
+      display:block;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:1px;
+      color:var(--text);
+    }
 
-.mobile-content{
-padding-top:74px;
-}
+    .name-word{
+      display:block;
+      margin-top:2px;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.6px;
+      color:var(--muted);
+    }
 
-.mobile-hero-image{
-width:100%;
-height:360px;
-object-fit:cover;
-}
+    .kmb-page{
+      width:1120px;
+      margin:0 auto;
+      padding:30px 0 10px;
+    }
 
-.mobile-hero-copy{
-position:absolute;
-left:28px;
-top:150px;
-max-width:260px;
-}
+    .kmb-grid-top{
+      display:grid;
+      grid-template-columns:350px 1fr;
+      gap:68px;
+      align-items:start;
+      margin-bottom:48px;
+    }
 
-.mobile-hero-copy h1{
-font-size:28px;
-margin-bottom:8px;
-}
+    .kmb-poster{
+      width:100%;
+      max-width:350px;
+      margin-left:34px;
+    }
 
-.mobile-hero-copy p{
-font-size:12px;
-}
+    .kmb-top-copy{
+      padding-top:34px;
+      max-width:520px;
+      margin-left:80px;
+    }
 
-/* ================= SECTIONS ================= */
+    .kmb-title{
+      font-size:28px;
+      line-height:1.05;
+      font-weight:700;
+      margin-bottom:18px;
+    }
 
-.mobile-white{
-background:var(--mobile-white);
-color:#222;
-padding:18px 14px;
-}
+    .kmb-subtitle{
+      font-size:17px;
+      line-height:1.22;
+      font-weight:700;
+      margin-bottom:22px;
+      max-width:360px;
+    }
 
-.mobile-dark{
-background:var(--mobile-olive);
-padding:18px 14px;
-}
+    .kmb-copy{
+      font-size:14px;
+      line-height:1.62;
+      color:var(--text);
+    }
 
-.mobile-dark p{
-color:#ddd6c4;
-font-size:12px;
-line-height:1.55;
-}
+    .kmb-copy + .kmb-section-title{
+      margin-top:54px;
+    }
 
-.mobile-bus-image{
-margin-top:16px;
-}
+    .kmb-section-title{
+      font-size:18px;
+      line-height:1.2;
+      font-weight:700;
+      margin-bottom:16px;
+      max-width:340px;
+    }
 
-.mobile-red-bar{
-height:14px;
-background:#8e0000;
-}
+    .kmb-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:58px;
+      align-items:end;
+      margin-bottom:0;
+    }
 
-.mobile-busstop-image{
-width:76%;
-margin:16px auto;
-}
+    .kmb-row-left{
+      max-width:430px;
+      margin-left:80px;
+    }
 
-.mobile-footer{
-background:#000;
-text-align:center;
-padding:26px;
-font-size:13px;
-color:#9f9a67;
-}
+    .kmb-row-right{
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-end;
+    }
 
-@media (max-width:768px){
+    .kmb-bus{
+      width:560px;
+    }
 
-.page{
-display:none;
-}
+    .kmb-red-bar{
+      width:calc(100% + 40px);
+      height:20px;
+      background:var(--accent);
+      margin:12px -20px 48px;
+    }
 
-.mobile-page{
-display:block;
-}
+    .kmb-row-2{
+      display:grid;
+      grid-template-columns:520px 1fr;
+      gap:68px;
+      align-items:center;
+      margin-bottom:64px;
+    }
 
-}
+    .kmb-banner{
+      width:520px;
+    }
 
-</style>
+    .kmb-row-2-right{
+      max-width:430px;
+    }
+
+    .kmb-row-3{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:72px;
+      align-items:center;
+      margin-bottom:26px;
+    }
+
+    .kmb-row-3-left{
+      max-width:390px;
+      padding-left:120px;
+    }
+
+    .kmb-busstop{
+      width:340px;
+      margin-left:auto;
+      margin-right:400px;
+    }
+
+    .bottom-bar{
+      width:calc(100% + 40px);
+      margin:24px -20px -34px;
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.14);
+      padding:16px 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .copyright{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .back-to-top{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:124px;
+      height:40px;
+      border:1px solid rgba(255,255,255,.28);
+      color:var(--text);
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      transition:background .2s ease, transform .2s ease;
+    }
+
+    .back-to-top:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+    .mobile-page{
+      display:none;
+      width:100%;
+      max-width:100%;
+      overflow:hidden;
+      background:#000;
+    }
+
+    .mobile-shell{
+      width:100%;
+      max-width:var(--mobile-max-width);
+      margin:0 auto;
+      background:#000;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .mobile-header{
+      position:fixed;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:100%;
+      max-width:var(--mobile-max-width);
+      height:var(--mobile-header-h);
+      background:rgba(0,0,0,0.98);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 18px;
+      z-index:9999;
+    }
+
+    .mobile-logo{
+      width:50px;
+      height:50px;
+      display:block;
+      flex:0 0 auto;
+    }
+
+    .mobile-logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .mobile-menu-btn{
+      width:48px;
+      height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+      padding:0;
+    }
+
+    .mobile-menu-icon{
+      width:28px;
+      height:20px;
+      position:relative;
+    }
+
+    .mobile-menu-icon span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2.5px;
+      background:var(--mobile-gold);
+      border-radius:2px;
+      transition:transform .25s ease, opacity .25s ease, top .25s ease;
+    }
+
+    .mobile-menu-icon span:nth-child(1){top:0;}
+    .mobile-menu-icon span:nth-child(2){top:8px;}
+    .mobile-menu-icon span:nth-child(3){top:16px;}
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(1){
+      top:8px;
+      transform:rotate(45deg);
+    }
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(2){
+      opacity:0;
+    }
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(3){
+      top:8px;
+      transform:rotate(-45deg);
+    }
+
+    .menu-overlay{
+      position:fixed;
+      inset:var(--mobile-header-h) 0 0 0;
+      background:rgba(0,0,0,0.28);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+      z-index:9997;
+    }
+
+    .menu-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .mobile-menu-panel{
+      position:fixed;
+      top:var(--mobile-header-h);
+      right:0;
+      width:100%;
+      max-width:var(--mobile-max-width);
+      height:calc(100vh - var(--mobile-header-h));
+      background:rgba(0,0,0,0.98);
+      transform:translateX(100%);
+      transition:transform .28s ease;
+      z-index:9998;
+      padding:28px 26px 40px;
+      overflow-y:auto;
+      overflow-x:hidden;
+      visibility:hidden;
+      pointer-events:none;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    .mobile-menu-panel.open{
+      transform:translateX(0);
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .mobile-menu-panel a{
+      display:block;
+      color:#f3f0e6;
+      font-size:28px;
+      font-weight:700;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .mobile-hero,
+    .mobile-hero-image-wrap{
+      position:relative;
+      z-index:1;
+    }
+
+    .mobile-content{
+      padding-top:var(--mobile-header-h);
+      background:#000;
+    }
+
+    .mobile-hero-image{
+      width:100%;
+      height:360px;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+    }
+
+    .mobile-hero-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.10) 35%, rgba(0,0,0,0.66) 100%);
+      z-index:1;
+    }
+
+    .mobile-hero-copy{
+      position:absolute;
+      left:28px;
+      right:24px;
+      top:140px;
+      z-index:2;
+      max-width:270px;
+    }
+
+    .mobile-hero-copy h1{
+      font-size:28px;
+      line-height:1.08;
+      font-weight:700;
+      color:#f5f2ea;
+      margin:0 0 8px 0;
+      text-shadow:0 2px 10px rgba(0,0,0,0.35);
+    }
+
+    .mobile-hero-copy p{
+      font-size:12px;
+      line-height:1.5;
+      color:rgba(245,242,234,0.88);
+      margin:0;
+      text-shadow:0 2px 10px rgba(0,0,0,0.35);
+    }
+
+    .mobile-white{
+      background:var(--mobile-white);
+      color:#1f1f1f;
+      padding:18px 14px 18px;
+    }
+
+    .mobile-white h2{
+      font-size:26px;
+      line-height:1.08;
+      margin-bottom:8px;
+      color:#231f12;
+      font-weight:700;
+      letter-spacing:-0.2px;
+    }
+
+    .mobile-white h3{
+      font-size:16px;
+      line-height:1.2;
+      margin-bottom:10px;
+      color:#5b543f;
+      font-weight:700;
+    }
+
+    .mobile-white p{
+      font-size:12px;
+      line-height:1.55;
+      color:var(--mobile-body);
+    }
+
+    .mobile-dark{
+      background:var(--mobile-olive);
+      padding:18px 14px 20px;
+    }
+
+    .mobile-dark h2,
+    .mobile-dark h3{
+      color:#f3efdf;
+    }
+
+    .mobile-dark h2{
+      font-size:26px;
+      line-height:1.08;
+      margin-bottom:10px;
+      font-weight:700;
+      letter-spacing:-0.2px;
+    }
+
+    .mobile-dark h3{
+      font-size:16px;
+      line-height:1.2;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .mobile-dark p,
+    .mobile-dark li{
+      font-size:12px;
+      line-height:1.55;
+      color:#ddd6c4;
+    }
+
+    .mobile-list{
+      padding-left:18px;
+      margin-top:8px;
+    }
+
+    .mobile-gap-line{
+      height:1px;
+      background:rgba(255,255,255,.10);
+    }
+
+    .mobile-image-card{
+      width:100%;
+      margin:0 auto 16px;
+    }
+
+    .mobile-red-bar{
+      width:100%;
+      height:14px;
+      background:var(--accent);
+    }
+
+    .mobile-bus-image{
+      width:100%;
+      margin:12px auto 0;
+    }
+
+    .mobile-banner-image{
+      width:100%;
+      margin:0 auto 14px;
+    }
+
+    .mobile-busstop-image{
+      width:76%;
+      margin:14px auto 0;
+    }
+
+    .mobile-footer{
+      background:#000;
+      color:var(--mobile-gold);
+      text-align:center;
+      padding:26px 20px 34px;
+      font-size:13px;
+      line-height:1.6;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width:768px){
+      body{
+        min-width:0;
+        overflow-x:hidden;
+        background:#000;
+      }
+
+      .page{
+        display:none;
+      }
+
+      .mobile-page{
+        display:block;
+      }
+    }
+
+    @media (min-width:769px){
+      .mobile-page{
+        display:none !important;
+      }
+
+      .page{
+        display:block;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- DESKTOP VERSION -->
+  <div class="page">
+    <div class="frame">
 
-<!-- MOBILE VERSION -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <a href="index.html" class="brand-mark">W</a>
 
-<div class="mobile-page">
+          <nav class="nav">
+            <a href="about.html">About Me</a>
 
-<div class="mobile-shell">
+            <div class="dropdown">
+              <a href="#">Selected Works</a>
+              <div class="dropdown-menu">
+                <a href="samaroli.html">Samaroli</a>
+                <a href="pizzaexpress.html">Pizzaexpress</a>
+                <a href="canon.html">Canon</a>
+                <a href="kmb.html">KMB</a>
+                <a href="illustration-book.html">Illustration</a>
+                <a href="video.html">Video Project</a>
+              </div>
+            </div>
+          </nav>
+        </div>
 
-<header class="mobile-header">
+        <div class="topbar-right">
+          <nav class="quick-links-inline">
+            <a href="#overview">Overview</a>
+            <a href="#transit">Transit</a>
+            <a href="#outdoor">Outdoor</a>
+            <a href="#street">Street</a>
+          </nav>
 
-<img class="mobile-logo" src="assets/logo.png">
+          <div class="site-title">
+            <span class="portfolio-word">PORTFOLIO</span>
+            <span class="name-word">Chi Wai Lau</span>
+          </div>
+        </div>
+      </header>
 
-<button class="mobile-menu-btn" id="mobileMenuBtn">
-<div class="mobile-menu-icon">
-<span></span>
-<span></span>
-<span></span>
-</div>
-</button>
+      <main class="kmb-page">
 
-</header>
+        <section id="overview" class="kmb-grid-top">
+          <div class="kmb-poster">
+            <img src="assets/kmb_poster.png" alt="KMB recruitment campaign poster">
+          </div>
 
-<div class="menu-overlay" id="menuOverlay"></div>
+          <div class="kmb-top-copy">
+            <h1 class="kmb-title">KMB</h1>
+            <h2 class="kmb-subtitle">Recruitment Campaign &amp;<br>Outdoor Brand Application</h2>
 
-<nav class="mobile-menu-panel" id="mobileMenuPanel">
+            <p class="kmb-copy">
+              Developed a recruitment-focused campaign for KMB, translating a clear hiring message into high-visibility outdoor and transit environments. The project focused on communicating employment opportunities through bold visual messaging, strong typographic hierarchy and transport-led imagery that could be immediately recognised in busy urban contexts.
+            </p>
 
-<a href="about.html">About Me</a>
-<a href="samaroli.html">Samaroli</a>
-<a href="pizzaexpress.html">Pizzaexpress</a>
-<a href="canon.html">Canon</a>
-<a href="kmb.html">KMB</a>
-<a href="video.html">Video</a>
-<a href="illustration-book.html">Illustration</a>
+            <h3 class="kmb-section-title">Campaign Concept &amp;<br>Visual Direction</h3>
+            <p class="kmb-copy">
+              The campaign was designed to function across multiple physical formats, including large-scale building banners, bus body advertising and street-level recruitment touchpoints. Each execution required careful adaptation of layout structure, ensuring the key message remained highly legible at distance while maintaining brand clarity and visual impact.
+            </p>
+          </div>
+        </section>
 
-</nav>
+        <section id="transit" class="kmb-row">
+          <div class="kmb-row-left">
+            <h3 class="kmb-section-title">Transit Advertising Application</h3>
+            <p class="kmb-copy">
+              The campaign was designed to function across multiple physical formats, including large-scale building banners, bus body advertising and street-level recruitment touchpoints. Each execution required careful adaptation of layout structure, ensuring the key message remained highly legible at distance while maintaining brand clarity and visual impact.
+            </p>
+          </div>
 
-<main class="mobile-content">
+          <div class="kmb-row-right">
+            <img class="kmb-bus" src="assets/kmb_bus.png" alt="KMB bus advertising application">
+          </div>
+        </section>
 
-<section class="mobile-hero">
+        <div class="kmb-red-bar"></div>
 
-<img class="mobile-hero-image" src="assets/kmb_poster.png">
+        <section id="outdoor" class="kmb-row-2">
+          <div>
+            <img class="kmb-banner" src="assets/kmb_banner.png" alt="KMB large-format building banner">
+          </div>
 
-<div class="mobile-hero-copy">
-<h1>KMB</h1>
-<p>Recruitment campaign, transit advertising and outdoor communication.</p>
-</div>
+          <div class="kmb-row-2-right">
+            <h3 class="kmb-section-title">Large-Format Outdoor Application</h3>
+            <p class="kmb-copy">
+              Strong emphasis was placed on information hierarchy, balancing promotional messaging with practical recruitment details such as contact information and communication channels. The design approach prioritised message clarity, immediate recognition and strong public visibility within high-traffic environments.
+            </p>
+            <br>
+            <p class="kmb-copy">
+              Beyond the core visual concept, the project also involved adapting campaign artwork across different scales and physical placements. From large architectural banners to moving transit media, the campaign maintained a consistent visual system while responding to the spatial and environmental constraints of each application.
+            </p>
+          </div>
+        </section>
 
-</section>
+        <section id="street" class="kmb-row-3">
+          <div class="kmb-row-3-left">
+            <h3 class="kmb-section-title">Street-Level Recruitment Touchpoints</h3>
+            <p class="kmb-copy">
+              The final outcome demonstrates how a unified design approach can extend across outdoor, transit and street-level formats, transforming everyday urban environments into effective communication platforms while reinforcing the visibility and accessibility of the recruitment message.
+            </p>
+          </div>
 
-<section class="mobile-white">
+          <div>
+            <img class="kmb-busstop" src="assets/kmb_busstop.png" alt="KMB street-level recruitment touchpoint">
+          </div>
+        </section>
 
-<h2>Recruitment Campaign</h2>
+      </main>
 
-<p>
-Developed a recruitment-focused campaign translating hiring messages into high-visibility urban environments.
-</p>
+      <div class="bottom-bar">
+        <div class="copyright">
+          © 2026 Chi Wai Lau. All Rights Reserved.
+        </div>
 
-</section>
+        <a href="#" class="back-to-top">Back to top ↑</a>
+      </div>
 
-<!-- 合併 bus 圖的 section -->
+    </div>
+  </div>
 
-<section class="mobile-dark">
+  <!-- MOBILE VERSION -->
+  <div class="mobile-page">
+    <div class="mobile-shell">
 
-<h3>Transit Advertising Application</h3>
+      <header class="mobile-header">
+        <a class="mobile-logo" href="index.html" aria-label="Home">
+          <img src="assets/logo.png" alt="Chi Wai Lau logo">
+        </a>
 
-<p>
-The campaign was designed to function across multiple physical formats including bus body advertising and large outdoor placements.
-</p>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+          <span class="mobile-menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </header>
 
-<div class="mobile-bus-image">
-<img src="assets/kmb_bus.png">
-</div>
+      <div class="menu-overlay" id="menuOverlay"></div>
 
-</section>
+      <nav class="mobile-menu-panel" id="mobileMenuPanel">
+        <a href="about.html">About Me</a>
+        <a href="samaroli.html">Samaroli</a>
+        <a href="pizzaexpress.html">Pizzaexpress</a>
+        <a href="canon.html">Canon</a>
+        <a href="kmb.html">KMB</a>
+        <a href="video.html">Video</a>
+        <a href="illustration-book.html">Illustration</a>
+      </nav>
 
-<div class="mobile-red-bar"></div>
+      <main class="mobile-content">
 
-<section class="mobile-white">
+        <section class="mobile-hero">
+          <div class="mobile-hero-image-wrap">
+            <img class="mobile-hero-image" src="assets/kmb_poster.png" alt="KMB recruitment campaign poster">
+            <div class="mobile-hero-overlay"></div>
 
-<img src="assets/kmb_banner.png">
+            <div class="mobile-hero-copy">
+              <h1>KMB</h1>
+              <p>Recruitment campaign, transit advertising, outdoor banners and street-level public communication.</p>
+            </div>
+          </div>
+        </section>
 
-<h3>Large-Format Outdoor Application</h3>
+        <section class="mobile-white">
+          <h2>Recruitment Campaign &amp; Outdoor Brand Application</h2>
+          <p style="margin-bottom:12px;">
+            Developed a recruitment-focused campaign for KMB, translating a clear hiring message into high-visibility outdoor and transit environments.
+          </p>
+          <p>
+            The project focused on communicating employment opportunities through bold visual messaging, strong typographic hierarchy and transport-led imagery that could be immediately recognised in busy urban contexts.
+          </p>
+        </section>
 
-<p>
-The design emphasised strong hierarchy and visibility within busy public environments.
-</p>
+        <section class="mobile-dark">
+          <h3>Campaign Concept &amp; Visual Direction</h3>
+          <p>
+            The campaign was designed to function across multiple physical formats, including large-scale building banners, bus body advertising and street-level recruitment touchpoints. Each execution required careful adaptation of layout structure, ensuring the key message remained highly legible at distance while maintaining brand clarity and visual impact.
+          </p>
+        </section>
 
-</section>
+        <section class="mobile-dark" style="padding-top:0;">
+          <div class="mobile-bus-image">
+            <img src="assets/kmb_bus.png" alt="KMB bus advertising application">
+          </div>
+        </section>
 
-<section class="mobile-dark">
+        <div class="mobile-red-bar"></div>
 
-<h3>Street-Level Recruitment</h3>
+        <section class="mobile-white">
+          <div class="mobile-banner-image">
+            <img src="assets/kmb_banner.png" alt="KMB large-format building banner">
+          </div>
 
-<p>
-A unified design system applied across outdoor, transit and street-level touchpoints.
-</p>
+          <h3>Large-Format Outdoor Application</h3>
+          <p style="margin-bottom:12px;">
+            Strong emphasis was placed on information hierarchy, balancing promotional messaging with practical recruitment details such as contact information and communication channels.
+          </p>
+          <p>
+            The design approach prioritised message clarity, immediate recognition and strong public visibility within high-traffic environments.
+          </p>
+          <br>
+          <p>
+            Beyond the core visual concept, the project also involved adapting campaign artwork across different scales and physical placements. From large architectural banners to moving transit media, the campaign maintained a consistent visual system while responding to the spatial and environmental constraints of each application.
+          </p>
+        </section>
 
-<div class="mobile-busstop-image">
-<img src="assets/kmb_busstop.png">
-</div>
+        <div class="mobile-gap-line"></div>
 
-</section>
+        <section class="mobile-dark">
+          <h3>Street-Level Recruitment Touchpoints</h3>
+          <p>
+            The final outcome demonstrates how a unified design approach can extend across outdoor, transit and street-level formats, transforming everyday urban environments into effective communication platforms while reinforcing the visibility and accessibility of the recruitment message.
+          </p>
 
-</main>
+          <div class="mobile-busstop-image">
+            <img src="assets/kmb_busstop.png" alt="KMB street-level recruitment touchpoint">
+          </div>
+        </section>
 
-<footer class="mobile-footer">
-© 2026 Chi Wai Lau. All Rights Reserved.
-</footer>
+      </main>
 
-</div>
+      <footer class="mobile-footer">
+        © 2026 Chi Wai Lau. All Rights Reserved.
+      </footer>
+    </div>
+  </div>
 
-</div>
+  <script>
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+    const menuOverlay = document.getElementById("menuOverlay");
 
-<script>
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileMenuPanel || !menuOverlay) return;
+      mobileMenuPanel.classList.remove("open");
+      menuOverlay.classList.remove("open");
+      mobileMenuBtn.classList.remove("active");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
 
-const mobileMenuBtn=document.getElementById("mobileMenuBtn");
-const mobileMenuPanel=document.getElementById("mobileMenuPanel");
-const menuOverlay=document.getElementById("menuOverlay");
+    if (mobileMenuBtn && mobileMenuPanel && menuOverlay) {
+      mobileMenuBtn.addEventListener("click", () => {
+        const isOpen = mobileMenuPanel.classList.toggle("open");
+        menuOverlay.classList.toggle("open", isOpen);
+        mobileMenuBtn.classList.toggle("active", isOpen);
+        mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        document.body.style.overflow = isOpen && window.innerWidth <= 768 ? "hidden" : "";
+      });
 
-mobileMenuBtn.addEventListener("click",()=>{
+      menuOverlay.addEventListener("click", closeMobileMenu);
 
-mobileMenuPanel.classList.toggle("open");
-menuOverlay.classList.toggle("open");
+      mobileMenuPanel.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMobileMenu);
+      });
 
-});
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          closeMobileMenu();
+        }
+      });
 
-menuOverlay.addEventListener("click",()=>{
+      window.addEventListener("pageshow", () => {
+        closeMobileMenu();
+      });
 
-mobileMenuPanel.classList.remove("open");
-menuOverlay.classList.remove("open");
+      window.addEventListener("load", () => {
+        closeMobileMenu();
+      });
+    }
 
-});
+    window.addEventListener("pageshow", () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollLeft = 0;
+      document.body.scrollLeft = 0;
+      closeMobileMenu();
+    });
 
-</script>
-
+    window.addEventListener("load", () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollLeft = 0;
+      document.body.scrollLeft = 0;
+      closeMobileMenu();
+    });
+  </script>
 </body>
 </html>
