@@ -1209,26 +1209,66 @@
 
     /* desktop / mobile switch */
     @media (max-width:768px){
-      html{
-        overflow-x:hidden;
-      }
 
-      body{
-        min-width:0;
-        width:100%;
-        max-width:100%;
-        overflow-x:hidden;
-        background:#000;
-      }
+  html{
+    overflow-x:hidden;
+  }
 
-      .page{
-        display:none;
-      }
+  body{
+    min-width:0;
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    background:#000;
+  }
 
-      .mobile-page{
-        display:block;
-      }
-    }
+  .page{
+    display:none;
+  }
+
+  .mobile-page{
+    display:block;
+  }
+
+  /* MENU BUTTON */
+
+  .menu-btn{
+  display:flex;
+  width:42px;
+  height:42px;
+  border:none;
+  background:transparent;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  padding:0;
+  position:relative;
+  z-index:10001;
+}
+
+  .menu-btn span{
+    display:block;
+    width:28px;
+    height:2px;
+    background:#fff;
+    transition:transform .25s ease, opacity .25s ease;
+  }
+
+  .menu-btn.active span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+  }
+
+  .menu-btn.active span:nth-child(2){
+    opacity:0;
+  }
+
+  .menu-btn.active span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+  }
+
+}
 
     @media (min-width:769px){
       .mobile-page{
