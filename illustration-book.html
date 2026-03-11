@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1280, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Illustration – Chi Wai Lau Portfolio</title>
 
   <style>
@@ -14,6 +14,15 @@
       --bg-olive:rgba(40,38,5,.88);
       --line:rgba(255,255,255,.18);
       --blue-panel:#20263a;
+
+      --mobile-header-h:74px;
+      --mobile-max-width:430px;
+      --mobile-gold:#9f9a67;
+      --mobile-white:#f4f1e8;
+      --mobile-dark:#171702;
+      --mobile-olive:#201f04;
+      --mobile-body:#2f2a22;
+      --mobile-blue:#20263a;
     }
 
     *{
@@ -273,59 +282,59 @@
       margin-bottom:18px;
     }
 
-.drama-section{
-  background:rgba(0,0,0,.58);
-  margin:0 -20px;
-  padding:46px 20px 42px;
-}
+    .drama-section{
+      background:rgba(0,0,0,.58);
+      margin:0 -20px;
+      padding:46px 20px 42px;
+    }
 
-.drama-inner{
-  width:1120px;
-  height:520px;
-  margin:0 auto;
-  position:relative;
-  overflow:hidden;
-  background:#000;
-}
+    .drama-inner{
+      width:1120px;
+      height:520px;
+      margin:0 auto;
+      position:relative;
+      overflow:hidden;
+      background:#000;
+    }
 
-.drama-image-full{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
+    .drama-image-full{
+      position:absolute;
+      inset:0;
+      z-index:1;
+    }
 
-.drama-image-full img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
+    .drama-image-full img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
 
-.drama-copy{
-  position:absolute;
-  left:70px;
-  top:56px;
-  max-width:420px;
-  z-index:3;
-}
+    .drama-copy{
+      position:absolute;
+      left:70px;
+      top:56px;
+      max-width:420px;
+      z-index:3;
+    }
 
-.drama-title{
-  font-size:22px;
-  line-height:1.15;
-  font-weight:700;
-  margin-bottom:18px;
-}
+    .drama-title{
+      font-size:22px;
+      line-height:1.15;
+      font-weight:700;
+      margin-bottom:18px;
+    }
 
-.drama-subtitle{
-  font-size:16px;
-  line-height:1.22;
-  font-weight:700;
-  margin-bottom:26px;
-}
+    .drama-subtitle{
+      font-size:16px;
+      line-height:1.22;
+      font-weight:700;
+      margin-bottom:26px;
+    }
 
-.drama-copy p{
-  margin-bottom:16px;
-}
+    .drama-copy p{
+      margin-bottom:16px;
+    }
 
     .label-section{
       padding:48px 0 56px;
@@ -466,20 +475,20 @@
       padding:56px 0 38px;
     }
 
-.sketch-inner{
-  width:1120px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:520px 1fr;
-  gap:40px;
-  align-items:start;
-}
+    .sketch-inner{
+      width:1120px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:520px 1fr;
+      gap:40px;
+      align-items:start;
+    }
 
-.sketch-copy{
-  max-width:520px;
-  padding-left:60px;
-  padding-top:138px;
-}
+    .sketch-copy{
+      max-width:520px;
+      padding-left:60px;
+      padding-top:138px;
+    }
 
     .sketch-main-title{
       font-size:24px;
@@ -498,29 +507,29 @@
       margin-bottom:16px;
     }
 
-   .sketch-visual{
-  position:relative;
-  height:620px;
-}
+    .sketch-visual{
+      position:relative;
+      height:620px;
+    }
 
-.blue-circle{
-  position:absolute;
-  right:10px;
-  top:55px;
-  width:500px;
-  height:500px;
-  border-radius:50%;
-  background:rgba(40,48,95,.65);
-  z-index:1;
-}
+    .blue-circle{
+      position:absolute;
+      right:10px;
+      top:55px;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      background:rgba(40,48,95,.65);
+      z-index:1;
+    }
 
-.sketch-main-combined{
-  position:absolute;
-  right:0;
-  top:10px;
-  width:680px;
-  z-index:3;
-}
+    .sketch-main-combined{
+      position:absolute;
+      right:0;
+      top:10px;
+      width:680px;
+      z-index:3;
+    }
 
     .sketch-main-combined{
       position:absolute;
@@ -565,9 +574,320 @@
       background:rgba(255,255,255,.08);
       transform:translateY(-1px);
     }
+
+    /* =========================
+       MOBILE
+    ========================== */
+    .mobile-page{
+      display:none;
+      width:100%;
+      max-width:100%;
+      overflow:hidden;
+      background:#000;
+    }
+
+    .mobile-shell{
+      width:100%;
+      max-width:var(--mobile-max-width);
+      margin:0 auto;
+      background:#000;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .mobile-header{
+      position:fixed;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:100%;
+      max-width:var(--mobile-max-width);
+      height:var(--mobile-header-h);
+      background:rgba(0,0,0,0.98);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 18px;
+      z-index:9999;
+    }
+
+    .mobile-logo{
+      width:50px;
+      height:50px;
+      display:block;
+      flex:0 0 auto;
+    }
+
+    .mobile-logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .mobile-menu-btn{
+      width:48px;
+      height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+      padding:0;
+    }
+
+    .mobile-menu-icon{
+      width:28px;
+      height:20px;
+      position:relative;
+    }
+
+    .mobile-menu-icon span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2.5px;
+      background:var(--mobile-gold);
+      border-radius:2px;
+      transition:transform .25s ease, opacity .25s ease, top .25s ease;
+    }
+
+    .mobile-menu-icon span:nth-child(1){top:0;}
+    .mobile-menu-icon span:nth-child(2){top:8px;}
+    .mobile-menu-icon span:nth-child(3){top:16px;}
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(1){
+      top:8px;
+      transform:rotate(45deg);
+    }
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(2){
+      opacity:0;
+    }
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(3){
+      top:8px;
+      transform:rotate(-45deg);
+    }
+
+    .menu-overlay{
+      position:fixed;
+      inset:var(--mobile-header-h) 0 0 0;
+      background:rgba(0,0,0,0.28);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+      z-index:9997;
+    }
+
+    .menu-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .mobile-menu-panel{
+      position:fixed;
+      top:var(--mobile-header-h);
+      right:0;
+      width:100%;
+      max-width:var(--mobile-max-width);
+      height:calc(100vh - var(--mobile-header-h));
+      background:rgba(0,0,0,0.98);
+      transform:translateX(100%);
+      transition:transform .28s ease;
+      z-index:9998;
+      padding:28px 26px 40px;
+      overflow-y:auto;
+      overflow-x:hidden;
+      visibility:hidden;
+      pointer-events:none;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    .mobile-menu-panel.open{
+      transform:translateX(0);
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .mobile-menu-panel a{
+      display:block;
+      color:#f3f0e6;
+      font-size:28px;
+      font-weight:700;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .mobile-content{
+      padding-top:var(--mobile-header-h);
+      background:var(--mobile-olive);
+    }
+
+    .mobile-intro{
+      background:var(--mobile-olive);
+      padding:32px 18px 26px;
+      text-align:left;
+    }
+
+    .mobile-intro h1{
+      font-size:28px;
+      line-height:1.08;
+      margin-bottom:10px;
+      color:#fff;
+    }
+
+    .mobile-intro h2{
+      font-size:15px;
+      line-height:1.25;
+      margin-bottom:16px;
+      color:#ddd6c4;
+      font-weight:700;
+    }
+
+    .mobile-intro p{
+      font-size:12px;
+      line-height:1.55;
+      color:#ddd6c4;
+      margin-bottom:12px;
+    }
+
+    .mobile-section{
+      padding:18px 14px 20px;
+    }
+
+    .mobile-section.white{
+      background:var(--mobile-white);
+    }
+
+    .mobile-section.dark{
+      background:var(--mobile-olive);
+    }
+
+    .mobile-section.blue{
+      background:var(--mobile-blue);
+    }
+
+    .mobile-section.white h2,
+    .mobile-section.white h3{
+      color:#231f12;
+    }
+
+    .mobile-section.dark h2,
+    .mobile-section.dark h3,
+    .mobile-section.blue h2,
+    .mobile-section.blue h3{
+      color:#f3efdf;
+    }
+
+    .mobile-section h2{
+      font-size:24px;
+      line-height:1.1;
+      margin-bottom:8px;
+    }
+
+    .mobile-section h3{
+      font-size:15px;
+      line-height:1.25;
+      margin-bottom:12px;
+      font-weight:700;
+    }
+
+    .mobile-section.white p{
+      font-size:12px;
+      line-height:1.55;
+      color:var(--mobile-body);
+      margin-bottom:12px;
+    }
+
+    .mobile-section.dark p,
+    .mobile-section.blue p{
+      font-size:12px;
+      line-height:1.55;
+      color:#ddd6c4;
+      margin-bottom:12px;
+    }
+
+    .mobile-full-image{
+      width:100%;
+      margin-bottom:16px;
+    }
+
+    .mobile-reel-strip{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .mobile-reel-strip img{
+      width:100%;
+      display:block;
+      border-radius:10px;
+    }
+
+    .mobile-reel-single{
+      width:78%;
+      margin:0 auto 16px;
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    .mobile-book-cover{
+      width:58%;
+      margin:0 auto 16px;
+    }
+
+    .mobile-process-image{
+      width:100%;
+      margin-top:14px;
+    }
+
+    .mobile-footer{
+      background:#000;
+      color:var(--mobile-gold);
+      text-align:center;
+      padding:26px 20px 34px;
+      font-size:13px;
+      line-height:1.6;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width:768px){
+      html{
+        overflow-x:hidden;
+      }
+
+      body{
+        min-width:0;
+        overflow-x:hidden;
+        background:#000;
+      }
+
+      .page{
+        display:none;
+      }
+
+      .mobile-page{
+        display:block;
+      }
+    }
+
+    @media (min-width:769px){
+      .mobile-page{
+        display:none !important;
+      }
+
+      .page{
+        display:block;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- DESKTOP VERSION -->
   <div class="page">
     <div class="frame">
 
@@ -626,30 +946,30 @@
           </div>
         </section>
 
-      <section id="drama" class="drama-section">
-  <div class="drama-inner">
-    <div class="drama-image-full">
-      <img src="assets/illustration_drama.png" alt="Drama poster illustration">
-    </div>
+        <section id="drama" class="drama-section">
+          <div class="drama-inner">
+            <div class="drama-image-full">
+              <img src="assets/illustration_drama.png" alt="Drama poster illustration">
+            </div>
 
-    <div class="drama-copy illu-copy">
-      <h2 class="drama-title">Drama poster</h2>
-      <div class="drama-subtitle">Concept &amp; Visual Expression</div>
+            <div class="drama-copy illu-copy">
+              <h2 class="drama-title">Drama poster</h2>
+              <div class="drama-subtitle">Concept &amp; Visual Expression</div>
 
-      <p>
-        This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere. The composition centres on a solitary figure illuminated by dramatic lighting, creating a strong sense of tension and narrative ambiguity.
-      </p>
+              <p>
+                This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere. The composition centres on a solitary figure illuminated by dramatic lighting, creating a strong sense of tension and narrative ambiguity.
+              </p>
 
-      <p>
-        The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context. Painterly textures and controlled colour contrasts help emphasise the emotional tone of the piece while maintaining clarity in the overall composition.
-      </p>
+              <p>
+                The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context. Painterly textures and controlled colour contrasts help emphasise the emotional tone of the piece while maintaining clarity in the overall composition.
+              </p>
 
-      <p>
-        The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling, allowing the viewer to interpret the scene through visual cues.
-      </p>
-    </div>
-  </div>
-</section>
+              <p>
+                The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling, allowing the viewer to interpret the scene through visual cues.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section id="label" class="label-section">
           <div class="showreel-wrap">
@@ -754,6 +1074,135 @@
     </div>
   </div>
 
+  <!-- MOBILE VERSION -->
+  <div class="mobile-page">
+    <div class="mobile-shell">
+
+      <header class="mobile-header">
+        <a class="mobile-logo" href="index.html" aria-label="Home">
+          <img src="assets/logo.png" alt="Chi Wai Lau logo">
+        </a>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+          <span class="mobile-menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </header>
+
+      <div class="menu-overlay" id="menuOverlay"></div>
+
+      <nav class="mobile-menu-panel" id="mobileMenuPanel">
+        <a href="about.html">About Me</a>
+        <a href="samaroli.html">Samaroli</a>
+        <a href="pizzaexpress.html">Pizzaexpress</a>
+        <a href="canon.html">Canon</a>
+        <a href="kmb.html">KMB</a>
+        <a href="video.html">Video</a>
+        <a href="illustration.html">Illustration</a>
+      </nav>
+
+      <main class="mobile-content">
+
+        <section class="mobile-intro">
+          <h1>Illustration &amp; Graphic Narrative</h1>
+          <h2>Visual Storytelling Through Illustration</h2>
+          <p>
+            This collection explores illustration as a visual storytelling medium, combining expressive imagery with graphic composition to communicate mood, narrative and atmosphere.
+          </p>
+          <p>
+            Through experimentation with colour, texture and composition, the projects investigate how illustrated imagery can evoke emotion, suggest narrative and create a distinctive visual identity.
+          </p>
+        </section>
+
+        <section class="mobile-section dark">
+          <img class="mobile-full-image" src="assets/illustration_drama.png" alt="Drama poster illustration">
+          <h2>Drama poster</h2>
+          <h3>Concept &amp; Visual Expression</h3>
+          <p>
+            This illustration was developed as a conceptual drama poster, focusing on emotional intensity and psychological atmosphere.
+          </p>
+          <p>
+            The visual language draws from theatrical poster traditions, where lighting, gesture and symbolic imagery work together to suggest a deeper narrative context.
+          </p>
+          <p>
+            The result is an illustration that communicates narrative through atmosphere rather than explicit storytelling.
+          </p>
+        </section>
+
+        <section class="mobile-section white">
+          <div class="mobile-reel-strip">
+            <img src="assets/illustration_1.png" alt="Illustration artwork 1">
+            <img src="assets/illustration_2.png" alt="Illustration artwork 2">
+          </div>
+          <div class="mobile-reel-strip">
+            <img src="assets/illustration_3.png" alt="Illustration artwork 3">
+            <img src="assets/illustration_4.png" alt="Illustration artwork 4">
+          </div>
+          <div class="mobile-reel-single">
+            <img src="assets/illustration_5.png" alt="Illustration artwork 5">
+          </div>
+
+          <h2>Label Illustration Series</h2>
+          <h3>Illustration for Packaging Context</h3>
+          <p>
+            This series explores how illustration can function within product packaging and label design.
+          </p>
+          <p>
+            The illustrations combine expressive imagery with controlled framing, ensuring that visual storytelling complements the informational structure required in label design.
+          </p>
+          <p>
+            By balancing illustration with typographic hierarchy and layout structure, the work demonstrates how narrative imagery can enhance brand identity.
+          </p>
+        </section>
+
+        <section class="mobile-section blue">
+          <div class="mobile-book-cover">
+            <img src="assets/illustration_book_cover.png" alt="Illustration book cover">
+          </div>
+
+          <h2>Illustration book</h2>
+          <h3>Narrative Illustration</h3>
+          <p>
+            This project involved the development of illustrated pages for a children's picture book, focusing on character expression, environmental storytelling and narrative pacing.
+          </p>
+          <p>
+            The illustrations were designed to guide readers through the story visually, using composition and colour to create rhythm across the pages.
+          </p>
+          <p>
+            The final result presents a cohesive visual world where illustration, storytelling and layout work together.
+          </p>
+        </section>
+
+        <section class="mobile-section white">
+          <h2>From Sketch to Final</h2>
+          <h3>Creative Development Process</h3>
+          <p>
+            This section presents the creative development behind the illustrations, revealing how early sketches evolve into finished visual works.
+          </p>
+          <p>
+            Initial drawings focus on composition, character placement and narrative direction, allowing ideas to be explored freely before moving into more refined illustration stages.
+          </p>
+          <p>
+            By presenting both sketches and final artwork, the process highlights how experimentation and iterative refinement contribute to the final visual outcome.
+          </p>
+
+          <div class="mobile-process-image">
+            <img src="assets/illustration_process_combined.png" alt="From sketch to final">
+          </div>
+        </section>
+
+      </main>
+
+      <footer class="mobile-footer">
+        © 2026 Chi Wai Lau. All Rights Reserved.
+      </footer>
+
+    </div>
+  </div>
+
   <script>
     const reelCards = Array.from(document.querySelectorAll(".reel-card"));
     let reelCurrent = Math.floor(reelCards.length / 2);
@@ -813,6 +1262,49 @@
       if(reelCards.length > 1){
         reelTimer = setInterval(nextReel, 2800);
       }
+    }
+
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileMenuPanel || !menuOverlay) return;
+      mobileMenuPanel.classList.remove("open");
+      menuOverlay.classList.remove("open");
+      mobileMenuBtn.classList.remove("active");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    if (mobileMenuBtn && mobileMenuPanel && menuOverlay) {
+      mobileMenuBtn.addEventListener("click", () => {
+        const isOpen = mobileMenuPanel.classList.toggle("open");
+        menuOverlay.classList.toggle("open", isOpen);
+        mobileMenuBtn.classList.toggle("active", isOpen);
+        mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        document.body.style.overflow = isOpen && window.innerWidth <= 768 ? "hidden" : "";
+      });
+
+      menuOverlay.addEventListener("click", closeMobileMenu);
+
+      mobileMenuPanel.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+          closeMobileMenu();
+        }
+      });
+
+      window.addEventListener("pageshow", () => {
+        closeMobileMenu();
+      });
+
+      window.addEventListener("load", () => {
+        closeMobileMenu();
+      });
     }
   </script>
 </body>
