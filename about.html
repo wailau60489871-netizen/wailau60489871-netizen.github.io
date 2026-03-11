@@ -469,20 +469,21 @@
         margin:6px 0 2px;
       }
 
-      .mobile-content-scroll{
-        display:block;
-        position:fixed;
-        top:var(--mobile-header-h);
-        left:50%;
-        transform:translateX(-50%);
-        width:100%;
-        max-width:var(--mobile-max-width);
-        height:calc(100vh - var(--mobile-header-h));
-        overflow-y:auto;
-        overflow-x:hidden;
-        background:var(--bg-olive);
-        -webkit-overflow-scrolling:touch;
-      }
+.mobile-content-scroll{
+  display:block;
+  position:fixed;
+  top:var(--mobile-header-h);
+  left:0;
+  right:0;
+  width:100%;
+  max-width:var(--mobile-max-width);
+  margin:0 auto;
+  height:calc(100vh - var(--mobile-header-h));
+  overflow-y:auto;
+  overflow-x:hidden;
+  background:var(--bg-olive);
+  -webkit-overflow-scrolling:touch;
+}
 
       .mobile-about-page{
         width:100%;
