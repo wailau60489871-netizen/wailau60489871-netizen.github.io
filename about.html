@@ -33,7 +33,7 @@
     body{
       width:100%;
       max-width:100%;
-      min-width:1280px;
+      min-width:1220px;
       overflow-x:auto;
       font-family:Arial, Helvetica, sans-serif;
       color:var(--text);
@@ -53,8 +53,11 @@
       height:auto;
     }
 
+    /* =========================
+       DESKTOP
+    ========================== */
     .page{
-      width:1280px;
+      width:1220px;
       margin:0 auto;
       padding:0 0 40px;
     }
@@ -63,62 +66,38 @@
       position:relative;
       background:var(--bg-olive);
       border:1px solid var(--panel-border);
-      padding:20px 20px 0;
+      padding:22px 22px 0;
       overflow:hidden;
       min-height:1400px;
     }
 
-    /* =========================
-       TOP BAR - DESKTOP
-    ========================== */
     .topbar{
       display:flex;
-      justify-content:space-between;
+      justify-content:flex-start;
       align-items:center;
-      gap:24px;
-      padding:14px 18px;
-      margin:-20px -20px 0 -20px;
-      background:#000;
-      border-bottom:none;
+      gap:40px;
+      margin:-22px -22px 0 -22px;
       position:relative;
-      z-index:60;
-    }
-
-    .topbar-left{
-      display:flex;
-      align-items:center;
-      gap:24px;
-    }
-
-    .brand-mark{
-      width:44px;
-      height:44px;
-      border:2px solid rgba(255,255,255,.92);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-weight:700;
-      font-size:24px;
-      color:var(--text);
-      flex:0 0 auto;
-      font-family:Arial, Helvetica, sans-serif;
+      z-index:30;
+      padding:14px 22px;
+      background:#000;
     }
 
     .nav{
       display:flex;
-      gap:34px;
+      gap:32px;
       align-items:center;
       font-weight:700;
       color:var(--muted);
-      font-size:14px;
-      font-family:Arial, Helvetica, sans-serif;
+      font-size:18px;
     }
 
     .nav > a,
     .dropdown > a{
       display:inline-flex;
       align-items:center;
-      height:32px;
+      height:40px;
+      line-height:1;
       white-space:nowrap;
     }
 
@@ -136,18 +115,19 @@
       left:0;
       top:100%;
       width:100%;
-      height:14px;
+      height:18px;
     }
 
     .dropdown-menu{
       position:absolute;
       top:100%;
       left:0;
-      min-width:210px;
+      min-width:220px;
       background:var(--menu-bg);
-      border:1px solid rgba(255,255,255,.08);
-      padding:12px 18px;
+      border:1px solid rgba(255,255,255,0.08);
+      padding:14px 22px;
       display:none;
+      margin-top:0;
       z-index:50;
     }
 
@@ -157,19 +137,19 @@
 
     .dropdown-menu a{
       display:block;
-      padding:6px 0;
+      padding:7px 0;
       color:var(--muted);
-      font-size:14px;
+      font-size:17px;
       font-weight:700;
       transition:color .2s ease, transform .2s ease;
-      font-family:Arial, Helvetica, sans-serif;
     }
 
     .dropdown-menu a::before{
       content:"▶ ";
+      font-size:14px;
+      vertical-align:middle;
       opacity:0;
       transition:opacity .2s ease;
-      font-size:12px;
     }
 
     .dropdown-menu a:hover{
@@ -181,9 +161,6 @@
       opacity:1;
     }
 
-    /* =========================
-       ABOUT PAGE - DESKTOP
-    ========================== */
     .about-page{
       width:900px;
       margin:0 auto;
@@ -205,11 +182,9 @@
     .about-copy{
       width:900px;
       margin:0 auto;
-      font-family:Arial, Helvetica, sans-serif;
     }
 
     .about-copy h1{
-      font-family:Arial, Helvetica, sans-serif;
       font-size:52px;
       line-height:1;
       font-weight:700;
@@ -219,7 +194,6 @@
     }
 
     .about-copy p{
-      font-family:Arial, Helvetica, sans-serif;
       font-size:16px;
       line-height:1.5;
       color:var(--text);
@@ -231,7 +205,6 @@
     }
 
     .working-title{
-      font-family:Arial, Helvetica, sans-serif;
       font-size:24px;
       line-height:1.2;
       font-weight:700;
@@ -240,8 +213,8 @@
     }
 
     .bottom-bar{
-      width:calc(100% + 40px);
-      margin:24px -20px 0;
+      width:calc(100% + 44px);
+      margin:24px -22px 0;
       background:#000;
       border-top:1px solid rgba(255,255,255,.14);
       padding:16px 26px 40px;
@@ -254,7 +227,6 @@
       color:var(--muted);
       font-size:13px;
       line-height:1.4;
-      font-family:Arial, Helvetica, sans-serif;
     }
 
     .back-to-top{
@@ -269,7 +241,6 @@
       font-weight:700;
       border-radius:999px;
       transition:background .2s ease, transform .2s ease;
-      font-family:Arial, Helvetica, sans-serif;
     }
 
     .back-to-top:hover{
@@ -278,21 +249,218 @@
     }
 
     /* =========================
-       MOBILE ONLY ELEMENTS
+       MOBILE
     ========================== */
-    .mobile-shell,
-    .mobile-topbar,
-    .mobile-content-scroll,
-    .menu-button,
-    .menu-panel,
-    .menu-overlay{
+    .mobile-page{
       display:none;
+      width:100%;
+      max-width:100%;
+      overflow:hidden;
+      background:#000;
     }
 
-    /* =========================
-       MOBILE VERSION
-    ========================== */
-    @media (max-width: 768px){
+    .mobile-shell{
+      width:100%;
+      max-width:var(--mobile-max-width);
+      margin:0 auto;
+      background:#000;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .mobile-header{
+      position:fixed;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:100%;
+      max-width:var(--mobile-max-width);
+      height:var(--mobile-header-h);
+      background:rgba(0,0,0,0.98);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 18px;
+      z-index:9999;
+    }
+
+    .mobile-logo{
+      width:50px;
+      height:50px;
+      display:block;
+      flex:0 0 auto;
+    }
+
+    .mobile-logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .mobile-menu-btn{
+      width:48px;
+      height:48px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:transparent;
+      border:0;
+      padding:0;
+      cursor:pointer;
+    }
+
+    .mobile-menu-icon{
+      width:28px;
+      height:20px;
+      position:relative;
+    }
+
+    .mobile-menu-icon span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2.5px;
+      background:#9f9a67;
+      border-radius:2px;
+      transition:transform .25s ease, opacity .25s ease, top .25s ease;
+    }
+
+    .mobile-menu-icon span:nth-child(1){ top:0; }
+    .mobile-menu-icon span:nth-child(2){ top:8px; }
+    .mobile-menu-icon span:nth-child(3){ top:16px; }
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(1){
+      top:8px;
+      transform:rotate(45deg);
+    }
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(2){
+      opacity:0;
+    }
+
+    .mobile-menu-btn.active .mobile-menu-icon span:nth-child(3){
+      top:8px;
+      transform:rotate(-45deg);
+    }
+
+    .menu-overlay{
+      position:fixed;
+      inset:var(--mobile-header-h) 0 0 0;
+      background:rgba(0,0,0,0.28);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+      z-index:9997;
+    }
+
+    .menu-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .mobile-menu-panel{
+      position:fixed;
+      top:var(--mobile-header-h);
+      right:0;
+      width:100%;
+      max-width:var(--mobile-max-width);
+      height:calc(100vh - var(--mobile-header-h));
+      background:rgba(0,0,0,0.98);
+      transform:translateX(100%);
+      transition:transform .28s ease;
+      z-index:9998;
+      padding:28px 26px 40px;
+      overflow-y:auto;
+      overflow-x:hidden;
+      visibility:hidden;
+      pointer-events:none;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    .mobile-menu-panel.open{
+      transform:translateX(0);
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .mobile-menu-panel a{
+      display:block;
+      color:#f3f0e6;
+      font-size:28px;
+      font-weight:700;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .mobile-content{
+      padding-top:var(--mobile-header-h);
+      background:#000;
+      min-height:100vh;
+      overflow-y:auto;
+      overflow-x:hidden;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    .mobile-content-inner{
+      width:100%;
+      max-width:var(--mobile-max-width);
+      margin:0 auto;
+      background:var(--bg-olive);
+      min-height:100%;
+    }
+
+    .mobile-about-page{
+      width:100%;
+      margin:0 auto;
+      padding:46px 18px 0;
+    }
+
+    .mobile-hero-visual{
+      width:100%;
+      margin:0 0 38px;
+      background:#000;
+    }
+
+    .mobile-about-copy h1{
+      font-size:40px;
+      line-height:1;
+      font-weight:700;
+      margin:0 0 24px;
+      color:var(--text);
+    }
+
+    .mobile-about-copy p{
+      font-size:15px;
+      line-height:1.48;
+      color:var(--text);
+      margin:0 0 22px;
+      text-align:justify;
+      hyphens:auto;
+      font-weight:400;
+    }
+
+    .mobile-working-title{
+      font-size:22px;
+      line-height:1.15;
+      font-weight:700;
+      margin:42px 0 20px;
+      color:var(--text);
+    }
+
+    .mobile-footer{
+      margin-top:18px;
+      padding:18px 0 32px;
+      border-top:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+      text-align:center;
+      background:#000;
+    }
+
+    @media (max-width:768px){
       html, body{
         width:100%;
         min-width:100%;
@@ -301,265 +469,26 @@
       }
 
       body{
-        background:#000;
         min-width:0;
+        background:#000;
       }
 
-      .page,
-      .frame,
-      .topbar,
-      .about-page,
-      .bottom-bar{
+      .page{
         display:none;
       }
 
-      .mobile-shell{
+      .mobile-page{
         display:block;
-        width:100%;
-        min-height:100vh;
-        background:#000;
-        overflow:hidden;
-      }
-
-      .mobile-inner{
-        width:100%;
-        min-height:100vh;
-        background:#000;
-        position:relative;
-        overflow:hidden;
-      }
-
- .mobile-topbar{
-  display:flex;
-  position:fixed;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:var(--mobile-max-width);
-  height:var(--mobile-header-h);
-  background:rgba(0,0,0,0.98);
-  z-index:9999;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 18px;
-}
-
-.mobile-topbar-inner{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.mobile-brand{
-  width:50px;
-  height:50px;
-  display:block;
-  flex:0 0 auto;
-}
-
-.mobile-brand img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
-
-.menu-button{
-  width:48px;
-  height:48px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  background:transparent;
-  border:0;
-  padding:0;
-  cursor:pointer;
-  position:relative;
-  z-index:10001;
-}
-
-.menu-button span{
-  display:block;
-  width:28px;
-  height:2.5px;
-  background:#9f9a67;
-  border-radius:2px;
-  transition:transform .25s ease, opacity .25s ease, top .25s ease;
-}
-
-.menu-button.is-open span:nth-child(1){
-  transform:translateY(8px) rotate(45deg);
-}
-
-.menu-button.is-open span:nth-child(2){
-  opacity:0;
-}
-
-.menu-button.is-open span:nth-child(3){
-  transform:translateY(-8px) rotate(-45deg);
-}
-.menu-overlay{
-  display:block;
-  position:fixed;
-  inset:var(--mobile-header-h) 0 0 0;
-  background:rgba(0,0,0,0.28);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .25s ease;
-  z-index:9997;
-}
-
-      .menu-overlay.is-open{
-        opacity:1;
-        pointer-events:auto;
-      }
-
-     .menu-panel{
-  display:block;
-  position:fixed;
-  top:var(--mobile-header-h);
-  right:0;
-  width:100%;
-  max-width:var(--mobile-max-width);
-  height:calc(100vh - var(--mobile-header-h));
-  background:rgba(0,0,0,0.98);
-  transform:translateX(100%);
-  transition:transform .28s ease;
-  z-index:9998;
-  padding:28px 26px 40px;
-  overflow-y:auto;
-  overflow-x:hidden;
-  border-left:none;
-}
-
-      .menu-panel.is-open{
-        transform:translateX(0);
-      }
-
-      .menu-panel nav{
-        display:flex;
-        flex-direction:column;
-        gap:18px;
-      }
-
-      .menu-panel a{
-        font-size:18px;
-        font-weight:700;
-        color:var(--text);
-        line-height:1.25;
-        font-family:Arial, Helvetica, sans-serif;
-      }
-
-      .menu-panel a.sub{
-        font-size:16px;
-        font-weight:600;
-        color:var(--muted);
-        padding-left:10px;
-      }
-
-      .menu-divider{
-        height:1px;
-        background:rgba(255,255,255,.16);
-        margin:6px 0 2px;
-      }
-
-      .mobile-content-scroll{
-        display:block;
-        position:fixed;
-        top:var(--mobile-header-h);
-        left:0;
-        right:0;
-        height:calc(100vh - var(--mobile-header-h));
-        overflow-y:auto;
-        overflow-x:hidden;
-        background:#000;
-        -webkit-overflow-scrolling:touch;
-      }
-
-      .mobile-content-inner{
-        width:100%;
-        max-width:var(--mobile-max-width);
-        margin:0 auto;
-        background:var(--bg-olive);
-        min-height:100%;
-      }
-
-      .mobile-about-page{
-        width:100%;
-        margin:0 auto;
-        padding:52px 18px 0;
-      }
-
-      .mobile-hero-visual{
-        width:100%;
-        margin:0 0 38px;
-        background:#000;
-      }
-
-      .mobile-about-copy h1{
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:42px;
-        line-height:1;
-        font-weight:700;
-        margin:0 0 24px;
-        color:var(--text);
-      }
-
-      .mobile-about-copy p{
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:15px;
-        line-height:1.5;
-        color:var(--text);
-        margin:0 0 22px;
-        text-align:justify;
-        hyphens:auto;
-        font-weight:400;
-      }
-
-      .mobile-working-title{
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:23px;
-        line-height:1.15;
-        font-weight:700;
-        margin:42px 0 20px;
-        color:var(--text);
-      }
-
-      .mobile-footer{
-        margin-top:18px;
-        padding:18px 0 32px;
-        border-top:1px solid rgba(255,255,255,.12);
-        color:var(--muted);
-        font-size:13px;
-        line-height:1.5;
-        text-align:center;
-        font-family:Arial, Helvetica, sans-serif;
-        background:#000;
       }
     }
 
-    @media (max-width: 480px){
-      .mobile-topbar{
-        padding:0 16px;
+    @media (min-width:769px){
+      .mobile-page{
+        display:none !important;
       }
 
-      .mobile-about-page{
-        padding:46px 18px 0;
-      }
-
-      .mobile-about-copy h1{
-        font-size:40px;
-      }
-
-      .mobile-about-copy p{
-        font-size:15px;
-        line-height:1.48;
-      }
-
-      .mobile-working-title{
-        font-size:22px;
+      .page{
+        display:block;
       }
     }
   </style>
@@ -572,25 +501,21 @@
     <div class="frame">
 
       <header class="topbar">
-        <div class="topbar-left">
-          <a href="index.html" class="brand-mark">W</a>
+        <nav class="nav">
+          <a href="about.html">About Me</a>
 
-          <nav class="nav">
-            <a href="about.html">About Me</a>
-
-            <div class="dropdown">
-              <a href="#">Selected Works</a>
-              <div class="dropdown-menu">
-                <a href="samaroli.html">Samaroli</a>
-                <a href="pizzaexpress.html">Pizzaexpress</a>
-                <a href="canon.html">Canon</a>
-                <a href="kmb.html">KMB</a>
-                <a href="illustration-book.html">Illustration</a>
-                <a href="video.html">Video Projects</a>
-              </div>
+          <div class="dropdown">
+            <a href="#">Selected Works</a>
+            <div class="dropdown-menu">
+              <a href="samaroli.html">Samaroli</a>
+              <a href="pizzaexpress.html">Pizzaexpress</a>
+              <a href="canon.html">Canon</a>
+              <a href="kmb.html">KMB</a>
+              <a href="illustration-book.html">Illustration</a>
+              <a href="video.html">Video Project</a>
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </header>
 
       <main class="about-page">
@@ -641,42 +566,36 @@
   </div>
 
   <!-- MOBILE VERSION -->
-  <div class="mobile-shell">
-    <div class="mobile-inner">
+  <div class="mobile-page">
+    <div class="mobile-shell">
 
-      <header class="mobile-topbar">
-        <div class="mobile-topbar-inner">
-          <a href="index.html" class="mobile-brand" aria-label="Home">
-            <img src="assets/logo.png" alt="Chi Wai Lau logo">
-          </a>
+      <header class="mobile-header">
+        <a class="mobile-logo" href="index.html" aria-label="Home">
+          <img src="assets/logo.png" alt="Chi Wai Lau logo">
+        </a>
 
-          <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+          <span class="mobile-menu-icon">
             <span></span>
             <span></span>
             <span></span>
-          </button>
-        </div>
+          </span>
+        </button>
       </header>
 
       <div class="menu-overlay" id="menuOverlay"></div>
 
-      <aside class="menu-panel" id="menuPanel" aria-hidden="true">
-        <nav>
-          <a href="about.html">About Me</a>
+      <nav class="mobile-menu-panel" id="mobileMenuPanel">
+        <a href="about.html">About Me</a>
+        <a href="samaroli.html">Samaroli</a>
+        <a href="pizzaexpress.html">Pizzaexpress</a>
+        <a href="canon.html">Canon</a>
+        <a href="kmb.html">KMB</a>
+        <a href="video.html">Video</a>
+        <a href="illustration-book.html">Illustration</a>
+      </nav>
 
-          <div class="menu-divider"></div>
-
-          <a href="index.html">Home</a>
-          <a href="samaroli.html" class="sub">Samaroli</a>
-          <a href="pizzaexpress.html" class="sub">PizzaExpress</a>
-          <a href="canon.html" class="sub">Canon</a>
-          <a href="kmb.html" class="sub">KMB</a>
-          <a href="illustration-book.html" class="sub">Illustration</a>
-          <a href="video.html" class="sub">Video Projects</a>
-        </nav>
-      </aside>
-
-      <main class="mobile-content-scroll">
+      <main class="mobile-content">
         <div class="mobile-content-inner">
           <section class="mobile-about-page">
 
@@ -726,64 +645,54 @@
   </div>
 
   <script>
-    const menuButton = document.getElementById("menuButton");
-    const menuPanel = document.getElementById("menuPanel");
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenuPanel = document.getElementById("mobileMenuPanel");
     const menuOverlay = document.getElementById("menuOverlay");
 
-    function openMenu() {
-      menuButton.classList.add("is-open");
-      menuPanel.classList.add("is-open");
-      menuOverlay.classList.add("is-open");
-      menuButton.setAttribute("aria-expanded", "true");
-      menuPanel.setAttribute("aria-hidden", "false");
+    function closeMobileMenu() {
+      if (!mobileMenuBtn || !mobileMenuPanel || !menuOverlay) return;
+      mobileMenuPanel.classList.remove("open");
+      menuOverlay.classList.remove("open");
+      mobileMenuBtn.classList.remove("active");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
     }
 
-    function closeMenu() {
-      menuButton.classList.remove("is-open");
-      menuPanel.classList.remove("is-open");
-      menuOverlay.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuPanel.setAttribute("aria-hidden", "true");
-    }
-
-    if (menuButton && menuPanel && menuOverlay) {
-      menuButton.addEventListener("click", () => {
-        const isOpen = menuPanel.classList.contains("is-open");
-        if (isOpen) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
+    if (mobileMenuBtn && mobileMenuPanel && menuOverlay) {
+      mobileMenuBtn.addEventListener("click", () => {
+        const isOpen = mobileMenuPanel.classList.toggle("open");
+        menuOverlay.classList.toggle("open", isOpen);
+        mobileMenuBtn.classList.toggle("active", isOpen);
+        mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        document.body.style.overflow = isOpen && window.innerWidth <= 768 ? "hidden" : "";
       });
 
-      menuOverlay.addEventListener("click", closeMenu);
+      menuOverlay.addEventListener("click", closeMobileMenu);
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeMenu();
-        }
+      mobileMenuPanel.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMobileMenu);
       });
 
       window.addEventListener("resize", () => {
         if (window.innerWidth > 768) {
-          closeMenu();
+          closeMobileMenu();
         }
       });
+
+      window.addEventListener("pageshow", () => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollLeft = 0;
+        document.body.scrollLeft = 0;
+        closeMobileMenu();
+      });
+
+      window.addEventListener("load", () => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollLeft = 0;
+        document.body.scrollLeft = 0;
+        closeMobileMenu();
+      });
     }
-
-    window.addEventListener("pageshow", () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollLeft = 0;
-      document.body.scrollLeft = 0;
-      closeMenu();
-    });
-
-    window.addEventListener("load", () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollLeft = 0;
-      document.body.scrollLeft = 0;
-      closeMenu();
-    });
   </script>
 
 </body>
