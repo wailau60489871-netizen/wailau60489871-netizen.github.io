@@ -925,9 +925,9 @@
 
         <section class="mobile-dark">
           <div class="mobile-two-image">
-            <div class="mobile-round-image">
-              <img src="assets/canon_-pop.png" alt="Canon POP and retail collateral board">
-            </div>
+            <div class="mobile-round-image" style="width:80%; margin:0 auto;">
+  <img src="assets/canon_-pop.png" alt="Canon POP and retail collateral board">
+</div>
           </div>
 
           <h3 style="margin-top:18px;">Key Contributions</h3>
